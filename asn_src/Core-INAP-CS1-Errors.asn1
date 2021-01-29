@@ -1,0 +1,85 @@
+Core-INAP-CS1-Errors { ccitt(0) identified-organization(4) etsi(0) inDomain(1) in-network(1) modules(0) cs1-errors(1) version1(0)}
+
+-- This module contains the type definitions for the IN CS1 errors.
+
+DEFINITIONS IMPLICIT TAGS ::= BEGIN
+
+	IMPORTS
+		ERROR
+	FROM TCAPMessages {ccitt recommendation q 773 modules(2) messages(1) version2(2)}
+		InvokeID, UnavailableNetworkResource
+	FROM Core-INAP-CS1-DataTypes {ccitt(0) identified-organization(4) etsi(0) inDomain(1) in-network(1) modules(0) cs1-datatypes(2) version1(0)};
+
+-- TYPE DEFINITIONS FOR IN CS1 ERRORS FOLLOW
+
+	Cancelled ::= ERROR
+	-- The operation has been cancelled.
+
+	CancelFailed ::= ERROR
+		PARAMETER SEQUENCE {
+			problem [0] ENUMERATED {
+				unknownOperation(0),
+				tooLate(1),
+				operationNotCancellable(2)
+			},
+			operation [1] InvokeID
+		}
+	-- The operation failed to be cancelled.
+
+	ETCFailed ::= ERROR
+	-- The establish temporary connection failed.
+
+	ImproperCallerResponse ::= ERROR
+	-- The caller response was not as expected.
+
+	MissingCustomerRecord ::= ERROR
+	-- The Service Logic Program (SLP) could not be found in the SCF.
+
+	MissingParameter ::= ERROR
+	-- An expected optional parameter was not received.
+
+	ParameterOutOfRange ::= ERROR
+	-- The parameter was not as expected (e.g., missing or out of range).
+
+	RequestedInfoError ::= ERROR
+		PARAMETER ENUMERATED {
+			unknownRequestedInfo(1),
+			requestedInfoNotAvailable(2)
+		}
+	-- The requested information cannot be found.
+
+	SystemFailure ::= ERROR
+		PARAMETER
+			UnavailableNetworkResource
+	-- The operation could not be completed due to a system failure
+	-- at the serving PE.
+
+	TaskRefused ::= ERROR
+		PARAMETER ENUMERATED {
+			generic(0),
+			unobtainable(1),
+			congestion(2)
+		}
+	-- An entity normally capable of the task requested cannot or chooses
+	-- not to perform the task at this time (this includes error situations
+	-- like congestion and unobtainable address as used in  e.g., the
+	-- connect operation).
+
+	UnavailableResource ::= ERROR
+	-- A requested resource is not available at the serving entity.
+
+	UnexpectedComponentSequence ::= ERROR
+	-- An incorrect sequence of Components was received
+	-- (e.g., "DisconnectForwardConnection" followed by "PlayAnnouncement").
+
+	UnexpectedDataValue ::= ERROR
+	-- The data value was not as expected (e.g., routing number expected
+	-- but billing number received)
+
+	UnexpectedParameter ::= ERROR
+	-- A parameter received was not expected.
+
+	UnknownLegID ::= ERROR
+	-- Leg not known to the SSF.
+
+END

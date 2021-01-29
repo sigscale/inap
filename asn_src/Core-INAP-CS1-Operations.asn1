@@ -1,0 +1,492 @@
+Core-INAP-CS1-Operations {ccitt(0) identified-organization(4) etsi(0) inDomain(1) in-network(1) modules(0) cs1-operations(0) version1(0)}
+
+-- This module contains the type definitions for the IN CS1 operations.
+
+DEFINITIONS ::= BEGIN
+
+	IMPORTS
+		OPERATION
+	FROM TCAPMessages {ccitt recommendation q 773 modules(2) messages(1) version2(2)}
+		-- error types
+		Cancelled,
+		CancelFailed,
+		ETCFailed,
+		ImproperCallerResponse
+		MissingCustomerRecord,
+		MissingParameter,
+		ParameterOutOfRange,
+		RequestedInfoError,
+		SystemFailure,
+		TaskRefused,
+		UnavailableResource,
+		UnexpectedComponentSequence,
+		UnexpectedDataValue,
+		UnexpectedParameter,
+		UnknownLegID
+	FROM Core-INAP-CS1-Errors {ccitt(0) identified-organization(4) etsi(0) inDomain(1) in-network(1) modules(0) cs1-errors(1) version1(0)}
+		-- argument types
+		ActivateServiceFilteringArg,
+		ApplyChargingArg,
+		ApplyChargingReportArg,
+		AssistRequestInstructionsArg,
+		CallGapArg,
+		CallInformationReportArg,
+		CallInformationRequestArg,
+		CancelArg,
+		CollectInformationArg,
+		ConnectArg,
+		ConnectToResourceArg,
+		EstablishTemporaryConnectionArg,
+		EventNotificationChargingArg,
+		EventReportBCSMArg,
+		FurnishChargingInformationArg,
+		InitialDPArg,
+		InitiateCallAttemptArg,
+		PlayAnnouncementArg,
+		PromptAndCollectUserInformationArg,
+		ReceivedInformationArg,
+		ReleaseCallArg,
+		RequestNotificationChargingEventArg,
+		RequestReportBCSMEventArg,
+		ResetTimerArg,
+		SendChargingInformationArg,
+		ServiceFilteringResponseArg,
+		SpecializedResourceReportArg
+	FROM Core-INAP-CS1-DataTypes {ccitt(0) identified-organization(4) etsi(0) inDomain(1) in-network(1) modules(0) cs1-datatypes(2) version1(0)};
+
+-- TYPE DEFINITIONS FOR IN CS1 OPERATIONS FOLLOW
+
+-- SCF-SSF operations
+
+	ActivateServiceFiltering ::= OPERATION
+		ARGUMENT
+			ActivateServiceFilteringArg
+		RESULT
+		ERRORS {
+			MissingParameter,
+			ParameterOutOfRange,
+			SystemFailure,
+			TaskRefused,
+			UnexpectedComponentSequence,
+			UnexpectedParameter
+		}
+	-- Direction: SCF -> SSF, Timer: Tasf
+	-- When receiving this operation, the SSF handles calls to destination in a
+	-- specified manner without sending queries for every detected call. It is
+	-- used for example for providing televoting or mass calling services.
+	-- Simple registration functionality (counters) and announcement
+	-- control may be located at the SSF. The operation initializes the
+	-- specified counters in the SSF.
+
+	ActivityTest ::= OPERATION
+		RESULT
+	-- Direction: SCF -> SSF, Timer: Tat
+	-- This operation is used to check for the continued existence of a
+	-- relationship between the SCF and SSF. If the relationship is still
+	-- in existence, then the SSF will respond. If no reply is received,
+	-- then the SCF will assume that the SSF has failed in some way and
+	-- will take the appropriate action.
+
+	ApplyCharging ::= OPERATION
+		ARGUMENT
+			ApplyChargingArg
+		ERRORS {
+			MissingParameter,
+			UnexpectedComponentSequence,
+			UnexpectedParameter,
+			UnexpectedDataValue,
+			ParameterOutOfRange,
+			SystemFailure,
+			TaskRefused
+		}
+	-- Direction: SCF -> SSF, Timer: Tac
+	-- This operation is used for interacting from the SCF with the
+	-- SSF charging mechanisms. The ApplyChargingReport operation
+	-- provides the feedback from the SSF to the SCF.
+
+	ApplyChargingReport ::= OPERATION
+		ARGUMENT
+			ApplyChargingReportArg
+		ERRORS {
+			MissingParameter,
+			UnexpectedComponentSequence,
+			UnexpectedParameter,
+			UnexpectedDataValue,
+			ParameterOutOfRange,
+			SystemFailure,
+			TaskRefused
+		}
+	-- Direction: SSF -> SCF, Timer: Tacr
+	-- This operation is used by the SSF to report to the SCF the
+	-- occurrence of a specific charging event as requested by the
+	-- SCF using the ApplyCharging operation.
+
+	AssistRequestInstructions ::= OPERATION
+		ARGUMENT
+			AssistRequestInstructionsArg
+		ERRORS {
+			MissingCustomerRecord,
+			MissingParameter,
+			TaskRefused,
+			UnexpectedComponentSequence,
+			UnexpectedDataValue,
+			UnexpectedParameter
+		}
+	-- Direction: SSF -> SCF or SRF -> SCF, Timer: Tari
+	-- This operation is used when there is an assist or a hand-off
+	-- procedure and may be sent by the SSF or SRF to the SCF. This
+	-- operation is sent by the SSF or SRF to the SCF, when the
+	-- initiating SSF has set up a connection to the SRF or to the
+	-- assisting SSF as a result of receiving an
+	-- EstablishTemporaryConnection or Connect (in case of hand-off)
+	-- operation from the SCF.
+
+	CallGap ::= OPERATION
+		ARGUMENT
+			CallGapArg
+	-- Direction: SCF -> SSF, Timer: Tcg
+	-- This operation is used to request the SSF to reduce the rate at
+	-- which specific service requests are sent to the SCF.
+
+	CallInformationReport ::= OPERATION
+		ARGUMENT
+			CallInformationReportArg
+	-- Direction: SSF -> SCF, Timer: Tcirp
+	-- This operation is used to send specific call information for a
+	-- single call to the SCF as requested by the SCF in a previous
+	-- callInformationRequest.
+
+	CallInformationRequest ::= OPERATION
+		ARGUMENT
+			CallInformationRequestArg
+		ERRORS {
+			MissingParameter,
+			ParameterOutOfRange,
+			RequestedInfoError,
+			SystemFailure,
+			TaskRefused,
+			UnexpectedComponentSequence,
+			UnexpectedParameter
+		}
+	-- Direction: SCF -> SSF, Timer: Tcirq
+	-- This operation is used to request the SSF to record specific
+	-- information about a single call and report it to the SCF
+	-- (with a callInformationReport operation).
+
+	Cancel ::= OPERATION
+		ARGUMENT
+			CancelArg
+		ERRORS {
+			CancelFailed
+		}
+	-- Direction: SCF -> SRF or SCF -> SSF, Timer: Tcan
+	-- This generic operation cancels the correlated previous operation
+	-- or all previous requests. The following operations can be cancelled:
+	-- PlayAnnouncement and PromptAndCollectUserInformation.
+
+	CollectInformation ::= OPERATION
+		ARGUMENT
+			CollectInformationArg
+		ERRORS {
+			MissingParameter,
+			SystemFailure,
+			TaskRefused,
+			UnexpectedComponentSequence,
+			unexpectedDataValue,
+			UnexpectedParameter
+		}
+	-- Direction: SCF -> SSF, Timer: Tci
+	-- This operation is used to request the SSF to perform the originating
+	-- basic call processing actions to prompt a calling party for
+	-- destination information, then collect destination information
+	-- according to a specified numbering plan (e.g., for virtual
+	-- private networks).
+
+	Connect ::= OPERATION
+		ARGUMENT
+			ConnectArg
+		ERRORS {
+			MissingParameter,
+			SystemFailure,
+			TaskRefused,
+			UnexpectedComponentSequence,
+			unexpectedDataValue,
+			UnexpectedParameter
+		}
+	-- Direction: SCF -> SSF, Timer: Tcon
+	-- This operation is used to request the SSF to perform the call
+	-- processing actions to route or forward a call to a specified
+	-- destination. To do so, the SSF may or may not use destination
+	-- information from the calling party (e.g., dialled digits) and
+	-- existing call setup information (e.g., route index to a list of
+	-- trunk groups), depending on the information provided by the SCF.
+
+	ConnectToResource ::= OPERATION
+		ARGUMENT
+			ConnectToResourceArg
+		ERRORS {
+			MissingParameter,
+			SystemFailure,
+			TaskRefused,
+			UnexpectedComponentSequence,
+			unexpectedDataValue,
+			UnexpectedParameter
+		}
+	-- Direction: SCF -> SSF, Timer: Tctr
+	-- This operation is used to connect a call from the SSP to the
+	-- PE containing the SRF.
+
+	Continue ::= OPERATION
+	-- Direction: SCF -> SSF, Timer: Tcue
+	-- This operation is used to request the SSF to proceed with call
+	-- processing at the DP at which it previously suspended call
+	-- processing to await SCF instructions (i.e., proceed to the next
+	-- point in call in the BCSM). The SSF continues call processing
+	-- without substituting new data from SCF.
+
+	DisconnectForwardConnection ::= OPERATION
+		ERRORS {
+			SystemFailure,
+			TaskRefused,
+			UnexpectedComponentSequence
+	}
+	-- Direction: SCF -> SSF, Timer: Tdfc
+	-- This operation is used to disconnect a forward temporary
+	-- connection or a connection to a resource.
+
+	EstablishTemporaryConnection ::= OPERATION
+		ARGUMENT
+			EstablishTemporaryConnectionArg
+		ERRORS {
+			ETCFailed,
+			MissingParameter,
+			SystemFailure,
+			TaskRefused,
+			UnexpectedComponentSequence,
+			UnexpectedDataValue,
+			UnexpectedParameter
+		}
+	-- Direction: SCF -> SSF, Timer: Tetc
+	-- This operation is used to create a connection to a resource for
+	-- a limited period of time (e.g. to play an announcement, to collect
+	-- user information); it implies the use of the assist procedure.
+
+	EventNotificationCharging ::= OPERATION
+		ARGUMENT
+			EventNotificationChargingArg
+	-- Direction: SSF -> SCF, Timer: Tenc
+	-- This operation is used by the SSF to report to the SCF the
+	-- occurrence of a specific charging event type as previously
+	-- requested by the SCF in a RequestNotificationChargingEvent
+	-- operation.  The operation supports the capabilities to cope
+	-- with the interactions concerning charging (refer to Annex B,
+	-- Clause B.5).
+
+	EventReportBCSM ::= OPERATION
+		ARGUMENT
+			EventReportBCSMArg
+	-- Direction: SSF -> SCF, Timer: Terb
+	-- This operation is used to notify the SCF of a call-related
+	-- event (e.g., BCSM events such as busy or no answer) previously
+	-- requested by the SCF in a RequestReportBCSMEvent operation.
+
+	FurnishChargingInformation ::= OPERATION
+		ARGUMENT
+			FurnishChargingInformationArg
+		ERRORS {
+			MissingParameter,
+			TaskRefused,
+			UnexpectedComponentSequence,
+			UnexpectedDataValue,
+			UnexpectedParameter
+		}
+	-- Direction: SCF -> SSF, Timer: Tfci
+	-- This operation is used to request the SSF to generate, register
+	-- a call record or to include some information in the default
+	-- call record. The registered call record is intended for off-line
+	-- charging of the call. The charging scenarios supported by this
+	-- operation are: 2.2, 2.3 and 2.4 (refer to Annex B where these
+	-- are defined).
+
+	InitialDP ::= OPERATION
+		ARGUMENT
+			InitialDPArg
+		ERRORS {
+			MissingCustomerRecord,
+			MissingParameter,
+			SystemFailure,
+			TaskRefused,
+			UnexpectedComponentSequence,
+			UnexpectedDataValue,
+			UnexpectedParameter
+		}
+	-- Direction: SSF -> SCF, Timer: Tidp
+	-- This operation is used after a TDP to indicate request for service.
+
+	InitiateCallAttempt ::= OPERATION
+		ARGUMENT
+			InitiateCallAttemptArg
+		ERRORS {
+			MissingParameter,
+			SystemFailure,
+			TaskRefused,
+			UnexpectedComponentSequence,
+			UnexpectedDataValue,
+			UnexpectedParameter
+		}
+	-- Direction: SCF -> SSF, Timer: Tica
+	-- This operation is used to request the SSF to create a new call
+	-- to one call party using address information provided by the SCF.
+
+	ReleaseCall ::= OPERATION
+		ARGUMENT
+			ReleaseCallArg
+	-- Direction: SCF -> SSF, Timer: Trc
+	-- This operation is used to tear down an existing call at any
+	-- phase of the call for all parties involved in the call.
+
+	RequestNotificationChargingEvent ::= OPERATION
+		ARGUMENT
+			RequestNotificationChargingEventArg
+		ERRORS {
+			MissingParameter,
+			SystemFailure,
+			TaskRefused,
+			UnexpectedComponentSequence,
+			UnexpectedDataValue,
+			UnexpectedParameter
+		}
+	-- Direction: SCF -> SSF, Timer: Trnc
+	-- This operation is used by the SCF to instruct the SSF on how to
+	-- manage the charging events which are received from other FEs and
+	-- not under control of the service logic instance. The operation
+	-- supports the capabilities to cope with the interactions concerning
+	-- charging (refer to Annex B, Clause B.5).
+
+	RequestReportBCSMEvent ::= OPERATION
+		ARGUMENT
+			RequestReportBCSMEventArg
+		ERRORS {
+			MissingParameter,
+			SystemFailure,
+			TaskRefused,
+			UnexpectedComponentSequence,
+			UnexpectedDataValue,
+			UnexpectedParameter
+		}
+	-- Direction: SCF -> SSF, Timer: Trrb
+	-- This operation is used to request the SSF to monitor for a
+	-- call-related event (e.g., BCSM events such as busy or no answer),
+	-- then send a notification back to the SCF when the event is detected.
+
+	ResetTimer ::= OPERATION
+		ARGUMENT
+			ResetTimerArg
+		ERRORS {
+			MissingParameter,
+			TaskRefused,
+			UnexpectedComponentSequence,
+			UnexpectedDataValue,
+			UnexpectedParameter
+		}
+	-- Direction: SCF -> SSF, Timer: Trt
+	-- This operation is used to request the SSF to refresh an application
+	-- timer in the SSF.
+
+	SendChargingInformation ::= OPERATION
+		ARGUMENT
+			SendChargingInformationArg
+		ERRORS {
+			MissingParameter,
+			UnexpectedComponentSequence,
+			UnexpectedParameter
+			ParameterOutOfRange,
+			SystemFailure,
+			TaskRefused,
+			UnknownLegID
+		}
+	-- Direction: SCF -> SSF, Timer: Tsci
+	-- This operation is used to instruct the SSF on the charging
+	-- information to be sent by the SSF. The charging information can
+	-- either be sent back by means of signalling or internal if the SSF
+	-- is located in the local exchange. In the local exchange this
+	-- information may be used to update the charge meter or to create
+	-- a standard call record. The charging scenario supported by this
+	-- operation is scenario 3.2 (refer to Annex B where these are
+	-  defined).
+
+	ServiceFilteringResponse ::= OPERATION
+		ARGUMENT
+			ServiceFilteringResponseArg
+	-- Direction: SSF -> SCF, Timer: Tsfr
+	-- This operation is used to send back to the SCF the values of
+	-- counters specified in a previous ActivateServiceFiltering
+	-- operation.
+
+-- SCF-SRF operations
+
+	-- AssistRequestInstructions
+	-- SRF -> SCF
+	-- Refer to previous description of this operation in the SCF-SSF
+	-- operations subclause.
+
+	-- Cancel
+	-- SCF -> SRF
+	-- Refer to previous description of this operation in the SCF-SSF
+	-- operations subclause.
+
+	PlayAnnouncement ::= OPERATION
+		ARGUMENT
+			PlayAnnouncementArg
+		ERRORS {
+			Cancelled,
+			MissingParameter,
+			SystemFailure,
+			UnavailableResource,
+			UnexpectedComponentSequence,
+			UnexpectedDataValue,
+			UnexpectedParameter
+		}
+		LINKED {
+			SpecializedResourceReport
+		}
+	-- Direction: SCF -> SRF, Timer: Tpa
+	-- This operation is to be used after Establish Temporary Connection
+	-- (assist procedure with a second SSP) or a Connect to Resource
+	-- (no assist) operation. It may be used for inband interaction with
+	-- an analogue user, or for interaction with an ISDN user. In the
+	-- former case, the SRF is usually collocated with the SSF for
+	-- standard tones (congestion tone etc.) or standard announcements.
+	-- In the latter case, the SRF is always collocated with the SSF in
+	-- the switch. Any error is returned to the SCF. The timer associated
+	-- with this operation must be of a sufficient duration to allow its
+	-- linked operation to be correctly correlated.
+
+	PromptAndCollectUserInformation ::= OPERATION
+		ARGUMENT
+			PromptAndCollectUserInformationArg
+		RESULT
+			ReceivedInformationArg
+		ERRORS {
+			Cancelled,
+			ImproperCallerResponse,
+			MissingParameter,
+			SystemFailure,
+			TaskRefused,
+			UnavailableResource,
+			UnexpectedComponentSequence,
+			UnexpectedDataValue,
+			UnexpectedParameter
+		}
+	-- Direction: SCF -> SRF, Timer: Tpc
+	-- This operation is used to interact with a user to collect
+	-- information.
+
+	SpecializedResourceReport ::= OPERATION
+		ARGUMENT
+			SpecializedResourceReportArg
+	-- Direction: SRF -> SCF, Timer: Tsrr
+	-- This operation is used as the response to a PlayAnnouncement
+	-- operation when the announcement completed report indication is set.
+
+END
