@@ -41,7 +41,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 		filteringCharacteristics [1] FilteringCharacteristics,
 		filteringTimeOut         [2] FilteringTimeOut,
 		filteringCriteria        [3] FilteringCriteria,
-		startTime                [4] DateAndTime       OPTIONAL
+		startTime                [4] DateAndTime       OPTIONAL,
 		extensions               [5] SEQUENCE SIZE(1..numOfExtensions)
 		                             OF ExtensionField OPTIONAL
 	-- ...
@@ -52,7 +52,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 		sendCalculationToSCPIndication    [1] BOOLEAN DEFAULT FALSE,
 		partyToCharge                     [2] LegID             OPTIONAL,
 		extensions                        [3] SEQUENCE SIZE(1..numOfExtensions)
-		                                      OF ExtensionField OPTIONAL,
+		                                      OF ExtensionField OPTIONAL
 	-- ...
 	}
 	-- The sendCalculationToSCPIndication parameter indicates that
@@ -110,7 +110,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 	-- The InvokeID has the same value as that which was used for
 	-- the operation to be cancelled.
 
-	CollectInformationArg
+	CollectInformationArg ::= SEQUENCE {
 		extensions [4] SEQUENCE SIZE(1..numOfExtensions) OF ExtensionField OPTIONAL
 	-- ...
 	}
@@ -162,7 +162,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
                                                              OPTIONAL,
 		legID                            [2] LegID             OPTIONAL,
 		extensions                       [3] SEQUENCE SIZE(1..numOfExtensions)
-		                                     OF ExtensionField OPTIONAL
+		                                     OF ExtensionField OPTIONAL,
 		monitorMode                     [30] MonitorMode DEFAULT notifyAndContinue
 	-- ...
 	}
@@ -230,7 +230,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 	-- ...
 	}
 
-	PlayAnnouncementArg
+	PlayAnnouncementArg ::= SEQUENCE {
 		informationToSend           [0] InformationToSend,
 		disconnectFromIPForbidden   [1] BOOLEAN DEFAULT TRUE,
 		requestAnnouncementComplete [2] BOOLEAN DEFAULT TRUE,
@@ -258,7 +258,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 
 	RequestNotificationChargingEventArg ::= SEQUENCE SIZE (1..numOfChargingEvents)
 		                                     OF ChargingEvent
-	RequestReportBCSMEventArg ::= SEQUENCE
+	RequestReportBCSMEventArg ::= SEQUENCE {
 		bcsmEvents [0] SEQUENCE SIZE (1..numOfBCSMEvents) OF BCSMEvent,
 		extensions [2] SEQUENCE SIZE (1..numOfExtensions) OF ExtensionField OPTIONAL
 	-- ...
