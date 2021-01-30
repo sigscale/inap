@@ -26,8 +26,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 
 	IMPORTS
 		InvokeIdType
-	FROM TCAPMessages {ccitt recommendation q 773 modules(2) messages(1) version2(2)};
-
+	FROM TCAPMessages {itu-t(0) recommendationi(0) q(17) 773 modules(2) messages(1) version2(2)};
 -- TYPE DEFINITIONS FOR IN CS1 DATA TYPES FOLLOW
 
 -- Argument Data Types
@@ -1018,7 +1017,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 	maxServiceInteractionIndicatorsLength       INTEGER ::= 32
 	minSFBillingChargingLength                  INTEGER ::= 0
 	maxSFBillingChargingLength                  INTEGER ::= 32
-	numOfBCSMEvents                             INTEGER ::= 0
+	numOfBCSMEvents                             INTEGER ::= 1
 	numOfChargingEvents                         INTEGER ::= 1
 	numOfCounters                               INTEGER ::= 100
 	numOfExtensions                             INTEGER ::= 1
