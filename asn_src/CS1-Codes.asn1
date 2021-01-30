@@ -10,7 +10,7 @@ DEFINITIONS ::= BEGIN
 		-- macros
 		APPLICATION-SERVICE-ELEMENT
 	FROM Remote-Operations-Notation-Extension
-			{joint-iso-ccitt(2) remote-operations(4) notation-extension(2)}
+			{joint-iso-itu-t(2) remote-operations(4) notation-extension(2)}
 		-- operation types
 		ActivateServiceFiltering,
 		ActivityTest,
