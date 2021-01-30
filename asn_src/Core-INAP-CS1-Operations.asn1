@@ -6,7 +6,7 @@ DEFINITIONS ::= BEGIN
 
 	IMPORTS
 		OPERATION
-	FROM TCAPMessages {ccitt recommendation q 773 modules(2) messages(1) version2(2)}
+	FROM Remote-Operations-Information-Objects {joint-iso-itu-t remote-operations(4) informationObjects(5) version1(0)}
 		-- error types
 		Cancelled,
 		CancelFailed,
