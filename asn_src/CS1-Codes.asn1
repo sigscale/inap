@@ -1,4 +1,4 @@
-Core-INAP-CS1-Codes {itu-t(0) identified-organization(4) etsi(0) inDomain(1) in-network(1) modules(0) cs1-codes(3) version1(0)}
+CS1-Codes {itu-t(0) identified-organization(4) etsi(0) inDomain(1) in-network(1) modules(0) cs1-codes(3) version1(0)}
 
 -- This module contains the operation and error code assignments for the IN CS1 application protocol.
 
@@ -41,7 +41,7 @@ DEFINITIONS ::= BEGIN
 		SendChargingInformation,
 		ServiceFilteringResponse,
 		SpecializedResourceReport
-	FROM Core-INAP-CS1-Operations
+	FROM CS1-Operations
 			{itu-t(0) identified-organization(4) etsi(0) inDomain(1) in-network(1) modules(0) cs1-operations(0) version1(0)}
 		-- error types
 		Cancelled,
@@ -59,7 +59,7 @@ DEFINITIONS ::= BEGIN
 		UnexpectedDataValue,
 		UnexpectedParameter,
 		UnknownLegID
-		FROM Core-INAP-CS1-Errors
+		FROM CS1-Errors
 			{itu-t(0) identified-organization(4) etsi(0) inDomain(1) in-network(1) modules(0) cs1-errors(1) version1(0)};
 
 -- the operations are grouped by the identified ASEs.
