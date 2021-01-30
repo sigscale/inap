@@ -1,0 +1,289 @@
+Core-INAP-CS1-Codes {itu-t(0) identified-organization(4) etsi(0) inDomain(1) in-network(1) modules(0) cs1-codes(3) version1(0)}
+
+-- This module contains the operation and error code assignments for the IN CS1 application protocol.
+
+DEFINITIONS ::= BEGIN
+
+-- OPERATION AND ERROR CODE ASSIGNMENTS FOR THE IN CS1 PROTOCOL FOLLOWS
+
+	IMPORTS
+		-- macros
+		APPLICATION-SERVICE-ELEMENT
+	FROM Remote-Operations-Notation-Extension
+			{joint-iso-ccitt(2) remote-operations(4) notation-extension(2)}
+		-- operation types
+		ActivateServiceFiltering,
+		ActivityTest,
+		ApplyCharging,
+		ApplyChargingReport,
+		AssistRequestInstructions,
+		CallGap,
+		CallInformationReport,
+		CallInformationRequest,
+		Cancel,
+		CollectInformation,
+		Connect,
+		ConnectToResource,
+		Continue,
+		DisconnectForwardConnection,
+		EstablishTemporaryConnection,
+		EventNotificationCharging,
+		EventReportBCSM,
+		FurnishChargingInformation,
+		InitialDP,
+		InitiateCallAttempt,
+		PlayAnnouncement,
+		PromptAndCollectUserInformation,
+		ReleaseCall,
+		RequestNotificationChargingEvent,
+		RequestReportBCSMEvent,
+		ResetTimer,
+		SendChargingInformation,
+		ServiceFilteringResponse,
+		SpecializedResourceReport
+	FROM Core-INAP-CS1-Operations
+			{itu-t(0) identified-organization(4) etsi(0) inDomain(1) in-network(1) modules(0) cs1-operations(0) version1(0)}
+		-- error types
+		Cancelled,
+		CancelFailed,
+		ETCFailed,
+		ImproperCallerResponse,
+		MissingCustomerRecord,
+		MissingParameter,
+		ParameterOutOfRange,
+		RequestedInfoError,
+		SystemFailure,
+		TaskRefused,
+		UnavailableResource,
+		UnexpectedComponentSequence,
+		UnexpectedDataValue,
+		UnexpectedParameter,
+		UnknownLegID
+		FROM Core-INAP-CS1-Errors
+			{itu-t(0) identified-organization(4) etsi(0) inDomain(1) in-network(1) modules(0) cs1-errors(1) version1(0)};
+
+-- the operations are grouped by the identified ASEs.
+
+	-- SCF activation ASE
+	initialDP InitialDP ::= localValue 0
+
+	-- SCF/SRF activation of assist ASE
+	assistRequestInstructions AssistRequestInstructions ::= localValue 16
+
+	-- Assist connection establishment ASE
+	establishTemporaryConnection EstablishTemporaryConnection ::= localValue 17
+
+	-- Generic disconnect resource ASE
+	disconnectForwardConnection DisconnectForwardConnection ::= localValue 18
+
+	-- Non-assisted connection establishment ASE
+	connectToResource ConnectToResource ::= localValue 19
+
+	-- Connect ASE (elementary SSF function)
+	connect Connect ::= localValue 20
+
+	-- Call handling ASE (elementary SSF function)
+	releaseCall ReleaseCall ::= localValue 22
+
+	-- BCSM Event handling ASE
+	requestReportBCSMEvent RequestReportBCSMEvent ::= localValue 23
+	eventReportBCSM EventReportBCSM ::= localValue 24
+
+	-- Charging Event handling ASE
+	requestNotificationChargingEvent RequestNotificationChargingEvent ::= localValue 25
+	eventNotificationCharging EventNotificationCharging ::= localValue 26
+
+	-- SSF call processing ASE
+	collectInformation CollectInformation ::= localValue 27
+	continue Continue ::= localValue 31
+
+	-- SCF call initiation ASE
+	initiateCallAttempt InitiateCallAttempt ::= localValue 32
+
+	-- Timer ASE
+	resetTimer ResetTimer ::= localValue 33
+
+	-- Billing ASE
+	furnishChargingInformation FurnishChargingInformation ::= localValue 34
+
+	-- Charging ASE
+	applyCharging ApplyCharging ::= localValue 35
+	applyChargingReport ApplyChargingReport ::= localValue 36
+
+	-- Traffic management ASE
+	callGap CallGap ::= localValue 41
+
+	-- Service management ASE
+	activateServiceFiltering ActivateServiceFiltering ::= localValue 42
+	serviceFilteringResponse ServiceFilteringResponse ::= localValue 43
+
+	-- Call report ASE
+	callInformationReport CallInformationReport ::= localValue 44
+	callInformationRequest CallInformationRequest ::= localValue 45
+
+	-- Signalling control ASE
+	sendChargingInformation SendChargingInformation ::= localValue 46
+
+	-- Specialized resource control ASE
+	playAnnouncement PlayAnnouncement ::= localValue 47
+	promptAndCollectUserInformation PromptAndCollectUserInformation ::= localValue 48
+	specializedResourceReport SpecializedResourceReport ::= localValue 49
+
+	-- Cancel ASE
+	cancel Cancel ::= localValue 53
+
+	-- Activity Test ASE
+	activityTest ActivityTest ::= localValue 55
+
+	-- ERROR codes
+	cancelled Cancelled ::= localValue 0
+	cancelFailed CancelFailed ::= localValue 1
+	eTCFailed ETCFailed ::= localValue 3
+	improperCallerResponse ImproperCallerResponse ::= localValue 4
+	missingCustomerRecord MissingCustomerRecord ::= localValue 6
+	missingParameter MissingParameter ::= localValue 7
+	parameterOutOfRange ParameterOutOfRange ::= localValue 8
+	requestedInfoError RequestedInfoError ::= localValue 10
+	systemFailure SystemFailure ::= localValue 11
+	taskRefused TaskRefused ::= localValue 12
+	unavailableResource UnavailableResource ::= localValue 13
+	unexpectedComponentSequence UnexpectedComponentSequence ::= localValue 14
+	unexpectedDataValue UnexpectedDataValue ::= localValue 15
+	unexpectedParameter UnexpectedParameter ::= localValue 16
+	unknownLegID UnknownLegID ::= localValue 17
+
+	-- APPLICATION SERVICE ELEMENTS
+
+	SCF-Activation-ASE ::= APPLICATION-SERVICE-ELEMENT
+		-- consumer is SSF
+		CONSUMER INVOKES {
+			initialDP
+		}
+	SCF-SRF-activation-of-assist-ASE ::= APPLICATION-SERVICE-ELEMENT
+		-- consumer is SSF/SRF
+		CONSUMER INVOKES {
+			assistRequestInstructions
+		}
+	Assist-connection-establishment-ASE ::= APPLICATION-SERVICE-ELEMENT
+		-- supplier is SCF
+		SUPPLIER INVOKES {
+			establishTemporaryConnection
+		}
+	Generic-disconnect-resource-ASE ::= APPLICATION-SERVICE-ELEMENT
+		-- supplier is SCF
+		SUPPLIER INVOKES {
+			disconnectForwardConnection
+		}
+	Non-assisted-connection-establishment-ASE ::= APPLICATION-SERVICE-ELEMENT
+		-- supplier is SCF
+		SUPPLIER INVOKES {
+			connectToResource
+		}
+	Connect-ASE ::= APPLICATION-SERVICE-ELEMENT
+		-- supplier is SCF
+		SUPPLIER INVOKES {
+			connect
+		}
+	Call-handling-ASE ::= APPLICATION-SERVICE-ELEMENT
+		-- supplier is SCF
+		SUPPLIER INVOKES {
+			releaseCall
+		}
+	BCSM-event-handling-ASE ::= APPLICATION-SERVICE-ELEMENT
+		-- consumer is SSF
+		CONSUMER INVOKES {
+			eventReportBCSM
+		}
+		-- supplier is SCF
+		SUPPLIER INVOKES {
+			requestReportBCSMEvent
+		}
+	Charging-event-handling-ASE ::= APPLICATION-SERVICE-ELEMENT
+		-- consumer is SSF
+		CONSUMER INVOKES {
+			eventNotificationCharging
+		}
+		-- supplier is SCF
+		SUPPLIER INVOKES {
+			requestNotificationChargingEvent
+		}
+	SSF-call-processing-ASE ::= APPLICATION-SERVICE-ELEMENT
+		-- supplier is SCF
+		SUPPLIER INVOKES {
+			collectInformation,
+		continue
+		}
+	SCF-call-initiation-ASE ::= APPLICATION-SERVICE-ELEMENT
+		-- supplier is SCF
+		SUPPLIER INVOKES {
+			initiateCallAttempt
+		}
+	Timer-ASE ::= APPLICATION-SERVICE-ELEMENT
+		-- supplier is SCF
+		SUPPLIER INVOKES {
+			resetTimer
+		}
+	Billing-ASE ::= APPLICATION-SERVICE-ELEMENT
+		-- supplier is SCF
+		SUPPLIER INVOKES {
+			furnishChargingInformation
+		}
+	Charging-ASE ::= APPLICATION-SERVICE-ELEMENT
+		-- consumer is SSF
+		CONSUMER INVOKES {
+			applyChargingReport
+		}
+		-- supplier is SCF
+		SUPPLIER INVOKES {
+			applyCharging
+		}
+	Traffic-management-ASE ::= APPLICATION-SERVICE-ELEMENT
+		-- supplier is SCF
+		SUPPLIER INVOKES {
+			callGap
+		}
+	Service-management-ASE ::= APPLICATION-SERVICE-ELEMENT
+		-- consumer is SSF
+		CONSUMER INVOKES {
+			serviceFilteringResponse
+		}
+		-- supplier is SCF
+		SUPPLIER INVOKES {
+			activateServiceFiltering
+		}
+	Call-report-ASE ::= APPLICATION-SERVICE-ELEMENT
+		-- consumer is SSF
+		CONSUMER INVOKES {
+			callInformationReport
+		}
+		-- supplier is SCF
+		SUPPLIER INVOKES {
+			callInformationRequest
+		}
+	Signalling-control-ASE ::= APPLICATION-SERVICE-ELEMENT
+		-- supplier is SCF
+		SUPPLIER INVOKES {
+			sendChargingInformation
+		}
+	Specialized-resource-control-ASE ::= APPLICATION-SERVICE-ELEMENT
+		-- consumer is SSF/SRF
+		CONSUMER INVOKES {
+			specializedResourceReport
+		}
+		-- supplier is SCF
+		SUPPLIER INVOKES {
+			playAnnouncement,
+			promptAndCollectUserInformation
+		}
+	Cancel-ASE ::= APPLICATION-SERVICE-ELEMENT
+		-- supplier is SCF
+		SUPPLIER INVOKES {
+			cancel
+		}
+	Activity-test-ASE ::= APPLICATION-SERVICE-ELEMENT
+		-- supplier is SCF
+		SUPPLIER INVOKES {
+			activityTest
+		}
+
+END
