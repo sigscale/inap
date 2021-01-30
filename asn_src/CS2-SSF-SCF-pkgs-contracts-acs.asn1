@@ -1,0 +1,636 @@
+CS2-SSF-SCF-pkgs-contracts-acs {itu-t(0) identified-organization(4) etsi(0) inDomain(1) in-network(1) CS2(20) modules(0) in-cs2-ssf-scf-pkgs-contracts-acs (6) version1(0)}
+
+DEFINITIONS ::= BEGIN
+
+-- This module describes the operation-packages, contracts and application-contexts used
+-- over the SSF-SCF interface.
+
+	IMPORTS
+		PARAMETERS-BOUND,
+		networkSpecificBoundSet
+	FROM CS2-classes classes 
+		ROS-OBJECT-CLASS, CONTRACT, OPERATION-PACKAGE, OPERATION
+	FROM Remote-Operations-Information-Objects ros-InformationObjects
+		TCMessage {} 
+	FROM TCAPMessages tc-Messages
+		APPLICATION-CONTEXT, dialogue-abstract-syntax
+	FROM TC-Notation-Extensions tc-NotationExtensions
+			activateServiceFiltering {},
+			activityTest,
+			applyCharging {},
+			applyChargingReport {},
+			assistRequestInstructions {},
+			callGap {},
+			callInformationReport {},
+			callInformationRequest {},
+			cancel {},
+			collectInformation {},
+			connect {},
+			connectToResource {},
+			continue,
+			continueWithArgument {},
+			createCallSegmentAssociation {},
+			disconnectForwardConnection,
+			disconnectForwardConnectionWithArgument {}, 
+			disconnectLeg {},
+			entityReleased {},
+			establishTemporaryConnection {},
+			eventNotificationCharging {},
+			eventReportBCSM {},
+			furnishChargingInformation {},
+			initialDP {},
+			initiateCallAttempt {},
+			manageTriggerData {},
+			mergeCallSegments {},
+			moveCallSegments {},
+			moveLeg {},
+			releaseCall {},
+			reportUTSI {},
+			requestNotificationChargingEvent {},
+			requestReportBCSMEvent {},
+			requestReportUTSI {},
+			resetTimer {},
+			sendChargingInformation {},
+			sendSTUI {},
+			serviceFilteringResponse {},
+			splitLeg {}
+	FROM CS2-SSF-SCF-ops-args ssf-scf-Operations
+			playAnnouncement {},
+			promptAndCollectUserInformation {},
+			promptAndReceiveMessage {},
+			scriptClose {},
+			scriptEvent {},
+			scriptInformation {},
+			scriptRun {},
+			specializedResourceReport
+	FROM CS2-SCF-SRF-ops-args scf-srf-Operations
+		specializedResourceControlPackage {},
+		scriptControlPackage {},
+		messageControlPackage {}
+	FROM CS2-SCF-SRF-pkgs-contracts-acs scf-srf-Protocol
+		id-ac-cs2-ssf-scfGenericAC,
+		id-ac-cs2-ssf-scfAssistHandoffAC,
+		id-ac-cs2-ssf-scfServiceManagementAC,
+		id-ac-cs2-scf-ssfGenericAC,
+		id-ac-cs2-scf-ssfTrafficManagementAC,
+		id-ac-cs2-scf-ssfServiceManagementAC,
+		id-ac-cs2-scf-ssfTriggerManagementAC,
+		id-inCs2SsfToScfGeneric,
+		id-inCs2AssistHandoffssfToScf,
+		id-inCs2ScfToSsfGeneric,
+		id-inCs2ScfToSsfTrafficManagement,
+		id-inCs2ScfToSsfServiceManagement,
+		id-inCs2SsfToScfServiceManagement,
+		id-inCs2ScfToSsfTriggerManagement,
+		id-as-ssf-scfGenericAS,
+		id-as-assistHandoff-ssf-scfAS,
+		id-as-scf-ssfGenericAS,
+		id-as-scf-ssfTrafficManagementAS,
+		id-as-scf-ssfServiceManagementAS,
+		id-as-ssf-scfServiceManagementAS,
+		id-as-scf-ssfTriggerManagementAS,
+		id-package-scfActivation,
+		id-package-srf-scfActivationOfAssist,
+		id-package-assistConnectionEstablishment,
+		id-package-genericDisconnectResource,
+		id-package-nonAssistedConnectionEstablishment,
+		id-package-connect,
+		id-package-callHandling,
+		id-package-bcsmEventHandling,
+		id-package-chargingEventHandling,
+		id-package-ssfCallProcessing,
+		id-package-scfCallInitiation,
+		id-package-timer,
+		id-package-billing,
+		id-package-charging,
+		id-package-trafficManagement,
+		id-package-serviceManagementActivate,
+		id-package-serviceManagementResponse,
+		id-package-callReport,
+		id-package-signallingControl,
+		id-package-activityTest,
+		id-package-cancel,
+		id-package-cphResponse,
+		id-package-entityReleased,
+		id-package-triggerManagement,
+		id-package-uSIHandling,
+		classes, ros-InformationObjects, tc-Messages, tc-NotationExtensions, 
+		ssf-scf-Operations, scf-srf-Operations, scf-srf-Protocol
+	FROM CS2-object-identifiers
+			{itu-t(0) identified-organization(4) etsi(0) inDomain(1) in-network(1) CS2(20) modules(0) in-cs2-object-identifiers (17) version1(0)};
+	-- Application Contexts
+
+	cs2ssf-scfGenericAC APPLICATION-CONTEXT ::= {
+		CONTRACT					inCs2SsfToScfGeneric
+		DIALOGUE MODE				structured
+		ABSTRACT SYNTAXES			{dialogue-abstract-syntax |
+									ssf-scfGenericAbstractSyntax} 
+		APPLICATION CONTEXT NAME	id-ac-cs2-ssf-scfGenericAC}
+
+	cs2ssf-scfAssistHandoffAC APPLICATION-CONTEXT ::= 	{
+		CONTRACT					inCs2AssistHandoffssfToScf
+		DIALOGUE MODE				structured
+		ABSTRACT SYNTAXES			{dialogue-abstract-syntax |
+									assistHandoff-ssf-scfAbstractSyntax}
+		APPLICATION CONTEXT NAME	id-ac-cs2-ssf-scfAssistHandoffAC}
+
+	cs2ssf-scfServiceManagementAC APPLICATION-CONTEXT ::= {
+		CONTRACT					inCs2SsfToScfServiceManagement
+		DIALOGUE MODE				structured
+		ABSTRACT SYNTAXES			{dialogue-abstract-syntax |
+									ssf-scfServiceManagementAbstractSyntax} 
+		APPLICATION CONTEXT NAME	id-ac-cs2-ssf-scfServiceManagementAC}
+
+	cs2scf-ssfGenericAC APPLICATION-CONTEXT ::= {
+		CONTRACT					inCs2ScfToSsfGeneric
+		DIALOGUE MODE				structured
+		ABSTRACT SYNTAXES			{dialogue-abstract-syntax |
+									ssf-scfGenericAbstractSyntax}
+		APPLICATION CONTEXT NAME	id-ac-cs2-scf-ssfGenericAC}
+
+	cs2scf-ssfTrafficManagementAC APPLICATION-CONTEXT ::= {
+		CONTRACT					inCs2ScfToSsfTrafficManagement
+		DIALOGUE MODE				structured
+		ABSTRACT SYNTAXES			{dialogue-abstract-syntax |
+									scf-ssfTrafficManagementAbstractSyntax} 
+		APPLICATION CONTEXT NAME	id-ac-cs2-scf-ssfTrafficManagementAC}
+
+	cs2scf-ssfServiceManagementAC APPLICATION-CONTEXT ::= {
+		CONTRACT					inCs2ScfToSsfServiceManagement
+		DIALOGUE MODE				structured
+		ABSTRACT SYNTAXES			{dialogue-abstract-syntax |
+									scf-ssfServiceManagementAbstractSyntax}
+		APPLICATION CONTEXT NAME	id-ac-cs2-scf-ssfServiceManagementAC}
+
+	cs2scf-ssfTriggerManagementAC APPLICATION-CONTEXT ::= {
+		CONTRACT					inCs2ScfToSsfTriggerManagement
+		DIALOGUE MODE				structured
+		ABSTRACT SYNTAXES			{dialogue-abstract-syntax |
+									scf-ssfTriggerManagementAbstractSyntax} 
+		APPLICATION CONTEXT NAME	id-ac-cs2-scf-ssfTriggerManagementAC}
+
+
+	-- Contracts
+
+	inCs2SsfToScfGeneric CONTRACT ::= {
+	-- dialogue initiated by SSF with InitialDP Operation
+		INITIATOR CONSUMER OF
+				{exceptionInformPackage {networkSpecificBoundSet} |
+				scfActivationPackage {networkSpecificBoundSet}}
+		RESPONDER CONSUMER OF
+				{activityTestPackage|
+				assistConnectionEstablishmentPackage {networkSpecificBoundSet} |
+				bcsmEventHandlingPackage {networkSpecificBoundSet} |
+				billingPackage {networkSpecificBoundSet} |
+				callHandlingPackage {networkSpecificBoundSet} |
+				callReportPackage {networkSpecificBoundSet} |
+				cancelPackage {networkSpecificBoundSet} |
+				chargingEventHandlingPackage {networkSpecificBoundSet} |
+				chargingPackage {networkSpecificBoundSet} |
+				connectPackage {networkSpecificBoundSet} |
+				cphResponsePackage {networkSpecificBoundSet} |
+				genericDisconnectResourcePackage {networkSpecificBoundSet} |
+				nonAssistedConnectionEstablishmentPackage {networkSpecificBoundSet} |
+				scfCallInitiationPackage {networkSpecificBoundSet} |
+				signallingControlPackage {networkSpecificBoundSet} |
+				specializedResourceControlPackage {networkSpecificBoundSet} |
+				scriptControlPackage {networkSpecificBoundSet} |
+				messageControlPackage {networkSpecificBoundSet} |
+				ssfCallProcessingPackage {networkSpecificBoundSet} |
+				timerPackage {networkSpecificBoundSet} |
+				trafficManagementPackage {networkSpecificBoundSet} |
+				uSIHandlingPackage {networkSpecificBoundSet}
+				}
+		ID		id-inCs2SsfToScfGeneric
+		}
+
+	inCs2AssistHandoffssfToScf CONTRACT :: = {
+	-- dialogue initiated by SSF with AssistRequestInstructions
+		INITIATOR CONSUMER OF
+				{srf-scfActivationOfAssistPackage {networkSpecificBoundSet}}
+		RESPONDER CONSUMER OF
+				{activityTestPackage|
+				billingPackage {networkSpecificBoundSet} |
+				callHandlingPackage {networkSpecificBoundSet} |
+				cancelPackage {networkSpecificBoundSet} |
+				chargingPackage {networkSpecificBoundSet} |
+				genericDisconnectResourcePackage {networkSpecificBoundSet} |
+				nonAssistedConnectionEstablishmentPackage {networkSpecificBoundSet} |
+				specializedResourceControlPackage {networkSpecificBoundSet} |
+				scriptControlPackage {networkSpecificBoundSet} |
+				messageControlPackage {networkSpecificBoundSet} |
+				timerPackage {networkSpecificBoundSet}
+				}
+		ID		id-inCs2AssistHandoffssfToScf
+		}
+
+	inCs2ScfToSsfGeneric CONTRACT :: = {
+	-- dialogue initiated by SCF with InitiateCallAttempt or CreateCallSegmentAssociation, Generic Case
+		INITIATOR CONSUMER OF
+				{activityTestPackage|
+				assistConnectionEstablishmentPackage {networkSpecificBoundSet} |
+				bcsmEventHandlingPackage {networkSpecificBoundSet} |
+				billingPackage {networkSpecificBoundSet} |
+				callHandlingPackage {networkSpecificBoundSet} |
+				callReportPackage {networkSpecificBoundSet} |
+				cancelPackage {networkSpecificBoundSet} |
+				chargingEventHandlingPackage {networkSpecificBoundSet} |
+				chargingPackage {networkSpecificBoundSet} |
+				connectPackage {networkSpecificBoundSet} |
+				cphResponsePackage {networkSpecificBoundSet} |
+				genericDisconnectResourcePackage {networkSpecificBoundSet} |
+				nonAssistedConnectionEstablishmentPackage {networkSpecificBoundSet} |
+				scfCallInitiationPackage {networkSpecificBoundSet} |
+				signallingControlPackage {networkSpecificBoundSet} |
+				specializedResourceControlPackage {networkSpecificBoundSet} |
+				scriptControlPackage {networkSpecificBoundSet} |
+				messageControlPackage {networkSpecificBoundSet} |
+				ssfCallProcessingPackage {networkSpecificBoundSet} |
+				timerPackage {networkSpecificBoundSet} |
+				uSIHandlingPackage {networkSpecificBoundSet}
+				}
+		RESPONDER CONSUMER OF
+				{exceptionInformPackage {networkSpecificBoundSet}}
+		ID		id-inCs2ScfToSsfGeneric
+		}
+
+	inCs2ScfToSsfTrafficManagement CONTRACT :: = {
+	-- dialogue initiated by SCF with CallGap
+		INITIATOR CONSUMER OF
+				{trafficManagementPackage {networkSpecificBoundSet}
+				}
+		ID		id-inCs2ScfToSsfTrafficManagement
+		}
+
+	inCs2ScfToSsfServiceManagement CONTRACT :: = {
+	-- dialogue initiated by SCF with ActivateServiceFiltering
+		INITIATOR CONSUMER OF
+				{serviceManagementActivatePackage {networkSpecificBoundSet}
+				}
+		ID		id-inCs2ScfToSsfServiceManagement
+		}
+
+	inCs2SsfToScfServiceManagement CONTRACT :: = {
+	-- dialogue initiated/ended by SSF with ServiceFilteringResponse
+		INITIATOR CONSUMER OF
+				{serviceManagementResponsePackage {networkSpecificBoundSet}
+				}
+		ID		id-inCs2SsfToScfServiceManagement
+		}
+
+	inCs2ScfToSsfTriggerManagement CONTRACT :: = {
+	-- dialogue initiated by SCF with Manage Trigger Data
+		INITIATOR CONSUMER OF	{triggerManagementPackage {networkSpecificBoundSet}
+				}
+		ID		id-inCs2ScfToSsfTriggerManagement
+		}
+
+	-- Operation Packages
+
+	scfActivationPackage {PARAMETERS-BOUND : bound} OPERATION-PACKAGE :: = {
+		CONSUMER INVOKES	{initialDP {bound}}
+		ID		id-package-scfActivation}
+	srf-scfActivationOfAssistPackage {PARAMETERS-BOUND : bound} OPERATION-PACKAGE :: = {
+		CONSUMER INVOKES	{assistRequestInstructions {bound}}
+		ID		id-package-srf-scfActivationOfAssist}
+	assistConnectionEstablishmentPackage {PARAMETERS-BOUND : bound}  OPERATION-PACKAGE :: = {
+		CONSUMER INVOKES	{establishTemporaryConnection {bound}}
+		ID		id-package-assistConnectionEstablishment}
+	genericDisconnectResourcePackage {PARAMETERS-BOUND : bound} OPERATION-PACKAGE :: = {
+		CONSUMER INVOKES	{disconnectForwardConnection |
+				disconnectForwardConnectionWithArgument {bound}}
+		ID		id-package-genericDisconnectResource}
+	nonAssistedConnectionEstablishmentPackage {PARAMETERS-BOUND : bound} OPERATION-PACKAGE :: = {
+		CONSUMER INVOKES	{connectToResource {bound}}
+		ID		id-package-nonAssistedConnectionEstablishment}
+	connectPackage {PARAMETERS-BOUND : bound} OPERATION-PACKAGE :: = {
+		CONSUMER INVOKES	{connect {bound}}
+		ID		id-package-connect}
+	callHandlingPackage {PARAMETERS-BOUND : bound} OPERATION-PACKAGE :: = {
+		CONSUMER INVOKES	{releaseCall {bound}}
+		ID		id-package-callHandling}
+	bcsmEventHandlingPackage {PARAMETERS-BOUND : bound} OPERATION-PACKAGE :: = {
+		CONSUMER INVOKES	{requestReportBCSMEvent {bound}}
+		SUPPLIER INVOKES	{eventReportBCSM {bound}}
+		ID		id-package-bcsmEventHandling}
+	chargingEventHandlingPackage {PARAMETERS-BOUND : bound} OPERATION-PACKAGE :: = {
+		CONSUMER INVOKES	{requestNotificationChargingEvent {bound}}
+		SUPPLIER INVOKES	{eventNotificationCharging {bound}}
+		ID		id-package-chargingEventHandling}
+	ssfCallProcessingPackage {PARAMETERS-BOUND : bound} OPERATION-PACKAGE :: = {
+		CONSUMER INVOKES	{collectInformation {bound} | continue}
+		ID		id-package-ssfCallProcessing}
+	scfCallInitiationPackage {PARAMETERS-BOUND : bound} OPERATION-PACKAGE :: = {
+		CONSUMER INVOKES	{initiateCallAttempt {bound}}
+		ID		id-package-scfCallInitiation}
+	timerPackage {PARAMETERS-BOUND : bound} OPERATION-PACKAGE :: = {
+		CONSUMER INVOKES	{resetTimer {bound}}
+		ID		id-package-timer}
+	billingPackage {PARAMETERS-BOUND : bound} OPERATION-PACKAGE :: = {
+		CONSUMER INVOKES	{furnishChargingInformation {bound}}
+		ID		id-package-billing}
+	chargingPackage {PARAMETERS-BOUND : bound} OPERATION-PACKAGE :: = {
+		CONSUMER INVOKES	{applyCharging {bound}}
+		SUPPLIER INVOKES	{applyChargingReport {bound}}
+		ID		id-package-charging}
+	trafficManagementPackage {PARAMETERS-BOUND : bound} OPERATION-PACKAGE :: = {
+		CONSUMER INVOKES	{callGap {bound}}
+		ID		id-package-trafficManagement}
+	serviceManagementActivatePackage {PARAMETERS-BOUND : bound} OPERATION-PACKAGE :: = {
+		CONSUMER INVOKES	{activateServiceFiltering {bound}}
+		ID		id-package-serviceManagementActivate}
+	serviceManagementResponsePackage {PARAMETERS-BOUND : bound} OPERATION-PACKAGE :: = {
+		CONSUMER INVOKES	{serviceFilteringResponse {bound}}
+		ID		id-package-serviceManagementResponse}
+	callReportPackage {PARAMETERS-BOUND : bound} OPERATION-PACKAGE :: = {
+		CONSUMER INVOKES	{callInformationRequest {bound}}
+		SUPPLIER INVOKES	{callInformationReport {bound}}
+		ID		id-package-callReport}
+	signallingControlPackage {PARAMETERS-BOUND : bound} OPERATION-PACKAGE :: = {
+		CONSUMER INVOKES	{sendChargingInformation {bound}}
+		ID		id-package-signallingControl}
+	activityTestPackage OPERATION-PACKAGE :: = {
+		CONSUMER INVOKES	{activityTest}
+		ID		id-package-activityTest}
+	cancelPackage {PARAMETERS-BOUND : bound} OPERATION-PACKAGE :: = {
+		CONSUMER INVOKES	{cancel {bound}}
+		ID		id-package-cancel}
+	cphResponsePackage {PARAMETERS-BOUND : bound} OPERATION-PACKAGE :: = {
+		CONSUMER INVOKES	{
+				continueWithArgument {bound}| 
+				disconnectLeg {bound}| 
+				mergeCallSegments {bound}|
+				moveCallSegments {bound}|
+				moveLeg {bound}| 
+				createCallSegmentAssociation {bound} |
+				splitLeg {bound} 
+				}
+		ID		id-package-cphResponse}
+	exceptionInformPackage {PARAMETERS-BOUND : bound} OPERATION-PACKAGE :: = {
+		CONSUMER INVOKES	{entityReleased {bound}}
+		ID		id-package-entityReleased}
+	triggerManagementPackage {PARAMETERS-BOUND : bound} OPERATION-PACKAGE :: = {
+		CONSUMER INVOKES	{manageTriggerData {bound}}
+		ID		id-package-triggerManagement}
+	uSIHandlingPackage {PARAMETERS-BOUND : bound} OPERATION-PACKAGE :: = {
+		CONSUMER INVOKES	{requestReportUTSI {bound}| sendSTUI {bound}}
+		SUPPLIER INVOKES	{reportUTSI {bound}}
+		ID		id-package-uSIHandling
+		}
+
+
+
+	-- Abstract Syntaxes
+
+	ssf-scfGenericAbstractSyntax ABSTRACT-SYNTAX :: = {
+		GenericSSF-SCF-PDUs
+		IDENTIFIED BY	id-as-ssf-scfGenericAS}
+	GenericSSF-SCF-PDUs :: = TCMessage {{SsfToScfGenericInvokable}, 
+				{SsfToScfGenericReturnable}}
+	SsfScfGenericInvokable OPERATION :: = {
+				activityTest |
+				applyCharging {networkSpecificBoundSet} |
+				applyChargingReport {networkSpecificBoundSet} |
+				callInformationReport {networkSpecificBoundSet} |
+				callInformationRequest {networkSpecificBoundSet} |
+				cancel {networkSpecificBoundSet} |
+				collectInformation {networkSpecificBoundSet} |
+				connect {networkSpecificBoundSet} |
+				connectToResource {networkSpecificBoundSet} |
+				disconnectForwardConnection |
+				disconnectForwardConnectionWithArgument {networkSpecificBoundSet}|
+				disconnectLeg {networkSpecificBoundSet} |
+				entityReleased {networkSpecificBoundSet} |
+				establishTemporaryConnection {networkSpecificBoundSet} | 
+				eventNotificationCharging {networkSpecificBoundSet} |
+				eventReportBCSM {networkSpecificBoundSet} |
+				furnishChargingInformation {networkSpecificBoundSet} |
+				initialDP {networkSpecificBoundSet} |
+				mergeCallSegments {networkSpecificBoundSet} |
+				moveCallSegments {networkSpecificBoundSet} |
+				moveLeg {networkSpecificBoundSet} |
+				createCallSegmentAssociation {networkSpecificBoundSet} |
+				releaseCall {networkSpecificBoundSet} |
+				reportUTSI {networkSpecificBoundSet} |
+				requestNotificationChargingEvent {networkSpecificBoundSet} |
+				requestReportBCSMEvent {networkSpecificBoundSet} |
+				requestReportUTSI {networkSpecificBoundSet} |
+				resetTimer {networkSpecificBoundSet} |
+				sendChargingInformation {networkSpecificBoundSet} |
+				sendSTUI {networkSpecificBoundSet} |
+				splitLeg {networkSpecificBoundSet} |
+				playAnnouncement {networkSpecificBoundSet} |
+				promptAndCollectUserInformation {networkSpecificBoundSet} |
+				scriptClose {networkSpecificBoundSet} |
+				scriptEvent {networkSpecificBoundSet} |
+				scriptInformation {networkSpecificBoundSet} |
+				scriptRun {networkSpecificBoundSet} |
+				specializedResourceReport |
+				promptAndReceiveMessage {networkSpecificBoundSet}
+				}
+	SsfScfGenericReturnable OPERATION :: = {
+				activityTest | 
+				applyCharging {networkSpecificBoundSet} | 
+				applyChargingReport {networkSpecificBoundSet} | 
+				callGap {networkSpecificBoundSet} |
+				callInformationRequest {networkSpecificBoundSet} | 
+				cancel {networkSpecificBoundSet} | 
+				collectInformation {networkSpecificBoundSet} | 
+				connect {networkSpecificBoundSet} | 
+				connectToResource {networkSpecificBoundSet} | 
+				continue | 
+				continueWithArgument {networkSpecificBoundSet}|
+				disconnectForwardConnection | 
+				disconnectForwardConnectionWithArgument {networkSpecificBoundSet}|
+				disconnectLeg {networkSpecificBoundSet}|
+				establishTemporaryConnection {networkSpecificBoundSet}| 
+				furnishChargingInformation {networkSpecificBoundSet}| 
+				initialDP {networkSpecificBoundSet}|
+				mergeCallSegments {networkSpecificBoundSet}|
+				moveCallSegments {networkSpecificBoundSet}|
+				moveLeg {networkSpecificBoundSet}|
+				createCallSegmentAssociation {networkSpecificBoundSet}|
+				releaseCall {networkSpecificBoundSet}| 
+				requestNotificationChargingEvent {networkSpecificBoundSet}| 
+				requestReportBCSMEvent {networkSpecificBoundSet}|
+				requestReportUTSI {networkSpecificBoundSet}|
+				resetTimer {networkSpecificBoundSet}| 
+				sendChargingInformation {networkSpecificBoundSet}|
+				sendSTUI {networkSpecificBoundSet}|
+				splitLeg {networkSpecificBoundSet}|
+				playAnnouncement {networkSpecificBoundSet}|
+				promptAndCollectUserInformation {networkSpecificBoundSet}|
+				scriptClose {networkSpecificBoundSet}|
+				scriptInformation {networkSpecificBoundSet}|
+				scriptRun {networkSpecificBoundSet}|
+				promptAndReceiveMessage {networkSpecificBoundSet}
+				}
+
+	assistHandoff-ssf-scfAbstractSyntax ABSTRACT-SYNTAX :: = {
+		AssistHandoffsSF-SCF-PDUs
+		IDENTIFIED BY	id-as-assistHandoff-ssf-scfAS}
+	AssistHandoffsSF-SCF-PDUs :: = TCMessage {{AssistHandoffssfToScfInvokable}, 
+				{AssistHandoffssfToScfReturnable}}
+	AssistHandoffssfToScfInvokable OPERATION :: = {
+				activityTest |
+				applyCharging {networkSpecificBoundSet}| 
+				applyChargingReport {networkSpecificBoundSet}| 
+				assistRequestInstructions {networkSpecificBoundSet}| 
+				cancel {networkSpecificBoundSet}| 
+				connectToResource {networkSpecificBoundSet}| 
+				disconnectForwardConnection | 
+				disconnectForwardConnectionWithArgument {networkSpecificBoundSet}|
+				furnishChargingInformation {networkSpecificBoundSet}| 
+				playAnnouncement {networkSpecificBoundSet}| 
+				promptAndCollectUserInformation {networkSpecificBoundSet}| 
+				resetTimer {networkSpecificBoundSet}| 
+				scriptClose {networkSpecificBoundSet}|
+				scriptEvent {networkSpecificBoundSet}|
+				scriptInformation {networkSpecificBoundSet}|
+				scriptRun {networkSpecificBoundSet}|
+				specializedResourceReport |
+				promptAndReceiveMessage {networkSpecificBoundSet}
+				}
+	AssistHandoffssfToScfReturnable OPERATION :: = {
+				activityTest |
+				applyCharging {networkSpecificBoundSet}| 
+				applyChargingReport {networkSpecificBoundSet}| 
+				assistRequestInstructions {networkSpecificBoundSet}| 
+				cancel {networkSpecificBoundSet}| 
+				connectToResource {networkSpecificBoundSet}| 
+				disconnectForwardConnection | 
+				disconnectForwardConnectionWithArgument {networkSpecificBoundSet}|
+				furnishChargingInformation {networkSpecificBoundSet}| 
+				playAnnouncement {networkSpecificBoundSet}| 
+				promptAndCollectUserInformation {networkSpecificBoundSet}| 
+				resetTimer {networkSpecificBoundSet}|
+				scriptClose {networkSpecificBoundSet}|
+				scriptInformation {networkSpecificBoundSet}|
+				scriptRun {networkSpecificBoundSet}|
+				promptAndReceiveMessage {networkSpecificBoundSet}
+				}
+
+
+	scf-ssfGenericAbstractSyntax ABSTRACT-SYNTAX :: = {
+		GenericSCF-SSF-PDUs
+		IDENTIFIED BY	id-as-scf-ssfGenericAS}
+	GenericSCF-SSF-PDUs :: = TCMessage {{ScfToSsfGenericInvokable}, {ScfToSsfGenericReturnable}}
+	ScfSsfGenericInvokable OPERATION :: = {
+				activityTest | 
+				applyCharging {networkSpecificBoundSet}| 
+				applyChargingReport {networkSpecificBoundSet}| 
+				callInformationRequest {networkSpecificBoundSet}| 
+				cancel {networkSpecificBoundSet}| 
+				collectInformation {networkSpecificBoundSet}| 
+				connect {networkSpecificBoundSet}| 
+				connectToResource {networkSpecificBoundSet}| 
+				continue | 
+				continueWithArgument{networkSpecificBoundSet}|
+				disconnectForwardConnection | 
+				disconnectForwardConnectionWithArgument {networkSpecificBoundSet}|
+				disconnectLeg {networkSpecificBoundSet}|
+				establishTemporaryConnection {networkSpecificBoundSet}| 
+				furnishChargingInformation {networkSpecificBoundSet}| 
+				initiateCallAttempt {networkSpecificBoundSet}|
+				mergeCallSegments {networkSpecificBoundSet}|
+				moveCallSegments {networkSpecificBoundSet}|
+				moveLeg {networkSpecificBoundSet}|
+				createCallSegmentAssociation {networkSpecificBoundSet}|
+				releaseCall {networkSpecificBoundSet}| 
+				requestNotificationChargingEvent {networkSpecificBoundSet}| 
+				requestReportBCSMEvent {networkSpecificBoundSet}|
+				requestReportUTSI {networkSpecificBoundSet}|
+				resetTimer {networkSpecificBoundSet}| 
+				sendChargingInformation {networkSpecificBoundSet}| 
+				sendSTUI {networkSpecificBoundSet}|
+				splitLeg {networkSpecificBoundSet}|
+				playAnnouncement {networkSpecificBoundSet}|
+				promptAndCollectUserInformation {networkSpecificBoundSet}|
+				scriptClose {networkSpecificBoundSet}|
+				scriptInformation {networkSpecificBoundSet}|
+				scriptRun {networkSpecificBoundSet}|
+				promptAndReceiveMessage {networkSpecificBoundSet}
+				}
+	ScfSsfGenericReturnable OPERATION :: = {
+				activityTest | 
+				applyCharging {networkSpecificBoundSet}| 
+				applyChargingReport {networkSpecificBoundSet}|
+				callInformationReport {networkSpecificBoundSet}| 
+				callInformationRequest {networkSpecificBoundSet}| 
+				cancel {networkSpecificBoundSet}| 
+				collectInformation {networkSpecificBoundSet}| 
+				connect {networkSpecificBoundSet}| 
+				connectToResource {networkSpecificBoundSet}| 
+				disconnectForwardConnection | 
+				disconnectForwardConnectionWithArgument {networkSpecificBoundSet}|
+				disconnectLeg {networkSpecificBoundSet}|
+				entityReleased {networkSpecificBoundSet}|
+				establishTemporaryConnection {networkSpecificBoundSet}| 
+				eventNotificationCharging {networkSpecificBoundSet} | 
+				resetTimer {networkSpecificBoundSet}| 
+				eventReportBCSM {networkSpecificBoundSet}| 
+				furnishChargingInformation {networkSpecificBoundSet}| 
+				initiateCallAttempt {networkSpecificBoundSet}| 
+				mergeCallSegments {networkSpecificBoundSet}|
+				moveCallSegments {networkSpecificBoundSet}|
+				moveLeg {networkSpecificBoundSet}|
+				createCallSegmentAssociation {networkSpecificBoundSet}|
+				reportUTSI {networkSpecificBoundSet}|
+				requestNotificationChargingEvent {networkSpecificBoundSet}| 
+				requestReportBCSMEvent {networkSpecificBoundSet}| 
+				requestReportUTSI {networkSpecificBoundSet} |
+				sendChargingInformation {networkSpecificBoundSet}| 
+				sendSTUI {networkSpecificBoundSet}|
+				splitLeg {networkSpecificBoundSet}|
+				playAnnouncement {networkSpecificBoundSet}|
+				promptAndCollectUserInformation {networkSpecificBoundSet}|
+				scriptClose {networkSpecificBoundSet}|
+				scriptEvent {networkSpecificBoundSet}|
+				scriptInformation {networkSpecificBoundSet}|
+				scriptRun {networkSpecificBoundSet}|
+				specializedResourceReport |
+				promptAndReceiveMessage {networkSpecificBoundSet}
+				}
+
+
+	scf-ssfTrafficManagementAbstractSyntax ABSTRACT-SYNTAX :: = {
+		TrafficManagementSCF-SSF-PDUs
+		IDENTIFIED BY	id-as-scf-ssfTrafficManagementAS}
+	TrafficManagementSCF-SSF-PDUs :: = TCMessage {{ScfToSsfTrafficManagementInvokable}} 
+	ScfToSsfTrafficManagementInvokable OPERATION :: = {
+		callGap {networkSpecificBoundSet}
+		}
+
+	scf-ssfServiceManagementAbstractSyntax ABSTRACT-SYNTAX :: = {
+		ServiceManagementSCF-SSF-PDUs
+		IDENTIFIED BY	id-as-scf-ssfServiceManagementAS}
+	ServiceManagementSCF-SSF-PDUs :: = TCMessage {{ScfToSsfServiceManagementInvokable}, 
+				{ScfToSsfServiceManagementReturnable}}
+	ScfToSsfServiceManagementInvokable OPERATION :: = {
+		activateServiceFiltering {networkSpecificBoundSet}
+		}
+	ScfToSsfServiceManagementReturnable OPERATION :: = {
+		activateServiceFiltering {networkSpecificBoundSet}
+		}
+
+	ssf-scfServiceManagementAbstractSyntax ABSTRACT-SYNTAX :: = {
+		ServiceManagementSSF-SCF-PDUs
+		IDENTIFIED BY	id-as-ssf-scfServiceManagementAS}
+	ServiceManagementSSF-SCF-PDUs :: = TCMessage {{SsfToScfServiceManagementInvokable}}
+	SsfToScfServiceManagementInvokable OPERATION :: = {
+		serviceFilteringResponse {networkSpecificBoundSet}
+		}
+
+	scf-ssfTriggerManagementAbstractSyntax ABSTRACT-SYNTAX :: = {
+		TriggerManagementSCF-SSF-PDUs
+		IDENTIFIED BY	id-as-scf-ssfTriggerManagementAS}
+	TriggerManagementSCF-SSF-PDUs :: = TCMessage {{ScfToSsfTriggerManagementInvokable}, 
+				{ScfToSsfTriggerManagementReturnable}}
+	ScfToSsfTriggerManagementInvokable OPERATION :: = {
+		manageTriggerData {networkSpecificBoundSet}
+		}
+	ScfToSsfTriggerManagementReturnable OPERATION :: = {
+		manageTriggerData {networkSpecificBoundSet}
+		}
+
+END

@@ -1,0 +1,164 @@
+CS2-SCF-CUSF-pkgs-contracts-acs  {itu-t(0) identified-organization(4) etsi(0) inDomain(1) in-network(1) CS2(20) modules(0) in-cs2-scf-cusf-pkgs-contracts-acs (16) version1(0)}
+
+DEFINITIONS :: = BEGIN
+
+-- This module describes the operation-packages, contracts and application-contexts used
+-- over the SCF-CUSF interface.
+
+	IMPORTS
+		emptyConnectionPackage,
+		PARAMETERS-BOUND,
+		networkSpecificBoundSet
+	FROM CS2-classes classes
+		CONTRACT, OPERATION-PACKAGE, OPERATION
+	FROM Remote-Operations-Information-Objects ros-InformationObjects
+		TCMessage {} 
+	FROM TCAPMessages tc-Messages
+		APPLICATION-CONTEXT, dialogue-abstract-syntax
+	FROM TC-Notation-Extensions tc-NotationExtensions
+		releaseAssociation {},
+		requestReportBCUSMEvent {},
+		initiateAssociation {},
+		connectAssociation {},
+		continueAssociation {},
+		eventReportBCUSM {},
+		initialAssociationDP {}
+	FROM CS2-SCF-CUSF-ops-args scf-cusf-Operations
+		id-ac-cusf-scf,
+		id-ac-scf-cusf,
+		id-contract-scf-cusf,
+		id-contract-cusf-scf,
+		id-package-basic-cusf-scf,
+		id-package-basic-scf-cusf,
+		id-as-basic-cusf-scf,
+		id-as-basic-scf-cusf,
+		classes, ros-InformationObjects, tc-Messages, scf-cusf-Operations, tc-NotationExtensions,
+		ssf-scf-Protocol, ssf-scf-Operations
+	FROM CS2-object-identifiers
+			{itu-t(0) identified-organization(4) etsi(0) inDomain(1) in-network(1) CS2(20) modules(0) in-cs2-object-identifiers (17) version1(0)}
+		activityTestPackage,
+		uSIHandlingPackage
+	FROM CS2-SSF-SCF-pkgs-contracts-acs ssf-scf-Protocol 
+		activityTest,
+		reportUTSI,
+		requestReportUTSI,
+		sendSTUI
+	FROM CS2-SSF-SCF-ops-args ssf-scf-Operations;
+
+	-- application contexts --
+
+	cusf-scf-ac					APPLICATION-CONTEXT	::=	{
+		CONTRACT					cusf-scf-contract
+		DIALOGUE MODE				structured
+		TERMINATION					basic
+		ABSTRACT SYNTAXES			{dialogue-abstract-syntax | 
+									cusf-scf-abstract-syntax}
+		APPLICATION CONTEXT NAME	id-ac-cusf-scf}
+
+	scf-cusf-ac					APPLICATION-CONTEXT	::=	{
+		CONTRACT					scf-cusf-contract
+		DIALOGUE MODE				structured
+		TERMINATION					basic
+		ABSTRACT SYNTAXES			{dialogue-abstract-syntax | 
+									scf-cusf-abstract-syntax}
+		APPLICATION CONTEXT NAME	id-ac-scf-cusf}
+
+	-- contracts --
+
+	cusf-scf-contract			CONTRACT	::=	{
+		CONNECTION				emptyConnectionPackage
+		INITIATOR CONSUMER OF	{basic-cusf-scf-package {networkSpecificBoundSet}}
+		RESPONDER CONSUMER OF	{activityTestPackage | 		
+								uSIHandlingPackage {networkSpecificBoundSet}
+		ID						id-contract-scf-cusf}
+
+
+	scf-cusf-contract			CONTRACT	::=	{
+		CONNECTION				emptyConnectionPackage
+		INITIATOR CONSUMER OF	{basic-scf-cusf-package {networkSpecificBoundSet}|
+								activityTestPackage | 
+								uSIHandlingPackage {networkSpecificBoundSet}}
+		ID						id-contract-cusf-scf}
+
+	-- basic cusf-scf package --
+
+	basic-cusf-scf-package		{PARAMETERS-BOUND : bound} OPERATION-PACKAGE	::=	{
+		CONSUMER INVOKES		{eventReportBCUSM {bound} |
+								initialAssociationDP {bound}}
+		SUPPLIER INVOKES		{releaseAssociation {bound}|
+								requestReportBCUSMEvent {bound} |
+								connectAssociation {bound} |
+								continueAssociation {bound}}
+		ID						id-package-basic-cusf-scf}
+
+	--  basic scf-cusf package --
+
+	basic-scf-cusf-package		{PARAMETERS-BOUND : bound} OPERATION-PACKAGE	::=	{
+		CONSUMER INVOKES		{initiateAssociation {bound}|
+								releaseAssociation {bound}|
+								requestReportBCUSMEvent {bound} |
+								connectAssociation {bound} |
+								continueAssociation {bound}}}
+		SUPPLIER INVOKES		{eventReportBCUSM {bound}}
+		ID						id-package-basic-scf-cusf}
+
+	-- abstract syntaxes --
+
+	cusf-scf-abstract-syntax		ABSTRACT-SYNTAX	::=	{
+		BASIC-CUSF-SCF-PDUs
+		IDENTIFIED BY			id-as-basic-cusf-scf}
+
+	BASIC-CUSF-SCF-PDUs	::= TCMessage {{CUSF-SCF-Invokable},{CUSF-SCF-Returnable}}
+
+	CUSF-SCF-Invokable	OPERATION	::= {
+								activityTest|
+								releaseAssociation  {networkSpecificBoundSet}|
+								requestReportBCUSMEvent {networkSpecificBoundSet} |
+								connectAssociation {networkSpecificBoundSet} |
+								continueAssociation {networkSpecificBoundSet} |
+								eventReportBCUSM {networkSpecificBoundSet} |
+								initialAssociationDP {networkSpecificBoundSet} |
+								reportUTSI {networkSpecificBoundSet} |
+								requestReportUTSI {networkSpecificBoundSet} |
+								sendSTUI {networkSpecificBoundSet}
+								}
+
+	CUSF-SCF-Returnable	 OPERATION	::= {
+							 	activityTest|
+								requestReportBCUSMEvent {networkSpecificBoundSet} |
+								connectAssociation {networkSpecificBoundSet} |
+								continueAssociation {networkSpecificBoundSet} | 
+								initialAssociationDP {networkSpecificBoundSet} | 
+								requestReportUTSI {networkSpecificBoundSet} | 
+								sendSTUI {networkSpecificBoundSet} 
+								}
+
+	scf-cusf-abstract-syntax		ABSTRACT-SYNTAX	::=	{
+		BASIC-SCF-CUSF-PDUs
+		IDENTIFIED BY			id-as-basic-scf-cusf}
+
+	BASIC-SCF-CUSF-PDUs	::= TCMessage {{SCF-CUSF-Invokable},{SCF-CUSF-Returnable}}
+
+	SCF-CUSF-Invokable	OPERATION	::=	{
+								activityTest|
+								releaseAssociation  {networkSpecificBoundSet}|
+								requestReportBCUSMEvent {networkSpecificBoundSet} |
+								initiateAssociation  {networkSpecificBoundSet}|
+								connectAssociation {networkSpecificBoundSet} |
+								continueAssociation {networkSpecificBoundSet} |
+								eventReportBCUSM {networkSpecificBoundSet} |
+								reportUTSI {networkSpecificBoundSet} |
+								requestReportUTSI {networkSpecificBoundSet} | 
+								sendSTUI {networkSpecificBoundSet} 
+								}
+	SCF-CUSF-Returnable	OPERATION	::= {
+								activityTest|
+								requestReportBCUSMEvent {networkSpecificBoundSet} |
+								initiateAssociation  {networkSpecificBoundSet}|
+								connectAssociation {networkSpecificBoundSet} |
+								continueAssociation {networkSpecificBoundSet} | 
+								requestReportUTSI {networkSpecificBoundSet} | 
+								sendSTUI {networkSpecificBoundSet} 
+								}
+
+END

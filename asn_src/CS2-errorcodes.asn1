@@ -1,0 +1,34 @@
+CS2-errorcodes {itu-t(0) identified-organization(4) etsi(0) inDomain(1) in-network(1) CS2(20) modules(0) in-cs2-errorcodes (3) version1(0)}
+
+DEFINITIONS ::= BEGIN
+
+	IMPORTS
+		ros-InformationObjects
+	FROM CS2-object-identifiers
+			{itu-t(0) identified-organization(4) etsi(0) inDomain(1) in-network(1) CS2(20) modules(0) in-cs2-object-identifiers(17) version1(0)}
+		Code
+	FROM Remote-Operations-Information-Objects ros-InformationObjects;
+
+		errcode-canceled								Code ::= local: 0
+		errcode-cancelFailed							Code ::= local: 1
+		errcode-eTCFailed								Code ::= local: 3
+		errcode-improperCallerResponse			Code ::= local: 4
+		errcode-missingCustomerRecord				Code ::= local: 6
+		errcode-missingParameter					Code ::= local: 7
+		errcode-parameterOutOfRange				Code ::= local: 8
+		errcode-requestedInfoError					Code ::= local: 10
+		errcode-systemFailure						Code ::= local: 11
+		errcode-taskRefused							Code ::= local: 12
+		errcode-unavailableResource				Code ::= local: 13
+		errcode-unexpectedComponentSequence		Code ::= local: 14
+		errcode-unexpectedDataValue				Code ::= local: 15
+		errcode-unexpectedParameter				Code ::= local: 16
+		errcode-unknownLegID							Code ::= local: 17
+		errcode-unknownResource						Code ::= local: 18
+
+	-- Error codes for the new IN CS2 error types 
+		errcode-scfReferral							Code ::= local: 21
+		errcode-scfTaskRefused						Code ::= local: 22
+		errcode-chainingRefused						Code ::= local: 23
+
+END

@@ -1,0 +1,111 @@
+CS2-operationcodes {itu-t(0) identified-organization(4) etsi(0) inDomain(1) in-network(1) CS2(20) modules(0) in-cs2-operationcodes (2) version1(0)}
+
+DEFINITIONS ::= BEGIN
+
+	IMPORTS
+		ros-InformationObjects
+	FROM CS2-object-identifiers
+			{itu-t(0) identified-organization(4) etsi(0) inDomain(1) in-network(1) CS2(20) modules(0) in-cs2-object-identifiers(17) version1(0)}
+		Code
+	FROM Remote-Operations-Information-Objects ros-InformationObjects;
+
+	-- the operations are grouped by the identified operation packages.
+
+	-- SCF activation Package
+		opcode-initialDP							Code ::= local: 0
+	-- SCF/SRF activation of assist Package
+		opcode-assistRequestInstructions			Code ::= local: 16
+	-- Assist connection establishment Package
+		opcode-establishTemporaryConnection			Code ::= local: 17
+	-- Generic disconnect resource Package
+		opcode-disconnectForwardConnection			Code ::= local: 18
+		opcode-dFCWithArgument						Code ::= local: 86
+	-- Non-assisted connection establishment Package
+
+		opcode-connectToResource					Code ::= local: 19
+	-- Connect Package (elementary SSF function)
+		opcode-connect								Code ::= local: 20
+	-- Call handling Package (elementary SSF function)
+		opcode-releaseCall							Code ::= local: 22
+	-- BCSM Event handling Package
+		opcode-requestReportBCSMEvent				Code ::= local: 23
+		opcode-eventReportBCSM						Code ::= local: 24
+	-- Charging Event handling Package
+		opcode-requestNotificationChargingEvent		Code ::= local: 25
+		opcode-eventNotificationCharging			Code ::= local: 26
+	-- SSF call processing Package
+		opcode-collectInformation					Code ::= local: 27
+		opcode-continue								Code ::= local: 31
+	-- SCF call initiation Package
+		opcode-initiateCallAttempt					Code ::= local: 32
+	-- Timer Package
+		opcode-resetTimer							Code ::= local: 33
+	-- Billing Package
+		opcode-furnishChargingInformation			Code ::= local: 34
+	-- Charging Package
+		opcode-applyCharging						Code ::= local: 35
+		opcode-applyChargingReport					Code ::= local: 36
+	-- Traffic management Package
+		opcode-callGap								Code ::= local: 41
+	-- Service management Package
+		opcode-activateServiceFiltering				Code ::= local: 42
+		opcode-serviceFilteringResponse				Code ::= local: 43
+	-- Call report Package
+		opcode-callInformationReport				Code ::= local: 44
+		opcode-callInformationRequest				Code ::= local: 45
+	-- Signalling control Package
+		opcode-sendChargingInformation				Code ::= local: 46
+	-- Specialized resource control Package
+		opcode-playAnnouncement						Code ::= local: 47
+		opcode-promptAndCollectUserInformation		Code ::= local: 48
+		opcode-specializedResourceReport			Code ::= local: 49
+	-- Cancel Package
+		opcode-cancel								Code ::= local: 53
+	-- Activity Test Package
+		opcode-activityTest							Code ::= local: 55
+	-- CPH Response Package
+		opcode-continueWithArgument					Code ::= local: 88
+		opcode-createCallSegmentAssociation			Code ::= local: 89
+		opcode-disconnectLeg						Code ::= local: 90
+		opcode-mergeCallSegments					Code ::= local: 91
+		opcode-moveCallSegments						Code ::= local: 92
+		opcode-moveLeg								Code ::= local: 93 
+		opcode-splitLeg								Code ::= local: 95
+	-- Exception Inform Package
+		opcode-entityReleased						Code ::= local: 96
+	-- Trigger Management Package
+		opcode-manageTriggerData					Code ::= local: 97
+	-- USI Handling Package
+		opcode-requestReportUTSI					Code ::= local: 98
+		opcode-sendSTUI								Code ::= local: 100
+		opcode-reportUTSI							Code ::= local: 101
+
+	-- SRF/SCF interface
+		opcode-promptAndReceiveMessage				Code ::= local: 107
+		opcode-scriptInformation					Code ::= local: 108
+		opcode-scriptEvent							Code ::= local: 109
+		opcode-scriptRun							Code ::= local: 110
+		opcode-scriptClose							Code ::= local: 111
+
+	-- SCF/SCF interface
+		opcode-establishChargingRecord				Code ::= local: 112
+		opcode-handlingInformationRequest			Code ::= local: 113
+		opcode-handlingInformationResult			Code ::= local: 114
+		opcode-networkCapability					Code ::= local: 115
+		opcode-notificationProvided					Code ::= local: 116
+		opcode-confirmedNotificationProvided		Code ::= local: 117
+		opcode-provideUserInformation				Code ::= local: 118
+		opcode-confirmedReportChargingInformation	Code ::= local: 119
+		opcode-reportChargingInformation			Code ::= local: 120
+		opcode-requestNotification					Code ::= local: 121
+
+	-- CUSF/SCF interface
+		opcode-initiateAssociation					Code ::= local: 123
+		opcode-releaseAssociation					Code ::= local: 126
+		opcode-requestReportBCUSMEvent				Code ::= local: 127
+	 	opcode-initialAssociationDP					Code ::= local: 131
+		opcode-connectAssociation					Code ::= local: 132
+		opcode-continueAssociation					Code ::= local: 133
+		opcode-eventReportBCUSM						Code ::= local: 134
+
+END
