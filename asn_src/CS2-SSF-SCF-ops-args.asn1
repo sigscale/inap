@@ -177,17 +177,16 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 	FROM CS2-errortypes errortypes;
 
 	activateServiceFiltering {PARAMETERS-BOUND : bound} OPERATION ::= {
-		ARGUMENT		ActivateServiceFilteringArg {bound}
-		RETURN RESULT 	TRUE
-		ERRORS 			{missingParameter |
-						parameterOutOfRange |
-						systemFailure |
-						taskRefused |
-						unexpectedComponentSequence |
-						unexpectedParameter
-						}
-		CODE 			opcode-activateServiceFiltering
-		}
+		ARGUMENT       ActivateServiceFilteringArg {bound}
+		RETURN RESULT  TRUE
+		ERRORS         {missingParameter
+		                  | parameterOutOfRange
+		                  | systemFailure
+								| taskRefused
+								| unexpectedComponentSequence
+								| unexpectedParameter}
+		CODE           opcode-activateServiceFiltering
+	}
 	-- Direction: SCF -> SSF, Timer: Tasf
 	-- When receiving this operation, the SSF handles calls to destination in a specified manner
 	-- without sending queries for every detected call. It is used for example for providing
@@ -196,20 +195,20 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 	-- counters in the SSF.
 
 	ActivateServiceFilteringArg {PARAMETERS-BOUND : bound} ::= SEQUENCE {
-		filteredCallTreatment		[0] FilteredCallTreatment {bound},
-		filteringCharacteristics	[1] FilteringCharacteristics,
-		filteringTimeOut			[2] FilteringTimeOut,
-		filteringCriteria			[3] FilteringCriteria {bound},
-		startTime					[4] DateAndTime	OPTIONAL,
-		extensions					[5] SEQUENCE SIZE(1..bound.&numOfExtensions) OF
-					ExtensionField {bound} OPTIONAL,
+		filteredCallTreatment    [0] FilteredCallTreatment {bound},
+		filteringCharacteristics [1] FilteringCharacteristics,
+		filteringTimeOut         [2] FilteringTimeOut,
+		filteringCriteria        [3] FilteringCriteria {bound},
+		startTime                [4] DateAndTime OPTIONAL,
+		extensions               [5] SEQUENCE SIZE(1..bound.&numOfExtensions)
+		                             OF ExtensionField {bound} OPTIONAL,
 		...
-		}
+	}
 
 	activityTest OPERATION ::= {
 		RETURN RESULT TRUE
-		CODE	opcode-activityTest
-		}
+		CODE          opcode-activityTest
+	}
 	-- Direction: SCF -> SSF, Timer: Tat
 	-- This operation is used to check for the continued existence of a relationship between the SCF
 	-- and SSF. If the relationship is still in existence, then the SSF will respond. If no reply is
