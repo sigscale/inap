@@ -564,13 +564,13 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 	-- unique within the SSF.
 
 	CreateCallSegmentAssociationArg {PARAMETERS-BOUND : bound} ::= SEQUENCE {
-		extensions				[0] SEQUENCE SIZE {1..bound.&numOfExtensions) OF ExtensionField {bound}
-																							OPTIONAL,
+		extensions [0] SEQUENCE SIZE (1..bound.&numOfExtensions)
+		               OF ExtensionField {bound} OPTIONAL,
 		...
-		}
+	}
 	CreateCallSegmentAssociationResult {PARAMETERS-BOUND : bound} ::= SEQUENCE {
 		newCallSegmentAssociation	[0] CSAID {bound},
-		extensions					[1] SEQUENCE SIZE {1..bound.&numOfExtensions) OF 
+		extensions					[1] SEQUENCE SIZE (1..bound.&numOfExtensions) OF 
 																	ExtensionField {bound}	OPTIONAL,
 		...
 		}
