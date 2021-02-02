@@ -387,7 +387,7 @@ DEFINITIONS ::= BEGIN
 		IDENTIFIED BY	id-as-ssf-scfGenericAS}
 	GenericSSF-SCF-PDUs ::= TCMessage {{SsfToScfGenericInvokable},
 				{SsfToScfGenericReturnable}}
-	SsfScfGenericInvokable OPERATION ::= {
+	SsfToScfGenericInvokable OPERATION ::= {
 				activityTest |
 				applyCharging {networkSpecificBoundSet} |
 				applyChargingReport {networkSpecificBoundSet} |
@@ -428,7 +428,7 @@ DEFINITIONS ::= BEGIN
 				specializedResourceReport |
 				promptAndReceiveMessage {networkSpecificBoundSet}
 				}
-	SsfScfGenericReturnable OPERATION ::= {
+	SsfToScfGenericReturnable OPERATION ::= {
 				activityTest |
 				applyCharging {networkSpecificBoundSet} |
 				applyChargingReport {networkSpecificBoundSet} |
@@ -515,7 +515,7 @@ DEFINITIONS ::= BEGIN
 		GenericSCF-SSF-PDUs
 		IDENTIFIED BY	id-as-scf-ssfGenericAS}
 	GenericSCF-SSF-PDUs ::= TCMessage {{ScfToSsfGenericInvokable}, {ScfToSsfGenericReturnable}}
-	ScfSsfGenericInvokable OPERATION ::= {
+	ScfToSsfGenericInvokable OPERATION ::= {
 				activityTest |
 				applyCharging {networkSpecificBoundSet}|
 				applyChargingReport {networkSpecificBoundSet}|
