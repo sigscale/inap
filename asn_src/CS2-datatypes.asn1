@@ -252,7 +252,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 		eventTypeCharging		[0] EventTypeCharging {bound},
 		monitorMode				[1] MonitorMode,
 		legID					[2] LegID			OPTIONAL,
-		eventTypeTariff			[50[JMM1]] EventTypeTariff		OPTIONAL
+		eventTypeTariff			[50] EventTypeTariff		OPTIONAL
 		...
 		}
 	-- This parameter indicates the charging event type and corresponding
