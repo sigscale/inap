@@ -2,14 +2,14 @@ CS2-SDF-BasicAccessControl {itu-t(0) recommendation(0) q(17) 1228 module(0) sdfB
 
 DEFINITIONS ::= BEGIN
 -- EXPORTS All --
--- The types and values defined in this module are exported for use in the other ASN.1 modules 
+-- The types and values defined in this module are exported for use in the other ASN.1 modules
 -- contained within the Directory Specifications, and for the use of other applications which will
 -- use them to access Directory services. Other applications may use them for their own purposes,
 -- but this will not constrainextensions and modifications needed to maintain or improve the
 -- Directory service.
 
 	IMPORTS
-		informationFramework, upperBounds, selectedAttributeTypes, basicAccessControl, directoryAbstractService 
+		informationFramework, upperBounds, selectedAttributeTypes, basicAccessControl, directoryAbstractService
 	FROM UsefulDefinitions {joint-iso-itu-t(2) ds(5) module(1) usefulDefinitions(0) 3}
 		ATTRIBUTE, AttributeType, AttributeTypeAndValue, SubtreeSpecification, ContextAssertion
 	FROM InformationFramework informationFramework
@@ -24,7 +24,7 @@ DEFINITIONS ::= BEGIN
 		Filter
 	FROM DirectoryAbstractService directoryAbstractService
 		NameAndOptionalUID, directoryStringFirstComponentMatch, DirectoryString{}
-	FROM SelectedAttributeTypes selectedAttributeTypes 
+	FROM SelectedAttributeTypes selectedAttributeTypes
 		MaxValueCount, RestrictedValue, AuthenticationLevel, Precedence
 	FROM BasicAccessControl basicAccessControl;
 
@@ -65,24 +65,24 @@ DEFINITIONS ::= BEGIN
 		name		[2]	SET OF NameAndOptionalUID OPTIONAL,
 		userGroup	[3]	SET OF NameAndOptionalUID OPTIONAL,
 						-- dn component must be the name of an
-						-- entry of GroupOfUniqueNames 
+						-- entry of GroupOfUniqueNames
 		subtree	[4]	SET OF SubtreeSpecification OPTIONAL,
 		...}
 	ItemPermission			::=	SEQUENCE {
-		precedence			Precedence OPTIONAL, 
+		precedence			Precedence OPTIONAL,
 							-- defaults to precedence in ACIItem --
 		userClasses			UserClasses,
 		grantsAndDenials	GrantsAndDenials,
 		...}
 	UserPermission			::=	SEQUENCE {
-		precedence			Precedence OPTIONAL, 
+		precedence			Precedence OPTIONAL,
 							-- defaults to precedence in ACIItem
 		protectedItems		ProtectedItems,
 		grantsAndDenials	GrantsAndDenials,
 		...}
 	GrantsAndDenials			::=	BIT STRING {
-		-- permissions that may be used in conjunction with 
-		-- with any component of ProtectedItems 
+		-- permissions that may be used in conjunction with
+		-- with any component of ProtectedItems
 		grantAdd				(0),
 		denyAdd					(1),
 		grantDiscloseOnError	(2),
@@ -106,13 +106,13 @@ DEFINITIONS ::= BEGIN
 		grantReturnDN			(18),
 		denyReturnDN			(19),
 		-- permissions that may be used in conjunction
-		-- with any component, except entry, of ProtectedItems 
+		-- with any component, except entry, of ProtectedItems
 		grantCompare			(20),
 		denyCompare				(21),
 		grantFilterMatch		(22),
 		denyFilterMatch			(23),
 		-- permissions that may be used in conjunction
-		-- with entryMethod component of ProtectedItems 
+		-- with entryMethod component of ProtectedItems
 		grantExecuteMethod		(30),
 		denyExecuteMethod		(31)}
 

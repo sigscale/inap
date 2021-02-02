@@ -38,7 +38,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 		unknownLegID
 	FROM CS2-errortypes errortypes
 		activityTest,
-	-- Direction: SCF -> CUSF, Timer: Tat 
+	-- Direction: SCF -> CUSF, Timer: Tat
 	-- This operation is used to check for the continued existence of a relationship between the SCF
 	-- and CUSF. If the relationship is still in existence, then the CUSF will respond. If no reply is
 	-- received, then the SCF will assume that the CUSF has failed in some way and will take the
@@ -59,7 +59,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 	FROM CS2-SSF-SCF-ops-args
 			{itu-t(0) identified-organization(4) etsi(0) inDomain(1) in-network(1) cs2(20) modules(0) in-cs2-ssf-scf-ops-args (5) version1(0)}
 		classes, operationcodes, ros-InformationObjects, datatypes,errortypes
-	FROM CS2-object-identifiers 
+	FROM CS2-object-identifiers
 			{itu-t(0) identified-organization(4) etsi(0) inDomain(1) in-network(1) cs2(20) modules(0) in-cs2-object-identifiers(17) version1(0)};
 
 	connectAssociation  {PARAMETERS-BOUND : bound}  OPERATION	::= {
@@ -114,7 +114,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 		CODE			opcode-eventReportBCUSM
 		}
 	-- Direction: CUSF -> SCF, Timer: Terbce
-	-- This operation is used to notify the SCF of a call unrelated event previously requested by the 
+	-- This operation is used to notify the SCF of a call unrelated event previously requested by the
 	-- SCF in a RequestReportBCUSMEvent operation.
 
 	EventReportBCUSMArg  {PARAMETERS-BOUND : bound}::= SEQUENCE {
@@ -123,7 +123,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 		miscCallInfo					[2]	MiscCallInfo				DEFAULT {messageType request},
 		cUApplicationInd				[3]	CUApplicationInd				OPTIONAL,
 		legID							[4] LegID							OPTIONAL,
-		extensions						[5]	SEQUENCE SIZE(1..bound.&numOfExtensions) OF 
+		extensions						[5]	SEQUENCE SIZE(1..bound.&numOfExtensions) OF
 																	ExtensionField {bound}	OPTIONAL,
 		...
 		}
@@ -142,7 +142,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 		CODE			opcode-initialAssociationDP
 		}
 	-- Direction: CUSF -> SCF, Timer: Tiadp
-	-- This operation is used after detection of a TDP to initiate a call unrelated association with the 
+	-- This operation is used after detection of a TDP to initiate a call unrelated association with the
 	-- SCF.
 
 	InitialAssociationDPArg  {PARAMETERS-BOUND : bound}::= SEQUENCE {
@@ -175,8 +175,8 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 		CODE		opcode-initiateAssociation
 		}
 	-- Direction: SCF -> CUSF, Timer: Tia
-	-- This operation is used for allowing the SCF to initiate a call unrelated association with the 
-	-- user. The subsequent operations can be sent in the same TCAP message in the following order: 
+	-- This operation is used for allowing the SCF to initiate a call unrelated association with the
+	-- user. The subsequent operations can be sent in the same TCAP message in the following order:
 	-- 	- the RequestReportBCUSMEvent operation if an answer from the CUSF is expected
 
 	InitiateAssociationArg  {PARAMETERS-BOUND : bound}::= SEQUENCE {
@@ -192,10 +192,10 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 		ARGUMENT		ReleaseAssociationArg {bound}
 		RETURN RESULT	FALSE
 		ALWAYS RESPONDS	FALSE
-		CODE			opcode-releaseAssociation 
+		CODE			opcode-releaseAssociation
 		}
 	--  Direction: SCF -> CUSF, Timer: Trel
-	--  This operation is used to indicate to the CUSF to release the existing association between the  
+	--  This operation is used to indicate to the CUSF to release the existing association between the
 	--  user and the network, during the BCUSM suspended at a DP.
 
 	ReleaseAssociationArg  {PARAMETERS-BOUND : bound}::= Cause {bound}
@@ -211,7 +211,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 						unexpectedComponentSequence |
 						unexpectedDataValue |
 						unexpectedParameter}
-		CODE			opcode-requestReportBCUSMEvent 
+		CODE			opcode-requestReportBCUSMEvent
 		}
 	-- Direction: SCF -> CUSF, Timer: Trrbce
 	-- This operation is used to request the CUSF to monitor a BCUSM DP.

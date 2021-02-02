@@ -69,7 +69,7 @@ DEFINITIONS ::= BEGIN
 		opcode-disconnectLeg						Code ::= local: 90
 		opcode-mergeCallSegments					Code ::= local: 91
 		opcode-moveCallSegments						Code ::= local: 92
-		opcode-moveLeg								Code ::= local: 93 
+		opcode-moveLeg								Code ::= local: 93
 		opcode-splitLeg								Code ::= local: 95
 	-- Exception Inform Package
 		opcode-entityReleased						Code ::= local: 96

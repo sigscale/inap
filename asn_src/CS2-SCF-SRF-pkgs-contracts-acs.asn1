@@ -12,7 +12,7 @@ DEFINITIONS ::= BEGIN
 	FROM CS2-classes classes
 		ROS-OBJECT-CLASS, CONTRACT, OPERATION-PACKAGE, OPERATION
 	FROM Remote-Operations-Information-Objects ros-InformationObjects
-		TCMessage {} 
+		TCMessage {}
 	FROM TCAPMessages tc-Messages
 		APPLICATION-CONTEXT, dialogue-abstract-syntax
 	FROM TC-Notation-Extensions tc-NotationExtensions
@@ -42,17 +42,17 @@ DEFINITIONS ::= BEGIN
 	FROM CS2-object-identifiers
 			{itu-t(0) recommendation(0) q(17) 1228 modules(0) in-cs2-object-identifiers(17) version1(0)};
 
-	-- Application Contexts 
+	-- Application Contexts
 
 	srf-scf-ac APPLICATION-CONTEXT ::= {
 		CONTRACT					srf-scf-contract
 		DIALOGUE MODE				structured
 		TERMINATION					basic
-		ABSTRACT SYNTAXES			{dialogue-abstract-syntax | 
+		ABSTRACT SYNTAXES			{dialogue-abstract-syntax |
 									srf-scf-abstract-syntax}
 		APPLICATION CONTEXT NAME	id-ac-srf-scf}
 
-	-- Contracts 
+	-- Contracts
 
 	srf-scf-contract CONTRACT ::= {
 		CONNECTION					emptyConnectionPackage
@@ -81,7 +81,7 @@ DEFINITIONS ::= BEGIN
 	-- scriptControl package
 
 	scriptControlPackage {PARAMETERS-BOUND : bound} OPERATION-PACKAGE ::= {
-		CONSUMER INVOKES	{scriptClose {bound}| scriptRun {bound} | 
+		CONSUMER INVOKES	{scriptClose {bound}| scriptRun {bound} |
 							scriptInformation {bound}}
 		SUPPLIER INVOKES	{scriptEvent {bound}}
 		ID					id-package-scriptControl}
@@ -92,7 +92,7 @@ DEFINITIONS ::= BEGIN
 		CONSUMER INVOKES	{promptAndReceiveMessage {bound}}
 		ID					id-package-messageControl}
 
-	-- Abstract Syntaxes 
+	-- Abstract Syntaxes
 
 	srf-scf-abstract-syntax ABSTRACT-SYNTAX ::= {
 		BASIC-SRF-SCF-PDUs

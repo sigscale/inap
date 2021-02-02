@@ -1,18 +1,18 @@
-CS2-SCF-SCF-pkgs-contracts-acs {itu-t(0) revommendation(0) q(17) 1228 modules(0) in-cs2-scf-scf-pkgs-contracts-acs (14) version1(0)} 
+CS2-SCF-SCF-pkgs-contracts-acs {itu-t(0) revommendation(0) q(17) 1228 modules(0) in-cs2-scf-scf-pkgs-contracts-acs (14) version1(0)}
 
-DEFINITIONS  ::= BEGIN 
+DEFINITIONS  ::= BEGIN
 
 -- This module describes the operation-packages, contracts and application-contexts used
 -- over the SCF-SCF interface.
 
-	IMPORTS 
+	IMPORTS
 		PARAMETERS-BOUND,
 		networkSpecificBoundSet
 	FROM CS2-classes classes
 		ROS-OBJECT-CLASS, CONTRACT, OPERATION-PACKAGE, CONNECTION-PACKAGE, OPERATION
 	FROM Remote-Operations-Information-Objects ros-InformationObjects
 		Bind{}, Unbind{}
-	FROM Remote-Operations-Generic-ROS-PDUs ros-genericPDUs 
+	FROM Remote-Operations-Generic-ROS-PDUs ros-genericPDUs
 		TCMessage {}
 	FROM  TCAPMessages tc-Messages
 		APPLICATION-CONTEXT, dialogue-abstract-syntax
@@ -51,7 +51,7 @@ DEFINITIONS  ::= BEGIN
 		id-ac-distributedSCFSystemWith3seAC,
 		id-contract-scf-scf,
 		id-contract-dssp,
-		id-package-dsspConnection, 
+		id-package-dsspConnection,
 		id-package-scf-scfConnection,
 		id-package-handlingInformation,
 		id-package-notification,
@@ -63,28 +63,28 @@ DEFINITIONS  ::= BEGIN
 		id-as-distributedSCFSystemAS,
 		id-as-scf-scfBindingAS,
 		ds-UsefulDefinitions,
-		classes, 
+		classes,
 		tc-Messages, tc-NotationExtensions,
 		ros-InformationObjects, ros-genericPDUs,
 		scf-scf-Operations, scf-sdf-Protocol,
-		ssf-scf-Operations, ssf-scf-Protocol 
+		ssf-scf-Operations, ssf-scf-Protocol
 	FROM CS2-object-identifiers {itu-t(0) recommendation(0) q(17) 1228 modules(0) in-cs2-object-identifiers (17) version1(0)}
 		activityTest
 	FROM CS2-SSF-SCF-ops-args ssf-scf-Operations
 		activityTestPackage
 	FROM CS2-SSF-SCF-pkgs-contracts-acs ssf-scf-Protocol
 		inSESEAbstractSyntax
-	FROM CS2-SCF-SDF-Protocol scf-sdf-Protocol 
-		id-se-threewayse 
-	FROM ProtocolObjectIdentifiers protocolObjectIdentifiers 
-		protocolObjectIdentifiers 
-	FROM UsefulDefinitions ds-UsefulDefinitions; 
+	FROM CS2-SCF-SDF-Protocol scf-sdf-Protocol
+		id-se-threewayse
+	FROM ProtocolObjectIdentifiers protocolObjectIdentifiers
+		protocolObjectIdentifiers
+	FROM UsefulDefinitions ds-UsefulDefinitions;
 
 
-	-- Application Contexts -- 
+	-- Application Contexts --
 
 	scf-scfOperationsAC  APPLICATION-CONTEXT  ::= {
-		CONTRACT					scf-scfContract 
+		CONTRACT					scf-scfContract
 		DIALOGUE MODE				structured
 		TERMINATION					basic
 		ABSTRACT SYNTAXES			{dialogue-abstract-syntax |
@@ -104,10 +104,10 @@ DEFINITIONS  ::= BEGIN
 		}
 
 	scf-scfOperationsWith3seAC  APPLICATION-CONTEXT  ::= {
-		CONTRACT					scf-scfContract 
+		CONTRACT					scf-scfContract
 		DIALOGUE MODE				structured
 		TERMINATION					basic
-		ADDITIONAL ASE				{id-se-threewayse} 
+		ADDITIONAL ASE				{id-se-threewayse}
 		ABSTRACT SYNTAXES			{dialogue-abstract-syntax |
 									distributedSCFBindingAbstractSyntax |
 									scf-scfOperationsAbstractSyntax |
@@ -186,7 +186,7 @@ DEFINITIONS  ::= BEGIN
 
 	chargingInformationPackage  {PARAMETERS-BOUND : bound}   OPERATION-PACKAGE  ::= {
 		CONSUMER INVOKES	{establishChargingRecord {bound}}
-		SUPPLIER INVOKES	{confirmedReportChargingInformation{bound} | 
+		SUPPLIER INVOKES	{confirmedReportChargingInformation{bound} |
 							reportChargingInformation  {bound}
 							}
 		ID					id-package-chargingInformation}
@@ -231,27 +231,27 @@ DEFINITIONS  ::= BEGIN
 	BasicSCF-SCF-PDUs  ::= TCMessage {{SCF-SCF-Invokable}, {SCF-SCF-Returnable}}
 
 	SCF-SCF-Invokable {PARAMETERS-BOUND} OPERATION  ::= {
-								activityTest | 
-								establishChargingRecord {bound}| 
-								confirmedNotificationProvided {bound}| 
-								confirmedReportChargingInformation {bound} |  
-								handlingInformationRequest {bound}| 
-								handlingInformationResult {bound}| 
+								activityTest |
+								establishChargingRecord {bound}|
+								confirmedNotificationProvided {bound}|
+								confirmedReportChargingInformation {bound} |
+								handlingInformationRequest {bound}|
+								handlingInformationResult {bound}|
 								networkCapability {bound}|
 								notificationProvided {bound}|
-								provideUserInformation {bound}| 
-								reportChargingInformation {bound}| 
+								provideUserInformation {bound}|
+								reportChargingInformation {bound}|
 								requestNotification {bound}}
 
 	SCF-SCF-Returnable {PARAMETERS-BOUND}  OPERATION  ::= {
-								activityTest | 
-								establishChargingRecord {bound}| 
+								activityTest |
+								establishChargingRecord {bound}|
 								confirmedNotificationProvided {bound}|
-								confirmedReportChargingInformation {bound}| 
-								handlingInformationRequest {bound}| 
-								handlingInformationResult {bound}| 
+								confirmedReportChargingInformation {bound}|
+								handlingInformationRequest {bound}|
+								handlingInformationResult {bound}|
 								networkCapability {bound}|
-								provideUserInformation {bound}| 
+								provideUserInformation {bound}|
 								requestNotification {bound}}
 
 

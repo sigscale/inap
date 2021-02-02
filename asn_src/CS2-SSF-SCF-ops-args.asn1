@@ -13,7 +13,7 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 	FROM CS2-object-identifiers
 			{itu-t(0) identified-organization(4) etsi(0) inDomain(1) in-network(1) cs2(20) module(0) in-cs2-object-identifiers(17) version1(0)}
 		InvokeIdType
-	FROM TCAPMessages tc-Messages 
+	FROM TCAPMessages tc-Messages
 		AddOnChargingInformation,
 		ChargingTariffInformation,
 		ChargingMessageType
@@ -179,21 +179,21 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 
 	activateServiceFiltering {PARAMETERS-BOUND : bound} OPERATION ::= {
 		ARGUMENT		ActivateServiceFilteringArg {bound}
-		RETURN RESULT 	TRUE 
+		RETURN RESULT 	TRUE
 		ERRORS 			{missingParameter |
 						parameterOutOfRange |
 						systemFailure |
 						taskRefused |
 						unexpectedComponentSequence |
-						unexpectedParameter 
+						unexpectedParameter
 						}
-		CODE 			opcode-activateServiceFiltering 
+		CODE 			opcode-activateServiceFiltering
 		}
-	-- Direction: SCF -> SSF, Timer: Tasf 
-	-- When receiving this operation, the SSF handles calls to destination in a specified manner 
-	-- without sending queries for every detected call. It is used for example for providing 
-	-- televoting or mass calling services. Simple registration functionality (counters) and 
-	-- announcement control may be located at the SSF. The operation initializes the specified 
+	-- Direction: SCF -> SSF, Timer: Tasf
+	-- When receiving this operation, the SSF handles calls to destination in a specified manner
+	-- without sending queries for every detected call. It is used for example for providing
+	-- televoting or mass calling services. Simple registration functionality (counters) and
+	-- announcement control may be located at the SSF. The operation initializes the specified
 	-- counters in the SSF.
 
 	ActivateServiceFilteringArg {PARAMETERS-BOUND : bound} ::= SEQUENCE {
@@ -202,7 +202,7 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 		filteringTimeOut			[2] FilteringTimeOut,
 		filteringCriteria			[3] FilteringCriteria {bound},
 		startTime					[4] DateAndTime	OPTIONAL,
-		extensions					[5] SEQUENCE SIZE(1..bound.&numOfExtensions) OF 
+		extensions					[5] SEQUENCE SIZE(1..bound.&numOfExtensions) OF
 					ExtensionField {bound} OPTIONAL,
 		...
 		}
@@ -211,10 +211,10 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 		RETURN RESULT TRUE
 		CODE	opcode-activityTest
 		}
-	-- Direction: SCF -> SSF, Timer: Tat 
-	-- This operation is used to check for the continued existence of a relationship between the SCF 
-	-- and SSF. If the relationship is still in existence, then the SSF will respond. If no reply is 
-	-- received, then the SCF will assume that the SSF has failed in some way and will take the 
+	-- Direction: SCF -> SSF, Timer: Tat
+	-- This operation is used to check for the continued existence of a relationship between the SCF
+	-- and SSF. If the relationship is still in existence, then the SSF will respond. If no reply is
+	-- received, then the SCF will assume that the SSF has failed in some way and will take the
 	-- appropriate action.
 
 	applyCharging {PARAMETERS-BOUND : bound} OPERATION ::= {
@@ -223,7 +223,7 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 		ERRORS 			{missingParameter |
 						unexpectedComponentSequence |
 						unexpectedParameter |
-						unexpectedDataValue | 
+						unexpectedDataValue |
 						parameterOutOfRange |
 						systemFailure |
 						taskRefused|
@@ -231,7 +231,7 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 		CODE			opcode-applyCharging
 		}
 	-- Direction: SCF -> SSF, Timer: Tac
-	-- This operation is used for interacting from the SCF with the SSF charging mechanisms. 
+	-- This operation is used for interacting from the SCF with the SSF charging mechanisms.
 	-- The ApplyChargingReport operation provides the feedback from the SSF to the SCF.
 
 	ApplyChargingArg {PARAMETERS-BOUND : bound} ::= SEQUENCE {
@@ -239,7 +239,7 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 		sendCalculationToSCPIndication		[1]	BOOLEAN OPTIONAL,
 	-- This parameter, if present, shall be set to TRUE. The parameter is ingored if CS2 is used.
 		partyToCharge						[2] LegID	OPTIONAL,
-		extensions							[3] SEQUENCE SIZE (1..bound.&numOfExtensions) OF 
+		extensions							[3] SEQUENCE SIZE (1..bound.&numOfExtensions) OF
 																	ExtensionField {bound} 	OPTIONAL,
 		...
 		}
@@ -259,8 +259,8 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 						taskRefused}
 		CODE			opcode-applyChargingReport
 		}
-	-- Direction: SSF -> SCF, Timer: Tacr 
-	-- This operation is used by the SSF to report to the SCF the occurrence of a 
+	-- Direction: SSF -> SCF, Timer: Tacr
+	-- This operation is used by the SSF to report to the SCF the occurrence of a
 	-- specific charging event as requested by the SCF using the ApplyCharging operation.
 
 	ApplyChargingReportArg {PARAMETERS-BOUND : bound} ::= CallResult {bound}
@@ -279,8 +279,8 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 		}
 	-- Direction: SSF -> SCF or SRF -> SCF, Timer: Tari
 	-- This operation is used when there is an assist or a hand-off procedure and may be sent by the SSF
-	-- or SRF to the SCF. This operation is sent by the assisting SSF to SCF, when the initiating SSF 
-	-- has set up a connection to the SRF or to the assisting SSF as a result of receiving an 
+	-- or SRF to the SCF. This operation is sent by the assisting SSF to SCF, when the initiating SSF
+	-- has set up a connection to the SRF or to the assisting SSF as a result of receiving an
 	-- EstablishTemporaryConnection or Connect operation (in the case of hand-off) from the SCF.
 	-- Refer to clause 18 for a description of the procedures associated with this operation.
 
@@ -292,7 +292,7 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 																			OPTIONAL,
 		...
 		}
-	-- OPTIONAL denotes network operator specific use. The value of the correlationID may be the 
+	-- OPTIONAL denotes network operator specific use. The value of the correlationID may be the
 	-- Called Party Number supplied by the initiating SSF.
 
 	callGap {PARAMETERS-BOUND : bound} OPERATION ::= {
@@ -314,7 +314,7 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 																						 	OPTIONAL,
 		...
 		}
-	-- OPTIONAL denotes network operator optional. If gapTreatment is not present, the SSF will use 
+	-- OPTIONAL denotes network operator optional. If gapTreatment is not present, the SSF will use
 	-- a default treatment depending on network operator implementation.
 
 	callInformationReport {PARAMETERS-BOUND : bound} OPERATION ::= {
@@ -329,7 +329,7 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 
 	CallInformationReportArg {PARAMETERS-BOUND : bound} ::= SEQUENCE {
 		requestedInformationList	[0] RequestedInformationList {bound},
-		extensions					[2] SEQUENCE SIZE(1..bound.&numOfExtensions)	OF 
+		extensions					[2] SEQUENCE SIZE(1..bound.&numOfExtensions)	OF
 																	ExtensionField {bound} 	OPTIONAL,
 		legID						[3] LegID	OPTIONAL,
 		...
@@ -345,18 +345,18 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 						systemFailure |
 						taskRefused |
 						unexpectedComponentSequence |
-						unexpectedDataValue | 
+						unexpectedDataValue |
 						unexpectedParameter|
 						unknownLegID}
 		CODE			opcode-callInformationRequest
 		}
 	-- Direction: SCF -> SSF, Timer: Tcirq
-	-- This operation is used to request the SSF to record specific information about a single call and 
-	-- report it to the SCF (with a CallInformationReport operation). 
+	-- This operation is used to request the SSF to record specific information about a single call and
+	-- report it to the SCF (with a CallInformationReport operation).
 
 	CallInformationRequestArg {PARAMETERS-BOUND : bound}::= SEQUENCE {
 		requestedInformationTypeList	[0] RequestedInformationTypeList,
-		extensions						[2] SEQUENCE SIZE(1..bound.&numOfExtensions) OF 
+		extensions						[2] SEQUENCE SIZE(1..bound.&numOfExtensions) OF
 																	ExtensionField {bound} 	OPTIONAL,
 		legID							[3] LegID											OPTIONAL,
 		...
@@ -371,10 +371,10 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 						taskRefused}
 		CODE			opcode-cancel
 		}
-	-- Direction: SCF -> SSF, or SCF -> SRF, Timer: Tcan 
+	-- Direction: SCF -> SSF, or SCF -> SRF, Timer: Tcan
 	-- This operation cancels the correlated previous operation or all previous requests. The following
 	-- operations can be canceled: PlayAnnouncement, PromptAndCollectUserInformation,
-	-- PromptAndReceiveMessage. 
+	-- PromptAndReceiveMessage.
 
 	CancelArg {PARAMETERS-BOUND : bound}::= CHOICE {
 		invokeID			[0] InvokeID,
@@ -412,7 +412,7 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 		ARGUMENT		ConnectArg {bound}
 		RETURN RESULT	FALSE
 		ERRORS 			{missingParameter |
-						parameterOutOfRange | 
+						parameterOutOfRange |
 						systemFailure |
 						taskRefused |
 						unexpectedComponentSequence |
@@ -422,11 +422,11 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 		}
 	-- Direction: SCF -> SSF, Timer: Tcon
 	-- This operation is used to request the SSF to perform the call processing actions to route or
-	-- forward a call to a specified destination. To do so, the SSF may or may not use destination 
-	-- information from the calling party (e.g. dialed digits) and existing call setup information 
+	-- forward a call to a specified destination. To do so, the SSF may or may not use destination
+	-- information from the calling party (e.g. dialed digits) and existing call setup information
 	-- (e.g. route index to a list of trunk groups), depending on the information provided by the SCF.
-	-- 	- When address information is only included in the Connect operation, call processing resumes at 
-	--    the Analyzed_Information PIC in the O-BCSM. 
+	-- 	- When address information is only included in the Connect operation, call processing resumes at
+	--    the Analyzed_Information PIC in the O-BCSM.
 	-- 	- When address information and routing information is included, call processing resumes at the
 	--	  Select_Route PIC.
 
@@ -439,7 +439,7 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 		originalCalledPartyID			[6] OriginalCalledPartyID {bound}			OPTIONAL,
 		routeList						[7] RouteList {bound}						OPTIONAL,
 		scfID							[8] ScfID {bound}							OPTIONAL,
-		extensions	[10] SEQUENCE SIZE(1..bound.&numOfExtensions) OF 
+		extensions	[10] SEQUENCE SIZE(1..bound.&numOfExtensions) OF
 			    ExtensionField {bound} 	OPTIONAL,
 		carrier							[11] Carrier{bound}							OPTIONAL,
 		serviceInteractionIndicators	[26] ServiceInteractionIndicators {bound}	OPTIONAL,
@@ -476,7 +476,7 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 		CODE			opcode-connectToResource
 		}
 	-- Direction: SCF -> SSF, Timer: Tctr
-	-- This operation is used to connect a call from the SSP to the physical entity containing the SRF. 
+	-- This operation is used to connect a call from the SSP to the physical entity containing the SRF.
 	-- Refer to clause 18 for a description of the procedures associated with this operation.
 
 	ConnectToResourceArg {PARAMETERS-BOUND : bound} ::= SEQUENCE {
@@ -509,8 +509,8 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 		CODE			opcode-continue
 		}
 	-- Direction: SCF -> SSF, Timer: Tcue
-	-- This operation is used to request the SSF to proceed with call processing at the DP at which it 
-	-- previously suspended call processing to await SCF instructions (i.e. proceed to the next point 
+	-- This operation is used to request the SSF to proceed with call processing at the DP at which it
+	-- previously suspended call processing to await SCF instructions (i.e. proceed to the next point
 	-- in call in the BCSM). The SSF continues call processing without substituting new data from SCF.
 	-- This operation is not valid for a single call segment CSA with more than 2 legs or a multi call
 	--  segment CSA
@@ -527,8 +527,8 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 		}
 	-- Direction: SCF -> SSF, Timer: Tcwa
 	-- This operation is used to request the SSF to proceed with call processing at the DP a which it
-	-- previously suspended call processing to await SCF instructions. 
-	-- It is also used to provide additional service related information to a User 
+	-- previously suspended call processing to await SCF instructions.
+	-- It is also used to provide additional service related information to a User
 	-- (Called Party or Calling Party) whilst the call processing proceeds.
 
 	ContinueWithArgumentArg {PARAMETERS-BOUND : bound} ::= SEQUENCE {
@@ -558,7 +558,7 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 					unexpectedParameter}
 		CODE		opcode-createCallSegmentAssociation
 		}
-	-- Direction SCF -> SSF, Timer Tcsa 
+	-- Direction SCF -> SSF, Timer Tcsa
 	-- This operation is used to create a new CSA. The new CSA will not contain any Call Segments after
 	-- creation. The SSF is responsible for specifying a new CSA identifier for the created CSA which is
 	-- unique within the SSF.
@@ -570,7 +570,7 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 	}
 	CreateCallSegmentAssociationResult {PARAMETERS-BOUND : bound} ::= SEQUENCE {
 		newCallSegmentAssociation	[0] CSAID {bound},
-		extensions					[1] SEQUENCE SIZE (1..bound.&numOfExtensions) OF 
+		extensions					[1] SEQUENCE SIZE (1..bound.&numOfExtensions) OF
 																	ExtensionField {bound}	OPTIONAL,
 		...
 		}
@@ -601,8 +601,8 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 		}
 	-- Direction: SCF -> SSF, Timer: Tdfcwa
 	-- This operation is used to disconnect a forward temporary connection or a connection to a
-	-- resource. 
-	-- Refer to clause 18 for a description of the procedures associated with this operation. 
+	-- resource.
+	-- Refer to clause 18 for a description of the procedures associated with this operation.
 
 	DisconnectForwardConnectionWithArgumentArg {PARAMETERS-BOUND : bound}::= SEQUENCE {
 		partyToDisconnect	CHOICE {
@@ -629,7 +629,7 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 	--	This operation is issued by the SCF to release a specific leg associated with the call and
 	--  retain any other legs not specified in the DisconnectLeg. Any leg may be disconnected,
 	--  including the controlling leg, without completely releasing all legs.
-	--	Refer to clause 18 for a description of the procedures associated with this operation. 
+	--	Refer to clause 18 for a description of the procedures associated with this operation.
 
 	DisconnectLegArg {PARAMETERS-BOUND : bound} ::= SEQUENCE {
 		legToBeReleased	[0] LegID,
@@ -678,8 +678,8 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 		CODE		opcode-establishTemporaryConnection
 		}
 	-- Direction: SCF -> SSF, Timer: Tetc
-	-- This operation is used to create a connection to a resource for a limited period of time 
-	-- (e.g. to play an announcement, to collect user information); it implies the use of the assist 
+	-- This operation is used to create a connection to a resource for a limited period of time
+	-- (e.g. to play an announcement, to collect user information); it implies the use of the assist
 	-- procedure. Refer to clause 18 for a description of the procedures associated with this operation.
 
 	EstablishTemporaryConnectionArg {PARAMETERS-BOUND : bound} ::= SEQUENCE {
@@ -703,9 +703,9 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 		ALWAYS RESPONDS	FALSE
 		CODE			opcode-eventNotificationCharging
 		}
-	-- Direction: SSF -> SCF, Timer: Tenc 
-	-- This operation is used by the SSF to report to the SCF the occurence of a specific charging event 
-	-- type as previously requested by the SCF in a RequestNotificationChargingEvent operation. 
+	-- Direction: SSF -> SCF, Timer: Tenc
+	-- This operation is used by the SSF to report to the SCF the occurence of a specific charging event
+	-- type as previously requested by the SCF in a RequestNotificationChargingEvent operation.
 
 	EventNotificationChargingArg {PARAMETERS-BOUND : bound} ::= SEQUENCE {
 		eventTypeCharging					[0] EventTypeCharging {bound},
@@ -726,8 +726,8 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 		ALWAYS RESPONDS	FALSE
 		CODE			opcode-eventReportBCSM
 		}
-	-- Direction: SSF -> SCF, Timer: Terb 
-	-- This operation is used to notify the SCF of a call-related event (e.g. BCSM events such as busy 
+	-- Direction: SSF -> SCF, Timer: Terb
+	-- This operation is used to notify the SCF of a call-related event (e.g. BCSM events such as busy
 	-- or no answer) previously requested by the SCF in a RequestReportBCSMEvent operation.
 
 	EventReportBCSMArg {PARAMETERS-BOUND : bound} ::= SEQUENCE {
@@ -735,7 +735,7 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 		eventSpecificInformationBCSM	[2] EventSpecificInformationBCSM {bound}			OPTIONAL,
 		legID							[3] LegID											OPTIONAL,
 		miscCallInfo					[4] MiscCallInfo				DEFAULT {messageType request},
-		extensions						[5] SEQUENCE SIZE(1..bound.&numOfExtensions) OF 
+		extensions						[5] SEQUENCE SIZE(1..bound.&numOfExtensions) OF
 																	ExtensionField {bound} 	OPTIONAL,
 		...
 		}
@@ -750,12 +750,12 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 					unexpectedParameter}
 		CODE		opcode-furnishChargingInformation
 		}
-	-- Direction: SCF -> SSF, Timer: Tfci 
-	-- This operation is used to request the SSF to generate, register a call record or to include some 
+	-- Direction: SCF -> SSF, Timer: Tfci
+	-- This operation is used to request the SSF to generate, register a call record or to include some
 	-- information in the default call record.
 	-- The registered call record is intended for off line charging of the call.
 
-	FurnishChargingInformationArg {PARAMETERS-BOUND : bound} ::= FCIBillingChargingCharacteristics 
+	FurnishChargingInformationArg {PARAMETERS-BOUND : bound} ::= FCIBillingChargingCharacteristics
 																								{bound}
 
 	initialDP {PARAMETERS-BOUND : bound} OPERATION ::= {
@@ -771,7 +771,7 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 					unexpectedParameter}
 		CODE		opcode-initialDP
 		}
-	-- Direction: SSF -> SCF, Timer: Tidp 
+	-- Direction: SSF -> SCF, Timer: Tidp
 	-- This operation is used after a TDP to indicate request for service.
 
 	InitialDPArg {PARAMETERS-BOUND : bound} ::= SEQUENCE {
@@ -815,9 +815,9 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 		calledPartyBCDNumber				[56] CalledPartyBCDNumber						OPTIONAL,
 		...
 		}
-	-- OPTIONAL for iPSSPCapabilities, iPAvailable, cGEncountered, and miscCallInfo denotes network 
+	-- OPTIONAL for iPSSPCapabilities, iPAvailable, cGEncountered, and miscCallInfo denotes network
 	-- operator specific use.
-	-- OPTIONAL for callingPartyNumber, and callingPartysCategory refer to clause 18 for the trigger 
+	-- OPTIONAL for callingPartyNumber, and callingPartysCategory refer to clause 18 for the trigger
 	-- detection point processing rules to specify when these parameters are included in the message.
 
 	initiateCallAttempt {PARAMETERS-BOUND : bound} OPERATION ::= {
@@ -832,9 +832,9 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 					unexpectedParameter}
 		CODE		opcode-initiateCallAttempt
 		}
-	-- Direction: SCF -> SSF, Timer: Tica 
-	-- This operation is used to request the SSF to create a new call to one call party using address 
-	-- information provided by the SCF. 
+	-- Direction: SCF -> SSF, Timer: Tica
+	-- This operation is used to request the SSF to create a new call to one call party using address
+	-- information provided by the SCF.
 
 	InitiateCallAttemptArg {PARAMETERS-BOUND : bound} ::= SEQUENCE {
 		destinationRoutingAddress		[0] DestinationRoutingAddress {bound},
@@ -865,7 +865,7 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 					unexpectedComponentSequence |
 					unexpectedDataValue |
 					unexpectedParameter}
-		CODE		opcode-manageTriggerData 
+		CODE		opcode-manageTriggerData
 		}
 	-- Direction: SCF -> SSF, Class 1, Timer: Tmtd
 	-- This operation is used to activate, deactivate or retrieve
@@ -897,10 +897,10 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 					unexpectedComponentSequence |
 					unexpectedDataValue |
 					unexpectedParameter}
-		CODE		opcode-mergeCallSegments 
+		CODE		opcode-mergeCallSegments
 		}
 	--	Direction: SCF -> SSF. Timer: T mc
-	--	This operation is issued by the SCF to merge two associated CSs with a single controlling 
+	--	This operation is issued by the SCF to merge two associated CSs with a single controlling
 	--  leg into one CS with that controlling leg.
 	--	For additional information on this operation, refer to Q.1224.
 
@@ -924,11 +924,11 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 					unknownLegID}
 		CODE		opcode-moveCallSegments
 		}
-	-- Direction: SCF -> SSF, Timer Tmcs 
+	-- Direction: SCF -> SSF, Timer Tmcs
 	-- This operation moves a CS from the source CSA to the target CSA
 
 	MoveCallSegmentsArg {PARAMETERS-BOUND : bound} ::= SEQUENCE {
-		targetCallSegmentAssociation	[0] CSAID {bound}, 
+		targetCallSegmentAssociation	[0] CSAID {bound},
 		callSegments					[1] SEQUENCE SIZE (1..bound.&numOfCSs) OF SEQUENCE {
 			sourceCallSegment			[0] CallSegmentID {bound}	DEFAULT initialCallSegment,
 			newCallSegment				[1] CallSegmentID {bound}
@@ -937,7 +937,7 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 								sourceLeg	[0] LegID,
 								newLeg		[1] LegID
 			},
-		extensions						[3] SEQUENCE SIZE (1..bound.&numOfExtensions) 
+		extensions						[3] SEQUENCE SIZE (1..bound.&numOfExtensions)
 															OF ExtensionField {bound}	OPTIONAL,
 		...
 		}
@@ -954,28 +954,28 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 		CODE		opcode-moveLeg
 		}
 	-- Direction: SCF ->SSF, Timer: T ml
-	-- This operation is issued by the SCF to move a leg from one CS to another with which it is 
+	-- This operation is issued by the SCF to move a leg from one CS to another with which it is
 	-- associated.
 	MoveLegArg {PARAMETERS-BOUND : bound} ::=SEQUENCE {
 		legIDToMove						[0] LegID,
 		targetCallSegment				[1] CallSegmentID {bound} 						DEFAULT 1,
-		extensions						[2] SEQUENCE SIZE (1..bound.&numOfExtensions) OF 
+		extensions						[2] SEQUENCE SIZE (1..bound.&numOfExtensions) OF
 																ExtensionField {bound}	OPTIONAL,
 		...
 		}
-	-- For the OPTIONAL parameters, refer to clause 18 for the trigger 
-	-- detection point processing rules to specify when these parameters are 
+	-- For the OPTIONAL parameters, refer to clause 18 for the trigger
+	-- detection point processing rules to specify when these parameters are
 	-- included in the message.
 
 	releaseCall {PARAMETERS-BOUND : bound} OPERATION ::= {
 		ARGUMENT		ReleaseCallArg {bound}
 		RETURN RESULT	FALSE
 		ALWAYS RESPONDS	FALSE
-		CODE			opcode-releaseCall 
+		CODE			opcode-releaseCall
 		}
-	-- Direction: SCF -> SSF, Timer: Trc 
-	-- This operation is used to tear down an existing call at any phase of the call for all parties 
-	-- involved in the call. 
+	-- Direction: SCF -> SSF, Timer: Trc
+	-- This operation is used to tear down an existing call at any phase of the call for all parties
+	-- involved in the call.
 
 	ReleaseCallArg {PARAMETERS-BOUND : bound} ::= CHOICE {
 		initialCallSegment	Cause {bound},
@@ -995,11 +995,11 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 		ARGUMENT		ReportUTSIArg {bound}
 		RETURN RESULT	FALSE
 		ALWAYS RESPONDS	FALSE
-		CODE			opcode-reportUTSI 
+		CODE			opcode-reportUTSI
 		}
 	-- Direction: SSF -> SCF. Timer: Tru
 	-- This operation is issued by the SSF in the context of the USI feature. It is used to report
-	-- the receipt of a User to Service Information (UTSI) IE to the SCF. 
+	-- the receipt of a User to Service Information (UTSI) IE to the SCF.
 
 	ReportUTSIArg {PARAMETERS-BOUND : bound} ::= SEQUENCE {
 		uSIServiceIndicator				[0] USIServiceIndicator {bound},
@@ -1012,22 +1012,22 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 
 	requestNotificationChargingEvent {PARAMETERS-BOUND : bound} OPERATION ::= {
 		ARGUMENT		RequestNotificationChargingEventArg {bound}
-		RETURN RESULT	FALSE 
+		RETURN RESULT	FALSE
 		ERRORS 		{missingParameter |
 					parameterOutOfRange |
 					systemFailure |
 					taskRefused |
 					unexpectedComponentSequence |
 					unexpectedDataValue |
-					unexpectedParameter | 
+					unexpectedParameter |
 					unknownLegID}
-		CODE		opcode-requestNotificationChargingEvent 
+		CODE		opcode-requestNotificationChargingEvent
 		}
-	-- Direction: SCF->SSF, Timer: Trnc 
+	-- Direction: SCF->SSF, Timer: Trnc
 	-- This operation is used by the SCF to instruct the SSF on how to manage the charging events
-	-- which are received rom other FE's and not under control of the service logic instance. 
+	-- which are received rom other FE's and not under control of the service logic instance.
 
-	RequestNotificationChargingEventArg {PARAMETERS-BOUND : bound} ::= SEQUENCE 
+	RequestNotificationChargingEventArg {PARAMETERS-BOUND : bound} ::= SEQUENCE
 								SIZE(1..bound.&numOfChargingEvents) OF ChargingEvent {bound}
 
 	requestReportBCSMEvent {PARAMETERS-BOUND : bound} OPERATION ::= {
@@ -1039,17 +1039,17 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 						taskRefused |
 						unexpectedComponentSequence |
 						unexpectedDataValue |
-						unexpectedParameter | 
+						unexpectedParameter |
 						unknownLegID}
-		CODE			opcode-requestReportBCSMEvent 
+		CODE			opcode-requestReportBCSMEvent
 		}
 	-- Direction: SCF -> SSF, Timer: Trrb
 	-- This operation is used to request the SSF to monitor for a call-related event
-	-- (e.g. BCSM events such as busy or no answer), then send a notification back to the SCF when 
+	-- (e.g. BCSM events such as busy or no answer), then send a notification back to the SCF when
 	-- the event is detected.
 	-- NOTE:
-	-- 		 Every EDP must be explicitly armed by the SCF via a RequestReportBCSMEvent operation. No 
-	--		 implicit arming of EDPs at the SSF after reception of any operation (different from 
+	-- 		 Every EDP must be explicitly armed by the SCF via a RequestReportBCSMEvent operation. No
+	--		 implicit arming of EDPs at the SSF after reception of any operation (different from
 	--		 RequestReportBCSMEvent) from the SCF is allowed.
 
 	RequestReportBCSMEventArg {PARAMETERS-BOUND : bound} ::= SEQUENCE {
@@ -1067,19 +1067,19 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 						taskRefused |
 						unexpectedComponentSequence |
 						unexpectedDataValue |
-						unexpectedParameter | 
+						unexpectedParameter |
 						unknownLegID}
-		CODE 			opcode-requestReportUTSI 
+		CODE 			opcode-requestReportUTSI
 		}
 
 	-- Direction: SCF -> SSF. Timer: Trru
-	-- This operation is issued by the SCF in the context of the USI feature to request the SSF 
+	-- This operation is issued by the SCF in the context of the USI feature to request the SSF
 	-- to monitor for a User to Service Information (UTSI) information element, which are received from
 	-- a user.
 
 	RequestReportUTSIArg {PARAMETERS-BOUND : bound} ::= SEQUENCE {
 		requestedUTSIList	[0] RequestedUTSIList {bound},
-		extensions			[1] SEQUENCE SIZE(1..bound.&numOfExtensions) OF 
+		extensions			[1] SEQUENCE SIZE(1..bound.&numOfExtensions) OF
 																	ExtensionField {bound}	OPTIONAL,
 		legID				[2] LegID									DEFAULT	sendingSideID: leg1,
 		...
@@ -1096,13 +1096,13 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 						unexpectedParameter}
 		CODE			opcode-resetTimer
 		}
-	-- Direction: SCF->SSF, Timer: Trt 
+	-- Direction: SCF->SSF, Timer: Trt
 	-- This operation is used to request the SSF to refresh an application timer in the SSF.
 
 	ResetTimerArg {PARAMETERS-BOUND : bound} ::= SEQUENCE {
 		timerID			[0] TimerID	DEFAULT tssf,
 		timervalue		[1] TimerValue,
-		extensions		[2] SEQUENCE SIZE(1..bound.&numOfExtensions) OF 
+		extensions		[2] SEQUENCE SIZE(1..bound.&numOfExtensions) OF
 																	ExtensionField {bound} 	OPTIONAL,
 		callSegmentID	[3] CallSegmentID {bound}											OPTIONAL,
 		...
@@ -1118,9 +1118,9 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 						taskRefused |
 						unexpectedDataValue |
 						unknownLegID}
-		CODE			opcode-sendChargingInformation 
+		CODE			opcode-sendChargingInformation
 		}
-	-- Direction: SCF -> SSF, Timer: Tsci 
+	-- Direction: SCF -> SSF, Timer: Tsci
 	-- This operation is used to instruct the SSF on the charging information to send by the SSF.
 	-- The charging information can either be sent back by means of signalling or internal
 	-- if the SSF is located in the local exchange. In the local exchange
@@ -1146,10 +1146,10 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 						systemFailure |
 						taskRefused |
 						unknownLegID}
-		CODE			opcode-sendSTUI 
+		CODE			opcode-sendSTUI
 		}
 	-- Direction: SCF -> SSF. Timer: Tss
-	-- This operation is issued by the SCF in the context of the USI feature. It is used to request the 
+	-- This operation is issued by the SCF in the context of the USI feature. It is used to request the
 	-- SSF to send a Service to User Information (STUI) information element to the indicated user.
 
 	SendSTUIArg {PARAMETERS-BOUND : bound}::= SEQUENCE {
@@ -1165,10 +1165,10 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 		ARGUMENT		ServiceFilteringResponseArg {bound}
 		RETURN RESULT	FALSE
 		ALWAYS RESPONDS	FALSE
-		CODE			opcode-serviceFilteringResponse 
-		} 
-	-- Direction: SSF->SCF, Timer: Tsfr 
-	-- This operation is used to send back to the SCF the values of counters specified in a previous 
+		CODE			opcode-serviceFilteringResponse
+		}
+	-- Direction: SSF->SCF, Timer: Tsfr
+	-- This operation is used to send back to the SCF the values of counters specified in a previous
 	-- ActivateServiceFiltering operation
 
 	ServiceFilteringResponseArg {PARAMETERS-BOUND : bound}::= SEQUENCE {
@@ -1191,7 +1191,7 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 				taskRefused |
 				unknownLegID
 				}
-		CODE	opcode-splitLeg 
+		CODE	opcode-splitLeg
 		}
 	-- Direction: SCF -> SSF. Timer: T sl
 	-- This operation is issued by the SCF to separate one joined leg from a multi-way connection

@@ -26,7 +26,7 @@ DEFINITIONS ::= BEGIN
 		errcode-unknownLegID							Code ::= local: 17
 		errcode-unknownResource						Code ::= local: 18
 
-	-- Error codes for the new IN CS2 error types 
+	-- Error codes for the new IN CS2 error types
 		errcode-scfReferral							Code ::= local: 21
 		errcode-scfTaskRefused						Code ::= local: 22
 		errcode-chainingRefused						Code ::= local: 23

@@ -29,10 +29,10 @@ DEFINITIONS ::= BEGIN
 		datatypes
 	FROM CS2-object-identifiers
 			{itu-t(0) identified-organization(4) etsi(0) inDomain(1) in-network(1) cs2(20) modules(0) in-cs2-object-identifiers (17) version1(0)}
-		inCs2AssistHandoffssfToScf, 
-		inCs2ScfToSsfGeneric, 
-		inCs2ScfToSsfTrafficManagement, 
-		inCs2SsfToScfGeneric, 
+		inCs2AssistHandoffssfToScf,
+		inCs2ScfToSsfGeneric,
+		inCs2ScfToSsfTrafficManagement,
+		inCs2SsfToScfGeneric,
 		inCs2SsfToScfServiceManagement
 	FROM CS2-SSF-SCF-pkgs-contracts-acs ssf-scf-Protocol
 	--	cusf-scf-contract,
@@ -47,7 +47,7 @@ DEFINITIONS ::= BEGIN
 	-- FROM CS2-SCF-SDF-Protocol scf-sdf-Protocol
 	--	CriticalityType
 	--FROM CS2-SCF-SDF-Protocol datatypes;
-	
+
 	ssf ROS-OBJECT-CLASS ::= {
 		INITIATES {
 			inCs2SsfToScfGeneric
@@ -61,7 +61,7 @@ DEFINITIONS ::= BEGIN
 		}
 		ID			id-rosObject-ssf
 	}
-	
+
 	srf ROS-OBJECT-CLASS ::= {
 		INITIATES {
 			srf-scf-contract
@@ -76,7 +76,7 @@ DEFINITIONS ::= BEGIN
 	--	BOTH		{dsspContract}
 	--	ID			id-rosObject-dssp
 	--	}
-	
+
 	scf ROS-OBJECT-CLASS ::= {
 		INITIATES {
 			inCs2ScfToSsfGeneric
@@ -105,7 +105,7 @@ DEFINITIONS ::= BEGIN
 		}
 		ID			id-rosObject-scf
 	}
-	
+
 	--EXTENSION ::= CLASS {
 	--	&ExtensionType,
 	--	&criticality	CriticalityType DEFAULT ignore,
@@ -156,7 +156,7 @@ DEFINITIONS ::= BEGIN
 		[WITH-RESULT 		&Result]
 		IDENTIFIED BY	 	&id
 	}
-	
+
 	firstScript UISCRIPT ::=
 		{
 		IDENTIFIED BY local: 1
@@ -166,7 +166,7 @@ DEFINITIONS ::= BEGIN
 	-- full set of User Interaction script -
 	}
 	-- SupportedUIScripts is the full set of User Interaction scripts.
-	
+
 	inEmptyUnbind OPERATION ::= {
 		RETURN RESULT	FALSE
 		ALWAYS RESPONDS	FALSE}
@@ -355,7 +355,7 @@ DEFINITIONS ::= BEGIN
 		MINIMUM-FOR-REASON							&minReasonLength
 		MAXIMUM-FOR-REASON							&maxReasonLength
 		MINIMUM-FOR-RECEIVED-INFORMATION			&minReceivedInformationLength
-		MAXIMUM-FOR-RECEIVED-INFORMATION			&maxReceivedInformationLength 
+		MAXIMUM-FOR-RECEIVED-INFORMATION			&maxReceivedInformationLength
 		MAXIMUM-FOR-RECORDED-MESSAGE-UNITS			&maxRecordedMessageUnits
 		MAXIMUM-FOR-RECORDING-TIME					&maxRecordingTime
 		MINIMUM-FOR-REDIRECTING-ID					&minRedirectingPartyIDLength
@@ -363,7 +363,7 @@ DEFINITIONS ::= BEGIN
 		MINIMUM-FOR-REGISTRATOR-IDENTIFIER			&minRegistratorIdentifierLength
 		MAXIMUM-FOR-REGISTRATOR-IDENTIFIER			&maxRegistratoridentifierLength
 		MINIMUM-FOR-REQUESTED-UTSI-NUM				&minRequestedUTSINum
-		MAXIMUM-FOR-REQUESTED-UTSI-NUM				&maxRequestedUTSINum 
+		MAXIMUM-FOR-REQUESTED-UTSI-NUM				&maxRequestedUTSINum
 		MINIMUM-FOR-ROUTE-LIST						&minRouteListLength
 		MAXIMUM-FOR-ROUTE-LIST						&maxRouteListLength
 		MINIMUM-FOR-SCF-ID							&minScfIDLength
@@ -395,13 +395,13 @@ DEFINITIONS ::= BEGIN
 		MAXIMUM-FOR-SCALING-FACTOR					&maxScalingFactor
 		MAXIMUM-FOR-SEGMENTS-PER-DATA-INTERVAL		&maxSegmentsPerDataInterval
 		MAXIMUM-FOR-TIME-PER-INTERVAL				&maxTimePerInterval
-		MAXIMUM-FOR-UNITS-PER-DATA-INTERVAL			&maxUnitsPerDataInterval 
+		MAXIMUM-FOR-UNITS-PER-DATA-INTERVAL			&maxUnitsPerDataInterval
 		MAXIMUM-FOR-UNITS-PER-INTERVAL				&maxUnitsPerInterval
 		MAXIMUM-FOR-UB-USER-CREDIT					&ub-maxUserCredit
 		MAXIMUM-FOR-UB-NB-CALL						&ub-nbCall
 	}
-	
-	
+
+
 	-- The following instance of the parameter bound is just an example
 	networkSpecificBoundSet PARAMETERS-BOUND ::=
 	{

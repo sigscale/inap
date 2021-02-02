@@ -1,6 +1,6 @@
 CS2-errortypes {itu-t(0) identified-organization(4) etsi(0) inDomain(1) in-network(1) cs2(20) modules(0) in-cs2-errortypes (1) version1(0)}
 -- This module contains the type definitions for the IN CS2 errors.
--- Where a parameter of type CHOICE is tagged with a specific tag value, the tag is automatically 
+-- Where a parameter of type CHOICE is tagged with a specific tag value, the tag is automatically
 -- replaced with an EXPLICIT tag of the same value.
 
 DEFINITIONS IMPLICIT TAGS ::= BEGIN
@@ -10,7 +10,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 	FROM CS2-object-identifiers
 			{itu-t(0) identified-organization(4) etsi(0) inDomain(1) in-network(1) cs2(20) modules(0) in-cs2-object-identifiers(17) version1(0)}
 		ERROR
-	FROM Remote-Operations-Information-Objects ros-InformationObjects 
+	FROM Remote-Operations-Information-Objects ros-InformationObjects
 		InvokeID,
 		UnavailableNetworkResource
 	FROM CS2-datatypes datatypes
@@ -21,7 +21,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 		errcode-improperCallerResponse,
 		errcode-missingCustomerRecord,
 		errcode-missingParameter,
-		errcode-parameterOutOfRange, 
+		errcode-parameterOutOfRange,
 		errcode-requestedInfoError,
 		errcode-systemFailure,
 		errcode-taskRefused,
@@ -108,8 +108,8 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 				}
 		CODE 	errcode-taskRefused
 		}
-	-- An entity normally capable of the task requested cannot or chooses not to perform the task at 
-	-- this time. This includes error situations like congestion and unobtainable address as used in 
+	-- An entity normally capable of the task requested cannot or chooses not to perform the task at
+	-- this time. This includes error situations like congestion and unobtainable address as used in
 	-- e.g. the connect operation.)
 
 	unavailableResource ERROR 	::= {
@@ -120,7 +120,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 	unexpectedComponentSequence ERROR ::= {
 		CODE 	errcode-unexpectedComponentSequence
 		}
-	-- An incorrect sequence of Components was received (e.g. "DisconnectForwardConnection" 
+	-- An incorrect sequence of Components was received (e.g. "DisconnectForwardConnection"
 	-- followed by "PlayAnnouncement").
 
 	unexpectedDataValue ERROR ::= {

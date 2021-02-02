@@ -733,7 +733,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 	}
 	-- interval is the time in seconds between each repeated announcement.
 	-- Duration is the total amount of time in seconds, including repetitions
-	-- and intervals. The end of announcement is either the end of duration 
+	-- and intervals. The end of announcement is either the end of duration
 	-- or numberOfRepetitions, whatever comes first. Duration with value 0
 	-- indicates infinite duration.
 

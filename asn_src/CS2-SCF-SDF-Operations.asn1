@@ -5,16 +5,16 @@ DEFINITIONS ::= BEGIN
 -- The types and values defined in this module are exported for use in the other ASN.1 modules
 -- contained within the IN Directory Specifications, and for the use of other applications which
 -- will use them to access IN Directory services. Other applications may use them for their own
--- purposes, but this will not constrain extensions and modifications needed to maintain or improve 
+-- purposes, but this will not constrain extensions and modifications needed to maintain or improve
 -- the Directory service.
 
 	IMPORTS
-		informationFramework, distributedOperations, authenticationFramework, upperBounds, 
-		directoryAbstractService, enhancedSecurity 
-	FROM UsefulDefinitions {joint-iso-itu-t(2) ds(5) module(1) usefulDefinitions(0) 3} 
-		CONTEXT, Context, DistinguishedName, Name 
+		informationFramework, distributedOperations, authenticationFramework, upperBounds,
+		directoryAbstractService, enhancedSecurity
+	FROM UsefulDefinitions {joint-iso-itu-t(2) ds(5) module(1) usefulDefinitions(0) 3}
+		CONTEXT, Context, DistinguishedName, Name
 	FROM InformationFramework informationFramework
-		OperationProgress, ReferenceType, Exclusions, AccessPoint, ContinuationReference 
+		OperationProgress, ReferenceType, Exclusions, AccessPoint, ContinuationReference
 	FROM DistributedOperations distributedOperations
 		CertificationPath, SIGNED {}, SIGNATURE {}, AlgorithmIdentifier
 	FROM AuthenticationFramework authenticationFramework
@@ -28,7 +28,7 @@ DEFINITIONS ::= BEGIN
 	FROM Remote-Operations-Information-Objects ros-InformationObjects
 		inEmptyUnbind
 	FROM CS2-classes {itu-t(0) recommendation(0) q(17) 1228 modules(0) in-cs2-classes(4) version1(0)}
-		METHOD 
+		METHOD
 	FROM CS2-SDF-InformationFramework sdf-InformationFramework
 		OPTIONALLY-PROTECTED{}, DIRQOP
 	FROM EnhancedSecurity enhancedSecurity
@@ -38,10 +38,10 @@ DEFINITIONS ::= BEGIN
 	execute OPERATION ::= {
 		ARGUMENT	ExecuteArgument
 		RESULT		ExecuteResult
-		ERRORS 		{attributeError | nameError | 
-					 serviceError | referral | 
-					 securityError | 
-					 updateError | executionError} 
+		ERRORS 		{attributeError | nameError |
+					 serviceError | referral |
+					 securityError |
+					 updateError | executionError}
 		CODE		id-opcode-execute}
 	ExecuteArgument ::=  OPTIONALLY-PROTECTED {
 		SET {
@@ -50,14 +50,14 @@ DEFINITIONS ::= BEGIN
 			input-assertions	[2] SEQUENCE OF SEQUENCE {
 									type 	METHOD.&InputAttributes.&id({SupportedMethods}{@method-id}),
 									values	SET OF
-						METHOD.&InputAttributes.&Type({SupportedMethods}{@method-id,@.type}) OPTIONAL, 
+						METHOD.&InputAttributes.&Type({SupportedMethods}{@method-id,@.type}) OPTIONAL,
 									valuesWithContext [0] SET OF SEQUENCE {
 										value	[0]
-					METHOD.&InputAttributes.&Type({SupportedMethods}{@method-id,@.type})	OPTIONAL, 
-									contextList [1] 	SET OF Context 
+					METHOD.&InputAttributes.&Type({SupportedMethods}{@method-id,@.type})	OPTIONAL,
+									contextList [1] 	SET OF Context
 									} OPTIONAL,
 									...
-								} OPTIONAL, 
+								} OPTIONAL,
 			specific-input		[3] METHOD.&SpecificInput({SupportedMethods}{@method-id}) OPTIONAL,
 			COMPONENTS OF CommonArguments,
 			...},
@@ -68,14 +68,14 @@ DEFINITIONS ::= BEGIN
 			method-id			[1] METHOD.&id({SupportedMethods}),
 			output-assertions	[2] SEQUENCE OF SEQUENCE {
 								type 	METHOD.&OutputAttributes.&id({SupportedMethods}{@method-id}),
-								values	SET OF METHOD.&OutputAttributes.&Type({SupportedMethods}{@method-id,@.type})OPTIONAL, 
+								values	SET OF METHOD.&OutputAttributes.&Type({SupportedMethods}{@method-id,@.type})OPTIONAL,
 								valuesWithContext [0] SET OF SEQUENCE {
-									value		[0] 	METHOD.&OutputAttributes.&Type({SupportedMethods}{@method-id,@.type})	OPTIONAL, 
-									contextList	[1] SET OF Context 
+									value		[0] 	METHOD.&OutputAttributes.&Type({SupportedMethods}{@method-id,@.type})	OPTIONAL,
+									contextList	[1] SET OF Context
 									} OPTIONAL,
 									...
-								} OPTIONAL, 
-			specific-output		[3] METHOD.&SpecificOutput({SupportedMethods}{@method-id}) OPTIONAL, 
+								} OPTIONAL,
+			specific-output		[3] METHOD.&SpecificOutput({SupportedMethods}{@method-id}) OPTIONAL,
 			COMPONENTS OF CommonResults,
 			...},
 		DIRQOP.&dapModifyEntryRes-QOP{@qop}}
@@ -92,10 +92,10 @@ DEFINITIONS ::= BEGIN
 							problem 	[0] 	ExecutionProblem,
 							COMPONENTS OF CommonResults},
 						DIRQOP.&dirErrors-QOP{@dirqop}}
-		CODE 			id-errcode-executionError} 
+		CODE 			id-errcode-executionError}
 	ExecutionProblem ::=  INTEGER {
 		missingInputValues	(1),
-		executionFailure	(2)} 
+		executionFailure	(2)}
 	-- object identifier assignment
 	-- error codes
 	id-errcode-executionError		Code::= local: 10

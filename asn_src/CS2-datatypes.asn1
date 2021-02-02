@@ -17,8 +17,8 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 	FROM Tarifing-DataTypes
 			{itu-t(0) identified-organization etsi(0) 1296 version1(1)};
 
-	AccountNumber ::= NumericString (SIZE (1..151)) 
-	AChBillingChargingCharacteristics {PARAMETERS-BOUND : bound} ::= OCTET STRING (SIZE 
+	AccountNumber ::= NumericString (SIZE (1..151))
+	AChBillingChargingCharacteristics {PARAMETERS-BOUND : bound} ::= OCTET STRING (SIZE
 	(bound.&minAChBillingChargingLength..bound.&maxAChBillingChargingLength))
 	-- The AChBillingChargingCharacteristics parameter specifies the charging related information
 	-- to be provided by the SSF and the conditions on which this information has to be reported
@@ -30,7 +30,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 	-- The tag of this parameter as defined by ETSI is never replaced.
 	-- Examples of charging related information to be provided by the SSF may be: bulk counter
 	-- values, costs, tariff change and time of charge, time stamps, durations, etc.
-	-- Examples of conditions on which the charging related information are to be reported may be: 
+	-- Examples of conditions on which the charging related information are to be reported may be:
 	-- threshold value reached, timer expiration, tariff change, end of connection configuration, etc.
 
 	ActionIndicator  ::= ENUMERATED {
@@ -49,7 +49,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 									isActive		(5),
 									isInactive		(6)
 									}
-	-- indicates the result of the operation ManageTriggerData 
+	-- indicates the result of the operation ManageTriggerData
 	-- activated: response of activate TDP
 	-- deactivated: response of deactivate TDP
 	-- alreadyActive: response of activate TDP
@@ -76,11 +76,11 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 		incomingCallBarring 						(16)
 		}
 	AdditionalCallingPartyNumber {PARAMETERS-BOUND : bound} 	::= Digits {bound}
-	-- Indicates the Additional Calling Party Number. 
+	-- Indicates the Additional Calling Party Number.
 	-- Refer to ITU-T Recommendation Q.763 for encoding.
 	AlertingPattern 										::= OCTET STRING (SIZE(3))
-	-- Indicates a specific pattern that is used to alert a subscriber 
-	-- (e.g. distinctive ringing, tones, etc.). 
+	-- Indicates a specific pattern that is used to alert a subscriber
+	-- (e.g. distinctive ringing, tones, etc.).
 	-- Only the trailing OCTET is used, the remaining OCTETS should be sent as NULL (zero)
 	-- The receiving side ignores the leading two OCTETS.
 	ApplicationTimer 										::=INTEGER (0..2047)
@@ -100,7 +100,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 	-- acceptCallCompletionServiceRequest	'xxxx xx01'B,
 	-- rejectCallCompletionServiceRequest	'xxxx xx10'B
 	-- network default is accept call completion service request
-					... 
+					...
 					}
 
 
@@ -134,9 +134,9 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 		bearerCap				[0] OCTET STRING (SIZE(2..bound.&maxBearerCapabilityLength)),
 		tmr						[1] OCTET STRING (SIZE(1))
 		}
-	-- Indicates the type of bearer capability connection to the user. For bearerCapability, either 
+	-- Indicates the type of bearer capability connection to the user. For bearerCapability, either
 	-- DSS1 (EN 300 403-1) or the ISUP User Service Information (ITU-T Recommendation Q.763)
-	-- encoding can be used. Refer 
+	-- encoding can be used. Refer
 	-- to the ITU-T Recommendation Q.763 Transmission Medium Requirement parameter for tmr encoding.
 
 	BothwayThroughConnectionInd 		::= ENUMERATED {
@@ -160,10 +160,10 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 	CalledPartyBCDNumber {PARAMETERS-BOUND : bound} 	::= OCTET STRING (SIZE(
 				bound.&minCalledPartyBCDNumberLength ..
 				bound.&maxCalledPartyBCDNumberLength))
-	-- Indicates the Called Party Number, including service selection information. Refer to GSM 04.08 
-	-- for encoding. This data type carries only the "type of number", "numbering plan 
-	-- identification" and "number digit" fields defined in GSM 04.08; 
-	-- it does not carry the "called party 
+	-- Indicates the Called Party Number, including service selection information. Refer to GSM 04.08
+	-- for encoding. This data type carries only the "type of number", "numbering plan
+	-- identification" and "number digit" fields defined in GSM 04.08;
+	-- it does not carry the "called party
 	-- BCD number IEI" or "length of called party BCD number contents".
 
 	CalledPartyNumber {PARAMETERS-BOUND : bound} 	::= OCTET STRING (SIZE
@@ -174,7 +174,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 	CallingPartyBusinessGroupID {PARAMETERS-BOUND : bound} ::= OCTET STRING(SIZE(
 				bound.&minCallingPartyBusinessGroupIDLength ..
 				bound.&maxCallingPartyBusinessGroupIDLength))
-	-- Indicates the business group of the calling party. The value of this octet string is network 
+	-- Indicates the business group of the calling party. The value of this octet string is network
 	-- operator specific.
 	CallingPartyNumber {PARAMETERS-BOUND : bound} 	::= OCTET STRING (SIZE (
 				bound.&minCallingPartyNumberLength..
@@ -186,14 +186,14 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 
 	-- Indicates the Calling Party Subaddress. Refer to EN 300 403-1 for encoding.
 	CallingPartysCategory 						::= OCTET STRING (SIZE(1))
-	-- Indicates the type of calling party (e.g. operator, payphone, ordinary subscriber). 
+	-- Indicates the type of calling party (e.g. operator, payphone, ordinary subscriber).
 	-- Refer to ITU-T Recommendation Q.763 for encoding.
 
 	CallRecord {PARAMETERS-BOUND : bound} 		::= SEQUENCE {
-		callDuration	 		[0] Duration, 
-		callingPartyNumber		[1] CallingPartyNumber {bound}, 
+		callDuration	 		[0] Duration,
+		callingPartyNumber		[1] CallingPartyNumber {bound},
 		calledPartyNumber		[2] CalledPartyNumber {bound},
-		... 
+		...
 		}
 	CallResult {PARAMETERS-BOUND : bound} 		::= OCTET STRING (SIZE (bound.&minCallResultLength ..
 				bound.&maxCallResultLength))
@@ -209,13 +209,13 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 	-- The tag of this parameter as defined by ETSI is never replaced.
 	-- Examples of charging related information to be provided by the SSF may be: bulk counter values,
 	-- costs, tariff change and time of change, time stamps, durations, etc.
-	-- Examples of conditions on which the charging related information are to be reported may be: 
+	-- Examples of conditions on which the charging related information are to be reported may be:
 	-- threshold value reached, timer expiration, tariff change, end of connection configuration, etc.
 	CallSegmentID {PARAMETERS-BOUND : bound} 	::= INTEGER (1..bound.&numOfCSs)
 	initialCallSegment INTEGER 					::= 1
-	-- the initial call segment represents the call segment that was there when the CSA was created, 
+	-- the initial call segment represents the call segment that was there when the CSA was created,
 	-- ie. the CS where
-	-- the trigger took place or the CS that was created by an InitateCallAttempt 
+	-- the trigger took place or the CS that was created by an InitateCallAttempt
 	-- within a TC-BEGIN message.
 
 	Carrier {PARAMETERS-BOUND : bound} 			::= OCTET STRING(SIZE(
@@ -226,7 +226,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 	-- 00000000	No indication
 	-- 00000001	Selected carrier code pre-subscribed and not input by calling party
 	-- 00000010	Selected carrier identification code pre-subscribed and input by calling party
-	-- 00000011	Selected carrier identification code pre-subscribed, 
+	-- 00000011	Selected carrier identification code pre-subscribed,
 	-- no indication of whether input by calling party.
 	-- 00000100 Selected carrier identification code not pre-subscribed and input by calling party
 	-- 00000101	}
@@ -237,10 +237,10 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 
 	Cause {PARAMETERS-BOUND : bound} 			::= OCTET STRING (SIZE (minCauseLength..
 			bound.&maxCauseLength))
-	-- Indicates the cause for interface related information. 
+	-- Indicates the cause for interface related information.
 	-- Refer to the ITU-T Recommendation Q.763 Cause parameter for encoding.
-	-- For the use of cause and location values refer to ITU-T Recommendation Q.850 
-	CauseValue 									::= OCTET STRING (SIZE (1)) 
+	-- For the use of cause and location values refer to ITU-T Recommendation Q.850
+	CauseValue 									::= OCTET STRING (SIZE (1))
 	--type extracted from Cause parameter in ITU-T Recommendation Q.763.
 	CGEncountered 								::= ENUMERATED {
 		noCGencountered			(0),
@@ -282,7 +282,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 		...
 		}
 	-- The use of voiceBack is network operator specific.
-	-- The endOfReplyDigit, cancelDigit, and startDigit parameters have been designated as OCTET STRING, 
+	-- The endOfReplyDigit, cancelDigit, and startDigit parameters have been designated as OCTET STRING,
 	-- and are to be encoded as BCD, one digit per octet only, contained
 	-- in the four least significant bits of each OCTET. The usage is service dependent.
 	CollectedInfo 								::= CHOICE {
@@ -314,7 +314,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 		}
 
 	CorrelationID {PARAMETERS-BOUND : bound} 	::= Digits {bound}
-	-- used by SCF for correlation with a previous operation. 
+	-- used by SCF for correlation with a previous operation.
 	-- Refer to clause 18 for a description of the procedures associated with this parameter.
 	CounterAndValue 							::= SEQUENCE {
 			counterID			[0] CounterID,
@@ -326,36 +326,36 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 	-- The counterIDs can be addressed by using the last digits of the dialed number.
 	CountersValue 								::= SEQUENCE SIZE(0..numOfCounters) OF CounterAndValue
 	Credit {PARAMETERS-BOUND : bound} 			::= CHOICE {
-			currency	CurrencyValue {bound}, 
+			currency	CurrencyValue {bound},
 			units		CreditUnit
 			}
-	CreditUnit 									::= INTEGER (0..maxCreditUnit) 
+	CreditUnit 									::= INTEGER (0..maxCreditUnit)
 	CriticalityType 							::= ENUMERATED {
 			ignore				(0),
 			abort				(1)
-			} 
+			}
 	CSAID {PARAMETERS-BOUND : bound} 			::= INTEGER (1..bound.&numOfCSAs)
 	-- Indicates the SSF CSA identifier
 	CUApplicationInd							::= CHOICE{
 		localValue				[0] INTEGER	,
 		global					[1] OBJECT IDENTIFIER
 		}
-	-- Parameter 'cUApplicationInd' identifies the triggered application. 
+	-- Parameter 'cUApplicationInd' identifies the triggered application.
 	-- Possible applications: CCBS, CCNR, Q.SIG, etc.
 	CurrencyID 									::= PrintableString (SIZE (3)) -- ISO 639 code
 	CurrencyValue {PARAMETERS-BOUND : bound} 	::= SEQUENCE {
 		currency	CurrencyID,
 		amount		INTEGER (0..bound.&maxAmount),
-		... 
+		...
 		}
 	CutAndPaste 								::= INTEGER (0..22)
 	-- Indicates the number of digits to be deleted.
 
 	DateAndTime 								::= OCTET STRING (SIZE(6))
 	-- Indicates, amongst others, the start time for activate service filtering. Coded as YYMMDDHHMMSS
-	-- with each digit coded BCD. 
+	-- with each digit coded BCD.
 	-- The first octet contains YY and the remaining items are sequenced following.
-	-- For example, 1993 September 30th, 12: 15: 01 would be encoded as: 
+	-- For example, 1993 September 30th, 12: 15: 01 would be encoded as:
 	-- Bits 				HGFE		DCBA
 	-- leading octet		3			9
 	-- 						9			0
@@ -367,39 +367,39 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 	CalledPartyNumber {bound}
 	-- Indicates the Called Party Number.
 	Digits {PARAMETERS-BOUND : bound} ::= OCTET STRING (SIZE (bound.&minDigitsLength..bound.&maxDigitsLength))
-	-- Indicates the address signalling digits. 
-	-- Refer to the ITU-T Recommendation Q.763 Generic Number & Generic Digits parameters for encoding. 
+	-- Indicates the address signalling digits.
+	-- Refer to the ITU-T Recommendation Q.763 Generic Number & Generic Digits parameters for encoding.
 	-- The coding of the subfields 'NumberQualifier' in Generic Number and 'TypeOfDigits' in
 	-- Generic Digits are irrelevant to the INAP;
 	-- the ASN.1 tags are sufficient to identify the parameter.
 	-- The ISUP format does not allow to exclude these subfields,
 	-- therefore the value is network operator specific.
-	-- The following parameters should use Generic Number: 
-	-- CorrelationID for AssistRequestInstructions, 
+	-- The following parameters should use Generic Number:
+	-- CorrelationID for AssistRequestInstructions,
 	-- AssistingSSPIPRoutingAddress for EstablishTemporaryConnection,
 	-- calledAddressValue for all occurrences,callingAddressValue for all occurrences.
-	-- The following parameters should use Generic Digits: prefix, all 
-	-- other CorrelationID occurrences, dialledNumber filtering criteria, 
+	-- The following parameters should use Generic Digits: prefix, all
+	-- other CorrelationID occurrences, dialledNumber filtering criteria,
 	-- callingLineID filtering criteria, lineID for ResourceID
-	-- type, digitResponse for ReceivedInformationArg, 
+	-- type, digitResponse for ReceivedInformationArg,
 	-- iNServiceControlLow / iNServiceControlHighfor MidCallInfoType,
 	-- iNServiceControlCode for MidCallInfo.
-	DisplayInformation {PARAMETERS-BOUND : bound} 		::= IA5String (SIZE 
+	DisplayInformation {PARAMETERS-BOUND : bound} 		::= IA5String (SIZE
 																(bound.&minDisplayInformationLength ..
 																 bound.&maxDisplayInformationLength))
 	-- Indicates the display information.
-	-- Delivery of DisplayInformation parameter to Private Networks cannot be guaranteed 
+	-- Delivery of DisplayInformation parameter to Private Networks cannot be guaranteed
 	-- due to signalling interworking problems, solutions are currently under study.
 	DpSpecificCriteria {PARAMETERS-BOUND : bound} 		::= CHOICE {
 		numberOfDigits			[0] NumberOfDigits,
 		applicationTimer		[1] ApplicationTimer,
 		midCallControlInfo		[2] MidCallControlInfo {bound}
 		}
-	 
-	-- The SCF may specify the number of digits to be collected by the SSF 
+
+	-- The SCF may specify the number of digits to be collected by the SSF
 	-- for the EventReportBCSMEvent event.
 	-- When all digits are collected, the SSF reports the event to the SCF.
-	-- The SCF may set a timer in the SSF for the No Answer event. If the user does not answer the call 
+	-- The SCF may set a timer in the SSF for the No Answer event. If the user does not answer the call
 	-- within the allotted time, the SSF reports the event to the SCF
 	Duration 											::= INTEGER (-2..86400)
 	-- Values are seconds
@@ -414,7 +414,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 	ErrorTreatment 										::= ENUMERATED {
 		reportErrorToScf		(0),
 		help					(1),
-		repeatPrompt			(2) 
+		repeatPrompt			(2)
 		}
 	-- reportErrorToScf means returning the "ImproperCallerResponse" error in the event of an error
 	-- condition during collection of user info.
@@ -476,35 +476,35 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 				 ...
 				},
 		oTermSeizedSpecificInfo	[13] SEQUENCE {
-				-- no specific info defined 
+				-- no specific info defined
 				 ...
 				},
 		oSuspended	[14] SEQUENCE {
-				-- no specific info defined 
+				-- no specific info defined
 				 ...
 				},
 		tSuspended	[15] SEQUENCE {
-				-- no specific info defined 
+				-- no specific info defined
 				 ...
 				},
 		origAttemptAuthorized [16] SEQUENCE {
-				-- no specific info defined 
+				-- no specific info defined
 				 ...
 				},
 		oReAnswer [17] SEQUENCE {
-				-- no specific info defined 
+				-- no specific info defined
 				 ...
 				},
 		tReAnswer [18] SEQUENCE {
-				-- no specific info defined 
+				-- no specific info defined
 				 ...
 				},
 		facilitySelectedAndAvailable [19] SEQUENCE {
-				-- no specific info defined 
+				-- no specific info defined
 				 ...
 				},
 		callAccepted [20] SEQUENCE {
-				-- no specific info defined 
+				-- no specific info defined
 				 ...
 				},
 		oAbandon [21] SEQUENCE {
@@ -516,15 +516,15 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 				...
 				},
 		terminationAttemptAuthorized [24] SEQUENCE {
-				-- no specific info defined 
+				-- no specific info defined
 				 ...
 				}
 		}
 
 	-- Indicates the call related information specific to the event.
-	-- The connectTime indicates the duration between the received answer indication 
+	-- The connectTime indicates the duration between the received answer indication
 	-- from the called party side
-	-- and the release of the connection for ODisconnect, OException, TDisconnect, or TException 
+	-- and the release of the connection for ODisconnect, OException, TDisconnect, or TException
 	-- or between
 	-- the received answer indication from the called party side and the time
 	-- of detection of the required mid call event.
@@ -556,7 +556,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 			...
 			}
 		}
-	EventSpecificInformationCharging {PARAMETERS-BOUND : bound} ::= OCTET STRING (SIZE 
+	EventSpecificInformationCharging {PARAMETERS-BOUND : bound} ::= OCTET STRING (SIZE
 								(bound.&minEventSpecificInformationChargingLength..
 				bound.&maxEventSpecificInformationChargingLength))
 	-- Its content is network signalling/operator specific.
@@ -565,7 +565,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 	-- information) is the BER encoding of the defined ASN.1 internal structure.
 	-- The tag of this parameter as defined by ETSI is never replaced.
 	-- Indicates the charging related information specific to the event.
-	-- An example data type definition for this parameter is given below: 
+	-- An example data type definition for this parameter is given below:
 	--		chargePulses					[0] Integer4,
 	--		chargeMessages					[1] OCTET STRING (SIZE (min..max))
 	EventTypeBCSM 										::= ENUMERATED {
@@ -597,7 +597,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 		callAccepted					(27)
 		}
 
-	-- Indicates the BCSM detection point event. 
+	-- Indicates the BCSM detection point event.
 	-- Refer to Q.1224 for additional information on the events.
 	-- Values origAttempt and termAttempt can only be used for TDPs
 
@@ -616,7 +616,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 	-- Encoding Rules (BER). In such a case the value of this paramter (after the first tag and length
 	-- information) is the BER encoding of the defined ASN.1 internal structure.
 	-- The tag of this parameter as defined by ETSI is never replaced.
-	-- An example data type definition for this parameter is given below: 
+	-- An example data type definition for this parameter is given below:
 	-- EventTypeCharging 								::= ENUMERATED {
 	-- 		chargePulses 				(0),
 	-- 		chargeMessages 				(1)
@@ -631,11 +631,11 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 	--	type	EXTENSION.&id ({SupportedExtensions {bound}}),
 				-- shall identify the value of an EXTENSION type
 	--	criticality	CriticalityType									DEFAULT ignore,
-	--	value					[1] EXTENSION.&ExtensionType 
+	--	value					[1] EXTENSION.&ExtensionType
 	--				({SupportedExtensions {bound}}{@type}),
 	--...
 	--	}
-	--This parameter indicates an extension of an argument data type. 
+	--This parameter indicates an extension of an argument data type.
 	-- Its content is network operator specific
 
 	FacilityGroup										::= CHOICE {
@@ -644,8 +644,8 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 		huntGroup				[2] OCTET STRING,
 		routeIndex				[3] OCTET STRING
 		}
-	-- Indicates the particular group of facilities to route the call. 
-	-- huntGroup and routeIndex are encoded as 
+	-- Indicates the particular group of facilities to route the call.
+	-- huntGroup and routeIndex are encoded as
 	-- network operator specific.
 
 	FCIBillingChargingCharacteristics {PARAMETERS-BOUND : bound} ::= CHOICE {
@@ -672,9 +672,9 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 			}
 		}
 
-	-- This parameter indicates the billing and/or charging characteristics. 
+	-- This parameter indicates the billing and/or charging characteristics.
 	-- Its content is network operator specific.
-	-- An example datatype definition for this parameter is given below: 
+	-- An example datatype definition for this parameter is given below:
 	-- FCIBillingChargingCharacteristics ::= CHOICE {
 	-- 	completeChargingrecord		[0] OCTET STRING (SIZE (min..max)),
 	--	correlationID				[1] CorrelationID,
@@ -694,20 +694,20 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 	...
 		}
 	-- If releaseCause is not present, the default value is the same as the ISUP cause value decimal 31.
-	-- If informationToSend is present, the call will be released after the end of the announcement 
+	-- If informationToSend is present, the call will be released after the end of the announcement
 	-- with the indicated or default releaseCause.
-	-- If maximumNumberOfCounters is not present, ServiceFilteringResponse will be sent with 
+	-- If maximumNumberOfCounters is not present, ServiceFilteringResponse will be sent with
 	-- CountersValue ::= SEQUENCE SIZE (0) OF CountersAndValue
 	FilteringCharacteristics 							::= CHOICE {
 		interval				[0] INTEGER (-1..32000),
 		numberOfCalls			[1] Integer4
 		}
-	-- Indicates the severity of the filtering and the point in time when 
-	-- the ServiceFilteringResponse is to be sent. 
+	-- Indicates the severity of the filtering and the point in time when
+	-- the ServiceFilteringResponse is to be sent.
 	-- If = interval, every interval of time the next call leads to an InitialDP
-	-- and a ServiceFilteringResponse is sent to 
+	-- and a ServiceFilteringResponse is sent to
 	-- the SCF. The interval is specified in seconds.
-	-- If = NumberOfCalls, every N calls the Nth call leads to an InitialDP 
+	-- If = NumberOfCalls, every N calls the Nth call leads to an InitialDP
 	-- and a ServiceFilteringResponse is sent to the SCF.
 	-- If ActivateServiceFiltering implies several counters - filtering on several dialled numbers -,
 	-- the numberOfCalls would include calls to all the dialled numbers.
@@ -728,7 +728,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 		duration				[0] Duration,
 		stopTime				[1] DateAndTime
 		}
-	-- Indicates the maximum duration of the filtering. 
+	-- Indicates the maximum duration of the filtering.
 	-- When the timer expires, a ServiceFilteringResponse is sent to the SCF.
 	ForwardCallIndicators 								::= OCTET STRING (SIZE(2))
 	-- Indicates the Forward Call Indicators. Refer to ITU-T Recommendation Q.763 for encoding
@@ -745,7 +745,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 		-- callDiversionAllowed		'xxxx xx01'B
 		-- callDiversionNotAllowed	'xxxx xx10'B
 		-- network default is Call Diversion allowed
-		callOfferingTreatmentIndicator	[3] OCTET STRING (SIZE(1))			OPTIONAL, 
+		callOfferingTreatmentIndicator	[3] OCTET STRING (SIZE(1))			OPTIONAL,
 		-- callOfferingNotAllowed	'xxxx xx01'B,
 		-- callOfferingAllowed		'xxxx xx10'B
 		-- network default is Call Offering not allowed
@@ -785,7 +785,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 		gapInterval				[1] Interval,
 	...
 		}
-	-- Indicates the gapping characteristics. 
+	-- Indicates the gapping characteristics.
 	-- No gapping when gapInterval equals 0, and gap all calls when gapInterval equals -1.
 	GapTreatment {PARAMETERS-BOUND : bound} 				::= CHOICE {
 		informationToSend		[0] InformationToSend {bound},
@@ -831,7 +831,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 		}
 	-- Interval is the time in seconds between each repeated announcement. Duration is the total
 	-- amount of time in seconds, including repetitions and intervals.
-	-- The end of announcement is either the end of duration or numberOfRepetitions, 
+	-- The end of announcement is either the end of duration or numberOfRepetitions,
 	-- whatever comes first.
 	-- duration with value 0 indicates infinite duration
 	InformationToRecord {PARAMETERS-BOUND : bound} 		::= SEQUENCE {
@@ -904,24 +904,24 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 				bound.&minISDNAccessRelatedInformationLength ..
 				bound.&maxISDNAccessRelatedInformationLength))
 
-	-- Indicates the destination user network interface related information. 
-	-- Refer to the ITU-T Recommendation Q.763 Access 
+	-- Indicates the destination user network interface related information.
+	-- Refer to the ITU-T Recommendation Q.763 Access
 	-- Transport parameter for encoding.
-	Language 											::= PrintableString (SIZE (3)) 
-	-- ISO 639 codes only; 
+	Language 											::= PrintableString (SIZE (3))
+	-- ISO 639 codes only;
 
 	LegID 												::= CHOICE {
 		sendingSideID			[0] LegType,
 		receivingSideID			[1] LegType
 		}
-	-- Indicates a reference to a specific party in a call. 
-	-- OPTIONAL denotes network operator specific use 
+	-- Indicates a reference to a specific party in a call.
+	-- OPTIONAL denotes network operator specific use
 	-- with a choice of unilateral ID assignment or bilateral ID assignment.
-	-- OPTIONAL for LegID also denotes the following: 
+	-- OPTIONAL for LegID also denotes the following:
 	-- when only one party exists in the call, this parameter is not needed (as no ambiguity exists);
-	-- when more than one party exists in the call, one of the following alternatives applies: 
+	-- when more than one party exists in the call, one of the following alternatives applies:
 	--	 1. LegID is present and indicates which party is concerned.
-	--	 2. LegID is not present and a default value is assumed (e.g. calling party in the case of the 
+	--	 2. LegID is not present and a default value is assumed (e.g. calling party in the case of the
 	--	  ApplyCharging operation).
 	-- Choice between these two alternatives is kept a network operator option.
 	LegType 											::= OCTET STRING (SIZE(1))
@@ -930,7 +930,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 	LocationNumber {PARAMETERS-BOUND : bound} 			::= OCTET STRING (SIZE (
 				bound.&minLocationNumberLength..
 				bound.&maxLocationNumberLength))
-	-- Indicates the Location Number for the calling party. 
+	-- Indicates the Location Number for the calling party.
 	-- Refer to ITU-T Recommendation Q.763 (White book) for encoding.
 	MailBoxID {PARAMETERS-BOUND : bound} 				::= OCTET STRING (SIZE(
 					bound.&minMailBoxIDLength..bound.&maxMailBoxIDLength))
@@ -969,7 +969,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 		}
 	-- OPTIONAL denotes network operator specific use.
 	MidCallControlInfo {PARAMETERS-BOUND : bound} 		::= SEQUENCE SIZE (
-		bound.&minMidCallControlInfoNum .. 
+		bound.&minMidCallControlInfoNum ..
 		bound.&maxMidCallControlInfoNum) OF SEQUENCE {
 			midCallInfoType		[0]	MidCallInfoType {bound},
 			midCallReportType	[1]	ENUMERATED {
@@ -1001,14 +1001,14 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 		transparent					(2)
 		}
 	-- Indicates the event is relayed and/or processed by the SSP.
-	-- If this parameter is used in the context of charging events, 
-	-- the following definitions apply for the handling of charging events: 
+	-- If this parameter is used in the context of charging events,
+	-- the following definitions apply for the handling of charging events:
 	-- Interrupted means that the SSF notifies the SCF of the charging event using
 	-- EventNotificationCharging, does not process the event but discard it.
 	-- NotifyAndContinue means that SSF notifies the SCF of the charging event using
-	-- EventNotificationCharging, and continues processing the event or signal without 
+	-- EventNotificationCharging, and continues processing the event or signal without
 	-- waiting for SCF instructions.
-	-- Transparent means that the SSF does not notify the SCF of the event. 
+	-- Transparent means that the SSF does not notify the SCF of the event.
 	-- This value is used to end the monitoring of a previously requested charging event.
 	-- Previously requested charging events are monitored
 	-- until ended by a transparent monitor mode, or until the end of the connection configuration.
@@ -1032,7 +1032,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 		noReplySpecificInfo			[2] SEQUENCE {...},
 		callReleaseSpecificInfo		[3] SEQUENCE {
 			releaseCause				[0] Cause {bound}				OPTIONAL,
-			timeStamp					[1] DateAndTime					OPTIONAL, 
+			timeStamp					[1] DateAndTime					OPTIONAL,
 			...},
 		ssInvocationSpecificInfo	[4] SEQUENCE {
 			invokedService				[0] InvokableService,
@@ -1058,19 +1058,19 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 	-- Indicates the number of digits to be collected
 
 	OCSIApplicacable 									::= NULL
-	-- Indicates that the OCSI, if present, shall be applied on the outgoing call leg created with 
+	-- Indicates that the OCSI, if present, shall be applied on the outgoing call leg created with
 	-- a Connect operation
 	OperationCode 										::= CHOICE {
 		globalCode			OBJECT IDENTIFIER,
 		local				INTEGER
 		}
-	-- contains the operation value, or error value (object identifier), or problem value of 
-	-- the FACILITY IE, and the argument, the result, or the reject part of the same FACILITY IE 
+	-- contains the operation value, or error value (object identifier), or problem value of
+	-- the FACILITY IE, and the argument, the result, or the reject part of the same FACILITY IE
 	-- that is received with DSS1 message from the user. (See Q.932 8.2.2 for encoring.)
 
 	OriginalCalledPartyID {PARAMETERS-BOUND : bound} 	::= OCTET STRING (SIZE(
-				bound.&minOriginalCalledPartyIDLength..bound.&maxOriginalCalledPartyIDLength)) 
-	-- Indicates the original called number. 
+				bound.&minOriginalCalledPartyIDLength..bound.&maxOriginalCalledPartyIDLength))
+	-- Indicates the original called number.
 	-- Refer to the ITU-T Recommendation Q.763 Original Called Number for encoding.
 	ProfileIdentifier {PARAMETERS-BOUND : bound}		::= CHOICE {
 		access					[0] CalledPartyNumber {bound},
@@ -1087,16 +1087,16 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 	-- information) is the BER encoding of the defined ASN.1 internal structure.
 	-- The tag of this parameter as defined by ETSI is never replaced.
 	ReceivedInformation {PARAMETERS-BOUND : bound} 		::= SEQUENCE SIZE (
-				bound.&minReceivedInformationLength.. bound.&maxReceivedInformationLength) OF IA5String 
+				bound.&minReceivedInformationLength.. bound.&maxReceivedInformationLength) OF IA5String
 	ReceivedStatus 										::=ENUMERATED {
 		messageComplete 		(0),
 		messageInterrupted 		(1),
 		messageTimeOut 			(2)
 		}
-	RecordedMessageID 									::= Integer4 
+	RecordedMessageID 									::= Integer4
 	RedirectingPartyID {PARAMETERS-BOUND : bound} 		::= OCTET STRING (SIZE (
 				bound.&minRedirectingPartyIDLength.. bound.&maxRedirectingPartyIDLength))
-	-- Indicates redirecting number. 
+	-- Indicates redirecting number.
 	-- Refer to the ITU-T Recommendation Q.763 Redirecting number for encoding.
 	RedirectionInformation 								::= OCTET STRING (SIZE(2))
 	-- Indicates redirection information. Refer to the ITU-T Recommendation Q.763 [20] Redirection Information for encoding.
@@ -1134,7 +1134,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 	-- The callAttemptElapsedTimeValue is specified in seconds. The unit for the
 	-- callConnectedElapsedTimeValue is 100 milliseconds
 	RequestedNotifications {PARAMETERS-BOUND : bound} 	::= SET OF CallConditions {bound}
-	RequestedType 										::= INTEGER (0 .. 127) 
+	RequestedType 										::= INTEGER (0 .. 127)
 	RequestedUTSI {PARAMETERS-BOUND : bound} 			::= SEQUENCE {
 		uSIServiceIndicator			[0] USIServiceIndicator {bound},
 		uSImonitorMode				[1] USIMonitorMode,
@@ -1150,22 +1150,22 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 	-- additional values are for further study
 		}
 	-- ResponseCondition is used to identify the reason why ServiceFilteringResponse operation is sent.
-	-- intermediateresponse identifies that service filtering is running and the interval time is 
-	-- expired and a call is received, or that service filtering is running and the threshold value 
+	-- intermediateresponse identifies that service filtering is running and the interval time is
+	-- expired and a call is received, or that service filtering is running and the threshold value
 	-- is reached.
 	-- lastResponse identifies that the duration time is expired and service filtering has been finished
 	-- or that the stop time is met and service filtering has been finished.
-	RouteList {PARAMETERS-BOUND : bound} 				::= SEQUENCE SIZE(1..3) OF OCTET STRING (SIZE 
+	RouteList {PARAMETERS-BOUND : bound} 				::= SEQUENCE SIZE(1..3) OF OCTET STRING (SIZE
 				(bound.&minRouteListLength..bound.&maxRouteListLength))
 	-- Indicates a list of trunk groups or a route index. See Q.1224 for additional information on this item.
 	RoutingAddress {PARAMETERS-BOUND : bound} 			::= CHOICE {
 		routingProhibited			[0] NULL,
 		destinationRoutingAddress	[1] DestinationRoutingAddress {bound}
 		}
-	ScfAddress {PARAMETERS-BOUND : bound} 				::= OCTET STRING (SIZE 
+	ScfAddress {PARAMETERS-BOUND : bound} 				::= OCTET STRING (SIZE
 				(bound.&minScfAddressLength..bound.&maxScfAddressLength))
-	-- ISDN address 
-	ScfID {PARAMETERS-BOUND : bound} 					::= OCTET STRING (SIZE 
+	-- ISDN address
+	ScfID {PARAMETERS-BOUND : bound} 					::= OCTET STRING (SIZE
 				(bound.&minScfIDLength..bound.&maxScfIDLength))
 	-- defined by network operator.
 	-- Indicates the SCF identity.
@@ -1184,7 +1184,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 	-- Encoding Rules (BER). In such a case the value of this paramter (after the first tag and length
 	-- information) is the BER encoding of the defined ASN.1 internal structure.
 	-- The tag of this parameter as defined by ETSI is never replaced.
-	-- An example datatype definition for this parameter is given below: 
+	-- An example datatype definition for this parameter is given below:
 	-- SCIBillingChargingCharacteristics				::= CHOICE {
 	-- 	chargeLevel				[0] OCTET STRING (SIZE (min..max),
 	-- 	chargePulses			[1] Integer4,
@@ -1193,7 +1193,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 	ServiceInteractionIndicators {PARAMETERS-BOUND : bound} ::= OCTET STRING (SIZE (
 								bound.&minServiceInteractionIndicatorsLength..
 								bound.&maxServiceInteractionIndicatorsLength))
-	-- Indicators which are exchanged between SSP and SCP to resolve interactions between 
+	-- Indicators which are exchanged between SSP and SCP to resolve interactions between
 	-- IN based services and network based services, respectively between different IN based services.
 	-- Its content is network signalling/operator specific.
 	-- The internal structure of this parameter can be defined using ASN.1 and the related Basic
@@ -1220,11 +1220,11 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 		allowCdINNoPresentationInd			[7] BOOLEAN								OPTIONAL,
 		-- applicable to CON, ICA, CWA
 		-- indicates whether the Number Presentation not allowed indicator of the ISUP
-		-- "called IN number" shall be set to presentation allowed (TRUE) or 
+		-- "called IN number" shall be set to presentation allowed (TRUE) or
 		-- presentation not allowed (FALSE)
 		userDialogueDurationInd				[8] BOOLEAN								DEFAULT TRUE,
 		-- applicable when interaction with the user is required, if the interaction
-		-- TRUE means the user interaction may last longer than 90 seconds. Otherwise the 
+		-- TRUE means the user interaction may last longer than 90 seconds. Otherwise the
 		-- indicator should be set to FALSE.
 		-- used for delaying ISUP T9 timer.
 		...
@@ -1277,8 +1277,8 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 		isdnNoDtmf									(4),
 		spare										(16)
 		}
-	-- Identifies the terminal type so that the SCF can specify, to the SRF, 
-	-- the appropriate type of capability 
+	-- Identifies the terminal type so that the SCF can specify, to the SRF,
+	-- the appropriate type of capability
 	-- (voice recognition, DTMF, display capability, etc.).
 	TimerID 												::= ENUMERATED {
 		tssf										(0)
@@ -1322,7 +1322,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 		}
 	USIInformation {PARAMETERS-BOUND : bound} 				::= OCTET STRING (SIZE (
 				bound.&minUSIInformationLength..bound.&maxUSIInformationLength))
-	-- Indicates the length of the USIInformation element, maxUSIInformationlength will depend on 
+	-- Indicates the length of the USIInformation element, maxUSIInformationlength will depend on
 	-- the constraints imposed by the network signalling used to transport the USI information.
 	-- Its content is network signalling/operator specific.
 	-- The internal structure of this parameter can be defined using ASN.1 and the related Basic
@@ -1334,7 +1334,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 		monitoringInactive				(1)
 		}
 
-	-- Indicates if the monitoring relationship for the specified UTSI IE should be 
+	-- Indicates if the monitoring relationship for the specified UTSI IE should be
 	-- activated or deactivated.
 
 	USIServiceIndicator {PARAMETERS-BOUND : bound} 			::= CHOICE{
@@ -1359,15 +1359,15 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 		}
 	-- Indicates the variable part of the message.
 	-- BCD coded variable parts are encoded as described in the examples below.
-	-- For example, time = 12: 15 would be encoded as: 
+	-- For example, time = 12: 15 would be encoded as:
 	--	Bits					HGFE 		DCBA
 	-- 	leading octet			2			1
 	--							5			1
-	-- date = 1993 September 30th would be encoded as: 
+	-- date = 1993 September 30th would be encoded as:
 	--	Bits					HGFE		DCBA
 	--	leading octet 			3			9
 	--							9			0
-	--							0			3 
+	--							0			3
 
 	-- The Definition of range of constants Follows
 	highLayerCompatibilityLength	INTEGER ::= 2

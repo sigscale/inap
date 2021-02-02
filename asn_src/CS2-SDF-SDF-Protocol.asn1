@@ -1,18 +1,18 @@
-CS2-SDF-SDF-Protocol {itu-t(0) recommendation(0) q(17) 1228 module(0) in-cs2-sdf-sdf-Protocol(18) version1(0)} 
+CS2-SDF-SDF-Protocol {itu-t(0) recommendation(0) q(17) 1228 module(0) in-cs2-sdf-sdf-Protocol(18) version1(0)}
 
-DEFINITIONS ::= BEGIN 
+DEFINITIONS ::= BEGIN
 -- EXPORTS All --
- 
+
 -- The types and values defined in this module are exported for use in the other ASN.1 modules
 -- contained within the Directory Specifications, and for the use of other applications which will
 -- use them to access Directory services. Other applications may use them for their own purposes,
 -- but this will not constrain extensions and modifications needed to maintain or improve the
--- Directory service. 
+-- Directory service.
 
-	IMPORTS 
-		distributedOperations, directoryShadowAbstractService, dsp, protocolObjectIdentifiers 
+	IMPORTS
+		distributedOperations, directoryShadowAbstractService, dsp, protocolObjectIdentifiers
 	FROM  UsefulDefinitions ds-UsefulDefinitions
-		ROS-OBJECT-CLASS, CONTRACT, OPERATION-PACKAGE, CONNECTION-PACKAGE, Code, OPERATION 
+		ROS-OBJECT-CLASS, CONTRACT, OPERATION-PACKAGE, CONNECTION-PACKAGE, Code, OPERATION
 	FROM Remote-Operations-Information-Objects ros-InformationObjects
 		Bind{}, Unbind{}
 	FROM Remote-Operations-Generic-ROS-PDUs ros-genericPDUs
@@ -20,38 +20,38 @@ DEFINITIONS ::= BEGIN
 	FROM TCAPMessages tc-Messages
 		APPLICATION-CONTEXT, dialogue-abstract-syntax
 	FROM TC-Notation-Extensions tc-NotationExtensions
-		dSABind, 
+		dSABind,
 		chainedSearch, chainedAddEntry, chainedRemoveEntry, chainedModifyEntry, chained{}
 	FROM DistributedOperations distributedOperations
-		dSAShadowBind, 
+		dSAShadowBind,
 		coordinateShadowUpdate, updateShadow, requestShadowUpdate
 	FROM DirectoryShadowAbstractService directoryShadowAbstractService
-		execute 
+		execute
 	FROM CS2-SCF-SDF-Operations scf-sdf-Operations
 		inEmptyUnbind
 	FROM CS2-classes
 			{itu-t(0) recommendation(0) q(17) 1228 modules(0) in-cs2-classes(4) version1(0)}
-		id-rosObject-dspDSA, id-rosObject-initiatingConsumerDSA, id-rosObject-respondingSupplierDSA, 
-		id-rosObject-respondingConsumerDSA, id-rosObject-initiatingSupplierDSA, 
+		id-rosObject-dspDSA, id-rosObject-initiatingConsumerDSA, id-rosObject-respondingSupplierDSA,
+		id-rosObject-respondingConsumerDSA, id-rosObject-initiatingSupplierDSA,
 		id-contract-indsp, id-contract-shadowConsumer, id-contract-shadowSupplier,
-		id-package-dspConnection, id-package-inchainedModify, id-package-inchainedSearch, 
-		id-package-chainedExecute, 
-		id-package-dispConnection, id-package-shadowConsumer, id-package-shadowSupplier, 
-		id-as-indirectorySystemAS, id-as-indirectoryDSABindingAS, id-as-indirectoryShadowAS, 
-		id-as-indsaShadowBindingAS, 
+		id-package-dspConnection, id-package-inchainedModify, id-package-inchainedSearch,
+		id-package-chainedExecute,
+		id-package-dispConnection, id-package-shadowConsumer, id-package-shadowSupplier,
+		id-as-indirectorySystemAS, id-as-indirectoryDSABindingAS, id-as-indirectoryShadowAS,
+		id-as-indsaShadowBindingAS,
 		id-ac-indirectorySystemAC, id-ac-inShadowSupplierInitiatedAC, id-ac-inShadowConsumerInitiatedAC,
 		id-ac-inShadowSupplierInitiatedWith3seAC,id-ac-inShadowConsumerInitiatedWith3seAC,
 		id-ac-indirectorySystemWith3seAC,
 		ds-UsefulDefinitions, ros-InformationObjects, ros-genericPDUs, tc-Messages,
-		tc-NotationExtensions, scf-sdf-Operations, scf-sdf-Protocol 
+		tc-NotationExtensions, scf-sdf-Operations, scf-sdf-Protocol
 	FROM CS2-object-identifiers
 			{itu-t(0) recommendation(0) q(17)  1228 module(0) in-cs2-object-identifiers(17) version1(0)}
 		inSESEAbstractSyntax
-	FROM CS2-SCF-SDF-Protocol scf-sdf-Protocol 
-		id-se-threewayse 
-	FROM ProtocolObjectIdentifiers protocolObjectIdentifiers 
-		dspContract 
-	FROM DirectorySystemProtocol dsp; 
+	FROM CS2-SCF-SDF-Protocol scf-sdf-Protocol
+		id-se-threewayse
+	FROM ProtocolObjectIdentifiers protocolObjectIdentifiers
+		dspContract
+	FROM DirectorySystemProtocol dsp;
 
 	dsp-dsa  ROS-OBJECT-CLASS ::= {
 		BOTH		{indspContract}
@@ -75,7 +75,7 @@ DEFINITIONS ::= BEGIN
 
 	indspContract  CONTRACT ::= {
 		CONNECTION		dspConnectionPackage
-		INITIATOR CONSUMER OF	{inchainedModifyPackage | inchainedSearchPackage | 
+		INITIATOR CONSUMER OF	{inchainedModifyPackage | inchainedSearchPackage |
 							   chainedExecutePackage}
 		ID				id-contract-indsp}
 
@@ -147,7 +147,7 @@ DEFINITIONS ::= BEGIN
 		unbind		Unbind {in-DSAUnbind}}
 
 	inDirectoryShadowAbstractSyntax ABSTRACT-SYNTAX ::= {
-		BasicDISP-PDUs 
+		BasicDISP-PDUs
 		IDENTIFIED BY		id-as-indirectoryShadowAS}
 
 	BasicDISP-PDUs ::= TCMessage {{DISP-Invokable}, {DISP-Returnable}}
@@ -165,7 +165,7 @@ DEFINITIONS ::= BEGIN
 		unbind		Unbind {in-DSAShadowUnbind}}
 
 	inDirectorySystemAC APPLICATION-CONTEXT ::= 	{
-		CONTRACT				indspContract 
+		CONTRACT				indspContract
 		DIALOGUE MODE			structured
 		TERMINATION				basic
 		ABSTRACT SYNTAXES		{dialogue-abstract-syntax |
@@ -174,13 +174,13 @@ DEFINITIONS ::= BEGIN
 		APPLICATION CONTEXT NAME id-ac-indirectorySystemAC}
 
 	inDirectorySystemWith3seAC APPLICATION-CONTEXT ::= 	{
-		CONTRACT				dspContract 
+		CONTRACT				dspContract
 		DIALOGUE MODE			structured
 		TERMINATION				basic
 		ADDITIONAL ASE			{id-se-threewayse}
 		ABSTRACT SYNTAXES		{dialogue-abstract-syntax |
 								inDirectorySystemAbstractSyntax |
-								inDirectoryDSABindingAbstractSyntax | 
+								inDirectoryDSABindingAbstractSyntax |
 								inSESEAbstractSyntax}
 		APPLICATION CONTEXT NAME	id-ac-indirectorySystemWith3seAC}
 
@@ -197,10 +197,10 @@ DEFINITIONS ::= BEGIN
 		CONTRACT				shadowSupplierContract
 		DIALOGUE MODE			structured
 		TERMINATION				basic
-		ADDITIONAL ASE			{id-se-threewayse} 
+		ADDITIONAL ASE			{id-se-threewayse}
 		ABSTRACT SYNTAXES		{dialogue-abstract-syntax |
 								inDirectoryShadowAbstractSyntax |
-								inDirectoryDSAShadowBindingAbstractSyntax | 
+								inDirectoryDSAShadowBindingAbstractSyntax |
 								inSESEAbstractSyntax}
 		APPLICATION CONTEXT NAME	id-ac-inShadowSupplierInitiatedWith3seAC}
 
@@ -217,10 +217,10 @@ DEFINITIONS ::= BEGIN
 		CONTRACT				shadowConsumerContract
 		DIALOGUE MODE			structured
 		TERMINATION				basic
-		ADDITIONAL ASE			{id-se-threewayse} 
+		ADDITIONAL ASE			{id-se-threewayse}
 		ABSTRACT SYNTAXES		{dialogue-abstract-syntax |
 								inDirectoryShadowAbstractSyntax |
-								inDirectoryDSAShadowBindingAbstractSyntax | 
+								inDirectoryDSAShadowBindingAbstractSyntax |
 								inSESEAbstractSyntax}
 		APPLICATION CONTEXT NAME	id-ac-inShadowConsumerInitiatedWith3seAC}
 
