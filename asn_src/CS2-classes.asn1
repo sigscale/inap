@@ -42,11 +42,11 @@ DEFINITIONS ::= BEGIN
 	--	scf-scfContract
 	-- FROM CS2-SCF-SCF-pkgs-contracts-acs srf-scf-contract
 		srf-scf-contract
-	FROM CS2-SCF-SRF-pkgs-contracts-acs scf-srf-Protocol;
+	FROM CS2-SCF-SRF-pkgs-contracts-acs scf-srf-Protocol
 	--	dapContract
 	-- FROM CS2-SCF-SDF-Protocol scf-sdf-Protocol
-	--	CriticalityType
-	--FROM CS2-SCF-SDF-Protocol datatypes;
+		CriticalityType
+	FROM CS2-datatypes datatypes;
 
 	ssf ROS-OBJECT-CLASS ::= {
 		INITIATES {
@@ -144,7 +144,7 @@ DEFINITIONS ::= BEGIN
 	SupportedExtensions {PARAMETERS-BOUND : bound} EXTENSION ::= {
 		firstExtension,
 		...
-		-- full set of network operator extensions -
+		-- full set of network operator extensions
 	}
 	-- SupportedExtension is the full set of the network operator extensions.
 
