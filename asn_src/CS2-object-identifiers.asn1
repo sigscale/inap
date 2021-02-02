@@ -63,7 +63,7 @@ DEFINITIONS ::= BEGIN
 		{itu-t(0) recommendation(0) q(17) 1228 modules(0) in-cs2-scf-scf-pkgs-contracts-acs(14) version1(0)} 
 	scf-cusf-Operations				OBJECT IDENTIFIER ::= 
 		{itu-t(0) identified-organization(4) etsi(0) inDomain(1) in-network(1) cs2(20) modules(0) in-cs2-scf-cusf-ops-args(15) version1(0)}
-	scf-cusf-Protocol	O			BJECT IDENTIFIER ::= 
+	scf-cusf-Protocol			OBJECT IDENTIFIER ::= 
 		{itu-t(0) identified-organization(4) etsi(0) inDomain(1) in-network(1) cs2(20) modules(0) in-cs2-scf-cusf-pkgs-contracts-acs(16) version1(0)}
 	object-identifiers				OBJECT IDENTIFIER ::= 
 		{itu-t(0) recommendation(0) q(17) 1228 modules(0) in-cs2-object-identifiers(17) version1(0)}
