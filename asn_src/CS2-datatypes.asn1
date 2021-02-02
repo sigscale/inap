@@ -1100,8 +1100,8 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 	-- Refer to the ITU-T Recommendation Q.763 Redirecting number for encoding.
 	RedirectionInformation 								::= OCTET STRING (SIZE(2))
 	-- Indicates redirection information. Refer to the ITU-T Recommendation Q.763 [20] Redirection Information for encoding.
-	RegistratorIdentifier {PARAMETERS-BOUND : bound} 	::= OCTET STRING(SIZE(
-				bound.&min RegistratorIdentifierLength.. bound.&max RegistratorIdentifierLength))
+	RegistratorIdentifier {PARAMETERS-BOUND : bound} ::= OCTET STRING
+			(SIZE(bound.&minRegistratorIdentifierLength..bound.&maxRegistratorIdentifierLength))
 	-- Its content is network operator specific.
 	-- The internal structure of this parameter can be defined using ASN.1 and the related Basic
 	-- Encoding Rules (BER). In such a case the value of this paramter (after the first tag and length
