@@ -3,10 +3,15 @@ CS2-classes {itu-t(0) identified-organization(4) etsi(0) inDomain(1) in-network(
 DEFINITIONS ::= BEGIN
 
 	IMPORTS
-		ROS-OBJECT-CLASS, CONTRACT, OPERATION-PACKAGE,
-		Code, OPERATION, CONNECTION-PACKAGE
+		ROS-OBJECT-CLASS,
+		CONTRACT,
+		OPERATION-PACKAGE,
+		Code,
+		OPERATION,
+		CONNECTION-PACKAGE
 	FROM Remote-Operations-Information-Objects  ros-InformationObjects
-		emptyBind, emptyUnbind
+		emptyBind,
+		emptyUnbind
 	FROM Remote-Operations-Useful-Definitions  ros-UsefulDefinitions
 		id-package-emptyConnection,
 		id-rosObject-scf,
