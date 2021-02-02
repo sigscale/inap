@@ -63,7 +63,7 @@ CS2-SCF-SRF-ops-args {itu-t(0)recommendation(0) q(17) 1228 modules(0) in-cs2-scf
 		LINKED			{specializedResourceReport}
 		CODE			opcode-playAnnouncement
 		}
-	-- Direction: SCF --> SRF, Timer: Tpa
+	-- Direction: SCF -> SRF, Timer: Tpa
 	-- This operation is to be used after Establish Temporary Connection (assist procedure with a second
 	-- SSP) or a Connect to Resource (no assist) operation. It may be used for inband interaction with
 	-- an analog user, or for interaction with an ISDN user. In the former case, the SRF is usually
@@ -101,7 +101,7 @@ CS2-SCF-SRF-ops-args {itu-t(0)recommendation(0) q(17) 1228 modules(0) in-cs2-scf
 					}
 		CODE		opcode-promptAndCollectUserInformation 
 		}
-	-- Direction: SCF --> SRF, Timer: Tpc 
+	-- Direction: SCF -> SRF, Timer: Tpc 
 	-- This operation is used to interact with a user to collect information.
 
 	PromptAndCollectUserInformationArg {PARAMETERS-BOUND : bound}::= SEQUENCE {
@@ -136,7 +136,7 @@ CS2-SCF-SRF-ops-args {itu-t(0)recommendation(0) q(17) 1228 modules(0) in-cs2-scf
 				}
 		CODE	opcode-promptAndReceiveMessage
 		}
-	--  Direction: SCF -->SRF, Timer: Tprm
+	--  Direction: SCF -> SRF, Timer: Tprm
 	--  Used to prompt a user to store a message
 
 	PromptAndReceiveMessageArg {PARAMETERS-BOUND : bound}::= SEQUENCE {
@@ -175,7 +175,7 @@ CS2-SCF-SRF-ops-args {itu-t(0)recommendation(0) q(17) 1228 modules(0) in-cs2-scf
 						}
 		CODE			opcode-scriptClose
 		}
-	-- Direction: SCF--> SRF. Timer: TCl
+	-- Direction: SCF -> SRF. Timer: TCl
 	-- This operation is issued by the SCF to deallocate the resources used to perform the
 	-- instance of the "User Interaction" script: the context is released.
 
@@ -195,7 +195,7 @@ CS2-SCF-SRF-ops-args {itu-t(0)recommendation(0) q(17) 1228 modules(0) in-cs2-scf
 		ALWAYS RESPONDS	FALSE
 		CODE			opcode-scriptEvent
 		}
-	-- Direction: SRF--> SCF. Timer: TRe
+	-- Direction: SRF -> SCF. Timer: TRe
 	-- This operation is issued by the SRF to return information to the SCF on the results of the
 	-- execution of the instance of User Interaction script.
 
@@ -222,7 +222,7 @@ CS2-SCF-SRF-ops-args {itu-t(0)recommendation(0) q(17) 1228 modules(0) in-cs2-scf
 						unexpectedParameter}
 		CODE			opcode-scriptInformation
 		}
-	-- Direction: SCF--> SRF. Timer: Tinf
+	-- Direction: SCF -> SRF. Timer: Tinf
 
 	ScriptInformationArg {PARAMETERS-BOUND : bound}::= SEQUENCE {
 		uIScriptId			UISCRIPT.&id({SupportedUIScripts {bound}}),
@@ -246,7 +246,7 @@ CS2-SCF-SRF-ops-args {itu-t(0)recommendation(0) q(17) 1228 modules(0) in-cs2-scf
 						unexpectedParameter}
 		CODE			opcode-scriptRun
 		}
-	-- Direction: SCF --> SRF. Timer: Tru
+	-- Direction: SCF -> SRF. Timer: Tru
 	-- This operation is issued by the SCF to allocate the necessary resources to perform the
 	-- instance of the "User Interaction" script and then to activate this "User Interaction" script
 	-- instance. A context is partially defined for it if necessary.
@@ -269,7 +269,7 @@ CS2-SCF-SRF-ops-args {itu-t(0)recommendation(0) q(17) 1228 modules(0) in-cs2-scf
 		ALWAYS RESPONDS	FALSE
 		CODE			opcode-specializedResourceReport
 		}
-	-- Direction: SRF --> SCF, Timer: Tsrr
+	-- Direction: SRF -> SCF, Timer: Tsrr
 	-- This operation is used as  the response to a PlayAnnouncement operation when the announcement
 	-- completed report indication is set.
 

@@ -38,22 +38,22 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 		unknownLegID
 	FROM CS2-errortypes errortypes
 		activityTest,
-	-- Direction: SCF --> CUSF, Timer: Tat 
+	-- Direction: SCF -> CUSF, Timer: Tat 
 	-- This operation is used to check for the continued existence of a relationship between the SCF
 	-- and CUSF. If the relationship is still in existence, then the CUSF will respond. If no reply is
 	-- received, then the SCF will assume that the CUSF has failed in some way and will take the
 	-- appropriate action.
 		reportUTSI,
-	-- Direction: CUSF --> SCF. Timer: Tru
+	-- Direction: CUSF -> SCF. Timer: Tru
 	-- This operation is issued by the CUSF in the context of the USI feature.  It is used to report the
 	-- receipt of a User to Service Information (UTSI) IE to the SCF.
 		requestReportUTSI,
-	-- Direction: SCF --> CUSF. Timer: Trru
+	-- Direction: SCF -> CUSF. Timer: Trru
 	-- This operation is issued by the SCF in the context of the USI feature to request the CUSF to
 	-- monitor for a User to Service Information (UTSI) information element, which are received from a
 	-- user.
 		sendSTUI,
-	-- Direction: SCF --> CUSF. Timer: Tss
+	-- Direction: SCF -> CUSF. Timer: Tss
 	-- This operation is issued by the SCF in the context of the USI feature. It is used to request the
 	-- CUSF to send a Service to User Information (STUI) information element to the indicated user.
 	FROM CS2-SSF-SCF-ops-args
@@ -74,7 +74,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 						unexpectedParameter}
 		CODE			opcode-connectAssociation
 		}
-	-- Direction: SCF-->CUSF, Timer: Tcoa
+	-- Direction: SCF -> CUSF, Timer: Tcoa
 	-- This operation is used to request the CUSF to proceed with processing. Additional information
 	-- which shall be used in further connection establishment is provided by the SCF.
 
@@ -97,7 +97,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 						unexpectedParameter}
 		CODE			opcode-continueAssociation
 		}
-	-- Direction: SCF-->CUSF, Timer: Tcona
+	-- Direction: SCF -> CUSF, Timer: Tcona
 	-- This operation is used to request the CUSF to proceed with processing. Additional information
 	-- which is not related to further connection establishment may be  provided by the SCF.
 
@@ -113,7 +113,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 		ALWAYS RESPONDS	FALSE
 		CODE			opcode-eventReportBCUSM
 		}
-	-- Direction: CUSF --> SCF, Timer: Terbce
+	-- Direction: CUSF -> SCF, Timer: Terbce
 	-- This operation is used to notify the SCF of a call unrelated event previously requested by the 
 	-- SCF in a RequestReportBCUSMEvent operation.
 
@@ -141,7 +141,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 						unexpectedParameter}
 		CODE			opcode-initialAssociationDP
 		}
-	-- Direction: CUSF-->SCF, Timer: Tiadp
+	-- Direction: CUSF -> SCF, Timer: Tiadp
 	-- This operation is used after detection of a TDP to initiate a call unrelated association with the 
 	-- SCF.
 
@@ -174,7 +174,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 						unexpectedParameter}
 		CODE		opcode-initiateAssociation
 		}
-	-- Direction: SCF-->CUSF, Timer: Tia
+	-- Direction: SCF -> CUSF, Timer: Tia
 	-- This operation is used for allowing the SCF to initiate a call unrelated association with the 
 	-- user. The subsequent operations can be sent in the same TCAP message in the following order: 
 	-- 	- the RequestReportBCUSMEvent operation if an answer from the CUSF is expected
@@ -194,7 +194,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 		ALWAYS RESPONDS	FALSE
 		CODE			opcode-releaseAssociation 
 		}
-	--  Direction: SCF-->CUSF, Timer: Trel
+	--  Direction: SCF -> CUSF, Timer: Trel
 	--  This operation is used to indicate to the CUSF to release the existing association between the  
 	--  user and the network, during the BCUSM suspended at a DP.
 
@@ -213,7 +213,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 						unexpectedParameter}
 		CODE			opcode-requestReportBCUSMEvent 
 		}
-	-- Direction: SCF --> CUSF, Timer: Trrbce
+	-- Direction: SCF -> CUSF, Timer: Trrbce
 	-- This operation is used to request the CUSF to monitor a BCUSM DP.
 
 

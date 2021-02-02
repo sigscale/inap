@@ -124,7 +124,7 @@ DEFINITIONS IMPLICIT TAGS  ::= BEGIN
 						}
 		CODE			opcode-establishChargingRecord
 		}
-	-- Direction: supporting SCF --> controlling SCF, Timer Tecr
+	-- Direction: supporting SCF -> controlling SCF, Timer Tecr
 	-- This operation is used by the supporting SCF to give charging information to the controlling 
 	-- SCF so that it can charge the user (on-line charging included).
 
@@ -157,7 +157,7 @@ DEFINITIONS IMPLICIT TAGS  ::= BEGIN
 		LINKED			{handlingInformationResult {bound}}
 		CODE			opcode-handlingInformationRequest
 		}
-	-- Direction: controlling SCF --> supporting SCF (or IAF), Timer Thi
+	-- Direction: controlling SCF -> supporting SCF (or IAF), Timer Thi
 	-- This operation  may be used   request the  execution of an SLP 
 	-- in the assisting SCF and to provide to the  assisting
 	-- SCF the context of the call so that it can help the  controlling SCF in the processing of the 
@@ -202,7 +202,7 @@ DEFINITIONS IMPLICIT TAGS  ::= BEGIN
 							}
 		CODE				opcode-handlingInformationResult
 		}
-	-- Direction: supporting SCF(or IAF) -->controlling SCF, Timer Thir
+	-- Direction: supporting SCF(or IAF) -> controlling SCF, Timer Thir
 	-- This operation is used by the assisting SCF to send information to the  controlling SCF on how 
 	-- to process the call and to give conditions under which it should be involved in the call 
 	-- processing.
@@ -241,7 +241,7 @@ DEFINITIONS IMPLICIT TAGS  ::= BEGIN
 						}
 		CODE			opcode-networkCapability
 		}
-	-- Direction: supporting SCF -->controlling  SCF, Timer Tnc
+	-- Direction: supporting SCF -> controlling  SCF, Timer Tnc
 	-- This operation is used by the supporting SCF to request from the controlling SCF which type of 
 	-- service it supports.
 
@@ -284,7 +284,7 @@ DEFINITIONS IMPLICIT TAGS  ::= BEGIN
 							}
 			CODE			opcode-notificationProvided
 		}
-	-- Direction: controlling SCF --> supporting SCF(or IAF), Timer Tnp
+	-- Direction: controlling SCF -> supporting SCF(or IAF), Timer Tnp
 	-- This operation is used by the controlling SCF to request assistance from the assisting SCF 
 	-- under specific call conditions specified prior to the sending of the operation or to notify the 
 	-- outcome of a previous intervention of the assisting SCF.
@@ -304,7 +304,7 @@ DEFINITIONS IMPLICIT TAGS  ::= BEGIN
 		notificationProvided{bound},
 		opcode-confirmedNotificationProvided}
 
-	--Direction: controlling SCF -->supporting SCF, Timer Thinc
+	--Direction: controlling SCF -> supporting SCF, Timer Thinc
 
 	provideUserInformation  {PARAMETERS-BOUND : bound}   OPERATION  ::= {
 		ARGUMENT			ProvideUserInformationArg {bound}
@@ -322,7 +322,7 @@ DEFINITIONS IMPLICIT TAGS  ::= BEGIN
 							}
 		CODE				opcode-provideUserInformation
 		}
-	-- Direction: supporting SCF --> controlling SCF, Timer Tpui
+	-- Direction: supporting SCF -> controlling SCF, Timer Tpui
 	-- This operation is used by the supporting SCF to request information from the user that can be 
 	-- interrogated by the controlling SCF.
 
@@ -423,7 +423,7 @@ DEFINITIONS IMPLICIT TAGS  ::= BEGIN
 									}
 		CODE						opcode-reportChargingInformation
 		}
-	-- Direction: controlling SCF --> supporting SCF, Timer Trci
+	-- Direction: controlling SCF -> supporting SCF, Timer Trci
 	-- This operation is used to give to the assisting network charging information collected by the 
 	-- controlling network.
 
@@ -447,7 +447,7 @@ DEFINITIONS IMPLICIT TAGS  ::= BEGIN
 		reportChargingInformation{bound},
 		opcode-confirmedReportChargingInformation
 		}
-	-- Direction: controlling SCF --> supporting SCF, Timer Trcic
+	-- Direction: controlling SCF -> supporting SCF, Timer Trcic
 
 	requestNotification    {PARAMETERS-BOUND : bound}  OPERATION  ::= {
 		ARGUMENT		RequestNotificationArg {bound}
@@ -465,7 +465,7 @@ DEFINITIONS IMPLICIT TAGS  ::= BEGIN
 		CODE			opcode-requestNotification
 		}
 
-	--  Direction: supporting SCF  (or IAF) --> controlling SCF, Timer Trn
+	--  Direction: supporting SCF  (or IAF) -> controlling SCF, Timer Trn
 	-- This operation is used by the assisting SCF to request notification from the controlling SCF 
 	-- under specific call conditions specified by this operation.
 
@@ -486,7 +486,7 @@ DEFINITIONS IMPLICIT TAGS  ::= BEGIN
 		ERRORS				{scfBindFailure}
 		}
 
-	-- Direction: controlling SCF --> assisting SCF (or IAF) Timer Tbi
+	-- Direction: controlling SCF -> assisting SCF (or IAF) Timer Tbi
 	-- This operation is used to establish a relationship between two SCFs. It sent by the controlling  
 	-- SCF each time it needs to initiate communications with another (supporting) SCF. 
 
@@ -516,7 +516,7 @@ DEFINITIONS IMPLICIT TAGS  ::= BEGIN
 	RETURN RESULT 			FALSE
 	ALWAYS RESPONDS			FALSE
 	}
-	-- Direction: controlling SCF --> assisting SCF (or IAF) 
+	-- Direction: controlling SCF -> assisting SCF (or IAF) 
 	-- The SCF Unbind operation is used by the controlling SCF to close the relationship with the 
 	-- supporting SCF. 
 
