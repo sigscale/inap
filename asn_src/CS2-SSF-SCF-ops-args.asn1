@@ -137,7 +137,6 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 		LocationNumber {},
 		MiscCallInfo,
 		MonitorMode,
-		NumberingPlan,
 		OriginalCalledPartyID {},
 		Reason {},
 		RedirectingPartyID {},
