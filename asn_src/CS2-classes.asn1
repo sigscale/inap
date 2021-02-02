@@ -139,8 +139,8 @@ DEFINITIONS ::= BEGIN
 	--SupportedExtensions {PARAMETERS-BOUND : bound} EXTENSION ::= {firstExtension, ...
 		-- full set of network operator extensions -
 	--}
-
 	-- SupportedExtension is the full set of the network operator extensions.
+
 	UISCRIPT ::= CLASS {
 		&SpecificInfo	OPTIONAL,
 		&Result			OPTIONAL,
