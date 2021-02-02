@@ -361,7 +361,7 @@ DEFINITIONS ::= BEGIN
 		MINIMUM-FOR-REDIRECTING-ID					&minRedirectingPartyIDLength
 		MAXIMUM-FOR-REDIRECTING-ID					&maxRedirectingPartyIDLength
 		MINIMUM-FOR-REGISTRATOR-IDENTIFIER			&minRegistratorIdentifierLength
-		MAXIMUM-FOR-REGISTRATOR-IDENTIFIER			&maxRegistratoridentifierLength
+		MAXIMUM-FOR-REGISTRATOR-IDENTIFIER			&maxRegistratorIdentifierLength
 		MINIMUM-FOR-REQUESTED-UTSI-NUM				&minRequestedUTSINum
 		MAXIMUM-FOR-REQUESTED-UTSI-NUM				&maxRequestedUTSINum
 		MINIMUM-FOR-ROUTE-LIST						&minRouteListLength
