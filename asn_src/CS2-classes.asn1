@@ -147,23 +147,24 @@ DEFINITIONS ::= BEGIN
 	-- SupportedExtension is the full set of the network operator extensions.
 
 	UISCRIPT ::= CLASS {
-		&SpecificInfo	OPTIONAL,
-		&Result			OPTIONAL,
-		&id	Code
-		}
+		&SpecificInfo  OPTIONAL,
+		&Result        OPTIONAL,
+		&id            Code
+	}
 	WITH SYNTAX {
-		[WITH-SPECIFICINFO 	&SpecificInfo]
-		[WITH-RESULT 		&Result]
-		IDENTIFIED BY	 	&id
+		[WITH-SPECIFICINFO  &SpecificInfo]
+		[WITH-RESULT        &Result]
+		IDENTIFIED BY       &id
 	}
 
-	firstScript UISCRIPT ::=
-		{
+	firstScript UISCRIPT ::= {
 		IDENTIFIED BY local: 1
-		}
+	}
 	-- firstScript is just an example.
-	SupportedUIScripts {PARAMETERS-BOUND : bound} UISCRIPT ::= {firstScript, ...
-	-- full set of User Interaction script -
+	SupportedUIScripts {PARAMETERS-BOUND : bound} UISCRIPT ::= {
+		firstScript,
+		...
+		-- full set of User Interaction script
 	}
 	-- SupportedUIScripts is the full set of User Interaction scripts.
 

@@ -181,11 +181,10 @@ CS2-SCF-SRF-ops-args {itu-t(0)recommendation(0) q(17) 1228 modules(0) in-cs2-scf
 
 	ScriptCloseArg {PARAMETERS-BOUND : bound}::= SEQUENCE {
 		uIScriptId	UISCRIPT.&id({SupportedUIScripts {bound}}),
-		uIScriptSpecificInfo	[0] UISCRIPT.&SpecificInfo({SupportedUIScripts {bound}}{@uIScriptId})
-																							OPTIONAL,
+		uIScriptSpecificInfo	[0] UISCRIPT.&SpecificInfo ({SupportedUIScripts {bound}} {@uIScriptId})
 		extensions				[1] SEQUENCE SIZE (1..bound.&numOfExtensions) OF ExtensionField {bound}
-																							OPTIONAL,
-		callSegmentID		[2] CallSegmentID {bound}										OPTIONAL,
+										OPTIONAL,
+		callSegmentID		[2] CallSegmentID {bound} OPTIONAL,
 		...
 		}
 

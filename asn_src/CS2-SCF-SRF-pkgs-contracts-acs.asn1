@@ -10,11 +10,15 @@ DEFINITIONS ::= BEGIN
 		networkSpecificBoundSet,
 		emptyConnectionPackage
 	FROM CS2-classes classes
-		ROS-OBJECT-CLASS, CONTRACT, OPERATION-PACKAGE, OPERATION
+		ROS-OBJECT-CLASS,
+		CONTRACT,
+		OPERATION-PACKAGE,
+		OPERATION
 	FROM Remote-Operations-Information-Objects ros-InformationObjects
 		TCMessage {}
 	FROM TCAPMessages tc-Messages
-		APPLICATION-CONTEXT, dialogue-abstract-syntax
+		APPLICATION-CONTEXT,
+		dialogue-abstract-syntax
 	FROM TC-Notation-Extensions tc-NotationExtensions
 		playAnnouncement {},
 		promptAndReceiveMessage {},
@@ -37,91 +41,96 @@ DEFINITIONS ::= BEGIN
 		id-package-scriptControl,
 		id-package-messageControl,
 		id-as-basic-srf-scf,
-		classes, ros-InformationObjects, tc-Messages, tc-NotationExtensions,
-		scf-srf-Operations, ssf-scf-Operations, ssf-scf-Protocol
+		classes,
+		ros-InformationObjects,
+		tc-Messages,
+		tc-NotationExtensions,
+		scf-srf-Operations,
+		ssf-scf-Operations,
+		ssf-scf-Protocol
 	FROM CS2-object-identifiers
 			{itu-t(0) recommendation(0) q(17) 1228 modules(0) in-cs2-object-identifiers(17) version1(0)};
 
 	-- Application Contexts
 
 	srf-scf-ac APPLICATION-CONTEXT ::= {
-		CONTRACT					srf-scf-contract
-		DIALOGUE MODE				structured
-		TERMINATION					basic
-		ABSTRACT SYNTAXES			{dialogue-abstract-syntax |
-									srf-scf-abstract-syntax}
-		APPLICATION CONTEXT NAME	id-ac-srf-scf}
+		CONTRACT                 srf-scf-contract
+		DIALOGUE MODE            structured
+		TERMINATION              basic
+		ABSTRACT SYNTAXES        {dialogue-abstract-syntax
+		                            | srf-scf-abstract-syntax}
+		APPLICATION CONTEXT NAME id-ac-srf-scf
+	}
 
 	-- Contracts
 
 	srf-scf-contract CONTRACT ::= {
-		CONNECTION					emptyConnectionPackage
-		INITIATOR CONSUMER OF		{srf-scfActivationOfAssistPackage {networkSpecificBoundSet} }
-		RESPONDER CONSUMER OF		{specializedResourceControlPackage {networkSpecificBoundSet}|
-									srf-scfCancelPackage {networkSpecificBoundSet}|
-									scriptControlPackage {networkSpecificBoundSet}|
-									messageControlPackage {networkSpecificBoundSet}}
-		ID							id-contract-srf-scf}
+		CONNECTION            emptyConnectionPackage
+		INITIATOR CONSUMER OF {srf-scfActivationOfAssistPackage {networkSpecificBoundSet}}
+		RESPONDER CONSUMER OF {specializedResourceControlPackage {networkSpecificBoundSet}
+		                         | srf-scfCancelPackage {networkSpecificBoundSet}
+		                         | scriptControlPackage {networkSpecificBoundSet}
+		                         | messageControlPackage {networkSpecificBoundSet}}
+		ID							id-contract-srf-scf
+	}
 
 	-- specializedResourceControl package
-
 	specializedResourceControlPackage {PARAMETERS-BOUND : bound} OPERATION-PACKAGE ::= {
-		CONSUMER INVOKES	{playAnnouncement {bound} |
-							promptAndCollectUserInformation {bound}
-		}
-		SUPPLIER INVOKES	{specializedResourceReport}
-		ID					id-package-specializedResourceControl}
+		CONSUMER INVOKES	{playAnnouncement {bound}
+		                     | promptAndCollectUserInformation {bound}}
+		SUPPLIER INVOKES  {specializedResourceReport}
+		ID                id-package-specializedResourceControl
+	}
 
 	-- srf-scfCancel package
-
 	srf-scfCancelPackage {PARAMETERS-BOUND : bound} OPERATION-PACKAGE ::= {
-		CONSUMER INVOKES	{cancel {bound}}
-		ID					id-package-srf-scfCancel}
+		CONSUMER INVOKES {cancel {bound}}
+		ID               id-package-srf-scfCancel
+	}
 
 	-- scriptControl package
-
 	scriptControlPackage {PARAMETERS-BOUND : bound} OPERATION-PACKAGE ::= {
-		CONSUMER INVOKES	{scriptClose {bound}| scriptRun {bound} |
-							scriptInformation {bound}}
-		SUPPLIER INVOKES	{scriptEvent {bound}}
-		ID					id-package-scriptControl}
+		CONSUMER INVOKES {scriptClose {bound}
+		                    | scriptRun {bound}
+		                    | scriptInformation {bound}}
+		SUPPLIER INVOKES {scriptEvent {bound}}
+		ID               id-package-scriptControl
+	}
 
 	-- messageControl package
-
 	messageControlPackage {PARAMETERS-BOUND : bound} OPERATION-PACKAGE ::= {
-		CONSUMER INVOKES	{promptAndReceiveMessage {bound}}
-		ID					id-package-messageControl}
+		CONSUMER INVOKES {promptAndReceiveMessage {bound}}
+		ID               id-package-messageControl
+	}
 
 	-- Abstract Syntaxes
 
 	srf-scf-abstract-syntax ABSTRACT-SYNTAX ::= {
-		BASIC-SRF-SCF-PDUs
-		IDENTIFIED BY	id-as-basic-srf-scf}
+		BASIC-SRF-SCF-PDUs IDENTIFIED BY	id-as-basic-srf-scf
+	}
 
 	BASIC-SRF-SCF-PDUs ::= TCMessage {{SRF-SCF-Invokable},{SRF-SCF-Returnable}}
 
 	SRF-SCF-Invokable OPERATION ::= {
-			assistRequestInstructions {networkSpecificBoundSet}|
-			cancel {networkSpecificBoundSet}|
-			playAnnouncement {networkSpecificBoundSet}|
-			promptAndCollectUserInformation {networkSpecificBoundSet}|
-			scriptClose {networkSpecificBoundSet}|
-			scriptEvent {networkSpecificBoundSet}|
-			scriptInformation {networkSpecificBoundSet}|
-			scriptRun {networkSpecificBoundSet}|
-			specializedResourceReport |
-			promptAndReceiveMessage {networkSpecificBoundSet}
-			}
+			assistRequestInstructions {networkSpecificBoundSet}
+			| cancel {networkSpecificBoundSet}
+			| playAnnouncement {networkSpecificBoundSet}
+			| promptAndCollectUserInformation {networkSpecificBoundSet}
+			| scriptClose {networkSpecificBoundSet}
+			| scriptEvent {networkSpecificBoundSet}
+			| scriptInformation {networkSpecificBoundSet}
+			| scriptRun {networkSpecificBoundSet}
+			| specializedResourceRepor
+			| promptAndReceiveMessage {networkSpecificBoundSet}}
 
 	SRF-SCF-Returnable OPERATION ::= {
-			assistRequestInstructions {networkSpecificBoundSet}|
-			cancel {networkSpecificBoundSet}|
-			playAnnouncement {networkSpecificBoundSet}|
-			promptAndCollectUserInformation {networkSpecificBoundSet}|
-			scriptClose {networkSpecificBoundSet}|
-			scriptInformation {networkSpecificBoundSet}|
-			scriptRun {networkSpecificBoundSet}|
-			promptAndReceiveMessage {networkSpecificBoundSet}
-			}
+			assistRequestInstructions {networkSpecificBoundSet}
+			| cancel {networkSpecificBoundSet}
+			| playAnnouncement {networkSpecificBoundSet}
+			| promptAndCollectUserInformation {networkSpecificBoundSet}
+			| scriptClose {networkSpecificBoundSet}
+			| scriptInformation {networkSpecificBoundSet}
+			| scriptRun {networkSpecificBoundSet}
+			| promptAndReceiveMessage {networkSpecificBoundSet}}
 
 END
