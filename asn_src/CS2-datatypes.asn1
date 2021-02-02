@@ -252,7 +252,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 		eventTypeCharging		[0] EventTypeCharging {bound},
 		monitorMode				[1] MonitorMode,
 		legID					[2] LegID			OPTIONAL,
-		eventTypeTariff			[50] EventTypeTariff		OPTIONAL
+		eventTypeTariff			[50] EventTypeTariff		OPTIONAL,
 		...
 		}
 	-- This parameter indicates the charging event type and corresponding
@@ -264,7 +264,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 		initialUnitIncrement	[3] INTEGER (0..bound.&maxInitialUnitIncrement) 	OPTIONAL,
 		unitsPerDataInterval	[4] INTEGER (0..bound.&maxUnitsPerDataInterval) 	OPTIONAL,
 		segmentsPerDataInterval	[5] INTEGER (0..bound.&maxSegmentsPerDataInterval)	OPTIONAL,
-		initialTimeInterval		[6] INTEGER (0..bound.&maxInitialTimeInterval) 		OPTIONAL
+		initialTimeInterval		[6] INTEGER (0..bound.&maxInitialTimeInterval) 		OPTIONAL,
 		...
 		}
 	CollectedDigits 							::= SEQUENCE {
@@ -278,7 +278,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 		errorTreatment			[7] ErrorTreatment				DEFAULT reportErrorToScf,
 		interruptableAnnInd		[8] BOOLEAN						DEFAULT TRUE,
 		voiceInformation		[9] BOOLEAN						DEFAULT FALSE,
-		voiceBack				[10] BOOLEAN					DEFAULT FALSE
+		voiceBack				[10] BOOLEAN					DEFAULT FALSE,
 		...
 		}
 	-- The use of voiceBack is network operator specific.
@@ -302,7 +302,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 		maximumNumberOfDigits	[1] INTEGER (1..127),
 		minimumNumberOfDigits	[2] INTEGER (1..127),
 		typeOfRequestedInfo		[3] InfoType 					DEFAULT numericString,
-		numberOfAllowedRetries	[4] INTEGER (0..127) 			DEFAULT 0
+		numberOfAllowedRetries	[4] INTEGER (0..127) 			DEFAULT 0,
 		...
 		}
 
@@ -318,7 +318,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 	-- Refer to clause 18 for a description of the procedures associated with this parameter.
 	CounterAndValue 							::= SEQUENCE {
 			counterID			[0] CounterID,
-			counterValue		[1] Integer4
+			counterValue		[1] Integer4,
 			...
 			}
 	CounterID 									::= INTEGER (0..99)
@@ -345,7 +345,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 	CurrencyID 									::= PrintableString (SIZE (3)) -- ISO 639 code
 	CurrencyValue {PARAMETERS-BOUND : bound} 	::= SEQUENCE {
 		currency	CurrencyID,
-		amount		INTEGER (0..bound.&maxAmount)
+		amount		INTEGER (0..bound.&maxAmount),
 		... 
 		}
 	CutAndPaste 								::= INTEGER (0..22)
