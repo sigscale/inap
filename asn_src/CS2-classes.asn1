@@ -432,6 +432,8 @@ DEFINITIONS ::= BEGIN
 		MINIMUM-FOR-CARRIER							1	-- example value
 		MAXIMUM-FOR-CARRIER							5	-- example value
 		MAXIMUM-FOR-CAUSE							4	-- example value
+		MINIMUM-FOR-COMPONENT-RECEIVED-INFO		1 -- example value
+		MAXIMUM-FOR-COMPONENT-RECEIVED-INFO		5 -- example value
 		MINIMUM-FOR-DIGITS							1	-- example value
 		MAXIMUM-FOR-DIGITS							5	-- example value
 		MINIMUM-FOR-DISPLAY							1	-- example value
