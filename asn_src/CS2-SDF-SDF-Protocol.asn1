@@ -1,6 +1,6 @@
 CS2-SDF-SDF-Protocol {itu-t(0) recommendation(0) q(17) 1228 module(0) in-cs2-sdf-sdf-Protocol(18) version1(0)} 
 
-DEFINITIONS :: = BEGIN 
+DEFINITIONS ::= BEGIN 
 -- EXPORTS All --
  
 -- The types and values defined in this module are exported for use in the other ASN.1 modules
@@ -130,7 +130,7 @@ DEFINITIONS :: = BEGIN
 		BasicDSP-PDUs
 		IDENTIFIED BY		id-as-indirectorySystemAS}
 
-	BasicDSP-PDUs :: = TCMessage {{DSP-Invokable},{DSP-Returnable}}
+	BasicDSP-PDUs ::= TCMessage {{DSP-Invokable},{DSP-Returnable}}
 
 	DSP-Invokable OPERATION ::= {chainedAddEntry | chainedRemoveEntry | chainedModifyEntry |
 																	chainedSearch | chainedExecute}
@@ -142,7 +142,7 @@ DEFINITIONS :: = BEGIN
 		DSABinding-PDUs
 		IDENTIFIED BY		id-as-indirectoryDSABindingAS}
 
-	DSABinding-PDUs :: = CHOICE {
+	DSABinding-PDUs ::= CHOICE {
 		bind		Bind {dSABind},
 		unbind		Unbind {in-DSAUnbind}}
 

@@ -188,7 +188,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 		...
 		}
 
-	releaseAssociation  {PARAMETERS-BOUND : bound}  OPERATION :: = {
+	releaseAssociation  {PARAMETERS-BOUND : bound}  OPERATION ::= {
 		ARGUMENT		ReleaseAssociationArg {bound}
 		RETURN RESULT	FALSE
 		ALWAYS RESPONDS	FALSE
@@ -200,7 +200,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 
 	ReleaseAssociationArg  {PARAMETERS-BOUND : bound}::= Cause {bound}
 
-	requestReportBCUSMEvent  {PARAMETERS-BOUND : bound}  OPERATION :: = {
+	requestReportBCUSMEvent  {PARAMETERS-BOUND : bound}  OPERATION ::= {
 		ARGUMENT		RequestReportBCUSMEventArg {bound}
 		RETURN RESULT	FALSE
 		ERRORS		 	{missingParameter |

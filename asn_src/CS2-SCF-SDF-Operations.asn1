@@ -1,6 +1,6 @@
 CS2-SCF-SDF-Operations {itu-t(0) recommendation(0) q(17) 1228 module(0) scf-sdf-operations(11) version1(0)}
 
-DEFINITIONS :: = BEGIN
+DEFINITIONS ::= BEGIN
 -- EXPORTS All --
 -- The types and values defined in this module are exported for use in the other ASN.1 modules
 -- contained within the IN Directory Specifications, and for the use of other applications which
@@ -35,7 +35,7 @@ DEFINITIONS :: = BEGIN
 		CommonArguments, CommonResults, attributeError, nameError, serviceError, securityError, referral, updateError
 	FROM DirectoryAbstractService	 directoryAbstractService;
 
-	execute OPERATION :: = {
+	execute OPERATION ::= {
 		ARGUMENT	ExecuteArgument
 		RESULT		ExecuteResult
 		ERRORS 		{attributeError | nameError | 
@@ -81,8 +81,8 @@ DEFINITIONS :: = BEGIN
 		DIRQOP.&dapModifyEntryRes-QOP{@qop}}
 
 	SupportedMethods METHOD ::= {...}
-	in-directoryUnbind  OPERATION :: = inEmptyUnbind
-	assignmentContext	CONTEXT :: = {
+	in-directoryUnbind  OPERATION ::= inEmptyUnbind
+	assignmentContext	CONTEXT ::= {
 		WITH SYNTAX	DistinguishedName
 		ID			id-avc-assignment}
 

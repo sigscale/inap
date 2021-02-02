@@ -1,6 +1,6 @@
 CS2-SCF-SRF-pkgs-contracts-acs {itu-t(0) recommendation(0) q(17) 1228 modules(0) in-cs2-scf-srf-pkgs-contracts-acs(8) version1(0)}
 
-DEFINITIONS :: = BEGIN
+DEFINITIONS ::= BEGIN
 
 -- This module describes the operation-packages, contracts and application-contexts used
 -- over the SCF-SRF interface.
@@ -44,7 +44,7 @@ DEFINITIONS :: = BEGIN
 
 	-- Application Contexts 
 
-	srf-scf-ac APPLICATION-CONTEXT :: = {
+	srf-scf-ac APPLICATION-CONTEXT ::= {
 		CONTRACT					srf-scf-contract
 		DIALOGUE MODE				structured
 		TERMINATION					basic
@@ -54,7 +54,7 @@ DEFINITIONS :: = BEGIN
 
 	-- Contracts 
 
-	srf-scf-contract CONTRACT :: = {
+	srf-scf-contract CONTRACT ::= {
 		CONNECTION					emptyConnectionPackage
 		INITIATOR CONSUMER OF		{srf-scfActivationOfAssistPackage {networkSpecificBoundSet} }
 		RESPONDER CONSUMER OF		{specializedResourceControlPackage {networkSpecificBoundSet}|
@@ -65,7 +65,7 @@ DEFINITIONS :: = BEGIN
 
 	-- specializedResourceControl package
 
-	specializedResourceControlPackage {PARAMETERS-BOUND : bound} OPERATION-PACKAGE :: = {
+	specializedResourceControlPackage {PARAMETERS-BOUND : bound} OPERATION-PACKAGE ::= {
 		CONSUMER INVOKES	{playAnnouncement {bound} |
 							promptAndCollectUserInformation {bound}
 		}
@@ -74,13 +74,13 @@ DEFINITIONS :: = BEGIN
 
 	-- srf-scfCancel package
 
-	srf-scfCancelPackage {PARAMETERS-BOUND : bound} OPERATION-PACKAGE :: = {
+	srf-scfCancelPackage {PARAMETERS-BOUND : bound} OPERATION-PACKAGE ::= {
 		CONSUMER INVOKES	{cancel {bound}}
 		ID					id-package-srf-scfCancel}
 
 	-- scriptControl package
 
-	scriptControlPackage {PARAMETERS-BOUND : bound} OPERATION-PACKAGE :: = {
+	scriptControlPackage {PARAMETERS-BOUND : bound} OPERATION-PACKAGE ::= {
 		CONSUMER INVOKES	{scriptClose {bound}| scriptRun {bound} | 
 							scriptInformation {bound}}
 		SUPPLIER INVOKES	{scriptEvent {bound}}
@@ -88,19 +88,19 @@ DEFINITIONS :: = BEGIN
 
 	-- messageControl package
 
-	messageControlPackage {PARAMETERS-BOUND : bound} OPERATION-PACKAGE :: = {
+	messageControlPackage {PARAMETERS-BOUND : bound} OPERATION-PACKAGE ::= {
 		CONSUMER INVOKES	{promptAndReceiveMessage {bound}}
 		ID					id-package-messageControl}
 
 	-- Abstract Syntaxes 
 
-	srf-scf-abstract-syntax ABSTRACT-SYNTAX :: = {
+	srf-scf-abstract-syntax ABSTRACT-SYNTAX ::= {
 		BASIC-SRF-SCF-PDUs
 		IDENTIFIED BY	id-as-basic-srf-scf}
 
 	BASIC-SRF-SCF-PDUs ::= TCMessage {{SRF-SCF-Invokable},{SRF-SCF-Returnable}}
 
-	SRF-SCF-Invokable OPERATION :: = {
+	SRF-SCF-Invokable OPERATION ::= {
 			assistRequestInstructions {networkSpecificBoundSet}|
 			cancel {networkSpecificBoundSet}|
 			playAnnouncement {networkSpecificBoundSet}|
@@ -113,7 +113,7 @@ DEFINITIONS :: = BEGIN
 			promptAndReceiveMessage {networkSpecificBoundSet}
 			}
 
-	SRF-SCF-Returnable OPERATION :: = {
+	SRF-SCF-Returnable OPERATION ::= {
 			assistRequestInstructions {networkSpecificBoundSet}|
 			cancel {networkSpecificBoundSet}|
 			playAnnouncement {networkSpecificBoundSet}|

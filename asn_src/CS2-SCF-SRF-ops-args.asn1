@@ -47,7 +47,7 @@ CS2-SCF-SRF-ops-args {itu-t(0)recommendation(0) q(17) 1228 modules(0) in-cs2-scf
 	FROM CS2-object-identifiers 
 			{iti-t(0) recommendation(0) q(17) 1228 modules(0) in-cs2-object-identifiers(17) version1(0)};
 
-	playAnnouncement {PARAMETERS-BOUND : bound} OPERATION :: = {
+	playAnnouncement {PARAMETERS-BOUND : bound} OPERATION ::= {
 		ARGUMENT		PlayAnnouncementArg {bound}
 		RETURN RESULT	FALSE
 		ERRORS			{canceled |
@@ -85,7 +85,7 @@ CS2-SCF-SRF-ops-args {itu-t(0)recommendation(0) q(17) 1228 modules(0) in-cs2-scf
 		...
 		}
 
-	promptAndCollectUserInformation {PARAMETERS-BOUND : bound} OPERATION :: = {
+	promptAndCollectUserInformation {PARAMETERS-BOUND : bound} OPERATION ::= {
 		ARGUMENT	PromptAndCollectUserInformationArg {bound}
 		RESULT		ReceivedInformationArg {bound}
 		ERRORS		{canceled |
@@ -119,7 +119,7 @@ CS2-SCF-SRF-ops-args {itu-t(0)recommendation(0) q(17) 1228 modules(0) in-cs2-scf
 		iA5Response					[1] IA5String
 		}
 
-	promptAndReceiveMessage {PARAMETERS-BOUND : bound} OPERATION :: = {
+	promptAndReceiveMessage {PARAMETERS-BOUND : bound} OPERATION ::= {
 		ARGUMENT	PromptAndReceiveMessageArg {bound}
 		RESULT		MessageReceivedArg {bound}
 		ERRORS		{canceled |
@@ -161,7 +161,7 @@ CS2-SCF-SRF-ops-args {itu-t(0)recommendation(0) q(17) 1228 modules(0) in-cs2-scf
 		...
 		}
 
-	scriptClose {PARAMETERS-BOUND : bound} OPERATION :: = {
+	scriptClose {PARAMETERS-BOUND : bound} OPERATION ::= {
 		ARGUMENT		ScriptCloseArg {bound}
 		RETURN RESULT	FALSE
 		ERRORS			{
@@ -189,7 +189,7 @@ CS2-SCF-SRF-ops-args {itu-t(0)recommendation(0) q(17) 1228 modules(0) in-cs2-scf
 		...
 		}
 
-	scriptEvent {PARAMETERS-BOUND : bound} OPERATION :: = {
+	scriptEvent {PARAMETERS-BOUND : bound} OPERATION ::= {
 		ARGUMENT		ScriptEventArg {bound}
 		RETURN RESULT	FALSE
 		ALWAYS RESPONDS	FALSE
@@ -210,7 +210,7 @@ CS2-SCF-SRF-ops-args {itu-t(0)recommendation(0) q(17) 1228 modules(0) in-cs2-scf
 		...
 		}
 
-	scriptInformation {PARAMETERS-BOUND : bound} OPERATION :: ={
+	scriptInformation {PARAMETERS-BOUND : bound} OPERATION ::={
 		ARGUMENT		ScriptInformationArg {bound}
 		RETURN RESULT	FALSE
 		ERRORS			{systemFailure |
@@ -234,7 +234,7 @@ CS2-SCF-SRF-ops-args {itu-t(0)recommendation(0) q(17) 1228 modules(0) in-cs2-scf
 		...
 		}
 
-	scriptRun {PARAMETERS-BOUND : bound} OPERATION :: ={
+	scriptRun {PARAMETERS-BOUND : bound} OPERATION ::={
 		ARGUMENT		ScriptRunArg {bound}
 		RETURN RESULT	FALSE
 		ERRORS			{systemFailure |
@@ -263,7 +263,7 @@ CS2-SCF-SRF-ops-args {itu-t(0)recommendation(0) q(17) 1228 modules(0) in-cs2-scf
 		...
 		}
 
-	specializedResourceReport OPERATION :: = {
+	specializedResourceReport OPERATION ::= {
 		ARGUMENT		SpecializedResourceReportArg
 		RETURN RESULT	FALSE
 		ALWAYS RESPONDS	FALSE

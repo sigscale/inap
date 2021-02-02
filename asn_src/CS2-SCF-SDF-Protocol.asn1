@@ -1,6 +1,6 @@
 CS2-SCF-SDF-Protocol {itu-t(0) recommendation(0) q(17) 1218 modules(0) in-scf-sdf-protocol(12) version1(0)} 
 
-DEFINITIONS :: = BEGIN 
+DEFINITIONS ::= BEGIN 
 -- EXPORTS All --
 -- The types and values defined in this module are exported for use in the other ASN.1 modules
 -- contained within the Directory Specifications, and for the use of other applications which will
@@ -43,7 +43,7 @@ DEFINITIONS :: = BEGIN
 
 	-- application contexts -- 
 
-	iNdirectoryAccessAC APPLICATION-CONTEXT :: =  {
+	iNdirectoryAccessAC APPLICATION-CONTEXT ::=  {
 	 	CONTRACT			dapContract 
 		DIALOGUE MODE		structured
 		TERMINATION				basic
@@ -52,7 +52,7 @@ DEFINITIONS :: = BEGIN
 								inDirectoryBindingAbstractSyntax}
 		APPLICATION CONTEXT NAME	id-ac-indirectoryAccessAC}
 
-	iNdirectoryAccessWith3seAC APPLICATION-CONTEXT :: =  {
+	iNdirectoryAccessWith3seAC APPLICATION-CONTEXT ::=  {
 		CONTRACT			dapContract 
 		DIALOGUE MODE		structured
 		TERMINATION				basic
@@ -63,7 +63,7 @@ DEFINITIONS :: = BEGIN
 							inSESEAbstractSyntax}
 		APPLICATION CONTEXT NAME	id-ac-indirectoryAccessWith3seAC}
 
-	inExtendedDirectoryAccessAC APPLICATION-CONTEXT :: =  {
+	inExtendedDirectoryAccessAC APPLICATION-CONTEXT ::=  {
 		CONTRACT			dapExecuteContract 
 		DIALOGUE MODE		structured
 		TERMINATION				basic
@@ -72,7 +72,7 @@ DEFINITIONS :: = BEGIN
 								inDirectoryBindingAbstractSyntax}
 		APPLICATION CONTEXT NAME	id-ac-inExtendedDirectoryAccessAC}
 
-	inExtendedDirectoryAccessWith3seAC APPLICATION-CONTEXT :: =  {
+	inExtendedDirectoryAccessWith3seAC APPLICATION-CONTEXT ::=  {
 		CONTRACT			dapExecuteContract 
 		DIALOGUE MODE		structured
 		TERMINATION			basic
@@ -97,11 +97,11 @@ DEFINITIONS :: = BEGIN
 
 	-- contracts --
 
-	dapContract CONTRACT :: = {
+	dapContract CONTRACT ::= {
 		CONNECTION 			dapConnectionPackage
 		INITIATOR CONSUMER OF	{searchPackage | modifyPackage}
 		ID 					id-contract-dap}
-	dapExecuteContract CONTRACT :: = {
+	dapExecuteContract CONTRACT ::= {
 		CONNECTION			dapConnectionPackage
 		INITIATOR CONSUMER OF	{searchPackage | modifyPackage | executePackage}
 		ID					id-contract-dapExecute}
@@ -115,37 +115,37 @@ DEFINITIONS :: = BEGIN
 
 	--  search and modify packages
 
-	searchPackage OPERATION-PACKAGE :: = {
+	searchPackage OPERATION-PACKAGE ::= {
 		CONSUMER INVOKES		{search}
 		ID				id-package-search}
-	modifyPackage OPERATION-PACKAGE :: = {
+	modifyPackage OPERATION-PACKAGE ::= {
 		CONSUMER INVOKES		{addEntry | removeEntry | modifyEntry}
 		ID 				id-package-modify}
-	executePackage OPERATION-PACKAGE :: = {
+	executePackage OPERATION-PACKAGE ::= {
 		CONSUMER INVOKES	{execute}
 		ID				id-package-execute}
 
 	-- abstract-syntaxes --
 
-	inDirectoryOperationsAbstractSyntax ABSTRACT-SYNTAX :: = {
+	inDirectoryOperationsAbstractSyntax ABSTRACT-SYNTAX ::= {
 		BasicDAP-PDUs
 		IDENTIFIED BY	id-as-indirectoryOperationsAS}
-	BasicDAP-PDUs :: = TCMessage {{DAP-Invokable},{DAP-Returnable}}
-	DAP-Invokable  OPERATION :: = {search | addEntry | removeEntry | modifyEntry}
-	DAP-Returnable OPERATION :: = {search | addEntry | removeEntry | modifyEntry} 
-	inExtendedDirectoryOperationsAbstractSyntax ABSTRACT-SYNTAX :: = {
+	BasicDAP-PDUs ::= TCMessage {{DAP-Invokable},{DAP-Returnable}}
+	DAP-Invokable  OPERATION ::= {search | addEntry | removeEntry | modifyEntry}
+	DAP-Returnable OPERATION ::= {search | addEntry | removeEntry | modifyEntry} 
+	inExtendedDirectoryOperationsAbstractSyntax ABSTRACT-SYNTAX ::= {
 		Extended-BasicDAP-PDUs
 		IDENTIFIED BY	id-as-inExtendedDirectoryOperationsAS}
-	Extended-BasicDAP-PDUs :: = TCMessage {{Extended-DAP-Invokable},{Extended-DAP-Returnable}}
-	Extended-DAP-Invokable  OPERATION :: = {search | addEntry | removeEntry | modifyEntry | execute}
-	Extended-DAP-Returnable OPERATION :: = {search | addEntry | removeEntry | modifyEntry | execute} 
-	inDirectoryBindingAbstractSyntax	ABSTRACT-SYNTAX :: = {
+	Extended-BasicDAP-PDUs ::= TCMessage {{Extended-DAP-Invokable},{Extended-DAP-Returnable}}
+	Extended-DAP-Invokable  OPERATION ::= {search | addEntry | removeEntry | modifyEntry | execute}
+	Extended-DAP-Returnable OPERATION ::= {search | addEntry | removeEntry | modifyEntry | execute} 
+	inDirectoryBindingAbstractSyntax	ABSTRACT-SYNTAX ::= {
 		DAPBinding-PDUs
 		IDENTIFIED BY	id-as-indirectoryBindingAS}
-	DAPBinding-PDUs :: = CHOICE {
+	DAPBinding-PDUs ::= CHOICE {
 		bind	Bind {directoryBind},
 		unbind	Unbind {in-directoryUnbind}}
-	inSESEAbstractSyntax 	ABSTRACT-SYNTAX :: = {
+	inSESEAbstractSyntax 	ABSTRACT-SYNTAX ::= {
 		SESEapdus {{spkmThreeWay},NoInvocationId}
 		IDENTIFIED BY	{id-as-inSESEAS}}
 

@@ -177,7 +177,7 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 		unknownResource
 	FROM CS2-errortypes errortypes;
 
-	activateServiceFiltering {PARAMETERS-BOUND : bound} OPERATION :: = {
+	activateServiceFiltering {PARAMETERS-BOUND : bound} OPERATION ::= {
 		ARGUMENT		ActivateServiceFilteringArg {bound}
 		RETURN RESULT 	TRUE 
 		ERRORS 			{missingParameter |
@@ -295,7 +295,7 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 	-- OPTIONAL denotes network operator specific use. The value of the correlationID may be the 
 	-- Called Party Number supplied by the initiating SSF.
 
-	callGap {PARAMETERS-BOUND : bound} OPERATION :: = {
+	callGap {PARAMETERS-BOUND : bound} OPERATION ::= {
 		ARGUMENT		CallGapArg {bound}
 		RETURN RESULT	FALSE
 		ALWAYS RESPONDS FALSE
@@ -363,7 +363,7 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 		}
 	-- OPTIONAL denotes network operator optional.
 
-	cancel {PARAMETERS-BOUND : bound} OPERATION :: = {
+	cancel {PARAMETERS-BOUND : bound} OPERATION ::= {
 		ARGUMENT		CancelArg {bound}
 		RETURN RESULT	FALSE
 		ERRORS 			{cancelFailed |
@@ -387,7 +387,7 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 		}
 	-- The InvokeID has the same value as that which was used for the operation to be cancelled.
 
-	collectInformation {PARAMETERS-BOUND : bound} OPERATION :: = {
+	collectInformation {PARAMETERS-BOUND : bound} OPERATION ::= {
 		ARGUMENT		CollectInformationArg {bound}	OPTIONAL TRUE
 		RETURN RESULT	FALSE
 		ERRORS 			{missingParameter |
@@ -613,7 +613,7 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 		...
 		}
 
-	disconnectLeg {PARAMETERS-BOUND : bound} OPERATION :: = {
+	disconnectLeg {PARAMETERS-BOUND : bound} OPERATION ::= {
 		ARGUMENT		DisconnectLegArg {bound}
 		RETURN RESULT TRUE
 		ERRORS 			{missingParameter|
@@ -1107,7 +1107,7 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 		callSegmentID	[3] CallSegmentID {bound}											OPTIONAL,
 		...
 		}
-	sendChargingInformation {PARAMETERS-BOUND : bound} OPERATION :: = {
+	sendChargingInformation {PARAMETERS-BOUND : bound} OPERATION ::= {
 		ARGUMENT		SendChargingInformationArg {bound}
 		RETURN RESULT	FALSE
 		ERRORS 			{missingParameter |
@@ -1135,7 +1135,7 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 		...
 		}
 
-	sendSTUI {PARAMETERS-BOUND : bound} OPERATION :: = {
+	sendSTUI {PARAMETERS-BOUND : bound} OPERATION ::= {
 		ARGUMENT		SendSTUIArg {bound}
 		RETURN RESULT	FALSE
 		ERRORS 			{missingParameter |
@@ -1161,7 +1161,7 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 		...
 		}
 
-	serviceFilteringResponse {PARAMETERS-BOUND : bound} OPERATION :: = {
+	serviceFilteringResponse {PARAMETERS-BOUND : bound} OPERATION ::= {
 		ARGUMENT		ServiceFilteringResponseArg {bound}
 		RETURN RESULT	FALSE
 		ALWAYS RESPONDS	FALSE
@@ -1180,7 +1180,7 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 		...
 		}
 
-	splitLeg {PARAMETERS-BOUND : bound} OPERATION :: = {
+	splitLeg {PARAMETERS-BOUND : bound} OPERATION ::= {
 		ARGUMENT	SplitLegArg {bound}
 		RETURN RESULT TRUE
 		ERRORS 	{missingParameter |

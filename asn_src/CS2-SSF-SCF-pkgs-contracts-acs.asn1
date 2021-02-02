@@ -204,7 +204,7 @@ DEFINITIONS ::= BEGIN
 		ID		id-inCs2SsfToScfGeneric
 		}
 
-	inCs2AssistHandoffssfToScf CONTRACT :: = {
+	inCs2AssistHandoffssfToScf CONTRACT ::= {
 	-- dialogue initiated by SSF with AssistRequestInstructions
 		INITIATOR CONSUMER OF
 				{srf-scfActivationOfAssistPackage {networkSpecificBoundSet}}
@@ -224,7 +224,7 @@ DEFINITIONS ::= BEGIN
 		ID		id-inCs2AssistHandoffssfToScf
 		}
 
-	inCs2ScfToSsfGeneric CONTRACT :: = {
+	inCs2ScfToSsfGeneric CONTRACT ::= {
 	-- dialogue initiated by SCF with InitiateCallAttempt or CreateCallSegmentAssociation, Generic Case
 		INITIATOR CONSUMER OF
 				{activityTestPackage|
@@ -254,7 +254,7 @@ DEFINITIONS ::= BEGIN
 		ID		id-inCs2ScfToSsfGeneric
 		}
 
-	inCs2ScfToSsfTrafficManagement CONTRACT :: = {
+	inCs2ScfToSsfTrafficManagement CONTRACT ::= {
 	-- dialogue initiated by SCF with CallGap
 		INITIATOR CONSUMER OF
 				{trafficManagementPackage {networkSpecificBoundSet}
@@ -262,7 +262,7 @@ DEFINITIONS ::= BEGIN
 		ID		id-inCs2ScfToSsfTrafficManagement
 		}
 
-	inCs2ScfToSsfServiceManagement CONTRACT :: = {
+	inCs2ScfToSsfServiceManagement CONTRACT ::= {
 	-- dialogue initiated by SCF with ActivateServiceFiltering
 		INITIATOR CONSUMER OF
 				{serviceManagementActivatePackage {networkSpecificBoundSet}
@@ -270,7 +270,7 @@ DEFINITIONS ::= BEGIN
 		ID		id-inCs2ScfToSsfServiceManagement
 		}
 
-	inCs2SsfToScfServiceManagement CONTRACT :: = {
+	inCs2SsfToScfServiceManagement CONTRACT ::= {
 	-- dialogue initiated/ended by SSF with ServiceFilteringResponse
 		INITIATOR CONSUMER OF
 				{serviceManagementResponsePackage {networkSpecificBoundSet}
@@ -278,7 +278,7 @@ DEFINITIONS ::= BEGIN
 		ID		id-inCs2SsfToScfServiceManagement
 		}
 
-	inCs2ScfToSsfTriggerManagement CONTRACT :: = {
+	inCs2ScfToSsfTriggerManagement CONTRACT ::= {
 	-- dialogue initiated by SCF with Manage Trigger Data
 		INITIATOR CONSUMER OF	{triggerManagementPackage {networkSpecificBoundSet}
 				}
@@ -287,75 +287,75 @@ DEFINITIONS ::= BEGIN
 
 	-- Operation Packages
 
-	scfActivationPackage {PARAMETERS-BOUND : bound} OPERATION-PACKAGE :: = {
+	scfActivationPackage {PARAMETERS-BOUND : bound} OPERATION-PACKAGE ::= {
 		CONSUMER INVOKES	{initialDP {bound}}
 		ID		id-package-scfActivation}
-	srf-scfActivationOfAssistPackage {PARAMETERS-BOUND : bound} OPERATION-PACKAGE :: = {
+	srf-scfActivationOfAssistPackage {PARAMETERS-BOUND : bound} OPERATION-PACKAGE ::= {
 		CONSUMER INVOKES	{assistRequestInstructions {bound}}
 		ID		id-package-srf-scfActivationOfAssist}
-	assistConnectionEstablishmentPackage {PARAMETERS-BOUND : bound}  OPERATION-PACKAGE :: = {
+	assistConnectionEstablishmentPackage {PARAMETERS-BOUND : bound}  OPERATION-PACKAGE ::= {
 		CONSUMER INVOKES	{establishTemporaryConnection {bound}}
 		ID		id-package-assistConnectionEstablishment}
-	genericDisconnectResourcePackage {PARAMETERS-BOUND : bound} OPERATION-PACKAGE :: = {
+	genericDisconnectResourcePackage {PARAMETERS-BOUND : bound} OPERATION-PACKAGE ::= {
 		CONSUMER INVOKES	{disconnectForwardConnection |
 				disconnectForwardConnectionWithArgument {bound}}
 		ID		id-package-genericDisconnectResource}
-	nonAssistedConnectionEstablishmentPackage {PARAMETERS-BOUND : bound} OPERATION-PACKAGE :: = {
+	nonAssistedConnectionEstablishmentPackage {PARAMETERS-BOUND : bound} OPERATION-PACKAGE ::= {
 		CONSUMER INVOKES	{connectToResource {bound}}
 		ID		id-package-nonAssistedConnectionEstablishment}
-	connectPackage {PARAMETERS-BOUND : bound} OPERATION-PACKAGE :: = {
+	connectPackage {PARAMETERS-BOUND : bound} OPERATION-PACKAGE ::= {
 		CONSUMER INVOKES	{connect {bound}}
 		ID		id-package-connect}
-	callHandlingPackage {PARAMETERS-BOUND : bound} OPERATION-PACKAGE :: = {
+	callHandlingPackage {PARAMETERS-BOUND : bound} OPERATION-PACKAGE ::= {
 		CONSUMER INVOKES	{releaseCall {bound}}
 		ID		id-package-callHandling}
-	bcsmEventHandlingPackage {PARAMETERS-BOUND : bound} OPERATION-PACKAGE :: = {
+	bcsmEventHandlingPackage {PARAMETERS-BOUND : bound} OPERATION-PACKAGE ::= {
 		CONSUMER INVOKES	{requestReportBCSMEvent {bound}}
 		SUPPLIER INVOKES	{eventReportBCSM {bound}}
 		ID		id-package-bcsmEventHandling}
-	chargingEventHandlingPackage {PARAMETERS-BOUND : bound} OPERATION-PACKAGE :: = {
+	chargingEventHandlingPackage {PARAMETERS-BOUND : bound} OPERATION-PACKAGE ::= {
 		CONSUMER INVOKES	{requestNotificationChargingEvent {bound}}
 		SUPPLIER INVOKES	{eventNotificationCharging {bound}}
 		ID		id-package-chargingEventHandling}
-	ssfCallProcessingPackage {PARAMETERS-BOUND : bound} OPERATION-PACKAGE :: = {
+	ssfCallProcessingPackage {PARAMETERS-BOUND : bound} OPERATION-PACKAGE ::= {
 		CONSUMER INVOKES	{collectInformation {bound} | continue}
 		ID		id-package-ssfCallProcessing}
-	scfCallInitiationPackage {PARAMETERS-BOUND : bound} OPERATION-PACKAGE :: = {
+	scfCallInitiationPackage {PARAMETERS-BOUND : bound} OPERATION-PACKAGE ::= {
 		CONSUMER INVOKES	{initiateCallAttempt {bound}}
 		ID		id-package-scfCallInitiation}
-	timerPackage {PARAMETERS-BOUND : bound} OPERATION-PACKAGE :: = {
+	timerPackage {PARAMETERS-BOUND : bound} OPERATION-PACKAGE ::= {
 		CONSUMER INVOKES	{resetTimer {bound}}
 		ID		id-package-timer}
-	billingPackage {PARAMETERS-BOUND : bound} OPERATION-PACKAGE :: = {
+	billingPackage {PARAMETERS-BOUND : bound} OPERATION-PACKAGE ::= {
 		CONSUMER INVOKES	{furnishChargingInformation {bound}}
 		ID		id-package-billing}
-	chargingPackage {PARAMETERS-BOUND : bound} OPERATION-PACKAGE :: = {
+	chargingPackage {PARAMETERS-BOUND : bound} OPERATION-PACKAGE ::= {
 		CONSUMER INVOKES	{applyCharging {bound}}
 		SUPPLIER INVOKES	{applyChargingReport {bound}}
 		ID		id-package-charging}
-	trafficManagementPackage {PARAMETERS-BOUND : bound} OPERATION-PACKAGE :: = {
+	trafficManagementPackage {PARAMETERS-BOUND : bound} OPERATION-PACKAGE ::= {
 		CONSUMER INVOKES	{callGap {bound}}
 		ID		id-package-trafficManagement}
-	serviceManagementActivatePackage {PARAMETERS-BOUND : bound} OPERATION-PACKAGE :: = {
+	serviceManagementActivatePackage {PARAMETERS-BOUND : bound} OPERATION-PACKAGE ::= {
 		CONSUMER INVOKES	{activateServiceFiltering {bound}}
 		ID		id-package-serviceManagementActivate}
-	serviceManagementResponsePackage {PARAMETERS-BOUND : bound} OPERATION-PACKAGE :: = {
+	serviceManagementResponsePackage {PARAMETERS-BOUND : bound} OPERATION-PACKAGE ::= {
 		CONSUMER INVOKES	{serviceFilteringResponse {bound}}
 		ID		id-package-serviceManagementResponse}
-	callReportPackage {PARAMETERS-BOUND : bound} OPERATION-PACKAGE :: = {
+	callReportPackage {PARAMETERS-BOUND : bound} OPERATION-PACKAGE ::= {
 		CONSUMER INVOKES	{callInformationRequest {bound}}
 		SUPPLIER INVOKES	{callInformationReport {bound}}
 		ID		id-package-callReport}
-	signallingControlPackage {PARAMETERS-BOUND : bound} OPERATION-PACKAGE :: = {
+	signallingControlPackage {PARAMETERS-BOUND : bound} OPERATION-PACKAGE ::= {
 		CONSUMER INVOKES	{sendChargingInformation {bound}}
 		ID		id-package-signallingControl}
-	activityTestPackage OPERATION-PACKAGE :: = {
+	activityTestPackage OPERATION-PACKAGE ::= {
 		CONSUMER INVOKES	{activityTest}
 		ID		id-package-activityTest}
-	cancelPackage {PARAMETERS-BOUND : bound} OPERATION-PACKAGE :: = {
+	cancelPackage {PARAMETERS-BOUND : bound} OPERATION-PACKAGE ::= {
 		CONSUMER INVOKES	{cancel {bound}}
 		ID		id-package-cancel}
-	cphResponsePackage {PARAMETERS-BOUND : bound} OPERATION-PACKAGE :: = {
+	cphResponsePackage {PARAMETERS-BOUND : bound} OPERATION-PACKAGE ::= {
 		CONSUMER INVOKES	{
 				continueWithArgument {bound}| 
 				disconnectLeg {bound}| 
@@ -366,13 +366,13 @@ DEFINITIONS ::= BEGIN
 				splitLeg {bound} 
 				}
 		ID		id-package-cphResponse}
-	exceptionInformPackage {PARAMETERS-BOUND : bound} OPERATION-PACKAGE :: = {
+	exceptionInformPackage {PARAMETERS-BOUND : bound} OPERATION-PACKAGE ::= {
 		CONSUMER INVOKES	{entityReleased {bound}}
 		ID		id-package-entityReleased}
-	triggerManagementPackage {PARAMETERS-BOUND : bound} OPERATION-PACKAGE :: = {
+	triggerManagementPackage {PARAMETERS-BOUND : bound} OPERATION-PACKAGE ::= {
 		CONSUMER INVOKES	{manageTriggerData {bound}}
 		ID		id-package-triggerManagement}
-	uSIHandlingPackage {PARAMETERS-BOUND : bound} OPERATION-PACKAGE :: = {
+	uSIHandlingPackage {PARAMETERS-BOUND : bound} OPERATION-PACKAGE ::= {
 		CONSUMER INVOKES	{requestReportUTSI {bound}| sendSTUI {bound}}
 		SUPPLIER INVOKES	{reportUTSI {bound}}
 		ID		id-package-uSIHandling
@@ -382,12 +382,12 @@ DEFINITIONS ::= BEGIN
 
 	-- Abstract Syntaxes
 
-	ssf-scfGenericAbstractSyntax ABSTRACT-SYNTAX :: = {
+	ssf-scfGenericAbstractSyntax ABSTRACT-SYNTAX ::= {
 		GenericSSF-SCF-PDUs
 		IDENTIFIED BY	id-as-ssf-scfGenericAS}
-	GenericSSF-SCF-PDUs :: = TCMessage {{SsfToScfGenericInvokable}, 
+	GenericSSF-SCF-PDUs ::= TCMessage {{SsfToScfGenericInvokable}, 
 				{SsfToScfGenericReturnable}}
-	SsfScfGenericInvokable OPERATION :: = {
+	SsfScfGenericInvokable OPERATION ::= {
 				activityTest |
 				applyCharging {networkSpecificBoundSet} |
 				applyChargingReport {networkSpecificBoundSet} |
@@ -428,7 +428,7 @@ DEFINITIONS ::= BEGIN
 				specializedResourceReport |
 				promptAndReceiveMessage {networkSpecificBoundSet}
 				}
-	SsfScfGenericReturnable OPERATION :: = {
+	SsfScfGenericReturnable OPERATION ::= {
 				activityTest | 
 				applyCharging {networkSpecificBoundSet} | 
 				applyChargingReport {networkSpecificBoundSet} | 
@@ -466,12 +466,12 @@ DEFINITIONS ::= BEGIN
 				promptAndReceiveMessage {networkSpecificBoundSet}
 				}
 
-	assistHandoff-ssf-scfAbstractSyntax ABSTRACT-SYNTAX :: = {
+	assistHandoff-ssf-scfAbstractSyntax ABSTRACT-SYNTAX ::= {
 		AssistHandoffsSF-SCF-PDUs
 		IDENTIFIED BY	id-as-assistHandoff-ssf-scfAS}
-	AssistHandoffsSF-SCF-PDUs :: = TCMessage {{AssistHandoffssfToScfInvokable}, 
+	AssistHandoffsSF-SCF-PDUs ::= TCMessage {{AssistHandoffssfToScfInvokable}, 
 				{AssistHandoffssfToScfReturnable}}
-	AssistHandoffssfToScfInvokable OPERATION :: = {
+	AssistHandoffssfToScfInvokable OPERATION ::= {
 				activityTest |
 				applyCharging {networkSpecificBoundSet}| 
 				applyChargingReport {networkSpecificBoundSet}| 
@@ -491,7 +491,7 @@ DEFINITIONS ::= BEGIN
 				specializedResourceReport |
 				promptAndReceiveMessage {networkSpecificBoundSet}
 				}
-	AssistHandoffssfToScfReturnable OPERATION :: = {
+	AssistHandoffssfToScfReturnable OPERATION ::= {
 				activityTest |
 				applyCharging {networkSpecificBoundSet}| 
 				applyChargingReport {networkSpecificBoundSet}| 
@@ -511,11 +511,11 @@ DEFINITIONS ::= BEGIN
 				}
 
 
-	scf-ssfGenericAbstractSyntax ABSTRACT-SYNTAX :: = {
+	scf-ssfGenericAbstractSyntax ABSTRACT-SYNTAX ::= {
 		GenericSCF-SSF-PDUs
 		IDENTIFIED BY	id-as-scf-ssfGenericAS}
-	GenericSCF-SSF-PDUs :: = TCMessage {{ScfToSsfGenericInvokable}, {ScfToSsfGenericReturnable}}
-	ScfSsfGenericInvokable OPERATION :: = {
+	GenericSCF-SSF-PDUs ::= TCMessage {{ScfToSsfGenericInvokable}, {ScfToSsfGenericReturnable}}
+	ScfSsfGenericInvokable OPERATION ::= {
 				activityTest | 
 				applyCharging {networkSpecificBoundSet}| 
 				applyChargingReport {networkSpecificBoundSet}| 
@@ -551,7 +551,7 @@ DEFINITIONS ::= BEGIN
 				scriptRun {networkSpecificBoundSet}|
 				promptAndReceiveMessage {networkSpecificBoundSet}
 				}
-	ScfSsfGenericReturnable OPERATION :: = {
+	ScfSsfGenericReturnable OPERATION ::= {
 				activityTest | 
 				applyCharging {networkSpecificBoundSet}| 
 				applyChargingReport {networkSpecificBoundSet}|
@@ -593,43 +593,43 @@ DEFINITIONS ::= BEGIN
 				}
 
 
-	scf-ssfTrafficManagementAbstractSyntax ABSTRACT-SYNTAX :: = {
+	scf-ssfTrafficManagementAbstractSyntax ABSTRACT-SYNTAX ::= {
 		TrafficManagementSCF-SSF-PDUs
 		IDENTIFIED BY	id-as-scf-ssfTrafficManagementAS}
-	TrafficManagementSCF-SSF-PDUs :: = TCMessage {{ScfToSsfTrafficManagementInvokable}} 
-	ScfToSsfTrafficManagementInvokable OPERATION :: = {
+	TrafficManagementSCF-SSF-PDUs ::= TCMessage {{ScfToSsfTrafficManagementInvokable}} 
+	ScfToSsfTrafficManagementInvokable OPERATION ::= {
 		callGap {networkSpecificBoundSet}
 		}
 
-	scf-ssfServiceManagementAbstractSyntax ABSTRACT-SYNTAX :: = {
+	scf-ssfServiceManagementAbstractSyntax ABSTRACT-SYNTAX ::= {
 		ServiceManagementSCF-SSF-PDUs
 		IDENTIFIED BY	id-as-scf-ssfServiceManagementAS}
-	ServiceManagementSCF-SSF-PDUs :: = TCMessage {{ScfToSsfServiceManagementInvokable}, 
+	ServiceManagementSCF-SSF-PDUs ::= TCMessage {{ScfToSsfServiceManagementInvokable}, 
 				{ScfToSsfServiceManagementReturnable}}
-	ScfToSsfServiceManagementInvokable OPERATION :: = {
+	ScfToSsfServiceManagementInvokable OPERATION ::= {
 		activateServiceFiltering {networkSpecificBoundSet}
 		}
-	ScfToSsfServiceManagementReturnable OPERATION :: = {
+	ScfToSsfServiceManagementReturnable OPERATION ::= {
 		activateServiceFiltering {networkSpecificBoundSet}
 		}
 
-	ssf-scfServiceManagementAbstractSyntax ABSTRACT-SYNTAX :: = {
+	ssf-scfServiceManagementAbstractSyntax ABSTRACT-SYNTAX ::= {
 		ServiceManagementSSF-SCF-PDUs
 		IDENTIFIED BY	id-as-ssf-scfServiceManagementAS}
-	ServiceManagementSSF-SCF-PDUs :: = TCMessage {{SsfToScfServiceManagementInvokable}}
-	SsfToScfServiceManagementInvokable OPERATION :: = {
+	ServiceManagementSSF-SCF-PDUs ::= TCMessage {{SsfToScfServiceManagementInvokable}}
+	SsfToScfServiceManagementInvokable OPERATION ::= {
 		serviceFilteringResponse {networkSpecificBoundSet}
 		}
 
-	scf-ssfTriggerManagementAbstractSyntax ABSTRACT-SYNTAX :: = {
+	scf-ssfTriggerManagementAbstractSyntax ABSTRACT-SYNTAX ::= {
 		TriggerManagementSCF-SSF-PDUs
 		IDENTIFIED BY	id-as-scf-ssfTriggerManagementAS}
-	TriggerManagementSCF-SSF-PDUs :: = TCMessage {{ScfToSsfTriggerManagementInvokable}, 
+	TriggerManagementSCF-SSF-PDUs ::= TCMessage {{ScfToSsfTriggerManagementInvokable}, 
 				{ScfToSsfTriggerManagementReturnable}}
-	ScfToSsfTriggerManagementInvokable OPERATION :: = {
+	ScfToSsfTriggerManagementInvokable OPERATION ::= {
 		manageTriggerData {networkSpecificBoundSet}
 		}
-	ScfToSsfTriggerManagementReturnable OPERATION :: = {
+	ScfToSsfTriggerManagementReturnable OPERATION ::= {
 		manageTriggerData {networkSpecificBoundSet}
 		}
 
