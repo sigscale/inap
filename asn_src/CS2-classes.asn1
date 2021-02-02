@@ -1,4 +1,4 @@
-CS2-classes {itu-t(0) identified-organization(4) etsi(0) inDomain(1) in-network(1) CS2(20) modules(0) in-cs2-classes (4) version1(0)}
+CS2-classes {itu-t(0) identified-organization(4) etsi(0) inDomain(1) in-network(1) cs2(20) modules(0) in-cs2-classes (4) version1(0)}
 
 DEFINITIONS ::= BEGIN
 
@@ -23,7 +23,7 @@ DEFINITIONS ::= BEGIN
 		scf-sdf-Protocol,
 		datatypes
 	FROM CS2-object-identifiers
-			{itu-t(0) identified-organization(4) etsi(0) inDomain(1) in-network(1) CS2(20) modules(0) in-cs2-object-identifiers (17) version1(0)}
+			{itu-t(0) identified-organization(4) etsi(0) inDomain(1) in-network(1) cs2(20) modules(0) in-cs2-object-identifiers (17) version1(0)}
 		inCs2AssistHandoffssfToScf, 
 		inCs2ScfToSsfGeneric, 
 		inCs2ScfToSsfTrafficManagement, 

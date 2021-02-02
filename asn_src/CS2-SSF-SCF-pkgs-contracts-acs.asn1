@@ -1,4 +1,4 @@
-CS2-SSF-SCF-pkgs-contracts-acs {itu-t(0) identified-organization(4) etsi(0) inDomain(1) in-network(1) CS2(20) modules(0) in-cs2-ssf-scf-pkgs-contracts-acs (6) version1(0)}
+CS2-SSF-SCF-pkgs-contracts-acs {itu-t(0) identified-organization(4) etsi(0) inDomain(1) in-network(1) cs2(20) modules(0) in-cs2-ssf-scf-pkgs-contracts-acs (6) version1(0)}
 
 DEFINITIONS ::= BEGIN
 
@@ -117,7 +117,7 @@ DEFINITIONS ::= BEGIN
 		classes, ros-InformationObjects, tc-Messages, tc-NotationExtensions, 
 		ssf-scf-Operations, scf-srf-Operations, scf-srf-Protocol
 	FROM CS2-object-identifiers
-			{itu-t(0) identified-organization(4) etsi(0) inDomain(1) in-network(1) CS2(20) modules(0) in-cs2-object-identifiers (17) version1(0)};
+			{itu-t(0) identified-organization(4) etsi(0) inDomain(1) in-network(1) cs2(20) modules(0) in-cs2-object-identifiers (17) version1(0)};
 	-- Application Contexts
 
 	cs2ssf-scfGenericAC APPLICATION-CONTEXT ::= {

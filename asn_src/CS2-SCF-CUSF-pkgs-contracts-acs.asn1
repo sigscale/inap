@@ -1,4 +1,4 @@
-CS2-SCF-CUSF-pkgs-contracts-acs  {itu-t(0) identified-organization(4) etsi(0) inDomain(1) in-network(1) CS2(20) modules(0) in-cs2-scf-cusf-pkgs-contracts-acs (16) version1(0)}
+CS2-SCF-CUSF-pkgs-contracts-acs  {itu-t(0) identified-organization(4) etsi(0) inDomain(1) in-network(1) cs2(20) modules(0) in-cs2-scf-cusf-pkgs-contracts-acs (16) version1(0)}
 
 DEFINITIONS :: = BEGIN
 
@@ -35,7 +35,7 @@ DEFINITIONS :: = BEGIN
 		classes, ros-InformationObjects, tc-Messages, scf-cusf-Operations, tc-NotationExtensions,
 		ssf-scf-Protocol, ssf-scf-Operations
 	FROM CS2-object-identifiers
-			{itu-t(0) identified-organization(4) etsi(0) inDomain(1) in-network(1) CS2(20) modules(0) in-cs2-object-identifiers (17) version1(0)}
+			{itu-t(0) identified-organization(4) etsi(0) inDomain(1) in-network(1) cs2(20) modules(0) in-cs2-object-identifiers (17) version1(0)}
 		activityTestPackage,
 		uSIHandlingPackage
 	FROM CS2-SSF-SCF-pkgs-contracts-acs ssf-scf-Protocol 

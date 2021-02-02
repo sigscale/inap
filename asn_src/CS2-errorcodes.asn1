@@ -1,11 +1,11 @@
-CS2-errorcodes {itu-t(0) identified-organization(4) etsi(0) inDomain(1) in-network(1) CS2(20) modules(0) in-cs2-errorcodes (3) version1(0)}
+CS2-errorcodes {itu-t(0) identified-organization(4) etsi(0) inDomain(1) in-network(1) cs2(20) modules(0) in-cs2-errorcodes (3) version1(0)}
 
 DEFINITIONS ::= BEGIN
 
 	IMPORTS
 		ros-InformationObjects
 	FROM CS2-object-identifiers
-			{itu-t(0) identified-organization(4) etsi(0) inDomain(1) in-network(1) CS2(20) modules(0) in-cs2-object-identifiers(17) version1(0)}
+			{itu-t(0) identified-organization(4) etsi(0) inDomain(1) in-network(1) cs2(20) modules(0) in-cs2-object-identifiers(17) version1(0)}
 		Code
 	FROM Remote-Operations-Information-Objects ros-InformationObjects;
 
