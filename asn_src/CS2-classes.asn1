@@ -106,16 +106,16 @@ DEFINITIONS ::= BEGIN
 		ID			id-rosObject-scf
 	}
 
-	--EXTENSION ::= CLASS {
-	--	&ExtensionType,
-	--	&criticality	CriticalityType DEFAULT ignore,
-	--	&id	Code
-	--	}
-	--WITH SYNTAX {
-	--	EXTENSION-SYNTAX	&ExtensionType
-	--	CRITICALITY			&criticality
-	--	IDENTIFIED BY		&id
-	--	}
+	EXTENSION ::= CLASS {
+		&ExtensionType,
+		&criticality	CriticalityType DEFAULT ignore,
+		&id	Code
+		}
+	WITH SYNTAX {
+		EXTENSION-SYNTAX	&ExtensionType
+		CRITICALITY			&criticality
+		IDENTIFIED BY		&id
+		}
 	--
 	-- Example of addition of an extension named 'Some Network Specific Indicator' of type
 	-- BOOLEAN, with criticality 'abort' and to be identified as extension number 1
@@ -135,15 +135,17 @@ DEFINITIONS ::= BEGIN
 	-- Use of Q.1400 defined Extension is for further study.
 	-- In addition the extension mechanism marker is used to identify the future minor additions
 	-- to INAP.
-	--firstExtension EXTENSION ::= {
-	--	EXTENSION-SYNTAX	NULL
-	--	CRITICALITY			ignore
-	--	IDENTIFIED BY		local: 1
-	--	}
+	firstExtension EXTENSION ::= {
+		EXTENSION-SYNTAX	NULL
+		CRITICALITY			ignore
+		IDENTIFIED BY		local: 1
+	}
 	-- firstExtension is just an example.
-	--SupportedExtensions {PARAMETERS-BOUND : bound} EXTENSION ::= {firstExtension, ...
+	SupportedExtensions {PARAMETERS-BOUND : bound} EXTENSION ::= {
+		firstExtension,
+		...
 		-- full set of network operator extensions -
-	--}
+	}
 	-- SupportedExtension is the full set of the network operator extensions.
 
 	UISCRIPT ::= CLASS {
