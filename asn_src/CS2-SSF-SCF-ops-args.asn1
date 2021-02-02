@@ -17,7 +17,7 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 		AddOnChargingInformation,
 		ChargingTariffInformation,
 		ChargingMessageType
-	FROM Tarifing-DataTypes
+	FROM Tariffing-Data-Types
 			{itu-t(0) identified-organization etsi (0) 1296 version1(1)}
 		IMSI,
 		Ext-BasicServiceCode
