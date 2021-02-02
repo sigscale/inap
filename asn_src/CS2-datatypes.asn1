@@ -366,8 +366,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 	DestinationRoutingAddress {PARAMETERS-BOUND : bound} ::= SEQUENCE SIZE(1) OF
 	CalledPartyNumber {bound}
 	-- Indicates the Called Party Number.
-	Digits {PARAMETERS-BOUND : bound} 					::= OCTET STRING (SIZE
-	bound.&minDigitsLength..bound.&maxDigitsLength))
+	Digits {PARAMETERS-BOUND : bound} ::= OCTET STRING (SIZE (bound.&minDigitsLength..bound.&maxDigitsLength))
 	-- Indicates the address signalling digits. 
 	-- Refer to the ITU-T Recommendation Q.763 Generic Number & Generic Digits parameters for encoding. 
 	-- The coding of the subfields 'NumberQualifier' in Generic Number and 'TypeOfDigits' in
@@ -534,9 +533,9 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 	EventSpecificInformationBCUSM {PARAMETERS-BOUND : bound} ::= CHOICE{
 
 	componentRecievedSpecificInfo	[0]	SEQUENCE {
-	componentReceivedInfo			[0]	OCTET STRING
-	{SIZE (bound.&minCompReceivedInforLen
-	..bound.&maxCompRecievedInfoLen)					OPTIONAL,
+		componentReceivedInfo [0] OCTET STRING
+		                          (SIZE (bound.&minCompReceivedInforLen..bound.&maxCompRecievedInfoLen))
+		                          OPTIONAL,
 	-- Its content is network signalling/operator specific.
 	-- The internal structure of this parameter can be defined using ASN.1 and the related Basic
 	-- Encoding Rules (BER). In such a case the value of this paramter (after the first tag and length
@@ -545,9 +544,9 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 	...
 	},
 		associationReleaseRequestedSpecificInfo [1] SEQUENCE{
-			associationReleaseInfo			[0] OCTET STRING
-				(SIZE(bound.&minAssReleaseInfoLength
-				     ..bound.&maxAssReleaseInfoLength)				OPTIONAL,
+			associationReleaseInfo [0] OCTET STRING
+			                           (SIZE(bound.&minAssReleaseInfoLength..bound.&maxAssReleaseInfoLength))
+			                           OPTIONAL,
 	-- Its content is network signalling/operator specific.
 	-- The internal structure of this parameter can be defined using ASN.1 and the related Basic
 	-- Encoding Rules (BER). In such a case the value of this paramter (after the first tag and length
