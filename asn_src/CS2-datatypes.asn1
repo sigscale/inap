@@ -627,14 +627,14 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 		chargingAcknowledgementInformation	(2),
 		chargingAcknowledgeTimerExpired	(3)
 		}
-	ExtensionField {PARAMETERS-BOUND : bound} 			::= SEQUENCE{
-		type	EXTENSION.&id ({SupportedExtensions {bound}}),
+	--ExtensionField {PARAMETERS-BOUND : bound} 			::= SEQUENCE{
+	--	type	EXTENSION.&id ({SupportedExtensions {bound}}),
 				-- shall identify the value of an EXTENSION type
-		criticality	CriticalityType									DEFAULT ignore,
-		value					[1] EXTENSION.&ExtensionType 
-					({SupportedExtensions {bound}}{@type}),
-	...
-		}
+	--	criticality	CriticalityType									DEFAULT ignore,
+	--	value					[1] EXTENSION.&ExtensionType 
+	--				({SupportedExtensions {bound}}{@type}),
+	--...
+	--	}
 	--This parameter indicates an extension of an argument data type. 
 	-- Its content is network operator specific
 
