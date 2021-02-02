@@ -18,7 +18,7 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 		ChargingTariffInformation,
 		ChargingMessageType
 	FROM Tarifing-DataTypes
-			{itu-t(0) identified-organization etsi (0) 1296 version1(1)};
+			{itu-t(0) identified-organization etsi (0) 1296 version1(1)}
 		IMSI,
 		Ext-BasicServiceCode
 	FROM MAP-CommonDataTypes
