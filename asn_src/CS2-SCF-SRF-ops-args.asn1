@@ -36,8 +36,8 @@ CS2-SCF-SRF-ops-args {itu-t(0)recommendation(0) q(17) 1228 modules(0) in-cs2-scf
 		unavailableResource,
 		unexpectedComponentSequence,
 		unexpectedDataValue,
-		unexpectedParameter,
-		unknownSubscriber
+		unexpectedParameter
+		-- unknownSubscriber
 	FROM CS2-errortypes errortypes
 		UISCRIPT,
 		SupportedUIScripts {},
@@ -130,8 +130,8 @@ CS2-SCF-SRF-ops-args {itu-t(0)recommendation(0) q(17) 1228 modules(0) in-cs2-scf
 		                | unavailableResource
 		                | unexpectedComponentSequence
 		                | unexpectedDataValue
-		                | unexpectedParameter
-		                | unknownSubscriber }
+		                | unexpectedParameter}
+--		                | unknownSubscriber }
 		CODE         opcode-promptAndReceiveMessage
 	}
 	--  Direction: SCF -> SRF, Timer: Tprm
