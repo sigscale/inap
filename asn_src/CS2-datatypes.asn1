@@ -14,7 +14,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 	FROM CS2-classes classes
 		AddOnChargingInformation,
 		ChargingTariffInformation
-	FROM Tarifing-DataTypes
+	FROM Tariffing-Data-Types
 			{itu-t(0) identified-organization etsi(0) 1296 version1(1)};
 
 	AccountNumber ::= NumericString (SIZE (1..151))
@@ -91,33 +91,34 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 						bound.&minBackwardGVNSLength..bound.&maxBackwardGVNSLength))
 	-- Indicats the GVNS Backward information. Refer to Q.735, §6 for encoding.
 
-	BackwardServiceInteractionInd 		::= SEQUENCE {
-					conferenceTreatmentIndicator		[1] OCTET STRING (SIZE(1))	OPTIONAL,
-	-- acceptConferenceRequest	'xxxx xx01'B
-	-- rejectConferenceRequest	'xxxx xx10'B
+	BackwardServiceInteractionInd ::= SEQUENCE {
+		conferenceTreatmentIndicator     [1] OCTET STRING (SIZE(1)) OPTIONAL,
+	-- acceptConferenceRequest 'xxxx xx01'B
+	-- rejectConferenceRequest 'xxxx xx10'B
 	-- network default is accept conference request,
-					callCompletionTreatmentIndicator	[2] OCTET STRING (SIZE(1))	OPTIONAL,
-	-- acceptCallCompletionServiceRequest	'xxxx xx01'B,
-	-- rejectCallCompletionServiceRequest	'xxxx xx10'B
+		callCompletionTreatmentIndicator [2] OCTET STRING (SIZE(1)) OPTIONAL,
+	-- acceptCallCompletionServiceRequest 'xxxx xx01'B,
+	-- rejectCallCompletionServiceRequest 'xxxx xx10'B
 	-- network default is accept call completion service request
-					...
-					}
+		...
+	}
 
 
 	BCSMEvent {PARAMETERS-BOUND : bound} ::= SEQUENCE {
-		eventTypeBCSM		[0] EventTypeBCSM,
-		monitorMode			[1] MonitorMode,
-		legID				[2] LegID	OPTIONAL,
-		dpSpecificCriteria	[30] DpSpecificCriteria {bound}	OPTIONAL,
-		...	}
-	-- Indicates the BCSM Event information for monitoring.
-	BCUSMEvent 							::= SEQUENCE{
-		eventType			[0] EventTypeBCUSM,
-		monitorMode			[1] MonitorMode,
+		eventTypeBCSM        [0] EventTypeBCSM,
+		monitorMode          [1] MonitorMode,
+		legID                [2] LegID OPTIONAL,
+		dpSpecificCriteria  [30] DpSpecificCriteria {bound} OPTIONAL,
 		...
-		}
+	}
+	-- Indicates the BCSM Event information for monitoring.
+	BCUSMEvent ::= SEQUENCE {
+		eventType     [0] EventTypeBCUSM,
+		monitorMode   [1] MonitorMode,
+		...
+	}
 
-	BearerCapabilities 					::= BIT STRING {
+	BearerCapabilities ::= BIT STRING {
 		speech 					(0),
 		bc64kbits 				(1),
 		bc2x64kbits 			(2),
