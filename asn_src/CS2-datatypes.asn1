@@ -632,7 +632,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 		type	EXTENSION.&id ({SupportedExtensions {bound}}),
 				-- shall identify the value of an EXTENSION type
 		criticality	CriticalityType DEFAULT ignore,
-		value [1] EXTENSION.&ExtensionType ({SupportedExtensions}{@type}),
+		value [1] EXTENSION.&ExtensionType ({SupportedExtensions {bound}}{@type}),
 		...
 	}
 	-- This parameter indicates an extension of an argument data type.
