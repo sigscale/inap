@@ -6,72 +6,72 @@ DEFINITIONS ::= BEGIN
 
 	-- For Modules from TCAP, ROS, 
 	tc-Messages						OBJECT IDENTIFIER ::= 
-		{itu-t recommendation Q.773 modules(2) messages(1) version3(3)}
+		{itu-t(0) recommendation(0) q(17) 773 modules(2) messages(1) version3(3)}
 	tc-NotationExtensions			OBJECT IDENTIFIER ::= 
-		{itu-t recommendation Q.775 modules(2) notation-extension (4) version1(1)}
+		{itu-t(0) recommendation(0) q(17) 775 modules(2) notation-extension(4) version1(1)}
 	ros-InformationObjects			OBJECT IDENTIFIER ::= 
-		{joint-iso-itu-t remote-operations(4) informationObjects(5) version1(0)}
+		{joint-iso-itu-t(2) remote-operations(4) informationObjects(5) version1(0)}
 	ros-genericPDUs					OBJECT IDENTIFIER ::= 
-		{joint-iso-itu-t remote-operations(4) generic-ROS-PDUs(6) version1(0)}
+		{joint-iso-itu-t(2) remote-operations(4) generic-ROS-PDUs(6) version1(0)}
 	ros-UsefulDefinitions			OBJECT IDENTIFIER ::= 
-		{joint-iso-itu-t remote-operations(4) useful-definitions(7) version1(0)}
+		{joint-iso-itu-t(2) remote-operations(4) useful-definitions(7) version1(0)}
 	sese-APDUs						OBJECT IDENTIFIER ::= 
-		{joint-iso-itu-t genericULS(20) modules(1) seseAPDUs(6)}
+		{joint-iso-itu-t(2) genericULS(20) modules(1) seseAPDUs(6)}
 	guls-Notation					OBJECT IDENTIFIER ::= 
-		{joint-iso-itu-t genericULS (20) modules (1) notation (1)}
+		{joint-iso-itu-t(2) genericULS(20) modules(1) notation(1)}
 	guls-SecurityTransformations	OBJECT IDENTIFIER ::= 
-		{joint-iso-itu-t genericULS (20) modules (1) gulsSecurityTransformations (3)}
+		{joint-iso-itu-t(2) genericULS(20) modules(1) gulsSecurityTransformations(3)}
 	ds-UsefulDefinitions			OBJECT IDENTIFIER ::= 
-		{joint-iso-itu-t ds(5) module(1) usefulDefinitions(0) 3}
+		{joint-iso-itu-t(2) ds(5) module(1) usefulDefinitions(0) 3}
 	spkmGssTokens					OBJECT IDENTIFIER ::= 
 		{iso(1) identified-organization(3) dod(6) internet(1) security(5) mechanisms(5) spkm(1) spkmGssTokens(10)}
 
 	-- For IN-CS1 Modules
 	contexts						OBJECT IDENTIFIER ::= 
-		{itu-t(0) identified-organization(4) etsi(0) inDomain(1) in-network(1) cs2(20) modules (0) contexts (8) selectedContexts (1) version (1)}
+		{itu-t(0) identified-organization(4) etsi(0) inDomain(1) in-network(1) cs2(20) modules(0) contexts(8) selectedContexts(1) version(1)}
 
 	-- For IN CS2 Modules
 	datatypes						OBJECT IDENTIFIER ::= 
-		{itu-t(0) identified-organization(4) etsi(0) inDomain(1) in-network(1) cs2(20) modules(0) in-cs2-datatypes (0) version1(0)}
+		{itu-t(0) identified-organization(4) etsi(0) inDomain(1) in-network(1) cs2(20) modules(0) in-cs2-datatypes(0) version1(0)}
 	errortypes						OBJECT IDENTIFIER ::= 
-		{itu-t(0) identified-organization(4) etsi(0) inDomain(1) in-network(1) cs2(20) modules(0) in-cs2-errortypes (1) version1(0)}
+		{itu-t(0) identified-organization(4) etsi(0) inDomain(1) in-network(1) cs2(20) modules(0) in-cs2-errortypes(1) version1(0)}
 	operationcodes					OBJECT IDENTIFIER ::= 
-		{itu-t(0) identified-organization(4) etsi(0) inDomain(1) in-network(1) cs2(20) modules(0) in-cs2-operationcodes (2) version1(0)}
+		{itu-t(0) identified-organization(4) etsi(0) inDomain(1) in-network(1) cs2(20) modules(0) in-cs2-operationcodes(2) version1(0)}
 	errorcodes						OBJECT IDENTIFIER ::= 
-		{itu-t(0) identified-organization(4) etsi(0) inDomain(1) in-network(1) cs2(20) modules(0) in-cs2-errorcodes (3) version1(0)}
+		{itu-t(0) identified-organization(4) etsi(0) inDomain(1) in-network(1) cs2(20) modules(0) in-cs2-errorcodes(3) version1(0)}
 	classes							OBJECT IDENTIFIER ::= 
-		{itu-t(0) identified-organization(4) etsi(0) inDomain(1) in-network(1) cs2(20) modules(0) in-cs2-classes (4) version1(0)}
+		{itu-t(0) identified-organization(4) etsi(0) inDomain(1) in-network(1) cs2(20) modules(0) in-cs2-classes(4) version1(0)}
 	ssf-scf-Operations				OBJECT IDENTIFIER ::= 
-		{itu-t(0) identified-organization(4) etsi(0) inDomain(1) in-network(1) cs2(20) modules(0) in-cs2-ssf-scf-ops-args (5) version1(0)}
+		{itu-t(0) identified-organization(4) etsi(0) inDomain(1) in-network(1) cs2(20) modules(0) in-cs2-ssf-scf-ops-args(5) version1(0)}
 	ssf-scf-Protocol				OBJECT IDENTIFIER ::= 
-		{itu-t(0) identified-organization(4) etsi(0) inDomain(1) in-network(1) cs2(20) modules(0) in-cs2-ssf-scf-pkgs-contracts-acs (6) version1(0)}
+		{itu-t(0) identified-organization(4) etsi(0) inDomain(1) in-network(1) cs2(20) modules(0) in-cs2-ssf-scf-pkgs-contracts-acs(6) version1(0)}
 	scf-srf-Operations				OBJECT IDENTIFIER ::= 
-		{itu-t recommendation q 1228 modules(0) in-cs2-scf-srf-ops-args (7) version1(0)}
+		{itu-t(0) recommendation(0) q(17) 1228 modules(0) in-cs2-scf-srf-ops-args(7) version1(0)}
 	scf-srf-Protocol				OBJECT IDENTIFIER ::= 
-		{itu-t recommendation q 1228 modules(0) in-cs2-scf-srf-pkgs-contracts-acs(8) version1(0)}
+		{itu-t(0) recommendation(0) q(17) 1228 modules(0) in-cs2-scf-srf-pkgs-contracts-acs(8) version1(0)}
 	sdf-InformationFramework 		OBJECT IDENTIFIER ::= 
-		{itu-t recommendation q 1228 module(0) sdfInformationFramework(9) version1(0)}
+		{itu-t(0) recommendation(0) q(17) 1228 module(0) sdfInformationFramework(9) version1(0)}
 	sdf-BasicAccessControl 			OBJECT IDENTIFIER ::= 
-		{itu-t recommendation q 1228 module(0) sdfBasicAccessControl(10) version1(0)}
+		{itu-t(0) recommendation(0) q(17) 1228 module(0) sdfBasicAccessControl(10) version1(0)}
 	scf-sdf-Operations				OBJECT IDENTIFIER ::= 
-		{itu-t recommendation q 1228 module(0) scf-sdf-operations(11) version1(0)}
+		{itu-t(0) recommendation(0) q(17) 1228 module(0) scf-sdf-operations(11) version1(0)}
 	scf-sdf-Protocol 				OBJECT IDENTIFIER ::= 
-		{itu-t recommendation q 1218 modules(0) in-scf-sdf-protocol(12) version1(0)} 
+		{itu-t(0) recommendation(0) q(17) 1218 modules(0) in-scf-sdf-protocol(12) version1(0)} 
 	scf-scf-Operations				OBJECT IDENTIFIER ::= 
-		{itu-t recommendation q 1228 modules(0) in-cs2-scf-scf-ops-args (13) version1(0)}
+		{itu-t(0) recommendation(0) q(17) 1228 modules(0) in-cs2-scf-scf-ops-args(13) version1(0)}
 	scf-scf-Protocol				OBJECT IDENTIFIER ::= 
-		{itu-t recommendation q 1228 modules(0) in-cs2-scf-scf-pkgs-contracts-acs (14) version1(0)} 
+		{itu-t(0) recommendation(0) q(17) 1228 modules(0) in-cs2-scf-scf-pkgs-contracts-acs(14) version1(0)} 
 	scf-cusf-Operations				OBJECT IDENTIFIER ::= 
-		{itu-t(0) identified-organization(4) etsi(0) inDomain(1) in-network(1) cs2(20) modules(0) in-cs2-scf-cusf-ops-args (15) version1(0)}
+		{itu-t(0) identified-organization(4) etsi(0) inDomain(1) in-network(1) cs2(20) modules(0) in-cs2-scf-cusf-ops-args(15) version1(0)}
 	scf-cusf-Protocol	O			BJECT IDENTIFIER ::= 
-		{itu-t(0) identified-organization(4) etsi(0) inDomain(1) in-network(1) cs2(20) modules(0) in-cs2-scf-cusf-pkgs-contracts-acs (16) version1(0)}
+		{itu-t(0) identified-organization(4) etsi(0) inDomain(1) in-network(1) cs2(20) modules(0) in-cs2-scf-cusf-pkgs-contracts-acs(16) version1(0)}
 	object-identifiers				OBJECT IDENTIFIER ::= 
-		{itu-t recommendation q 1228 modules(0) in-cs2-object-identifiers(17) version1(0)}
+		{itu-t(0) recommendation(0) q(17) 1228 modules(0) in-cs2-object-identifiers(17) version1(0)}
 	sdf-sdf-Protocol 				OBJECT IDENTIFIER ::= 
-		{itu-t recommendation q 1228 module(0) in-cs2-sdf-sdf-Protocol(18) version1(0)} 
+		{itu-t(0) recommendation(0) q(17) 1228 module(0) in-cs2-sdf-sdf-Protocol(18) version1(0)} 
 
 
-	id-cs2				OBJECT IDENTIFIER ::= {itu-t recommendation q 1228 cs2 (2)}
+	id-cs2				OBJECT IDENTIFIER ::= {itu-t(0) recommendation(0) q(17) 1228 cs2(2)}
 	id-cs20E			OBJECT IDENTIFIER ::= 
 		{itu-t(0) identified-organization(4) etsi(0) inDomain(1) in-network(1) cs2(20)}
 
@@ -283,7 +283,7 @@ DEFINITIONS ::= BEGIN
 
 	-- Object Identifiers for SDF-SDF interface
 	-- useful definitions
-	in-ds 					OBJECT IDENTIFIER ::= {itu-t recommendation q 1228 sdf-objects (10)}
+	in-ds 					OBJECT IDENTIFIER ::= {itu-t(0) recommendation(0) q(17) 1228 sdf-objects(10)}
 	id-avc					OBJECT IDENTIFIER ::= {in-ds 29}
 	id-aca					OBJECT IDENTIFIER ::= {in-ds 24}
 	id-soa					OBJECT IDENTIFIER ::= {in-ds 21}
