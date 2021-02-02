@@ -96,7 +96,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 	-- acceptConferenceRequest	'xxxx xx01'B
 	-- rejectConferenceRequest	'xxxx xx10'B
 	-- network default is accept conference request,
-					callCompletionTreatmentIndicator	[2] OCTET STRING (SIZE(1))	OPTIONAL
+					callCompletionTreatmentIndicator	[2] OCTET STRING (SIZE(1))	OPTIONAL,
 	-- acceptCallCompletionServiceRequest	'xxxx xx01'B,
 	-- rejectCallCompletionServiceRequest	'xxxx xx10'B
 	-- network default is accept call completion service request
@@ -108,12 +108,12 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 		eventTypeBCSM		[0] EventTypeBCSM,
 		monitorMode			[1] MonitorMode,
 		legID				[2] LegID	OPTIONAL,
-		dpSpecificCriteria	[30] DpSpecificCriteria {bound}	OPTIONAL
+		dpSpecificCriteria	[30] DpSpecificCriteria {bound}	OPTIONAL,
 		...	}
 	-- Indicates the BCSM Event information for monitoring.
 	BCUSMEvent 							::= SEQUENCE{
 		eventType			[0] EventTypeBCUSM,
-		monitorMode			[1] MonitorMode
+		monitorMode			[1] MonitorMode,
 		...
 		}
 
@@ -192,7 +192,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 	CallRecord {PARAMETERS-BOUND : bound} 		::= SEQUENCE {
 		callDuration	 		[0] Duration, 
 		callingPartyNumber		[1] CallingPartyNumber {bound}, 
-		calledPartyNumber		[2] CalledPartyNumber {bound}
+		calledPartyNumber		[2] CalledPartyNumber {bound},
 		... 
 		}
 	CallResult {PARAMETERS-BOUND : bound} 		::= OCTET STRING (SIZE (bound.&minCallResultLength ..
