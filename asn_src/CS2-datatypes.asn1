@@ -8,7 +8,6 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
          {itu-t(0) identified-organization(4) etsi(0) inDomain(1) in-network(1) cs2(20) modules(0) in-cs2-object-identifiers(17) version1(0)}
 		InvokeIdType
 	FROM TCAPMessages tc-Messages
-			{itu-t(0) recommendation(0) q(17) 773 modules(2) messages(1) version3(3)}
 		tc-Messages 
 		EXTENSION,
 		PARAMETERS-BOUND,
