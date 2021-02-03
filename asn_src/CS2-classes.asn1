@@ -141,7 +141,7 @@ DEFINITIONS ::= BEGIN
 		IDENTIFIED BY		local: 1
 	}
 	-- firstExtension is just an example.
-	SupportedExtensions {PARAMETERS-BOUND : bound} EXTENSION ::= {
+	SupportedExtensions EXTENSION ::= {
 		firstExtension,
 		...
 		-- full set of network operator extensions
