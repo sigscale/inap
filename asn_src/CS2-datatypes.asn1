@@ -391,11 +391,11 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 	-- Indicates the display information.
 	-- Delivery of DisplayInformation parameter to Private Networks cannot be guaranteed
 	-- due to signalling interworking problems, solutions are currently under study.
-	DpSpecificCriteria {PARAMETERS-BOUND : bound} 		::= CHOICE {
-		numberOfDigits			[0] NumberOfDigits,
-		applicationTimer		[1] ApplicationTimer,
-		midCallControlInfo		[2] MidCallControlInfo {bound}
-		}
+	DpSpecificCriteria {PARAMETERS-BOUND : bound} ::= CHOICE {
+		numberOfDigits       [0] NumberOfDigits,
+		applicationTimer     [1] ApplicationTimer,
+		midCallControlInfo   [2] MidCallControlInfo {bound}
+	}
 
 	-- The SCF may specify the number of digits to be collected by the SSF
 	-- for the EventReportBCSMEvent event.
@@ -628,7 +628,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 		chargingAcknowledgementInformation	(2),
 		chargingAcknowledgeTimerExpired	(3)
 		}
-	ExtensionField {PARAMETERS-BOUND : bound} ::= SEQUENCE {
+	ExtensionField ::= SEQUENCE {
 		type	EXTENSION.&id ({SupportedExtensions}),
 				-- shall identify the value of an EXTENSION type
 		criticality	CriticalityType DEFAULT ignore,
@@ -968,15 +968,15 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 			}
 		}
 	-- OPTIONAL denotes network operator specific use.
-	MidCallControlInfo {PARAMETERS-BOUND : bound} 		::= SEQUENCE SIZE (
-		bound.&minMidCallControlInfoNum ..
-		bound.&maxMidCallControlInfoNum) OF SEQUENCE {
-			midCallInfoType		[0]	MidCallInfoType {bound},
-			midCallReportType	[1]	ENUMERATED {
-				inMonitoringState	(0),
-				inAnyState			(1)
-				} 														DEFAULT inMonitoringState,
-			...
+	MidCallControlInfo {PARAMETERS-BOUND : bound} ::= SEQUENCE
+			SIZE(bound.&minMidCallControlInfoNum..bound.&maxMidCallControlInfoNum)
+			OF SEQUENCE {
+				midCallInfoType      [0] MidCallInfoType {bound},
+				midCallReportType    [1] ENUMERATED {
+					inMonitoringState (0),
+					inAnyState        (1)
+				} DEFAULT inMonitoringState,
+				...
 			}
 	MidCallInfo {PARAMETERS-BOUND : bound} 				::= SEQUENCE {
 		iNServiceControlCode	[0] Digits {bound},

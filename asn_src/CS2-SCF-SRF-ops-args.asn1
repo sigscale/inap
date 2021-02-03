@@ -17,7 +17,7 @@ CS2-SCF-SRF-ops-args {itu-t(0)recommendation(0) q(17) 1228 modules(0) in-cs2-scf
 		CallSegmentID {},
 		CollectedInfo,
 		Digits {},
-		ExtensionField {},
+		ExtensionField,
 		InformationToRecord {},
 		InformationToSend {},
 		LegID,
@@ -81,7 +81,7 @@ CS2-SCF-SRF-ops-args {itu-t(0)recommendation(0) q(17) 1228 modules(0) in-cs2-scf
 		disconnectFromIPForbidden     [1] BOOLEAN DEFAULT TRUE,
 		requestAnnouncementComplete   [2] BOOLEAN DEFAULT TRUE,
 		extensions                    [3] SEQUENCE SIZE(1..bound.&numOfExtensions)
-		                                  OF ExtensionField {bound} OPTIONAL,
+		                                  OF ExtensionField OPTIONAL,
 		connectedParty                    CHOICE {
 				legID                          [4] LegID,
 				callSegmentID                  [5] CallSegmentID {bound}
@@ -112,7 +112,7 @@ CS2-SCF-SRF-ops-args {itu-t(0)recommendation(0) q(17) 1228 modules(0) in-cs2-scf
 		disconnectFromIPForbidden  [1] BOOLEAN DEFAULT TRUE,
 		informationToSend          [2] InformationToSend {bound} OPTIONAL,
 		extensions                 [3] SEQUENCE SIZE(1..bound.&numOfExtensions)
-		                               OF ExtensionField {bound} OPTIONAL,
+		                               OF ExtensionField OPTIONAL,
 		callSegmentID              [4] CallSegmentID {bound} OPTIONAL,
 		...
 	}
@@ -145,7 +145,7 @@ CS2-SCF-SRF-ops-args {itu-t(0)recommendation(0) q(17) 1228 modules(0) in-cs2-scf
 		disconnectFromIPForbidden  [0] BOOLEAN DEFAULT TRUE,
 		informationToSend          [1] InformationToSend {bound} OPTIONAL,
 		extensions                 [3] SEQUENCE SIZE(0..bound.&numOfExtensions)
-		                               OF ExtensionField {bound} OPTIONAL,
+		                               OF ExtensionField OPTIONAL,
 		subscriberID               [4] GenericNumber {bound} OPTIONAL,
 		mailBoxID                  [5] MailBoxID {bound} OPTIONAL,
 		informationToRecord        [6] InformationToRecord {bound},
@@ -159,7 +159,7 @@ CS2-SCF-SRF-ops-args {itu-t(0)recommendation(0) q(17) 1228 modules(0) in-cs2-scf
 		recordedMessageID    [1] RecordedMessageID OPTIONAL,
 		recordedMessageUnits [2] INTEGER(1..bound.&maxRecordedMessageUnits) OPTIONAL,
 		extensions           [3] SEQUENCE SIZE(1..bound.&numOfExtensions)
-		                         OF ExtensionField {bound} OPTIONAL,
+		                         OF ExtensionField OPTIONAL,
 		...
 	}
 
@@ -184,7 +184,7 @@ CS2-SCF-SRF-ops-args {itu-t(0)recommendation(0) q(17) 1228 modules(0) in-cs2-scf
 		uIScriptSpecificInfo [0] UISCRIPT.&SpecificInfo
 		                         ({SupportedUIScripts}{@uIScriptId}),
 		extensions           [1] SEQUENCE SIZE (1..bound.&numOfExtensions)
-		                         OF ExtensionField {bound} OPTIONAL,
+		                         OF ExtensionField OPTIONAL,
 		callSegmentID        [2] CallSegmentID {bound} OPTIONAL,
 		...
 	}
@@ -205,7 +205,7 @@ CS2-SCF-SRF-ops-args {itu-t(0)recommendation(0) q(17) 1228 modules(0) in-cs2-scf
 		                       ({SupportedUIScripts}{@uIScriptId})
 		                       OPTIONAL,
 		extensions         [1] SEQUENCE SIZE (1..bound.&numOfExtensions)
-		                       OF ExtensionField {bound} OPTIONAL,
+		                       OF ExtensionField OPTIONAL,
 		callSegmentID      [2] CallSegmentID {bound} OPTIONAL,
 		lastEventIndicator [3] BOOLEAN DEFAULT FALSE,
 		...
@@ -231,7 +231,7 @@ CS2-SCF-SRF-ops-args {itu-t(0)recommendation(0) q(17) 1228 modules(0) in-cs2-scf
 		                         ({SupportedUIScripts}{@uIScriptId})
 		                         OPTIONAL,
 		extensions           [1] SEQUENCE SIZE(0..bound.&numOfExtensions) OF
-		                         ExtensionField {bound} OPTIONAL,
+		                         ExtensionField OPTIONAL,
 		callSegmentID        [2] CallSegmentID {bound} OPTIONAL,
 		...
 	}
@@ -259,7 +259,7 @@ CS2-SCF-SRF-ops-args {itu-t(0)recommendation(0) q(17) 1228 modules(0) in-cs2-scf
 		                              ({SupportedUIScripts}{@uIScriptId})
 		                              OPTIONAL,
 		extensions                [1] SEQUENCE SIZE(1..bound.&numOfExtensions) OF
-		                              ExtensionField {bound} OPTIONAL,
+		                              ExtensionField OPTIONAL,
 		disconnectFromIPForbidden [2] BOOLEAN DEFAULT TRUE,
 		callSegmentID             [3] CallSegmentID {bound} OPTIONAL,
 		...

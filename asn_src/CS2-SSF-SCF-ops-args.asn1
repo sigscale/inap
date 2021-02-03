@@ -105,7 +105,7 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 		EventSpecificInformationCharging {},
 		EventTypeBCSM,
 		EventTypeCharging {},
-		ExtensionField {},
+		ExtensionField,
 		FCIBillingChargingCharacteristics {},
 		FilteredCallTreatment {},
 		FilteringCharacteristics,
@@ -194,7 +194,7 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 		filteringCriteria        [3] FilteringCriteria {bound},
 		startTime                [4] DateAndTime OPTIONAL,
 		extensions               [5] SEQUENCE SIZE(1..bound.&numOfExtensions)
-		                             OF ExtensionField {bound} OPTIONAL,
+		                             OF ExtensionField OPTIONAL,
 		...
 	}
 
@@ -231,7 +231,7 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 	-- This parameter, if present, shall be set to TRUE. The parameter is ingored if CS2 is used.
 		partyToCharge						[2] LegID	OPTIONAL,
 		extensions							[3] SEQUENCE SIZE (1..bound.&numOfExtensions) OF
-																	ExtensionField {bound} 	OPTIONAL,
+																	ExtensionField OPTIONAL,
 		...
 		}
 
@@ -279,8 +279,7 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 		correlationID		[0] CorrelationID {bound},
 		iPAvailable			[1] IPAvailable {bound}							OPTIONAL,
 		iPSSPCapabilities	[2] IPSSPCapabilities {bound}					OPTIONAL,
-		extensions			[3] SEQUENCE SIZE(1..bound.&numOfExtensions) OF ExtensionField {bound}
-																			OPTIONAL,
+		extensions			[3] SEQUENCE SIZE(1..bound.&numOfExtensions) OF ExtensionField OPTIONAL,
 		...
 		}
 	-- OPTIONAL denotes network operator specific use. The value of the correlationID may be the
@@ -301,8 +300,7 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 		gapIndicators	[1] GapIndicators,
 		controlType		[2] ControlType														OPTIONAL,
 		gapTreatment	[3] GapTreatment {bound}											OPTIONAL,
-		extensions		[4] SEQUENCE SIZE(1..bound.&numOfExtensions) OF ExtensionField {bound}
-																						 	OPTIONAL,
+		extensions		[4] SEQUENCE SIZE(1..bound.&numOfExtensions) OF ExtensionField OPTIONAL,
 		...
 		}
 	-- OPTIONAL denotes network operator optional. If gapTreatment is not present, the SSF will use
@@ -321,7 +319,7 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 	CallInformationReportArg {PARAMETERS-BOUND : bound} ::= SEQUENCE {
 		requestedInformationList	[0] RequestedInformationList {bound},
 		extensions					[2] SEQUENCE SIZE(1..bound.&numOfExtensions)	OF
-																	ExtensionField {bound} 	OPTIONAL,
+																	ExtensionField OPTIONAL,
 		legID						[3] LegID	OPTIONAL,
 		...
 		}
@@ -348,8 +346,8 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 	CallInformationRequestArg {PARAMETERS-BOUND : bound}::= SEQUENCE {
 		requestedInformationTypeList	[0] RequestedInformationTypeList,
 		extensions						[2] SEQUENCE SIZE(1..bound.&numOfExtensions) OF
-																	ExtensionField {bound} 	OPTIONAL,
-		legID							[3] LegID											OPTIONAL,
+																	ExtensionField OPTIONAL,
+		legID							[3] LegID OPTIONAL,
 		...
 		}
 	-- OPTIONAL denotes network operator optional.
@@ -395,7 +393,7 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 	-- information according to a specified numbering plan (e.g. for virtual private networks).
 
 	CollectInformationArg {PARAMETERS-BOUND : bound}::= SEQUENCE {
-		extensions	[4] SEQUENCE SIZE(1..bound.&numOfExtensions) OF ExtensionField {bound} 	OPTIONAL,
+		extensions	[4] SEQUENCE SIZE(1..bound.&numOfExtensions) OF ExtensionField OPTIONAL,
 		...
 		}
 
@@ -431,7 +429,7 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 		routeList						[7] RouteList {bound}						OPTIONAL,
 		scfID							[8] ScfID {bound}							OPTIONAL,
 		extensions	[10] SEQUENCE SIZE(1..bound.&numOfExtensions) OF
-			    ExtensionField {bound} 	OPTIONAL,
+			    ExtensionField OPTIONAL,
 		carrier							[11] Carrier {bound}							OPTIONAL,
 		serviceInteractionIndicators	[26] ServiceInteractionIndicators {bound}	OPTIONAL,
 		callingPartyNumber				[27] CallingPartyNumber {bound}				OPTIONAL,
@@ -488,7 +486,7 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 				}
 			},
 		extensions						[4] SEQUENCE SIZE(1..bound.&numOfExtensions) OF
-																	ExtensionField {bound}	OPTIONAL,
+																	ExtensionField OPTIONAL,
 		serviceInteractionIndicators	[30] ServiceInteractionIndicators {bound}			OPTIONAL,
 		serviceInteractionIndicatorsTwo	[7] ServiceInteractionIndicatorsTwo					OPTIONAL,
 		...
@@ -532,7 +530,7 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 		forwardGVNS						[4] ForwardGVNS {bound}				OPTIONAL,
 		backwardGVNS					[5] BackwardGVNS {bound}			OPTIONAL,
 		extensions						[6] SEQUENCE SIZE (1..bound.&numOfExtensions) OF
-													ExtensionField {bound}	OPTIONAL,
+													ExtensionField OPTIONAL,
 		serviceInteractionIndicatorsTwo	[7] ServiceInteractionIndicatorsTwo	OPTIONAL,
 		locationNumber					[51] LocationNumber {bound}			OPTIONAL,
 		...
@@ -556,13 +554,13 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 
 	CreateCallSegmentAssociationArg {PARAMETERS-BOUND : bound} ::= SEQUENCE {
 		extensions [0] SEQUENCE SIZE (1..bound.&numOfExtensions)
-		               OF ExtensionField {bound} OPTIONAL,
+		               OF ExtensionField OPTIONAL,
 		...
 	}
 	CreateCallSegmentAssociationResult {PARAMETERS-BOUND : bound} ::= SEQUENCE {
 		newCallSegmentAssociation	[0] CSAID {bound},
 		extensions					[1] SEQUENCE SIZE (1..bound.&numOfExtensions) OF
-																	ExtensionField {bound}	OPTIONAL,
+																	ExtensionField OPTIONAL,
 		...
 		}
 
@@ -600,7 +598,7 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 				legID			[0] LegID,
 				callSegmentID	[1] CallSegmentID {bound}
 				},
-		extensions	[2] SEQUENCE SIZE (1..bound.&numOfExtensions) OF ExtensionField {bound} OPTIONAL,
+		extensions	[2] SEQUENCE SIZE (1..bound.&numOfExtensions) OF ExtensionField OPTIONAL,
 		...
 		}
 
@@ -625,8 +623,7 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 	DisconnectLegArg {PARAMETERS-BOUND : bound} ::= SEQUENCE {
 		legToBeReleased	[0] LegID,
 		releaseCause	[1] Cause {bound}													OPTIONAL,
-		extensions		[2] SEQUENCE SIZE (1..bound.&numOfExtensions) OF ExtensionField {bound}
-																							OPTIONAL,
+		extensions		[2] SEQUENCE SIZE (1..bound.&numOfExtensions) OF ExtensionField OPTIONAL,
 		...
 		}
 
@@ -682,7 +679,7 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 				}																			OPTIONAL,
 		scfID							[3] ScfID {bound}									OPTIONAL,
 		extensions						[4] SEQUENCE SIZE(1..bound.&numOfExtensions) OF
-																	ExtensionField {bound} 	OPTIONAL,
+																	ExtensionField OPTIONAL,
 		serviceInteractionIndicators	[30] ServiceInteractionIndicators {bound}			OPTIONAL,
 		serviceInteractionIndicatorsTwo	[6] ServiceInteractionIndicatorsTwo					OPTIONAL,
 		...
@@ -703,7 +700,7 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 		eventSpecificInformationCharging	[1] EventSpecificInformationCharging {bound}	OPTIONAL,
 		legID								[2] LegID										OPTIONAL,
 		extensions							[3] SEQUENCE SIZE(1..bound.&numOfExtensions) OF
-																	ExtensionField {bound} 	OPTIONAL,
+																	ExtensionField OPTIONAL,
 		monitorMode							[30] MonitorMode				DEFAULT notifyAndContinue,
 		eventTypeTariff						[50] EventTypeTariff							OPTIONAL,
 		eventSpecificInformationTariff		[51] ChargingMessageType						OPTIONAL,
@@ -727,7 +724,7 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 		legID							[3] LegID											OPTIONAL,
 		miscCallInfo					[4] MiscCallInfo				DEFAULT {messageType request},
 		extensions						[5] SEQUENCE SIZE(1..bound.&numOfExtensions) OF
-																	ExtensionField {bound} 	OPTIONAL,
+																	ExtensionField OPTIONAL,
 		...
 		}
 
@@ -778,7 +775,7 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 		originalCalledPartyID				[12] OriginalCalledPartyID {bound}				OPTIONAL,
 		terminalType						[14] TerminalType								OPTIONAL,
 		extensions							[15] SEQUENCE SIZE(1..bound.&numOfExtensions) OF
-																	ExtensionField {bound}	OPTIONAL,
+																	ExtensionField OPTIONAL,
 		highLayerCompatibility				[23] HighLayerCompatibility	OPTIONAL,
 		serviceInteractionIndicators		[24] ServiceInteractionIndicators {bound}		OPTIONAL,
 		additionalCallingPartyNumber		[25] AdditionalCallingPartyNumber {bound}		OPTIONAL,
@@ -832,7 +829,7 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 		alertingPattern					[1] AlertingPattern								OPTIONAL,
 		iSDNAccessRelatedInformation	[2] ISDNAccessRelatedInformation				OPTIONAL,
 		extensions						[4] SEQUENCE SIZE(1..bound.&numOfExtensions) OF
-																ExtensionField {bound}	OPTIONAL,
+																ExtensionField OPTIONAL,
 		serviceInteractionIndicators	[29] ServiceInteractionIndicators {bound}		OPTIONAL,
 		callingPartyNumber				[30] CallingPartyNumber {bound}					OPTIONAL,
 		legToBeCreated					[5] LegID DEFAULT sendingSideID: leg1,
@@ -868,14 +865,14 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 		triggerDataIdentifier	[1] TriggerDataIdentifier {bound},
 		registratorIdentifier 	[2] RegistratorIdentifier 									OPTIONAL,
 		extensions				[3] SEQUENCE SIZE (1..bound.&numOfExtensions) OF
-																	ExtensionField {bound}	OPTIONAL,
+																	ExtensionField OPTIONAL,
 		...
 		}
 
 	ManageTriggerDataResultArg {PARAMETERS-BOUND : bound} ::= SEQUENCE {
 		actionPerformed			[0] ActionPerformed,
 		extensions				[1] SEQUENCE SIZE (1..bound.&numOfExtensions) OF
-																	ExtensionField {bound}	OPTIONAL,
+																	ExtensionField OPTIONAL,
 		...
 		}
 
@@ -899,7 +896,7 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 		sourceCallSegment		[0] CallSegmentID {bound},
 		targetCallSegment		[1] CallSegmentID {bound} 				DEFAULT initialCallSegment,
 		extensions				[2] SEQUENCE SIZE (1..bound.&numOfExtensions) OF
-																	ExtensionField {bound}	OPTIONAL,
+																	ExtensionField OPTIONAL,
 		...
 		}
 
@@ -929,7 +926,7 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 								newLeg		[1] LegID
 			},
 		extensions						[3] SEQUENCE SIZE (1..bound.&numOfExtensions)
-															OF ExtensionField {bound}	OPTIONAL,
+															OF ExtensionField OPTIONAL,
 		...
 		}
 	moveLeg {PARAMETERS-BOUND : bound} OPERATION ::= {
@@ -951,7 +948,7 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 		legIDToMove						[0] LegID,
 		targetCallSegment				[1] CallSegmentID {bound} 						DEFAULT 1,
 		extensions						[2] SEQUENCE SIZE (1..bound.&numOfExtensions) OF
-																ExtensionField {bound}	OPTIONAL,
+																ExtensionField OPTIONAL,
 		...
 		}
 	-- For the OPTIONAL parameters, refer to clause 18 for the trigger
@@ -997,7 +994,7 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 		legID							[1] LegID						DEFAULT receivingSideID: leg1,
 		uSIInformation					[2] USIInformation {bound},
 		extensions						[3] SEQUENCE SIZE(1..bound.&numOfExtensions) OF
-																	ExtensionField {bound}	OPTIONAL,
+																	ExtensionField OPTIONAL,
 		...
 		}
 
@@ -1045,7 +1042,7 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 
 	RequestReportBCSMEventArg {PARAMETERS-BOUND : bound} ::= SEQUENCE {
 		bcsmEvents	[0] SEQUENCE SIZE(1..bound.&numOfBCSMEvents) OF BCSMEvent {bound},
-		extensions	[2] SEQUENCE SIZE(1..bound.&numOfExtensions) OF ExtensionField {bound} 	OPTIONAL,
+		extensions	[2] SEQUENCE SIZE(1..bound.&numOfExtensions) OF ExtensionField OPTIONAL,
 		...
 		}
 	-- Indicates the BCSM related events for notification.
@@ -1071,7 +1068,7 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 	RequestReportUTSIArg {PARAMETERS-BOUND : bound} ::= SEQUENCE {
 		requestedUTSIList	[0] RequestedUTSIList {bound},
 		extensions			[1] SEQUENCE SIZE(1..bound.&numOfExtensions) OF
-																	ExtensionField {bound}	OPTIONAL,
+																	ExtensionField OPTIONAL,
 		legID				[2] LegID									DEFAULT	sendingSideID: leg1,
 		...
 		}
@@ -1094,7 +1091,7 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 		timerID			[0] TimerID	DEFAULT tssf,
 		timervalue		[1] TimerValue,
 		extensions		[2] SEQUENCE SIZE(1..bound.&numOfExtensions) OF
-																	ExtensionField {bound} 	OPTIONAL,
+																	ExtensionField OPTIONAL,
 		callSegmentID	[3] CallSegmentID {bound}											OPTIONAL,
 		...
 		}
@@ -1121,7 +1118,7 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 		sCIBillingChargingCharacteristics	[0] SCIBillingChargingCharacteristics {bound},
 		partyToCharge						[1] LegID,
 		extensions							[2] SEQUENCE SIZE(1..bound.&numOfExtensions) OF
-																 ExtensionField {bound}		OPTIONAL,
+																 ExtensionField OPTIONAL,
 		tariffMessage						[50] ChargingMessageType						OPTIONAL,
 		...
 		}
@@ -1148,7 +1145,7 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 		legID				[1] LegID	DEFAULT sendingSideID: leg1,
 		uSIInformation		[2] USIInformation {bound},
 		extensions			[3] SEQUENCE SIZE(1..bound.&numOfExtensions) OF
-																	ExtensionField {bound}	OPTIONAL,
+																	ExtensionField OPTIONAL,
 		...
 		}
 
@@ -1166,7 +1163,7 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 		countersValue		[0] CountersValue,
 		filteringCriteria	[1] FilteringCriteria {bound},
 		extensions			[2] SEQUENCE SIZE(1..bound.&numOfExtensions) OF
-																 ExtensionField {bound}		OPTIONAL,
+																 ExtensionField OPTIONAL,
 		responseCondition	[3] ResponseCondition											OPTIONAL,
 		...
 		}
@@ -1191,8 +1188,7 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 	SplitLegArg {PARAMETERS-BOUND : bound}::= SEQUENCE {
 		legToBeSplit	[0] LegID,
 		newCallSegment	[1] INTEGER (2..bound.&numOfCSs),
-		extensions		[2] SEQUENCE SIZE (1..bound.&numOfExtensions) OF ExtensionField {bound}
-																							OPTIONAL,
+		extensions		[2] SEQUENCE SIZE (1..bound.&numOfExtensions) OF ExtensionField OPTIONAL,
 		...
 		}
 

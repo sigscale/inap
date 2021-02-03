@@ -49,7 +49,7 @@ DEFINITIONS IMPLICIT TAGS  ::= BEGIN
 		Digits {},
 		DisplayInformation {},
 		ErrorTreatment,
-		ExtensionField {},
+		ExtensionField,
 		HighLayerCompatibilities,
 		HighLayerCompatibility,
 		InfoType,
@@ -133,7 +133,7 @@ DEFINITIONS IMPLICIT TAGS  ::= BEGIN
 		reportExpected		[2] BOOLEAN  	DEFAULT TRUE,
 		securityParameters	[3] SecurityParameters	OPTIONAL,
 		extensions			[4] SEQUENCE SIZE (1..bound.&numOfExtensions) OF
-																	ExtensionField {bound}	OPTIONAL,
+																	ExtensionField OPTIONAL,
 		...
 		},
 		SCFQOP.&scfArgumentQOP{@scfqop}
@@ -182,7 +182,7 @@ DEFINITIONS IMPLICIT TAGS  ::= BEGIN
 		callingPartyBusinessGroupID	[16] OCTET STRING					OPTIONAL,
 		securityParameters			[17] SecurityParameters				OPTIONAL,
 		extensions					[18] SEQUENCE SIZE (1..bound.&numOfExtensions)
-											OF ExtensionField {bound}	OPTIONAL,
+											OF ExtensionField OPTIONAL,
 		...
 		},
 		SCFQOP.&scfArgumentQOP{@scfqop}
@@ -218,8 +218,7 @@ DEFINITIONS IMPLICIT TAGS  ::= BEGIN
 		redirectionInformation	[8] RedirectionInformation 			OPTIONAL,
 		callingPartysCategory	[9] CallingPartysCategory 			OPTIONAL,
 		securityParameters		[10] SecurityParameters				OPTIONAL,
-		extensions				[11] SEQUENCE SIZE (1..bound.&numOfExtensions) OF ExtensionField {bound}
-																	OPTIONAL,
+		extensions				[11] SEQUENCE SIZE (1..bound.&numOfExtensions) OF ExtensionField OPTIONAL,
 		...
 		},
 		SCFQOP.&scfArgumentQOP{@scfqop}
@@ -250,7 +249,7 @@ DEFINITIONS IMPLICIT TAGS  ::= BEGIN
 		supplementaryServices		[2] SupplementaryServices 			OPTIONAL,
 		securityParameters			[3] SecurityParameters				OPTIONAL,
 		extensions					[4] SEQUENCE SIZE (1..bound.&numOfExtensions) OF
-											ExtensionField {bound}		OPTIONAL,
+											ExtensionField OPTIONAL,
 		...
 		},
 		SCFQOP.&scfArgumentQOP{@scfqop}
@@ -262,7 +261,7 @@ DEFINITIONS IMPLICIT TAGS  ::= BEGIN
 		supplementaryServices		[2] SupplementaryServices 			OPTIONAL,
 		securityParameters			[3] SecurityParameters				OPTIONAL,
 		extensions					[4] SEQUENCE SIZE (1..bound.&numOfExtensions) OF
-												ExtensionField {bound}	OPTIONAL,
+												ExtensionField OPTIONAL,
 		...
 		},
 		SCFQOP.&scfArgumentQOP{@scfqop}
@@ -293,7 +292,7 @@ DEFINITIONS IMPLICIT TAGS  ::= BEGIN
 		notificationInformation	[1] NotificationInformation {bound}		OPTIONAL,
 		securityParameters		[2] SecurityParameters					OPTIONAL,
 		extensions				[3] SEQUENCE SIZE (1..bound.&numOfExtensions)
-											OF ExtensionField {bound}	OPTIONAL,
+											OF ExtensionField OPTIONAL,
 		...
 		},
 		SCFQOP.&scfArgumentQOP{@scfqop}
@@ -335,7 +334,7 @@ DEFINITIONS IMPLICIT TAGS  ::= BEGIN
 		preferredLanguage		[6] Language							OPTIONAL,
 		securityParameters		[7] SecurityParameters					OPTIONAL,
 		extensions				[8] SEQUENCE SIZE (1.. bound.&numOfExtensions)
-											OF ExtensionField {bound}	OPTIONAL,
+											OF ExtensionField OPTIONAL,
 		...
 		},
 		SCFQOP.&scfArgumentQOP{@scfqop}
@@ -399,8 +398,7 @@ DEFINITIONS IMPLICIT TAGS  ::= BEGIN
 	 ::= OPTIONALLY-PROTECTED {SEQUENCE {
 		userInformation		[0] ReceivedInformation {bound},
 		securityParameters	[1] SecurityParameters			OPTIONAL,
-		extensions			[1] SEQUENCE SIZE (1..bound.&numOfExtensions) OF ExtensionField {bound}
-																								OPTIONAL
+		extensions			[1] SEQUENCE SIZE (1..bound.&numOfExtensions) OF ExtensionField OPTIONAL
 		},
 		...
 		SCFQOP.&scfArgumentQOP{@scfqop}
@@ -550,7 +548,7 @@ DEFINITIONS IMPLICIT TAGS  ::= BEGIN
 		timeLimit				[4] UTCTime 								OPTIONAL,
 		securityParameters		[5] SecurityParameters 						OPTIONAL,
 		extensions				[6] SEQUENCE SIZE (1..bound.&numOfExtensions)
-									OF ExtensionField {bound}				OPTIONAL,
+									OF ExtensionField OPTIONAL,
 		...
 		}
 
@@ -558,8 +556,7 @@ DEFINITIONS IMPLICIT TAGS  ::= BEGIN
 		ultimateResponder	[0] ScfAddress {bound} 							OPTIONAL,
 		traceInformation	[1] TraceInformation {bound},
 		securityParameters	[2] SecurityParameters							OPTIONAL,
-		extensions			[3] SEQUENCE SIZE (1..bound.&numOfExtensions) OF ExtensionField {bound}
-																			OPTIONAL,
+		extensions			[3] SEQUENCE SIZE (1..bound.&numOfExtensions) OF ExtensionField OPTIONAL,
 		...
 		}
 

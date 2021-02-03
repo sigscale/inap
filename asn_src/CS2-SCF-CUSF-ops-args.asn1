@@ -19,7 +19,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 		CalledPartyNumber {},
 		Cause {},
 		Duration,
-		ExtensionField {},
+		ExtensionField,
 		LegID,
 		MiscCallInfo
 	FROM CS2-datatypes datatypes
@@ -59,8 +59,8 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 
 	ConnectAssociationArg  {PARAMETERS-BOUND : bound}::= SEQUENCE {
 		address			[0]	CalledPartyNumber {bound},
-		extensions		[1]	SEQUENCE SIZE(1..bound.&numOfExtensions) OF ExtensionField {bound}
-																							OPTIONAL,
+		extensions		[1]	SEQUENCE SIZE(1..bound.&numOfExtensions)
+		                     OF ExtensionField OPTIONAL,
 		...
 		}
 
@@ -82,7 +82,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 
 	ContinueAssociationArg  {PARAMETERS-BOUND : bound}::= SEQUENCE {
 		extensions		[0]	SEQUENCE SIZE(1..bound.&numOfExtensions) OF
-			      													ExtensionField {bound}	OPTIONAL,
+			      													ExtensionField OPTIONAL,
 		...
 		}
 
@@ -103,7 +103,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 		cUApplicationInd				[3]	CUApplicationInd				OPTIONAL,
 		legID							[4] LegID							OPTIONAL,
 		extensions						[5]	SEQUENCE SIZE(1..bound.&numOfExtensions) OF
-																	ExtensionField {bound}	OPTIONAL,
+																	ExtensionField OPTIONAL,
 		...
 		}
 
@@ -137,7 +137,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 		uSIServiceIndicator		[9]	USIServiceIndicator {bound}			OPTIONAL,
 		uSIInformation			[10] USIInformation {bound}				OPTIONAL,
 		extensions				[11] SEQUENCE SIZE(1..bound.&numOfExtensions) OF
-			  														ExtensionField {bound}	OPTIONAL,
+			  														ExtensionField OPTIONAL,
 		...
 		}
 
@@ -161,7 +161,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 	InitiateAssociationArg  {PARAMETERS-BOUND : bound}::= SEQUENCE {
 		calledPartyNumber	[0]	CalledPartyNumber {bound},
 		extensions			[1]	SEQUENCE SIZE(1..bound.&numOfExtensions) OF
-			   												   ExtensionField {bound}	OPTIONAL,
+			   												   ExtensionField OPTIONAL,
 		uSIServiceIndicator	[2]	USIServiceIndicator {bound}						OPTIONAL,
 		uSIInformation		[3]	USIInformation {bound}							OPTIONAL,
 		...
@@ -199,8 +199,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 	RequestReportBCUSMEventArg  {PARAMETERS-BOUND : bound}::= SEQUENCE{
 		bcusmEvents		[0] SEQUENCE SIZE(1..bound.&numOfBCUSMEvents) OF BCUSMEvent,
 		monitorDuration	[3] Duration	OPTIONAL,
-		extensions	 	[4] SEQUENCE SIZE(1..bound.&numOfExtensions) OF ExtensionField {bound}
-																						OPTIONAL,
+		extensions	 	[4] SEQUENCE SIZE(1..bound.&numOfExtensions) OF ExtensionField OPTIONAL,
 		cUDPCriteria	[5] CUApplicationInd											OPTIONAL,
 		legID			[6] LegID														OPTIONAL,
 		...
