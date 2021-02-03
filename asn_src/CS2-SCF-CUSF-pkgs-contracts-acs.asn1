@@ -10,11 +10,14 @@ DEFINITIONS ::= BEGIN
 		PARAMETERS-BOUND,
 		networkSpecificBoundSet
 	FROM CS2-classes classes
-		CONTRACT, OPERATION-PACKAGE, OPERATION
+		CONTRACT,
+		OPERATION-PACKAGE,
+		OPERATION
 	FROM Remote-Operations-Information-Objects ros-InformationObjects
 		TCMessage {}
 	FROM TCAPMessages tc-Messages
-		APPLICATION-CONTEXT, dialogue-abstract-syntax
+		APPLICATION-CONTEXT,
+		dialogue-abstract-syntax
 	FROM TC-Notation-Extensions tc-NotationExtensions
 		releaseAssociation {},
 		requestReportBCUSMEvent {},
@@ -32,16 +35,21 @@ DEFINITIONS ::= BEGIN
 		id-package-basic-scf-cusf,
 		id-as-basic-cusf-scf,
 		id-as-basic-scf-cusf,
-		classes, ros-InformationObjects, tc-Messages, scf-cusf-Operations, tc-NotationExtensions,
-		ssf-scf-Protocol, ssf-scf-Operations
+		classes,
+		ros-InformationObjects,
+		tc-Messages,
+		tc-NotationExtensions,
+		scf-cusf-Operations,
+		ssf-scf-Operations
+		ssf-scf-Protocol
 	FROM CS2-object-identifiers
 			{itu-t(0) identified-organization(4) etsi(0) inDomain(1) in-network(1) cs2(20) modules(0) in-cs2-object-identifiers (17) version1(0)}
 		activityTestPackage,
-		uSIHandlingPackage
+		uSIHandlingPackage {}
 	FROM CS2-SSF-SCF-pkgs-contracts-acs ssf-scf-Protocol
 		activityTest,
-		reportUTSI,
-		requestReportUTSI,
+		reportUTSI {},
+		requestReportUTSI {},
 		sendSTUI
 	FROM CS2-SSF-SCF-ops-args ssf-scf-Operations;
 

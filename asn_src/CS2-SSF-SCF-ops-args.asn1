@@ -4,18 +4,16 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 
 	IMPORTS
 
-		errortypes, datatypes, operationcodes, classes, ros-InformationObjects
+		errortypes,
+		datatypes,
+		operationcodes,
+		classes,
+		ros-InformationObjects,
+		tc-Messages
 	FROM CS2-object-identifiers
 			{itu-t(0) identified-organization(4) etsi(0) inDomain(1) in-network(1) cs2(20) modules(0) in-cs2-object-identifiers(17) version1(0)}
 		OPERATION
 	FROM Remote-Operations-Information-Objects ros-InformationObjects
-		tc-Messages, classes
-	FROM CS2-object-identifiers
-			{itu-t(0) identified-organization(4) etsi(0) inDomain(1) in-network(1) cs2(20) module(0) in-cs2-object-identifiers(17) version1(0)}
-		InvokeIdType
-	FROM TCAPMessages tc-Messages
-		AddOnChargingInformation,
-		ChargingTariffInformation,
 		ChargingMessageType
 	FROM Tariffing-Data-Types
 			{itu-t(0) identified-organization etsi (0) 1296 version1(1)}
@@ -33,8 +31,8 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 			{itu-t(0) identified-organization(4) etsi(0) mobileDomain(0) gsm-Network(1) modules(3) map-CH-DataTypes(13) version3(3)}
 		ISDN-AddressString
 	FROM MAP-CommonDataTypes
-		{itu-t(0) identified-organization(4) etsi(0) mobileDomain(0) gsm-Network (1) modules (3) map-CommonDataTypes (18) version3 (3)}
-			PARAMETERS-BOUND
+			{itu-t(0) identified-organization(4) etsi(0) mobileDomain(0) gsm-Network (1) modules (3) map-CommonDataTypes (18) version3 (3)}
+		PARAMETERS-BOUND
 	FROM CS2-classes classes
 		opcode-activateServiceFiltering,
 		opcode-activityTest,
@@ -89,10 +87,9 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 		CallingPartyBusinessGroupID{},
 		CallingPartyNumber {},
 		CallingPartysCategory,
-		CallingPartySubaddress{},
 		CallResult {},
 		CallSegmentID {},
-		Carrier{},
+		Carrier {},
 		Cause {},
 		CGEncountered,
 		ChargingEvent {},
@@ -103,7 +100,6 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 		CutAndPaste,
 		DateAndTime,
 		DestinationRoutingAddress {},
-		Digits {},
 		DisplayInformation {},
 		EventSpecificInformationBCSM {},
 		EventSpecificInformationCharging {},
@@ -126,7 +122,6 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 		initialCallSegment,
 		INServiceCompatibilityIndication {},
 		INServiceCompatibilityResponse,
-		Integer4,
 		InvokeID,
 		IPAvailable {},
 		IPRoutingAddress {},
@@ -141,7 +136,7 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 		Reason {},
 		RedirectingPartyID {},
 		RedirectionInformation,
-		RegistratorIdentifier{},
+		RegistratorIdentifier,
 		RequestedInformationList {},
 		RequestedInformationTypeList,
 		RequestedUTSIList {},
@@ -161,7 +156,6 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 	FROM CS2-datatypes datatypes
 		cancelFailed,
 		eTCFailed,
-		improperCallerResponse,
 		missingCustomerRecord,
 		missingParameter,
 		parameterOutOfRange,
@@ -172,8 +166,7 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 		unexpectedComponentSequence,
 		unexpectedDataValue,
 		unexpectedParameter,
-		unknownLegID,
-		unknownResource
+		unknownLegID
 	FROM CS2-errortypes errortypes;
 
 	activateServiceFiltering {PARAMETERS-BOUND : bound} OPERATION ::= {
@@ -439,7 +432,7 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 		scfID							[8] ScfID {bound}							OPTIONAL,
 		extensions	[10] SEQUENCE SIZE(1..bound.&numOfExtensions) OF
 			    ExtensionField {bound} 	OPTIONAL,
-		carrier							[11] Carrier{bound}							OPTIONAL,
+		carrier							[11] Carrier {bound}							OPTIONAL,
 		serviceInteractionIndicators	[26] ServiceInteractionIndicators {bound}	OPTIONAL,
 		callingPartyNumber				[27] CallingPartyNumber {bound}				OPTIONAL,
 		callingPartysCategory	[28] CallingPartysCategory	OPTIONAL,
@@ -803,7 +796,7 @@ DEFINITIONS IMPLICIT TAGS::= BEGIN
 		createdCallSegmentAssociation		[34] CSAID {bound}								OPTIONAL,
 		uSIServiceIndicator					[35] USIServiceIndicator {bound}				OPTIONAL,
 		uSIInformation						[36] USIInformation {bound}						OPTIONAL,
-		carrier								[37] Carrier									OPTIONAL,
+		carrier								[37] Carrier {bound}									OPTIONAL,
 		iMSI								[50] IMSI										OPTIONAL,
 		subscriberState						[51] SubscriberState							OPTIONAL,
 		locationInformation					[52] LocationInformation						OPTIONAL,

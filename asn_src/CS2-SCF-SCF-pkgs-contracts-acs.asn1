@@ -9,16 +9,21 @@ DEFINITIONS  ::= BEGIN
 		PARAMETERS-BOUND,
 		networkSpecificBoundSet
 	FROM CS2-classes classes
-		ROS-OBJECT-CLASS, CONTRACT, OPERATION-PACKAGE, CONNECTION-PACKAGE, OPERATION
+		CONTRACT,
+		OPERATION-PACKAGE,
+		CONNECTION-PACKAGE,
+		OPERATION
 	FROM Remote-Operations-Information-Objects ros-InformationObjects
-		Bind{}, Unbind{}
+		Bind {},
+		Unbind {}
 	FROM Remote-Operations-Generic-ROS-PDUs ros-genericPDUs
 		TCMessage {}
 	FROM  TCAPMessages tc-Messages
-		APPLICATION-CONTEXT, dialogue-abstract-syntax
+		APPLICATION-CONTEXT,
+		dialogue-abstract-syntax
 	FROM TC-Notation-Extensions tc-NotationExtensions
 		establishChargingRecord {},
-		confirmedReportChargingInformation{},
+		confirmedReportChargingInformation {},
 		confirmedNotificationProvided {},
 		handlingInformationRequest {},
 		handlingInformationResult {},
@@ -37,14 +42,9 @@ DEFINITIONS  ::= BEGIN
 		chainedNetworkCapability {},
 		chainedProvideUserInformation {},
 		chainedRequestNotification {},
-		scfBind{},
+		scfBind {},
 		scfUnbind
 	FROM CS2-SCF-SCF-ops-args scf-scf-Operations
-		id-ac,
-		id-rosObject,
-		id-contract,
-		id-package,
-		id-as,
 		id-ac-scf-scfOperationsAC,
 		id-ac-distributedSCFSystemAC,
 		id-ac-scf-scfOperationsWith3seAC,
@@ -64,10 +64,14 @@ DEFINITIONS  ::= BEGIN
 		id-as-scf-scfBindingAS,
 		ds-UsefulDefinitions,
 		classes,
-		tc-Messages, tc-NotationExtensions,
-		ros-InformationObjects, ros-genericPDUs,
-		scf-scf-Operations, scf-sdf-Protocol,
-		ssf-scf-Operations, ssf-scf-Protocol
+		tc-Messages,
+		tc-NotationExtensions,
+		ros-InformationObjects,
+		ros-genericPDUs,
+		scf-scf-Operations,
+		scf-sdf-Protocol,
+		ssf-scf-Operations,
+		ssf-scf-Protocol
 	FROM CS2-object-identifiers {itu-t(0) recommendation(0) q(17) 1228 modules(0) in-cs2-object-identifiers (17) version1(0)}
 		activityTest
 	FROM CS2-SSF-SCF-ops-args ssf-scf-Operations
@@ -153,14 +157,14 @@ DEFINITIONS  ::= BEGIN
 	-- Connection Package --
 
 	scf-scfConnectionPackage {PARAMETERS-BOUND : bound} CONNECTION-PACKAGE  ::= {
-		BIND				scfBind{bound}
+		BIND				scfBind {bound}
 		UNBIND				scfUnbind
 		RESPONDER UNBIND	FALSE
 		ID					id-package-scf-scfConnection
 		}
 
 	dsspConnectionPackage {PARAMETERS-BOUND : bound} CONNECTION-PACKAGE  ::= {
-		BIND				scfBind{bound}
+		BIND				scfBind {bound}
 		UNBIND				scfUnbind
 		RESPONDER UNBIND	FALSE
 		ID					id-package-dsspConnection
@@ -178,7 +182,8 @@ DEFINITIONS  ::= BEGIN
 
 	notificationPackage  {PARAMETERS-BOUND : bound}   OPERATION-PACKAGE  ::= {
 		CONSUMER INVOKES	{requestNotification {bound}}
-		SUPPLIER INVOKES	{notificationProvided {bound}| confirmedNotificationProvided}
+		SUPPLIER INVOKES	{notificationProvided {bound}
+				| confirmedNotificationProvided {bound}}
 		ID					id-package-notification
 		}
 
@@ -186,7 +191,7 @@ DEFINITIONS  ::= BEGIN
 
 	chargingInformationPackage  {PARAMETERS-BOUND : bound}   OPERATION-PACKAGE  ::= {
 		CONSUMER INVOKES	{establishChargingRecord {bound}}
-		SUPPLIER INVOKES	{confirmedReportChargingInformation{bound} |
+		SUPPLIER INVOKES	{confirmedReportChargingInformation {bound} |
 							reportChargingInformation  {bound}
 							}
 		ID					id-package-chargingInformation}
@@ -278,7 +283,7 @@ DEFINITIONS  ::= BEGIN
 		IDENTIFIED BY			id-as-scf-scfBindingAS}
 
 	SCF-SCFBinding-PDUs{PARAMETERS-BOUND : bound}  ::= CHOICE {
-		bind					Bind {scfBind{bound}},
+		bind					Bind {scfBind {bound}},
 		unbind					Unbind {scfUnbind}
 		}
 

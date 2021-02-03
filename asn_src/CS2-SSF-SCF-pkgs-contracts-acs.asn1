@@ -9,11 +9,14 @@ DEFINITIONS ::= BEGIN
 		PARAMETERS-BOUND,
 		networkSpecificBoundSet
 	FROM CS2-classes classes
-		ROS-OBJECT-CLASS, CONTRACT, OPERATION-PACKAGE, OPERATION
+		CONTRACT,
+		OPERATION-PACKAGE,
+		OPERATION
 	FROM Remote-Operations-Information-Objects ros-InformationObjects
 		TCMessage {}
 	FROM TCAPMessages tc-Messages
-		APPLICATION-CONTEXT, dialogue-abstract-syntax
+		APPLICATION-CONTEXT,
+		dialogue-abstract-syntax
 	FROM TC-Notation-Extensions tc-NotationExtensions
 			activateServiceFiltering {},
 			activityTest,
@@ -114,10 +117,16 @@ DEFINITIONS ::= BEGIN
 		id-package-entityReleased,
 		id-package-triggerManagement,
 		id-package-uSIHandling,
-		classes, ros-InformationObjects, tc-Messages, tc-NotationExtensions,
-		ssf-scf-Operations, scf-srf-Operations, scf-srf-Protocol
+		classes,
+		ros-InformationObjects,
+		tc-Messages,
+		tc-NotationExtensions,
+		ssf-scf-Operations,
+		scf-srf-Operations,
+		scf-srf-Protocol
 	FROM CS2-object-identifiers
 			{itu-t(0) identified-organization(4) etsi(0) inDomain(1) in-network(1) cs2(20) modules(0) in-cs2-object-identifiers (17) version1(0)};
+
 	-- Application Contexts
 
 	cs2ssf-scfGenericAC APPLICATION-CONTEXT ::= {

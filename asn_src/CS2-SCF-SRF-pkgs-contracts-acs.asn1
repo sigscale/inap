@@ -10,7 +10,6 @@ DEFINITIONS ::= BEGIN
 		networkSpecificBoundSet,
 		emptyConnectionPackage
 	FROM CS2-classes classes
-		ROS-OBJECT-CLASS,
 		CONTRACT,
 		OPERATION-PACKAGE,
 		OPERATION

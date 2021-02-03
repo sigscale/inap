@@ -9,11 +9,21 @@ DEFINITIONS ::= BEGIN
 -- Directory service.
 
 	IMPORTS
-		informationFramework, upperBounds, selectedAttributeTypes, basicAccessControl, directoryAbstractService
+		informationFramework,
+		upperBounds,
+		selectedAttributeTypes,
+		basicAccessControl,
+		directoryAbstractService
 	FROM UsefulDefinitions {joint-iso-itu-t(2) ds(5) module(1) usefulDefinitions(0) 3}
-		ATTRIBUTE, AttributeType, AttributeTypeAndValue, SubtreeSpecification, ContextAssertion
+		ATTRIBUTE,
+		AttributeType,
+		AttributeTypeAndValue,
+		SubtreeSpecification,
+		ContextAssertion
 	FROM InformationFramework informationFramework
-		id-aca-prescriptiveACI, id-aca-entryACI, id-aca-subentryACI,
+		id-aca-prescriptiveACI,
+		id-aca-entryACI,
+		id-aca-subentryACI,
 		sdf-InformationFramework
 	FROM CS2-object-identifiers
 			{itu-t() recommendation(0) q(17) 1228 modules(0) in-cs2-object-identifiers(17) version1(0)}
@@ -23,9 +33,14 @@ DEFINITIONS ::= BEGIN
 	FROM CS2-SDF-InformationFramework sdf-InformationFramework
 		Filter
 	FROM DirectoryAbstractService directoryAbstractService
-		NameAndOptionalUID, directoryStringFirstComponentMatch, DirectoryString{}
+		NameAndOptionalUID,
+		directoryStringFirstComponentMatch,
+		DirectoryString {}
 	FROM SelectedAttributeTypes selectedAttributeTypes
-		MaxValueCount, RestrictedValue, AuthenticationLevel, Precedence
+		MaxValueCount,
+		RestrictedValue,
+		AuthenticationLevel,
+		Precedence
 	FROM BasicAccessControl basicAccessControl;
 
 	-- types --

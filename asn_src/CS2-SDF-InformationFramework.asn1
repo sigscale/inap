@@ -13,11 +13,17 @@ DEFINITIONS ::= BEGIN
 -- Directory service.
 
 	IMPORTS
-		informationFramework, upperBounds, selectedAttributeTypes
+		informationFramework,
+		upperBounds,
+		selectedAttributeTypes
 	FROM UsefulDefinitions {joint-iso-itu-t(2) ds(5) module(1) usefulDefinitions(0) 3}
-		ATTRIBUTE, OBJECT-CLASS, objectClass, aliasedEntryName
+		ATTRIBUTE,
+		OBJECT-CLASS,
+		objectClass,
+		aliasedEntryName
 	FROM InformationFramework	informationFramework
-		DirectoryString{}, objectIdentifierFirstComponentMatch
+		DirectoryString {},
+	objectIdentifierFirstComponentMatch
 	FROM SelectedAttributeTypes	selectedAttributeTypes
 		ub-schema
 	FROM UpperBounds			upperBounds

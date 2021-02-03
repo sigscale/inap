@@ -9,36 +9,64 @@ DEFINITIONS ::= BEGIN
 	-- Directory service.
 
 	IMPORTS
-		directoryAbstractService, directorySecurityExchanges, protocolObjectIdentifiers
+		directoryAbstractService,
+		directorySecurityExchanges,
+		protocolObjectIdentifiers
 	FROM UsefulDefinitions ds-UsefulDefinitions
-		ROS-OBJECT-CLASS, CONTRACT, OPERATION-PACKAGE, CONNECTION-PACKAGE, OPERATION
+		ROS-OBJECT-CLASS,
+		CONTRACT,
+		OPERATION-PACKAGE,
+		CONNECTION-PACKAGE,
+		OPERATION
 	FROM Remote-Operations-Information-Objects ros-InformationObjects
-		Bind{}, Unbind{}
+		Bind {}, Unbind {}
 	FROM Remote-Operations-Generic-ROS-PDUs ros-genericPDUs
 		TCMessage {}
 	FROM TCAPMessages tc-Messages
-		APPLICATION-CONTEXT, dialogue-abstract-syntax
+		APPLICATION-CONTEXT,
+		dialogue-abstract-syntax
 	FROM TC-Notation-Extensions tc-NotationExtensions
-		id-ac-indirectoryAccessAC, id-ac-inExtendedDirectoryAccessAC, id-rosObject-dua, id-rosObject-directory,
+		id-ac-indirectoryAccessAC,
+		id-ac-inExtendedDirectoryAccessAC,
+		id-rosObject-dua,
+		id-rosObject-directory,
 		id-rosObject-dapDSA,
-		id-contract-dap, id-contract-dapExecute, id-package-dapConnection, id-package-search, id-package-modify,
+		id-contract-dap,
+		id-contract-dapExecute,
+		id-package-dapConnection,
+		id-package-search,
+		id-package-modify,
 		id-package-execute,
-		id-as-indirectoryOperationsAS, id-as-inExtendedDirectoryOperationsAS, id-as-indirectoryBindingAS,
+		id-as-indirectoryOperationsAS,
+		id-as-inExtendedDirectoryOperationsAS,
+		id-as-indirectoryBindingAS,
 		id-as-inSESEAS,
-		id-ac-inExtendedDirectoryAccessWith3seAC, id-ac-indirectoryAccessWith3seAC,
-		ros-InformationObjects, ros-genericPDUs, tc-Messages, tc-NotationExtensions, sese-APDUs,
-		ds-UsefulDefinitions, scf-sdf-Operations
+		id-ac-inExtendedDirectoryAccessWith3seAC,
+		id-ac-indirectoryAccessWith3seAC,
+		ros-InformationObjects,
+		ros-genericPDUs,
+		tc-Messages,
+		tc-NotationExtensions,
+		sese-APDUs,
+		ds-UsefulDefinitions,
+		scf-sdf-Operations
 	FROM CS2-object-identifiers
 			{itu-t(0) recommendation(0) q(17) 1228 modules(0) in-cs2-object-identifiers (17) version1 (0)}
-		directoryBind, search, addEntry, removeEntry, modifyEntry
+		directoryBind,
+		search,
+		addEntry,
+		removeEntry,
+		modifyEntry
 	FROM DirectoryAbstractService directoryAbstractService
-		SESEapdus{}, NoInvocationId
+		SESEapdus {},
+		NoInvocationId
 	FROM SeseAPDUs sese-APDUs
 		spkmThreeWay
 	FROM DirectorySecurityExchanges directorySecurityExchanges
 		id-se-threewayse
 	FROM ProtocolObjectIdentifiers protocolObjectIdentifiers
-		execute, in-directoryUnbind
+		execute,
+		in-directoryUnbind
 	FROM CS2-SCF-SDF-Operations scf-sdf-Operations;
 
 	-- application contexts --

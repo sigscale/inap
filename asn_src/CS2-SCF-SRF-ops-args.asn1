@@ -43,7 +43,11 @@ CS2-SCF-SRF-ops-args {itu-t(0)recommendation(0) q(17) 1228 modules(0) in-cs2-scf
 		SupportedUIScripts {},
 		PARAMETERS-BOUND
 	FROM CS2-classes classes
-		ros-InformationObjects, operationcodes, datatypes, errortypes, classes
+		ros-InformationObjects,
+		operationcodes,
+		datatypes,
+		errortypes,
+		classes
 	FROM CS2-object-identifiers
 			{iti-t(0) recommendation(0) q(17) 1228 modules(0) in-cs2-object-identifiers(17) version1(0)};
 

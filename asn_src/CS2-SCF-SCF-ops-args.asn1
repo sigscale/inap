@@ -7,14 +7,16 @@ CS2-SCF-SCF-ops-args {itu-t(0) recommendation(0) q(17) 1228 modules(0) in-cs2-sc
 DEFINITIONS IMPLICIT TAGS  ::= BEGIN
 
 	IMPORTS
-		OPERATION, Code, ERROR
+		OPERATION,
+		Code,
+		ERROR
 	FROM Remote-Operations-Information-Objects ros-InformationObjects
 		SecurityParameters,
 		Credentials,
 		SecurityProblem,
 		securityError
 	FROM DirectoryAbstractService directoryAbstractService
-		OPTIONALLY-PROTECTED{}
+		OPTIONALLY-PROTECTED {}
 	FROM EnhancedSecurity enhancedSecurity
 		PROTECTION-MAPPING
 	FROM Notation guls-Notation
@@ -31,15 +33,12 @@ DEFINITIONS IMPLICIT TAGS  ::= BEGIN
 		opcode-reportChargingInformation,
 		opcode-requestNotification
 	FROM CS2-operationcodes operationcodes
-		EXTENSION,
-		PARAMETERS-BOUND,
-		SupportedExtensions {}
-	FROM CS2-classes
+		PARAMETERS-BOUND
+	FROM CS2-classes classes
 		AccountNumber,
 		ActivableServices,
 		BearerCapabilities,
 		BearerCapability {},
-		CallConditions {},
 		CalledPartyNumber {},
 		CallingPartyNumber {},
 		CallingPartysCategory,
@@ -53,16 +52,13 @@ DEFINITIONS IMPLICIT TAGS  ::= BEGIN
 		ExtensionField {},
 		HighLayerCompatibilities,
 		HighLayerCompatibility,
-		InfoToSend {},
 		InfoType,
 		Integer4,
-		InteractionStrategy,
 		InvokableService,
 		Language,
 		LocationNumber {},
 		Notification,
 		NotificationInformation {},
-		NumberMatch {},
 		OriginalCalledPartyID {},
 		ReceivedInformation {},
 		RedirectingPartyID {},
@@ -74,13 +70,9 @@ DEFINITIONS IMPLICIT TAGS  ::= BEGIN
 		ScfID {},
 		SubscriberId {},
 		SupplementaryServices,
-		ToneId,
-		TraceInformation{},
-		TraceItem{},
+		TraceInformation {},
 		UnavailableNetworkResource,
 		UserCredit {},
-		UserInfo {},
-		UserInformation {},
 		UserInteractionModes
 	FROM CS2-datatypes datatypes
 		improperCallerResponse,
@@ -100,13 +92,20 @@ DEFINITIONS IMPLICIT TAGS  ::= BEGIN
 	FROM BasicAccessControl basicAccessControl
 		SPKM-ERROR
 	FROM SpkmGssTokens spkmGssTokens
-		activityTest
-	FROM CS2-SSF-SCF-ops-args ssf-scf-Operations
-		ros-InformationObjects, ds-UsefulDefinitions,  operationcodes,
-		classes, guls-Notation, guls-SecurityTransformations, errortypes, errorcodes,
-		scf-scf-Protocol, ssf-scf-Operations, datatypes, spkmGssTokens
+		ros-InformationObjects,
+		ds-UsefulDefinitions,
+		operationcodes,
+		classes,
+		guls-Notation,
+		errortypes,
+		errorcodes,
+		datatypes,
+		spkmGssTokens
 	FROM CS2-object-identifiers {itu-t(0) recommendation(0) q(17) 1228 modules(0) in-cs2-object-identifiers(17) version1(0)}
-		directoryAbstractService, enhancedSecurity, distributedOperations, basicAccessControl
+		directoryAbstractService,
+		enhancedSecurity,
+		distributedOperations,
+		basicAccessControl
 	FROM UsefulDefinitions ds-UsefulDefinitions;
 
 	establishChargingRecord {PARAMETERS-BOUND : bound}  OPERATION  ::= {
@@ -546,7 +545,7 @@ DEFINITIONS IMPLICIT TAGS  ::= BEGIN
 	ChainingArgument    {PARAMETERS-BOUND : bound}  ::= SEQUENCE  {
 		originatingSCF			[0] ScfID {bound},
 		target					[1] SubscriberId {bound}					OPTIONAL,
-		traceInformation		[2] TraceInformation{bound},
+		traceInformation		[2] TraceInformation {bound},
 		scfAuthenticationLevel	[3] AuthenticationLevel 			DEFAULT  basicLevels: {level none},
 		timeLimit				[4] UTCTime 								OPTIONAL,
 		securityParameters		[5] SecurityParameters 						OPTIONAL,
@@ -557,7 +556,7 @@ DEFINITIONS IMPLICIT TAGS  ::= BEGIN
 
 	ChainingResult    {PARAMETERS-BOUND : bound}  ::= SEQUENCE  {
 		ultimateResponder	[0] ScfAddress {bound} 							OPTIONAL,
-		traceInformation	[1] TraceInformation{bound},
+		traceInformation	[1] TraceInformation {bound},
 		securityParameters	[2] SecurityParameters							OPTIONAL,
 		extensions			[3] SEQUENCE SIZE (1..bound.&numOfExtensions) OF ExtensionField {bound}
 																			OPTIONAL,

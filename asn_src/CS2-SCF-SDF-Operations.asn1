@@ -9,30 +9,44 @@ DEFINITIONS ::= BEGIN
 -- the Directory service.
 
 	IMPORTS
-		informationFramework, distributedOperations, authenticationFramework, upperBounds,
-		directoryAbstractService, enhancedSecurity
-	FROM UsefulDefinitions {joint-iso-itu-t(2) ds(5) module(1) usefulDefinitions(0) 3}
-		CONTEXT, Context, DistinguishedName, Name
+		informationFramework,
+		distributedOperations,
+		authenticationFramework,
+		directoryAbstractService,
+		enhancedSecurity
+	FROM UsefulDefinitions
+			{joint-iso-itu-t(2) ds(5) module(1) usefulDefinitions(0) 3}
+		CONTEXT,
+		Context,
+		DistinguishedName,
+		Name
 	FROM InformationFramework informationFramework
-		OperationProgress, ReferenceType, Exclusions, AccessPoint, ContinuationReference
-	FROM DistributedOperations distributedOperations
-		CertificationPath, SIGNED {}, SIGNATURE {}, AlgorithmIdentifier
-	FROM AuthenticationFramework authenticationFramework
 		id-avc-assignment,
-		contexts, ros-InformationObjects, sdf-InformationFramework
+		contexts,
+		ros-InformationObjects,
+		sdf-InformationFramework
 	FROM CS2-object-identifiers
 			{itu-t(0) recommendation(0) q(17) 1228 modules(0) in-cs2-object-identifiers(17) version1(0)}
-		basicServiceContext, lineIdentityContext
-	FROM IN-Contexts    contexts
-		Code, OPERATION, ERROR
+		OPERATION,
+		ERROR,
+		Code
 	FROM Remote-Operations-Information-Objects ros-InformationObjects
 		inEmptyUnbind
-	FROM CS2-classes {itu-t(0) recommendation(0) q(17) 1228 modules(0) in-cs2-classes(4) version1(0)}
+	FROM CS2-classes
+			{itu-t(0) recommendation(0) q(17) 1228 modules(0) in-cs2-classes(4) version1(0)}
 		METHOD
 	FROM CS2-SDF-InformationFramework sdf-InformationFramework
-		OPTIONALLY-PROTECTED{}, DIRQOP
+		OPTIONALLY-PROTECTED {},
+		DIRQOP
 	FROM EnhancedSecurity enhancedSecurity
-		CommonArguments, CommonResults, attributeError, nameError, serviceError, securityError, referral, updateError
+		CommonArguments,
+		CommonResults,
+		attributeError,
+		nameError,
+		serviceError,
+		securityError,
+		referral,
+		updateError
 	FROM DirectoryAbstractService	 directoryAbstractService;
 
 	execute OPERATION ::= {
