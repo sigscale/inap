@@ -136,7 +136,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 		Reason {},
 		RedirectingPartyID {},
 		RedirectionInformation,
-		RegistratorIdentifier,
+		RegistratorIdentifier {},
 		RequestedInformationList {},
 		RequestedInformationTypeList,
 		RequestedUTSIList {},
@@ -863,7 +863,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 	ManageTriggerDataArg {PARAMETERS-BOUND : bound} ::= SEQUENCE {
 		actionIndicator			[0] ActionIndicator,
 		triggerDataIdentifier	[1] TriggerDataIdentifier {bound},
-		registratorIdentifier 	[2] RegistratorIdentifier 									OPTIONAL,
+		registratorIdentifier 	[2] RegistratorIdentifier {bound} OPTIONAL,
 		extensions				[3] SEQUENCE SIZE (1..bound.&numOfExtensions) OF
 																	ExtensionField OPTIONAL,
 		...
