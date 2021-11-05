@@ -135,14 +135,15 @@ DEFINITIONS ::= BEGIN
 	-- Use of Q.1400 defined Extension is for further study.
 	-- In addition the extension mechanism marker is used to identify the future minor additions
 	-- to INAP.
-	firstExtension EXTENSION ::= {
-		EXTENSION-SYNTAX	NULL
-		CRITICALITY			ignore
-		IDENTIFIED BY		local: 1
-	}
+	--
+	-- firstExtension EXTENSION ::= {
+	-- 	EXTENSION-SYNTAX	NULL
+	-- 	CRITICALITY			ignore
+	-- 	IDENTIFIED BY		local: 1
+	-- }
 	-- firstExtension is just an example.
 	SupportedExtensions EXTENSION ::= {
-		firstExtension,
+	--	firstExtension,
 		...
 		-- full set of network operator extensions
 	}
