@@ -649,8 +649,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 	-- network operator specific.
 
 	FCIBillingChargingCharacteristics {PARAMETERS-BOUND : bound} ::= CHOICE {
-		fCIBCCcs1	OCTET STRING (SIZE (bound.&minFCIBCcs1Length..
-										bound.&maxFCIbccCS1Length)),
+		fCIBCCcs1	OCTET STRING (SIZE (bound.&minFCIbccCS1Length..bound.&maxFCIbccCS1Length)),
 	-- Its content is network operator specific.
 	-- The internal structure of this parameter can be defined using ASN.1 and the related Basic
 	-- Encoding Rules (BER). In such a case the value of this paramter (after the first tag and length
