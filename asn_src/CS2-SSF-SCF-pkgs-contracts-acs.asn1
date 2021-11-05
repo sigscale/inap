@@ -605,7 +605,7 @@ DEFINITIONS ::= BEGIN
 	scf-ssfTrafficManagementAbstractSyntax ABSTRACT-SYNTAX ::= {
 		TrafficManagementSCF-SSF-PDUs
 		IDENTIFIED BY	id-as-scf-ssfTrafficManagementAS}
-	TrafficManagementSCF-SSF-PDUs ::= TCMessage {{ScfToSsfTrafficManagementInvokable}}
+	TrafficManagementSCF-SSF-PDUs ::= TCMessage {{ScfToSsfTrafficManagementInvokable}, {}}
 	ScfToSsfTrafficManagementInvokable OPERATION ::= {
 		callGap {networkSpecificBoundSet}
 		}
@@ -625,7 +625,7 @@ DEFINITIONS ::= BEGIN
 	ssf-scfServiceManagementAbstractSyntax ABSTRACT-SYNTAX ::= {
 		ServiceManagementSSF-SCF-PDUs
 		IDENTIFIED BY	id-as-ssf-scfServiceManagementAS}
-	ServiceManagementSSF-SCF-PDUs ::= TCMessage {{SsfToScfServiceManagementInvokable}}
+	ServiceManagementSSF-SCF-PDUs ::= TCMessage {{SsfToScfServiceManagementInvokable}, {}}
 	SsfToScfServiceManagementInvokable OPERATION ::= {
 		serviceFilteringResponse {networkSpecificBoundSet}
 		}
