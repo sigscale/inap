@@ -1,0 +1,36 @@
+2021-11-06  Vance Shipley <vances@sigscale.org>
+
+	* refactor to match cap application
+	* remove unused cs1 modules
+	* check for installed tcap and map applications
+	* correct asn.1 syntax errors
+	* typos
+	* remove unused parameterization
+	* correct network specific bounds parameter name
+	* missing paramaters for registrator identifier
+	* comment out unused example
+	* wrong number of arguments for tcmessage
+	* require stdlib 3.5 or greater
+	* enhanced security module
+	* remove unused parameterization of extension field type
+	* remove all unused imports
+	* remove unused parameterization of supported extensions type
+	* add missing parameters definitions
+	* import criticality type
+	* comment out unused unkbownsubscriber error
+	* fix inconsistent type names
+	* add tariffing data types from isup
+	* add useful definitions from x.501
+	* constraint should not be paramaterized
+	* correct object identifier syntax errors; add numerics
+	* badly placed line terminator
+	* correct syntax of assignment operator
+	* comment out cusf, sdf and scf-scf classes
+	* correct case in oids
+	* reference etsi en 301 140-1 specification (cs2)
+	* modernize oid
+	* add capability set 2 (cs2) asn1 modules
+	* rename modules to match camel
+	* asn1 module for operation and error codes
+	* informational module for mobile domain oid tree
+
