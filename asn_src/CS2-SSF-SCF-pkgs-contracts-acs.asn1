@@ -560,7 +560,7 @@ DEFINITIONS ::= BEGIN
 				scriptRun {networkSpecificBoundSet}|
 				promptAndReceiveMessage {networkSpecificBoundSet}
 				}
-	ScfSsfGenericReturnable OPERATION ::= {
+	ScfToSsfGenericReturnable OPERATION ::= {
 				activityTest |
 				applyCharging {networkSpecificBoundSet}|
 				applyChargingReport {networkSpecificBoundSet}|

@@ -119,7 +119,7 @@ DEFINITIONS ::= BEGIN
 			| scriptEvent {networkSpecificBoundSet}
 			| scriptInformation {networkSpecificBoundSet}
 			| scriptRun {networkSpecificBoundSet}
-			| specializedResourceRepor
+			| specializedResourceReport
 			| promptAndReceiveMessage {networkSpecificBoundSet}}
 
 	SRF-SCF-Returnable OPERATION ::= {
