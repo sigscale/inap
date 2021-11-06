@@ -84,8 +84,9 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 		BCSMEvent {},
 		BearerCapability {},
 		CalledPartyNumber {},
-		CallingPartyBusinessGroupID{},
+		CallingPartyBusinessGroupID {},
 		CallingPartyNumber {},
+		CalledPartyBCDNumber {},
 		CallingPartysCategory,
 		CallResult {},
 		CallSegmentID {},
@@ -105,6 +106,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 		EventSpecificInformationCharging {},
 		EventTypeBCSM,
 		EventTypeCharging {},
+		EventTypeTariff,
 		ExtensionField,
 		FCIBillingChargingCharacteristics {},
 		FilteredCallTreatment {},
@@ -126,7 +128,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 		IPAvailable {},
 		IPRoutingAddress {},
 		IPSSPCapabilities {},
-		ISDNAccessRelatedInformation{},
+		ISDNAccessRelatedInformation {},
 		LegID,
 		leg1,
 		LocationNumber {},
@@ -424,7 +426,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 		alertingPattern	[1] AlertingPattern	OPTIONAL,
 		correlationID					[2] CorrelationID {bound}					OPTIONAL,
 		cutAndPaste	[3] CutAndPaste	OPTIONAL,
-		iSDNAccessRelatedInformation	[5] ISDNAccessRelatedInformation{bound}		OPTIONAL,
+		iSDNAccessRelatedInformation	[5] ISDNAccessRelatedInformation {bound}		OPTIONAL,
 		originalCalledPartyID			[6] OriginalCalledPartyID {bound}			OPTIONAL,
 		routeList						[7] RouteList {bound}						OPTIONAL,
 		scfID							[8] ScfID {bound}							OPTIONAL,
@@ -448,7 +450,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 		locationNumber					[50] LocationNumber {bound}					OPTIONAL,
 		bearerCapability				[51] BearerCapability {bound}				OPTIONAL,
 		suppressionOfAnnouncement	[55] SuppressionOfAnnouncement	OPTIONAL,
-		oCSIApplicable	[56] OCSIApplicable	OPTIONAL,
+		-- oCSIApplicable	[56] OCSIApplicable	OPTIONAL,
 		...
 		}
 
@@ -522,8 +524,8 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 
 	ContinueWithArgumentArg {PARAMETERS-BOUND : bound} ::= SEQUENCE {
 		legorCSID	CHOICE{
-		legID							[0] LegID,
-		csID							[9] CallsegmentID {bound}}	DEFAULT legID: sendingSideID: leg1,
+			legID							[0] LegID,
+			csID							[9] CallSegmentID {bound}}	DEFAULT legID: sendingSideID: leg1,
 		alertingPattern					[1] AlertingPattern					OPTIONAL,
 		genericName						[2] GenericName {bound}				OPTIONAL,
 		iNServiceCompatibilityResponse	[3] INServiceCompatibilityResponse	OPTIONAL,
@@ -763,10 +765,10 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 	-- This operation is used after a TDP to indicate request for service.
 
 	InitialDPArg {PARAMETERS-BOUND : bound} ::= SEQUENCE {
-		serviceKey							[0] ServiceKey	,
+		serviceKey							[0] ServiceKey,
 		calledPartyNumber					[2] CalledPartyNumber {bound}					OPTIONAL,
 		callingPartyNumber					[3] CallingPartyNumber {bound}					OPTIONAL,
-		callingPartyBusinessGroupID			[4] CallingPartyBusinessGroupID					OPTIONAL,
+		callingPartyBusinessGroupID			[4] CallingPartyBusinessGroupID {bound}		OPTIONAL,
 		callingPartysCategory				[5] CallingPartysCategory						OPTIONAL,
 		cGEncountered						[7] CGEncountered								OPTIONAL,
 		iPSSPCapabilities					[8] IPSSPCapabilities {bound}					OPTIONAL,
@@ -785,7 +787,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 		redirectingPartyID					[29] RedirectingPartyID {bound}					OPTIONAL,
 		redirectionInformation				[30] RedirectionInformation						OPTIONAL,
 		cause								[17] Cause {bound}								OPTIONAL,
-		iSDNAccessRelatedInformation		[21] ISDNAccessRelatedInformation				OPTIONAL,
+		iSDNAccessRelatedInformation		[21] ISDNAccessRelatedInformation {bound}		OPTIONAL,
 		iNServiceCompatibilityIndication	[22] INServiceCompatibilityIndication {bound}	OPTIONAL,
 		genericNumbers						[31] GenericNumbers {bound}						OPTIONAL,
 		serviceInteractionIndicatorsTwo		[32] ServiceInteractionIndicatorsTwo			OPTIONAL,
@@ -800,7 +802,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 		ext-basicServiceCode				[53] Ext-BasicServiceCode						OPTIONAL,
 		callReferenceNumber					[54] CallReferenceNumber						OPTIONAL,
 		mscAddress							[55] ISDN-AddressString							OPTIONAL,
-		calledPartyBCDNumber				[56] CalledPartyBCDNumber						OPTIONAL,
+		calledPartyBCDNumber				[56] CalledPartyBCDNumber {bound}			OPTIONAL,
 		...
 		}
 	-- OPTIONAL for iPSSPCapabilities, iPAvailable, cGEncountered, and miscCallInfo denotes network
@@ -827,7 +829,7 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 	InitiateCallAttemptArg {PARAMETERS-BOUND : bound} ::= SEQUENCE {
 		destinationRoutingAddress		[0] DestinationRoutingAddress {bound},
 		alertingPattern					[1] AlertingPattern								OPTIONAL,
-		iSDNAccessRelatedInformation	[2] ISDNAccessRelatedInformation				OPTIONAL,
+		iSDNAccessRelatedInformation	[2] ISDNAccessRelatedInformation {bound}	OPTIONAL,
 		extensions						[4] SEQUENCE SIZE(1..bound.&numOfExtensions) OF
 																ExtensionField OPTIONAL,
 		serviceInteractionIndicators	[29] ServiceInteractionIndicators {bound}		OPTIONAL,

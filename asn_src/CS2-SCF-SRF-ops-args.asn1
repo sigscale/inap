@@ -36,11 +36,11 @@ CS2-SCF-SRF-ops-args {itu-t(0)recommendation(0) q(17) 1228 modules(0) in-cs2-scf
 		unavailableResource,
 		unexpectedComponentSequence,
 		unexpectedDataValue,
-		unexpectedParameter
-		-- unknownSubscriber
+		unexpectedParameter,
+		unknownLegID
 	FROM CS2-errortypes errortypes
 		UISCRIPT,
-		SupportedUIScripts {},
+		SupportedUIScripts,
 		PARAMETERS-BOUND
 	FROM CS2-classes classes
 		ros-InformationObjects,
@@ -54,7 +54,7 @@ CS2-SCF-SRF-ops-args {itu-t(0)recommendation(0) q(17) 1228 modules(0) in-cs2-scf
 	playAnnouncement {PARAMETERS-BOUND : bound} OPERATION ::= {
 		ARGUMENT       PlayAnnouncementArg {bound}
 		RETURN RESULT  FALSE
-		ERROR          {canceled
+		ERRORS         {canceled
 		                  | missingParameter
 		                  | parameterOutOfRange
 		                  | systemFailure
@@ -63,8 +63,8 @@ CS2-SCF-SRF-ops-args {itu-t(0)recommendation(0) q(17) 1228 modules(0) in-cs2-scf
 		                  | unexpectedDataValue
 		                  | unexpectedParameter
 		                  | unavailableResource
-		                  | unknownLegId}
-		LINKED         specializedResourceReport
+		                  | unknownLegID}
+		LINKED         {specializedResourceReport}
 		CODE           opcode-playAnnouncement
 	}
 	-- Direction: SCF -> SRF, Timer: Tpa
@@ -180,9 +180,8 @@ CS2-SCF-SRF-ops-args {itu-t(0)recommendation(0) q(17) 1228 modules(0) in-cs2-scf
 	-- instance of the "User Interaction" script: the context is released.
 
 	ScriptCloseArg {PARAMETERS-BOUND: bound} ::= SEQUENCE {
-		uIScriptId               UISCRIPT.&id({SupportedUIScripts {bound}}),
-		uIScriptSpecificInfo [0] UISCRIPT.&SpecificInfo
-		                         ({SupportedUIScripts}{@uIScriptId}),
+		uIScriptId               UISCRIPT.&id({SupportedUIScripts}),
+		uIScriptSpecificInfo [0] UISCRIPT.&SpecificInfo({SupportedUIScripts}{@uIScriptId}),
 		extensions           [1] SEQUENCE SIZE (1..bound.&numOfExtensions)
 		                         OF ExtensionField OPTIONAL,
 		callSegmentID        [2] CallSegmentID {bound} OPTIONAL,
@@ -200,7 +199,7 @@ CS2-SCF-SRF-ops-args {itu-t(0)recommendation(0) q(17) 1228 modules(0) in-cs2-scf
 	-- execution of the instance of User Interaction script.
 
 	ScriptEventArg {PARAMETERS-BOUND: bound} ::= SEQUENCE {
-		uIScriptId             UISCRIPT.&id ({SupportedUIScripts {bound}}),
+		uIScriptId             UISCRIPT.&id ({SupportedUIScripts}),
 		uIScriptResult     [0] UISCRIPT.&Result
 		                       ({SupportedUIScripts}{@uIScriptId})
 		                       OPTIONAL,
@@ -226,7 +225,7 @@ CS2-SCF-SRF-ops-args {itu-t(0)recommendation(0) q(17) 1228 modules(0) in-cs2-scf
 	-- Direction: SCF -> SRF. Timer: Tinf
 
 	ScriptInformationArg {PARAMETERS-BOUND : bound}::= SEQUENCE {
-		uIScriptId               UISCRIPT.&id ({SupportedUIScripts {bound}}),
+		uIScriptId               UISCRIPT.&id ({SupportedUIScripts}),
 		uIScriptSpecificInfo [0] UISCRIPT.&SpecificInfo
 		                         ({SupportedUIScripts}{@uIScriptId})
 		                         OPTIONAL,
@@ -254,7 +253,7 @@ CS2-SCF-SRF-ops-args {itu-t(0)recommendation(0) q(17) 1228 modules(0) in-cs2-scf
 	-- instance. A context is partially defined for it if necessary.
 
 	ScriptRunArg {PARAMETERS-BOUND: bound} ::= SEQUENCE {
-		uIScriptId                    UISCRIPT.&id ({SupportedUIScripts {bound}}),
+		uIScriptId                    UISCRIPT.&id ({SupportedUIScripts}),
 		uIScriptSpecificInfo      [0] UISCRIPT.&SpecificInfo
 		                              ({SupportedUIScripts}{@uIScriptId})
 		                              OPTIONAL,
