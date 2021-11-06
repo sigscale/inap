@@ -6,12 +6,17 @@ appdir = $(beamdir)
 app_DATA = inap.app
 EXTRA_DIST = inap.app
 
-beam_DATA = inap_codec.beam
+beam_DATA = CS2-SSF-SCF-pkgs-contracts-acs.beam \
+		CS2-SCF-SRF-pkgs-contracts-acs.beam \
+		CS2-SSF-SCF-ops-args.beam \
+		CS2-SCF-SRF-ops-args.beam \
+		CS2-object-identifiers.beam \
+		CS2-operationcodes.beam \
+		CS2-errorcodes.beam \
+		CS2-datatypes.beam \
+		CS2-errortypes.beam
 
-inap_codec.beam:	$(top_builddir)/src/inap_codec.erl
-	$(ERLC) $(ERLCFLAGS) $<
-
-%.beam:	$(top_srcdir)/src/%.erl
+%.beam:$(top_builddir)/src/%.erl
 	$(ERLC) $(ERLCFLAGS) -I $(top_builddir)/src $<
 
 %.app:   %.app-in

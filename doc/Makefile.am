@@ -3,18 +3,18 @@
 ##
 ## Process this file with automake to produce Makefile.in
 
-modhtml = inap_codec.html
+modhtml =
 
 doc_DATA = overview.edoc $(modhtml) \
-		modules-frame.html overview-summary.html \
-		index.html stylesheet.css \
+		index.html modules-frame.html overview-summary.html \
+		stylesheet.css \
 		sigscale-logo.png
 
 overview.edoc: overview.edoc-in
 	sed -e 's!%VERSION%!$(VERSION)!' \
 			-e 's!%DESCRIPTION%!$(PACKAGE)!' < $< > $@
 
-inap_codec.html:$(top_builddir)/src/inap_codec.erl	overview.edoc
+index.html:	overview.edoc
 	$(ERL) -noshell -run edoc_run application \
 			"'$(PACKAGE_NAME)'" "'$(top_builddir)'" \
 			'[{sort_functions,false},{private,true},{todo,true},{source_path,["$(top_srcdir)/src","$(top_builddir)/src"]},{subpackages,false},{def,{docsrc,"$(top_srcdir)/doc/{@?}"}}]'
