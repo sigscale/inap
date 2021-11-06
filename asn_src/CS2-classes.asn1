@@ -67,7 +67,7 @@ DEFINITIONS ::= BEGIN
 			srf-scf-contract
 		}
 		ID			id-rosObject-srf
-		}
+	}
 	--cusf ROS-OBJECT-CLASS ::= {
 	--	INITIATES	{cusf-scf-contract}
 	--	RESPONDS	{scf-cusf-contract}
@@ -164,7 +164,7 @@ DEFINITIONS ::= BEGIN
 		IDENTIFIED BY local: 1
 	}
 	-- firstScript is just an example.
-	SupportedUIScripts {PARAMETERS-BOUND : bound} UISCRIPT ::= {
+	SupportedUIScripts UISCRIPT ::= {
 		firstScript,
 		...
 		-- full set of User Interaction script
