@@ -1,3 +1,10 @@
+2021-11-07  Vance Shipley <vances@sigscale.org>
+
+	* use maps instead of records
+	* asn1 not included in application specification
+	* include modules in application specification
+	* install asn.1 modules
+
 2021-11-06  Vance Shipley <vances@sigscale.org>
 
 	* refactor to match cap application
