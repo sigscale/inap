@@ -12,5 +12,5 @@
 				'CS2-object-identifiers',
 				'CS2-operationcodes']},
 		{registered, []},
-		{applications, [asn1]},
+		{applications, []},
 		{env, []}]}.
