@@ -5,7 +5,7 @@
 ASNCFLAGS = $(ERLCFLAGS) \
 		-I ${ERLANG_LIB_DIR_tcap}/asn_src \
 		-I ${ERLANG_LIB_DIR_map}/asn_src \
-		+ber +noobj
+		+ber +maps +noobj
 
 noinst_DATA = CS2-SSF-SCF-pkgs-contracts-acs.erl \
 		CS2-SCF-SRF-pkgs-contracts-acs.erl \
@@ -17,16 +17,7 @@ noinst_DATA = CS2-SSF-SCF-pkgs-contracts-acs.erl \
 		CS2-datatypes.erl \
 		CS2-errortypes.erl
 
-einclude_DATA = CS2-SSF-SCF-pkgs-contracts-acs.hrl \
-		CS2-SCF-SRF-pkgs-contracts-acs.hrl \
-		CS2-SSF-SCF-ops-args.hrl \
-		CS2-SCF-SRF-ops-args.hrl \
-		CS2-object-identifiers.hrl \
-		CS2-operationcodes.hrl \
-		CS2-errorcodes.hrl \
-		CS2-datatypes.hrl
-
-%.erl %.hrl:$(top_srcdir)/asn_src/%.asn1
+%.erl:$(top_srcdir)/asn_src/%.asn1
 	$(ERLC) $(ASNCFLAGS) $<
 
 CLEANFILES = $(noinst_DATA) \
