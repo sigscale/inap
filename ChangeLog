@@ -1,3 +1,8 @@
+2021-11-14  Vance Shipley <vances@sigscale.org>
+
+	* header files for oids and operation/error codes
+	* use same party number min/max as cap
+
 2021-11-07  Vance Shipley <vances@sigscale.org>
 
 	* use maps instead of records
