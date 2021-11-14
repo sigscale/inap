@@ -4,7 +4,7 @@
 ##
 ## Boilerplate:  standard boilerplate code
 ##
-AC_INIT([inap], [1.0.2], [issues@sigscale.org])
+AC_INIT([inap], [1.0.3], [issues@sigscale.org])
 AC_COPYRIGHT([Copyright (c) 2021 SigScale Global Inc.])
 AC_PREREQ(2.64)
 #AC_CONFIG_SRCDIR([src/inap_app.erl])
@@ -50,11 +50,13 @@ appdir=$ERLANG_INSTALL_LIB_DIR/$PACKAGE_NAME-$PACKAGE_VERSION
 docdir=$ERLANG_INSTALL_LIB_DIR/$PACKAGE_NAME-$PACKAGE_VERSION/doc
 erldir=$ERLANG_INSTALL_LIB_DIR/$PACKAGE_NAME-$PACKAGE_VERSION/src
 beamdir=$ERLANG_INSTALL_LIB_DIR/$PACKAGE_NAME-$PACKAGE_VERSION/ebin
+asndir=$ERLANG_INSTALL_LIB_DIR/$PACKAGE_NAME-$PACKAGE_VERSION/asn_src
 eincludedir=$ERLANG_INSTALL_LIB_DIR/$PACKAGE_NAME-$PACKAGE_VERSION/include
 AC_SUBST(appdir)
 AC_SUBST(erldir)
 AC_SUBST(beamdir)
 AC_SUBST(asndir)
+AC_SUBST(eincludedir)
 
 
 ##
