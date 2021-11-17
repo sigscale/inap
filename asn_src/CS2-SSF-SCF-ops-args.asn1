@@ -367,6 +367,8 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 	-- operations can be canceled: PlayAnnouncement, PromptAndCollectUserInformation,
 	-- PromptAndReceiveMessage.
 
+	CallingPartySubaddress ::= OCTET STRING  --DEPRECATED!
+
 	CancelArg {PARAMETERS-BOUND : bound}::= CHOICE {
 		invokeID			[0] InvokeID,
 		allRequests			[1] NULL,
@@ -766,15 +768,19 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 
 	InitialDPArg {PARAMETERS-BOUND : bound} ::= SEQUENCE {
 		serviceKey							[0] ServiceKey,
+		dialledDigits                 [1] CalledPartyNumber {bound} OPTIONAL, -- DEPRECATED!
 		calledPartyNumber					[2] CalledPartyNumber {bound}					OPTIONAL,
-		callingPartyNumber					[3] CallingPartyNumber {bound}					OPTIONAL,
-		callingPartyBusinessGroupID			[4] CallingPartyBusinessGroupID {bound}		OPTIONAL,
-		callingPartysCategory				[5] CallingPartysCategory						OPTIONAL,
+		callingPartyNumber				[3] CallingPartyNumber {bound}					OPTIONAL,
+		callingPartyBusinessGroupID	[4] CallingPartyBusinessGroupID {bound}		OPTIONAL,
+		callingPartysCategory			[5] CallingPartysCategory						OPTIONAL,
+		callingPartySubaddress        [6] CallingPartySubaddress    OPTIONAL, -- DEPRECATED!
 		cGEncountered						[7] CGEncountered								OPTIONAL,
 		iPSSPCapabilities					[8] IPSSPCapabilities {bound}					OPTIONAL,
 		iPAvailable							[9] IPAvailable {bound}							OPTIONAL,
 		locationNumber						[10] LocationNumber {bound}						OPTIONAL,
-		originalCalledPartyID				[12] OriginalCalledPartyID {bound}				OPTIONAL,
+		miscCallInfo                  [11] MiscCallInfo             OPTIONAL, -- DEPRECATED!
+		originalCalledPartyID			[12] OriginalCalledPartyID {bound}			OPTIONAL,
+		serviceProfileIdentifier      [13] ServiceProfileIdentifier OPTIONAL, -- DEPRECATED!
 		terminalType						[14] TerminalType								OPTIONAL,
 		extensions							[15] SEQUENCE SIZE(1..bound.&numOfExtensions) OF
 																	ExtensionField OPTIONAL,
@@ -1170,6 +1176,8 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 		...
 		}
 
+	ServiceProfileIdentifier ::= OCTET STRING  -- DEPRECATED!
+
 	splitLeg {PARAMETERS-BOUND : bound} OPERATION ::= {
 		ARGUMENT	SplitLegArg {bound}
 		RETURN RESULT TRUE
@@ -1193,5 +1201,14 @@ DEFINITIONS IMPLICIT TAGS ::= BEGIN
 		extensions		[2] SEQUENCE SIZE (1..bound.&numOfExtensions) OF ExtensionField OPTIONAL,
 		...
 		}
+
+	TerminalType ::= ENUMERATED {
+			unknown(0),
+			dialPulse(1),
+			dtmf(2),
+			isdn(3),
+			isdnNoDtmf(4),
+			spare(16)
+	}  -- DEPRECATED!
 
 END
