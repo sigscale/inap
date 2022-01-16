@@ -17,26 +17,10 @@ noinst_DATA = CS2-SSF-SCF-pkgs-contracts-acs.erl \
 		CS2-datatypes.erl \
 		CS2-errortypes.erl
 
-einclude_DATA = CS2-SSF-SCF-pkgs-contracts-acs.hrl \
-		CS2-SCF-SRF-pkgs-contracts-acs.hrl \
-		CS2-SSF-SCF-ops-args.hrl \
-		CS2-SCF-SRF-ops-args.hrl \
-		CS2-object-identifiers.hrl \
+einclude_DATA = CS2-object-identifiers.hrl \
 		CS2-operationcodes.hrl \
 		CS2-errorcodes.hrl \
 		CS2-datatypes.hrl
-
-CS2-SSF-SCF-pkgs-contracts-acs.erl CS2-SSF-SCF-pkgs-contracts-acs.hrl:$(top_srcdir)/asn_src/CS2-SSF-SCF-pkgs-contracts-acs.asn1
-	$(ERLC) $(ASNCFLAGS) $<
-
-CS2-SCF-SRF-pkgs-contracts-acs.erl CS2-SCF-SRF-pkgs-contracts-acs.hrl:$(top_srcdir)/asn_src/CS2-SCF-SRF-pkgs-contracts-acs.asn1
-	$(ERLC) $(ASNCFLAGS) $<
-
-CS2-SSF-SCF-ops-args.erl CS2-SSF-SCF-ops-args.hrl:$(top_srcdir)/asn_src/CS2-SSF-SCF-ops-args.asn1
-	$(ERLC) $(ASNCFLAGS) $<
-
-CS2-SCF-SRF-ops-args.erl CS2-SCF-SRF-ops-args.hrl:$(top_srcdir)/asn_src/CS2-SCF-SRF-ops-args.asn1
-	$(ERLC) $(ASNCFLAGS) $<
 
 CS2-object-identifiers.erl CS2-object-identifiers.hrl:$(top_srcdir)/asn_src/CS2-object-identifiers.asn1
 	$(ERLC) $(ASNCFLAGS) $<
