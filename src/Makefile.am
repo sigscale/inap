@@ -28,9 +28,19 @@ einclude_DATA = CS2-SSF-SCF-pkgs-contracts-acs.hrl \
 
 CS2-SSF-SCF-pkgs-contracts-acs.erl CS2-SSF-SCF-pkgs-contracts-acs.hrl:$(top_srcdir)/asn_src/CS2-SSF-SCF-pkgs-contracts-acs.asn1
 	$(ERLC) $(ASNCFLAGS) $<
+	sed -e "/^-record('EXTERNAL'/,/^})\./d" \
+			CS2-SSF-SCF-pkgs-contracts-acs.hrl \
+			> CS2-SSF-SCF-pkgs-contracts-acs.hrl.tmp
+	mv CS2-SSF-SCF-pkgs-contracts-acs.hrl.tmp \
+			CS2-SSF-SCF-pkgs-contracts-acs.hrl
 
 CS2-SCF-SRF-pkgs-contracts-acs.erl CS2-SCF-SRF-pkgs-contracts-acs.hrl:$(top_srcdir)/asn_src/CS2-SCF-SRF-pkgs-contracts-acs.asn1
 	$(ERLC) $(ASNCFLAGS) $<
+	sed -e "/^-record('EXTERNAL'/,/^})\./d" \
+			CS2-SCF-SRF-pkgs-contracts-acs.hrl \
+			> CS2-SCF-SRF-pkgs-contracts-acs.hrl.tmp
+	mv CS2-SCF-SRF-pkgs-contracts-acs.hrl.tmp \
+			CS2-SCF-SRF-pkgs-contracts-acs.hrl
 
 CS2-SSF-SCF-ops-args.erl CS2-SSF-SCF-ops-args.hrl:$(top_srcdir)/asn_src/CS2-SSF-SCF-ops-args.asn1
 	$(ERLC) $(ASNCFLAGS) $<
