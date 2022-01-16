@@ -1,3 +1,8 @@
+2022-01-16  Vance Shipley <vances@sigscale.org>
+
+	* install header files for packages and operation arguments
+	* include debug information in beam
+
 2021-11-17  Vance Shipley <vances@sigscale.org>
 
 	* add deprecated initialdparg parameters for backwards compatability
