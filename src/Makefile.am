@@ -19,8 +19,7 @@ noinst_DATA = CS2-SSF-SCF-pkgs-contracts-acs.erl \
 
 einclude_DATA = CS2-object-identifiers.hrl \
 		CS2-operationcodes.hrl \
-		CS2-errorcodes.hrl \
-		CS2-datatypes.hrl
+		CS2-errorcodes.hrl
 
 CS2-object-identifiers.erl CS2-object-identifiers.hrl:$(top_srcdir)/asn_src/CS2-object-identifiers.asn1
 	$(ERLC) $(ASNCFLAGS) $<
@@ -29,9 +28,6 @@ CS2-operationcodes.erl CS2-operationcodes.hrl:$(top_srcdir)/asn_src/CS2-operatio
 	$(ERLC) $(ASNCFLAGS) $<
 
 CS2-errorcodes.erl CS2-errorcodes.hrl:$(top_srcdir)/asn_src/CS2-errorcodes.asn1
-	$(ERLC) $(ASNCFLAGS) $<
-
-CS2-datatypes.erl CS2-datatypes.hrl:$(top_srcdir)/asn_src/CS2-datatypes.asn1
 	$(ERLC) $(ASNCFLAGS) $<
 
 %.erl:$(top_srcdir)/asn_src/%.asn1
