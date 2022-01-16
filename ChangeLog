@@ -1,6 +1,7 @@
 2022-01-16  Vance Shipley <vances@sigscale.org>
 
 	* install header files for packages and operation arguments
+	* install header file for data types
 	* include debug information in beam
 
 2021-11-17  Vance Shipley <vances@sigscale.org>
