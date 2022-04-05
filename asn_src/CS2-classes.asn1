@@ -462,7 +462,7 @@ DEFINITIONS ::= BEGIN
 		MINIMUM-FOR-ISDN-ACCESS-RELATED-INFO		1	-- example value
 		MAXIMUM-FOR-ISDN-ACCESS-RELATED-INFO		5	-- example value
 		MINIMUM-FOR-LOCATION-NUMBER					1	-- example value
-		MAXIMUM-FOR-LOCATION-NUMBER					5	-- example value
+		MAXIMUM-FOR-LOCATION-NUMBER					10	-- example value
 		MINIMUM-FOR-MAIL-BOX-ID						1	-- example value
 		MAXIMUM-FOR-MAIL-BOX-ID						5	-- example value
 		MINIMUM-FOR-MESSAGE-CONTENT					1	-- example value
