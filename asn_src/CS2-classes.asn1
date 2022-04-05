@@ -508,7 +508,7 @@ DEFINITIONS ::= BEGIN
 		NUM-OF-GENERIC-NUMBERS						2	-- example value
 		NUM-OF-IN-SERVICE-COMPATIBILITY-ID			2	-- example value
 		NUM-OF-LEGS									2	-- example value
-		NUM-OF-MESSAGE-IDS							2	-- example value
+		NUM-OF-MESSAGE-IDS							16	-- example value
 		MAXIMUM-FOR-AMOUNT							2	-- example value
 		MAXIMUM-FOR-INITIAL-UNIT-INCREMENT			2	-- example value
 		MAXIMUM-FOR-SCALING-FACTOR					2	-- example value
