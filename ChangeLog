@@ -1,6 +1,18 @@
+2022-11-17  Vance Shipley <vances@sigscale.org>
+
+	* allow twenty octets in digits response
+	* play announcement handles up to sixteen message identifiers
+
+2022-04-05  Vance Shipley <vances@sigscale.org>
+
+	* location number may be up to ten digits
+	* play announcement handles up to sixteen message identifiers
+	* revert "install header file for data types"
+	* revert "install header files for packages and operation arguments"
+	* revert "remove redundant record definition"
+
 2022-01-16  Vance Shipley <vances@sigscale.org>
 
-	* install header files for packages and operation arguments
 	* install header file for data types
 	* include debug information in beam
 
