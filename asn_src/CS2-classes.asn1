@@ -436,7 +436,7 @@ DEFINITIONS ::= BEGIN
 		MINIMUM-FOR-COMPONENT-RECEIVED-INFO		1 -- example value
 		MAXIMUM-FOR-COMPONENT-RECEIVED-INFO		5 -- example value
 		MINIMUM-FOR-DIGITS							1	-- example value
-		MAXIMUM-FOR-DIGITS							5	-- example value
+		MAXIMUM-FOR-DIGITS							20
 		MINIMUM-FOR-DISPLAY							1	-- example value
 		MAXIMUM-FOR-DISPLAY							5	-- example value
 		MINIMUM-FOR-EVENT-SPECIFIC-CHARGING			1	-- example value
