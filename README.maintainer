@@ -14,10 +14,11 @@ Note:
 
 ## Building
 	1. mkdir ../inap.build       (create build directory)
-	2. cd ../inap.build          (change working directory for build)
-	3. ../inap/configure         (creates Makefiles)
-	4. make                      (builds entire package)
-	5. make check                (run dialyzer and common_test)
+	2. cp README.build ../inap.build/README
+	3. cd ../inap.build          (change working directory for build)
+	4. ../inap/configure         (creates Makefiles)
+	5. make                      (builds entire package)
+	6. make check                (run dialyzer and common_test)
 
 ## Installing
 	1. sudo make install         (installs embedded application in system)
