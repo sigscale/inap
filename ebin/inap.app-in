@@ -1,5 +1,5 @@
 {application, %APP_NAME%,
-	[{description, "Intelligent Network Application Part (INAP) protocol stack"},
+	[{description, "Intelligent Network Application Part (INAP) CODEC"},
 		{vsn, "%APP_VERSION%"},
 		{modules,
 				['CS2-SCF-SRF-ops-args',

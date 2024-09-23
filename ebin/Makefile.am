@@ -3,8 +3,8 @@
 ## Process this file with automake to produce Makefile.in
 
 appdir = $(beamdir)
-app_DATA = inap.app
-EXTRA_DIST = inap.app
+app_DATA = inap.app inap.appup
+EXTRA_DIST = inap.app inap.appup
 
 beam_DATA = CS2-SSF-SCF-pkgs-contracts-acs.beam \
 		CS2-SCF-SRF-pkgs-contracts-acs.beam \
