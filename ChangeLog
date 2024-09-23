@@ -1,3 +1,10 @@
+2024-09-23  Vance Shipley <vances@sigscale.org>
+
+	* include all application upgrade files in release package
+	* clarify build readme file
+	* build an erlang release package
+	* add build instructions
+
 2022-11-17  Vance Shipley <vances@sigscale.org>
 
 	* allow twenty octets in digits response
