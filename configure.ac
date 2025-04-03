@@ -4,8 +4,8 @@
 ##
 ## Boilerplate:  standard boilerplate code
 ##
-AC_INIT([inap], [1.0.10], [issues@sigscale.org])
-AC_COPYRIGHT([Copyright (c) 2024 SigScale Global Inc.])
+AC_INIT([inap], [1.0.11], [issues@sigscale.org])
+AC_COPYRIGHT([Copyright (c) 2025 SigScale Global Inc.])
 AC_PREREQ(2.64)
 #AC_CONFIG_SRCDIR([src/inap_app.erl])
 AC_CONFIG_HEADERS([config.h])
