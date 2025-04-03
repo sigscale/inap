@@ -470,7 +470,7 @@ DEFINITIONS ::= BEGIN
 		MINIMUM-FOR-MID-CALL-CONTROL-INFO			1	-- example value
 		MAXIMUM-FOR-MID-CALL-CONTROL-INFO			5	-- example value
 		MINIMUM-FOR-ORIGINAL-CALLED-PARTY-ID		1	-- example value
-		MAXIMUM-FOR-ORIGINAL-CALLED-PARTY-ID		5	-- example value
+		MAXIMUM-FOR-ORIGINAL-CALLED-PARTY-ID		10	-- example value
 		MINIMUM-FOR-REASON							1	-- example value
 		MAXIMUM-FOR-REASON							5	-- example value
 		MINIMUM-FOR-RECEIVED-INFORMATION			1	-- example value
@@ -478,7 +478,7 @@ DEFINITIONS ::= BEGIN
 		MAXIMUM-FOR-RECORDED-MESSAGE-UNITS			5	-- example value
 		MAXIMUM-FOR-RECORDING-TIME					5	-- example value
 		MINIMUM-FOR-REDIRECTING-ID					1	-- example value
-		MAXIMUM-FOR-REDIRECTING-ID					5	-- example value
+		MAXIMUM-FOR-REDIRECTING-ID					10	-- example value
 		MINIMUM-FOR-REGISTRATOR-IDENTIFIER			1	-- example value
 		MAXIMUM-FOR-REGISTRATOR-IDENTIFIER			5	-- example value
 		MINIMUM-FOR-REQUESTED-UTSI-NUM				1	-- example value
